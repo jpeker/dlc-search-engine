@@ -125,6 +125,15 @@ public class Spider {
       return;
     if(!isTextPage(url))
         return;
+     
+    char p = url.toString().charAt(url.toString().length()-1);
+  char pe='/';
+  if ( p ==pe)
+  {
+      System.out.println("son iguales");
+      return;
+  }
+     
     log("Adding to workload: " + url );
     getWorkloadWaiting().add(url);
   }
@@ -304,7 +313,7 @@ public class Spider {
         report.spiderFoundEMail(href);
         return;
       }
-
+   
       handleLink(base,href);
     }
 
