@@ -153,7 +153,7 @@ public class Spider {
           return false;
       
       if ( (connection.getContentType()!=null) && (!connection.getContentType().toLowerCase().startsWith("text/")
-              || (connection.getContentType().endsWith("css")) || (connection.getContentType().endsWith("php"))  )  )
+              || (connection.getContentType().endsWith("css"))   )  )
       {
           return false;
       }
@@ -196,22 +196,7 @@ public class Spider {
              connection.getContentType() );
         return;
       }
-  /*    //si esta o no procesada la url ver como se trata dos link casi iguales ejemplo http://ridsoftware.com.ar/ y http://ridsoftware.com.ar
-   *    // otro caso se podria dar https://ridsoftware.com.ar y http://ridsoftware.com.ar
-      if( getWorkloadProcessed().contains(url)){
-          System.out.println("ya fue procesada "+ url.toString());
-      }
-      Iterator i = getWorkloadProcessed().iterator();
-      URL ur = null;
-      while (i.hasNext())
-      {
-      ur = (URL)i.next();
-  
-      if (ur.equals(url))
-      {
-       System.out.println("ya fue procesadasa  "+ url.toString());
-      }
-      }*/
+
       // read the URL
       InputStream is = connection.getInputStream();//change to inputstream
       Reader r = new InputStreamReader(is);//change to reader
@@ -316,7 +301,12 @@ public class Spider {
       int i = href.indexOf('#');
       if ( i!=-1 )
         href = href.substring(0,i);
-
+       
+      int j = href.indexOf(".php");
+      if ( j!=-1 )
+      {  System.out.println("es un php");
+      return;
+      }
       if ( href.toLowerCase().startsWith("mailto:") ) {
         report.spiderFoundEMail(href);
         return;
