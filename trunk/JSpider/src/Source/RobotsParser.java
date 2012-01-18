@@ -26,7 +26,7 @@ public class RobotsParser {
 	String strRobot = "http://" + strHost + "/robots.txt";
 	URL urlRobot;
 	try { 
-	    urlRobot = new URL(strRobot);
+	    urlRobot = new URL(strRobot);//check for fileNotFoundException
 	} catch (MalformedURLException e) {
 	    // something weird is happening, so don't trust it
 	    return false;
