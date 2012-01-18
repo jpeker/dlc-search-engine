@@ -117,6 +117,16 @@ public class Spider {
    */
   public void addURL(URL url)
   {
+  
+  if ( url.toString().endsWith("/"))
+  {
+     String pepe = url.toString().substring(0, url.toString().length()-1);
+     
+    try{
+      url = new URL(pepe);} catch ( MalformedURLException e ) {
+        log("Found malformed URL: " + pepe );
+      }
+  }
     if ( getWorkloadWaiting().contains(url) )
       return;
     if ( getWorkloadError().contains(url) )
@@ -126,13 +136,7 @@ public class Spider {
     if(!isTextPage(url))
         return;
      
-    char p = url.toString().charAt(url.toString().length()-1);
-  char pe='/';
-  if ( p ==pe)
-  {
-      System.out.println("son iguales");
-      return;
-  }
+  
      
     log("Adding to workload: " + url );
     getWorkloadWaiting().add(url);
@@ -313,7 +317,16 @@ public class Spider {
         report.spiderFoundEMail(href);
         return;
       }
-   
+      /*if(!href.equals("")){
+     char p = href.toString().charAt(href.toString().length()-1);
+  char pe='/';
+  if ( p ==pe)
+  {
+
+      System.out.println("son iguales");
+      return;
+  }
+      }*/
       handleLink(base,href);
     }
 
@@ -347,6 +360,7 @@ public class Spider {
       try {
         URL url = new URL(base,str);
         if ( report.spiderFoundURL(base,url) )
+            
           addURL(url);
       } catch ( MalformedURLException e ) {
         log("Found malformed URL: " + str );
