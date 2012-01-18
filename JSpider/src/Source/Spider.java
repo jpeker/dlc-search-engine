@@ -14,7 +14,7 @@ import javax.swing.text.html.*;
  * @version 1.1
  */
 public class Spider {
-
+    
   /**
    * A collection of URLs that resulted in an error
    */
@@ -264,7 +264,7 @@ public class Spider {
         undesiredTags.add(HTML.Tag.OPTION.toString());
         undesiredTags.add(HTML.Tag.LI.toString());
         undesiredTags.add(HTML.Tag.SCRIPT.toString());
-        
+        undesiredTags.add("time");
         undesiredTags.add(HTML.Tag.STYLE.toString());
         undesiredTags.add(HTML.Tag.CODE.toString());
 
@@ -298,7 +298,11 @@ public class Spider {
       int i = href.indexOf('#');
       if ( i!=-1 )
         href = href.substring(0,i);
-       
+          int k = href.indexOf("=rss");
+      if ( k!=-1 )
+      {  System.out.println("es un =rss");
+      return;
+      }
       int j = href.indexOf(".php");
       if ( j!=-1 )
       {  System.out.println("es un php");
