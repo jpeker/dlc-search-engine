@@ -213,8 +213,8 @@ public class Spider {
       }
       }*/
       // read the URL
-      InputStream is = connection.getInputStream();
-      Reader r = new InputStreamReader(is);
+      InputStream is = connection.getInputStream();//change to inputstream
+      Reader r = new InputStreamReader(is);//change to reader
       // parse the URL
       HTMLEditorKit.Parser parse = new HTMLParse().getParser();
       parse.parse(r,new Parser(url),true);
@@ -240,7 +240,7 @@ public class Spider {
   {
     cancel = false;
     while ( !getWorkloadWaiting().isEmpty() && !cancel ) {
-      Object list[] = getWorkloadWaiting().toArray();
+      Object list[] = getWorkloadWaiting().toArray(); //Chanchada
       for ( int i=0;(i<list.length)&&!cancel;i++ )
         processURL((URL)list[i]);
     }
@@ -278,12 +278,16 @@ public class Spider {
      */
     public void tagHandler(HTML.Tag t)
     {
-        Collection <String> undesiredTags = new ArrayList <String> ();
+        Collection <String> undesiredTags = new ArrayList <String> (); //create collection in another place
         undesiredTags.add(HTML.Tag.OPTION.toString());
         undesiredTags.add(HTML.Tag.LI.toString());
         undesiredTags.add(HTML.Tag.SCRIPT.toString());
+<<<<<<< .mine
+        undesiredTags.add((HTML.Tag.STYLE.toString()));
+=======
         undesiredTags.add(HTML.Tag.STYLE.toString());
         undesiredTags.add(HTML.Tag.CODE.toString());
+>>>>>>> .r6
         for(String tag : undesiredTags)
         {
             if(tag.equalsIgnoreCase(t.toString()))
@@ -295,20 +299,21 @@ public class Spider {
         return;
         
     }
+    //recorre  la url en busca de links a otras pag con href
         @Override
-    public void handleSimpleTag(HTML.Tag t,
-                                MutableAttributeSet a,int pos)
+       public void handleSimpleTag(HTML.Tag t,
+                                MutableAttributeSet atributeSet,int pos)
     {
         System.out.println("the tag to analize is: "+t.toString());
         tagHandler(t);
-      String href = (String)a.getAttribute(HTML.Attribute.HREF);
+      String href = (String)atributeSet.getAttribute(HTML.Attribute.HREF);
 
       if( (href==null) && (t==HTML.Tag.FRAME) )
-        href = (String)a.getAttribute(HTML.Attribute.SRC);
-        
+        href = (String)atributeSet.getAttribute(HTML.Attribute.SRC);
+      // busca href dentro contenedor de framset   http://www.w3schools.com/tags/tag_frame.asp
       if ( href==null )
         return;
-
+//wtf?
       int i = href.indexOf('#');
       if ( i!=-1 )
         href = href.substring(0,i);
@@ -337,7 +342,11 @@ public class Spider {
       handleSimpleTag(t,a,pos);    // handle the same way
 
     }
-    
+    /**
+         * 
+         * @param data gots the tag text
+         * @param pos 
+         */
         @Override
     public void handleText(char[] data, int pos) {
         if(isUndesiredTag == true)
@@ -359,6 +368,8 @@ public class Spider {
     {
       try {
         URL url = new URL(base,str);
+        //si encuentra una url la agrega a un contenedor de url, verifica la url q crea y sino te tira un
+        //exception
         if ( report.spiderFoundURL(base,url) )
             
           addURL(url);
