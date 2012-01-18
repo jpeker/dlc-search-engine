@@ -282,12 +282,11 @@ public class Spider {
         undesiredTags.add(HTML.Tag.OPTION.toString());
         undesiredTags.add(HTML.Tag.LI.toString());
         undesiredTags.add(HTML.Tag.SCRIPT.toString());
-<<<<<<< .mine
-        undesiredTags.add((HTML.Tag.STYLE.toString()));
-=======
+        
         undesiredTags.add(HTML.Tag.STYLE.toString());
         undesiredTags.add(HTML.Tag.CODE.toString());
->>>>>>> .r6
+
+
         for(String tag : undesiredTags)
         {
             if(tag.equalsIgnoreCase(t.toString()))
