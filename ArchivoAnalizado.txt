@@ -1,0 +1,1572 @@
+init:
+Deleting: G:\Julian Peker\Final DLC\JSpider\build\built-jar.properties
+deps-jar:
+Updating property file: G:\Julian Peker\Final DLC\JSpider\build\built-jar.properties
+compile:
+run:
+Wed Jan 18 19:47:18 ART 2012:Adding to workload: http://ridsoftware.com.ar
+Wed Jan 18 19:47:18 ART 2012:Processing: http://ridsoftware.com.ar
+the tag to analize is: html
+the tag to analize is: head
+the tag to analize is: meta
+the tag to analize is: meta
+the tag to analize is: title
+Rid Software | Marketing Software
+the tag to analize is: link
+the tag to analize is: link
+the tag to analize is: link
+es un php
+the tag to analize is: link
+es un =rss
+the tag to analize is: link
+Wed Jan 18 19:47:19 ART 2012:Adding to workload: http://ridsoftware.com.ar/?feed=comments-rss2
+the tag to analize is: link
+es un =rss
+the tag to analize is: script
+the tag to analize is: script
+the tag to analize is: link
+es un php
+the tag to analize is: link
+the tag to analize is: link
+Wed Jan 18 19:47:19 ART 2012:Adding to workload: http://ridsoftware.com.ar/?page_id=2
+the tag to analize is: link
+Wed Jan 18 19:47:19 ART 2012:Adding to workload: http://ridsoftware.com.ar/?page_id=92
+the tag to analize is: meta
+the tag to analize is: link
+the tag to analize is: link
+the tag to analize is: script
+the tag to analize is: style
+the tag to analize is: style
+the tag to analize is: body
+the tag to analize is: div
+the tag to analize is: header
+the tag to analize is: hgroup
+the tag to analize is: h1
+the tag to analize is: span
+the tag to analize is: a
+Rid Software
+the tag to analize is: h2
+Marketing Software
+the tag to analize is: hgroup
+the tag to analize is: a
+the tag to analize is: img
+the tag to analize is: div
+the tag to analize is: form
+the tag to analize is: label
+Search
+the tag to analize is: label
+the tag to analize is: input
+the tag to analize is: input
+the tag to analize is: nav
+the tag to analize is: h3
+Main menu
+the tag to analize is: div
+the tag to analize is: a
+Skip to primary content
+the tag to analize is: div
+the tag to analize is: a
+Skip to secondary content
+the tag to analize is: div
+the tag to analize is: ul
+the tag to analize is: li
+the tag to analize is: a
+the tag to analize is: li
+the tag to analize is: a
+Wed Jan 18 19:47:20 ART 2012:Adding to workload: http://ridsoftware.com.ar/?p=9
+the tag to analize is: li
+the tag to analize is: a
+the tag to analize is: nav
+the tag to analize is: header
+the tag to analize is: div
+the tag to analize is: div
+the tag to analize is: div
+the tag to analize is: article
+the tag to analize is: header
+the tag to analize is: h2
+RidSoftware
+the tag to analize is: header
+the tag to analize is: div
+the tag to analize is: p
+the tag to analize is: em
+Bienvenido. 
+the tag to analize is: strong
+RID
+ es una empresa dedicada exclusivamente a la generación e implementación de ideas y procesos innovadores aplicables al crecimiento y posicionamiento de su empresa. Utilizamos tecnologia de punta adaptada a nuestro entorno para generar soluciones alcanzables de alto impacto. Continuamente generamos nuevas plataformas de crecimiento que tengan la interacción, la comunicación y el alto impacto como ejes articuladores.
+the tag to analize is: p
+the tag to analize is: em
+A continuación lo invitamos a conocer más sobre 
+the tag to analize is: strong
+RID
+…
+the tag to analize is: h2
+the tag to analize is: article
+the tag to analize is: div
+the tag to analize is: h1
+Featured Post
+the tag to analize is: section
+the tag to analize is: a
+Wed Jan 18 19:47:20 ART 2012:Adding to workload: http://ridsoftware.com.ar/?p=14
+the tag to analize is: img
+the tag to analize is: article
+the tag to analize is: header
+the tag to analize is: h2
+the tag to analize is: a
+Nuestros productos
+the tag to analize is: div
+the tag to analize is: span
+Posted on 
+the tag to analize is: a
+the tag to analize is: time
+the tag to analize is: time
+the tag to analize is: span
+the tag to analize is: span
+by 
+the tag to analize is: span
+the tag to analize is: a
+Wed Jan 18 19:47:21 ART 2012:Adding to workload: http://ridsoftware.com.ar/?author=1
+admin
+the tag to analize is: header
+the tag to analize is: div
+the tag to analize is: p
+Plataforma de entretimiento multiusuario  Plataforma interactiva de aplicaciones multiusuarios proyectadas en pantallas lcd/led que permite la proyección de publicidades/promociones directamente. Sin costo para el usuario, solo debe disponer de cualquier dispositivo con conexión wifi. Transforma tu dispositivo en “joystick” Amplia … 
+the tag to analize is: a
+Continue reading 
+the tag to analize is: span
+?
+the tag to analize is: footer
+This entry was posted in 
+the tag to analize is: a
+Wed Jan 18 19:47:21 ART 2012:Adding to workload: http://ridsoftware.com.ar/?cat=1
+Sin categoría
+. Bookmark the 
+the tag to analize is: a
+permalink
+. 
+the tag to analize is: footer
+no text
+the tag to analize is: article
+no text
+the tag to analize is: section
+the tag to analize is: section
+no text
+the tag to analize is: a
+the tag to analize is: img
+the tag to analize is: article
+the tag to analize is: header
+the tag to analize is: h2
+the tag to analize is: a
+Acerca de RID
+the tag to analize is: div
+the tag to analize is: span
+Posted on 
+the tag to analize is: a
+the tag to analize is: time
+the tag to analize is: time
+the tag to analize is: span
+the tag to analize is: span
+by 
+the tag to analize is: span
+the tag to analize is: a
+admin
+the tag to analize is: header
+the tag to analize is: div
+the tag to analize is: p
+Somos una empresa joven integrada por un equipo interdisciplinario en donde los diversos conocimientos y experiencias se conjugan a fin de alcanzar una visión integral. La investigación y el desarrollo de aplicaciones innovadoras e interactivas  en comunicación y marketing es … 
+the tag to analize is: a
+Continue reading 
+the tag to analize is: span
+?
+the tag to analize is: footer
+This entry was posted in 
+the tag to analize is: a
+Sin categoría
+. Bookmark the 
+the tag to analize is: a
+permalink
+. 
+the tag to analize is: footer
+no text
+the tag to analize is: article
+no text
+the tag to analize is: section
+the tag to analize is: section
+no text
+the tag to analize is: a
+Wed Jan 18 19:47:21 ART 2012:Adding to workload: http://ridsoftware.com.ar/?p=52
+the tag to analize is: img
+the tag to analize is: article
+the tag to analize is: header
+the tag to analize is: h2
+the tag to analize is: a
+Reconocimientos
+the tag to analize is: div
+the tag to analize is: span
+Posted on 
+the tag to analize is: a
+the tag to analize is: time
+the tag to analize is: time
+the tag to analize is: span
+the tag to analize is: span
+by 
+the tag to analize is: span
+the tag to analize is: a
+admin
+the tag to analize is: header
+the tag to analize is: div
+the tag to analize is: p
+En Rid Software hemos sido distinguidos en prestigiosos eventos de desarrollo de software e innovación. Algunas de nuestras medallas son: Segundo puesto en “Empredores tecnológicos 2010” organizado por Junior Achievement. Selección en elaboracion de plan de negocios en Córdoba Crea … 
+the tag to analize is: a
+Continue reading 
+the tag to analize is: span
+?
+the tag to analize is: footer
+This entry was posted in 
+the tag to analize is: a
+Sin categoría
+. Bookmark the 
+the tag to analize is: a
+permalink
+. 
+the tag to analize is: footer
+no text
+the tag to analize is: article
+no text
+the tag to analize is: section
+the tag to analize is: nav
+the tag to analize is: ul
+the tag to analize is: li
+the tag to analize is: a
+the tag to analize is: li
+the tag to analize is: a
+the tag to analize is: li
+the tag to analize is: a
+the tag to analize is: nav
+the tag to analize is: section
+the tag to analize is: h1
+the tag to analize is: section
+the tag to analize is: div
+the tag to analize is: footer
+the tag to analize is: div
+the tag to analize is: div
+the tag to analize is: aside
+the tag to analize is: div
+the tag to analize is: center
+Copyright 2011 - Rid Software
+the tag to analize is: h5
+http://ridsoftware.com.ar
+the tag to analize is: aside
+the tag to analize is: div
+the tag to analize is: a
+Proudly powered by WordPress
+the tag to analize is: footer
+the tag to analize is: script
+the tag to analize is: script
+Wed Jan 18 19:47:21 ART 2012:Complete: http://ridsoftware.com.ar
+EL tamaño de waiting8EL tamaño de processesed1
+Wed Jan 18 19:47:21 ART 2012:Processing: http://ridsoftware.com.ar/?feed=comments-rss2
+Wed Jan 18 19:47:22 ART 2012:Error: http://ridsoftware.com.ar/?feed=comments-rss2
+http://ridsoftware.com.ar/?feed=comments-rss2 gots errors
+Wed Jan 18 19:47:22 ART 2012:Processing: http://ridsoftware.com.ar/?page_id=2
+the tag to analize is: html
+the tag to analize is: head
+the tag to analize is: meta
+the tag to analize is: meta
+the tag to analize is: title
+Página de ejemplo | Rid Software
+the tag to analize is: link
+the tag to analize is: link
+the tag to analize is: link
+es un php
+the tag to analize is: link
+es un =rss
+the tag to analize is: link
+the tag to analize is: link
+es un =rss
+the tag to analize is: script
+the tag to analize is: link
+es un php
+the tag to analize is: link
+the tag to analize is: link
+the tag to analize is: meta
+the tag to analize is: link
+the tag to analize is: link
+the tag to analize is: script
+the tag to analize is: style
+the tag to analize is: style
+the tag to analize is: body
+the tag to analize is: div
+the tag to analize is: header
+the tag to analize is: hgroup
+the tag to analize is: h1
+the tag to analize is: span
+the tag to analize is: a
+Rid Software
+the tag to analize is: h2
+Marketing Software
+the tag to analize is: hgroup
+the tag to analize is: a
+the tag to analize is: img
+the tag to analize is: div
+the tag to analize is: form
+the tag to analize is: label
+Search
+the tag to analize is: label
+the tag to analize is: input
+the tag to analize is: input
+the tag to analize is: nav
+the tag to analize is: h3
+Main menu
+the tag to analize is: div
+the tag to analize is: a
+Skip to primary content
+the tag to analize is: div
+the tag to analize is: a
+Skip to secondary content
+the tag to analize is: div
+the tag to analize is: ul
+the tag to analize is: li
+the tag to analize is: a
+the tag to analize is: li
+the tag to analize is: a
+the tag to analize is: li
+the tag to analize is: a
+the tag to analize is: nav
+the tag to analize is: header
+the tag to analize is: div
+the tag to analize is: div
+the tag to analize is: div
+the tag to analize is: article
+the tag to analize is: header
+the tag to analize is: h1
+Página de ejemplo
+the tag to analize is: header
+the tag to analize is: div
+the tag to analize is: p
+Esta es una página de ejemplo, Es diferente a una entrada de un blog porque se mantiene estática y, en la mayoría de temas, se mostrará en la barra de navegación. Casi todo el mundo comienza con una página Sobre mí para presentarse a los potenciales visitantes. Puede decir algo así:
+the tag to analize is: blockquote
+the tag to analize is: p
+¡Hola!: Soy físico durante el día, lector de manga por las noches y este es mi blog. Vivo en Albacete y tengo un gato llamado Alex. Me encantan los mojitos (y mirar a la gente corriendo en los parques)
+the tag to analize is: p
+O algo así:
+the tag to analize is: blockquote
+the tag to analize is: p
+La empresa Calcetines XYC se fundó en 1973, y ha estado produciendo calcetines de calidad para sus clientes desde entonces. Se encuentra en Vetusta, tiene unos 2.000 empleados e intenta ayudar en lo que puede para mejorar la vida en Vestusta
+the tag to analize is: p
+Deberías ir a 
+the tag to analize is: a
+Wed Jan 18 19:47:24 ART 2012:Adding to workload: http://ridsoftware.com.ar/wp-admin
+tu escritorio
+, borrar esta página y crear algunas nuevas con tu contenido. ¡A divertirse!
+the tag to analize is: footer
+the tag to analize is: footer
+the tag to analize is: article
+the tag to analize is: div
+the tag to analize is: div
+the tag to analize is: h3
+Deja un comentario 
+the tag to analize is: small
+the tag to analize is: a
+Cancelar respuesta
+the tag to analize is: form
+the tag to analize is: p
+Tu dirección de correo electrónico no será publicada.
+the tag to analize is: p
+the tag to analize is: label
+Nombre
+the tag to analize is: label
+the tag to analize is: input
+the tag to analize is: p
+the tag to analize is: label
+Correo electrónico
+the tag to analize is: label
+the tag to analize is: input
+the tag to analize is: p
+the tag to analize is: label
+Web
+the tag to analize is: label
+the tag to analize is: input
+the tag to analize is: p
+the tag to analize is: label
+Comentario
+the tag to analize is: label
+the tag to analize is: textarea
+the tag to analize is: p
+Puedes usar las siguientes etiquetas y atributos 
+the tag to analize is: abbr
+HTML
+the tag to analize is: abbr
+: 
+the tag to analize is: code
+the tag to analize is: p
+the tag to analize is: input
+the tag to analize is: input
+the tag to analize is: input
+the tag to analize is: footer
+the tag to analize is: div
+the tag to analize is: div
+the tag to analize is: aside
+the tag to analize is: div
+the tag to analize is: center
+Copyright 2011 - Rid Software
+the tag to analize is: h5
+http://ridsoftware.com.ar
+the tag to analize is: aside
+the tag to analize is: div
+the tag to analize is: a
+Proudly powered by WordPress
+the tag to analize is: footer
+the tag to analize is: script
+the tag to analize is: script
+Wed Jan 18 19:47:24 ART 2012:Complete: http://ridsoftware.com.ar/?page_id=2
+EL tamaño de waiting7EL tamaño de processesed2
+Wed Jan 18 19:47:24 ART 2012:Processing: http://ridsoftware.com.ar/?page_id=92
+the tag to analize is: html
+the tag to analize is: head
+the tag to analize is: meta
+the tag to analize is: meta
+the tag to analize is: title
+Contacto | Rid Software
+the tag to analize is: link
+the tag to analize is: link
+the tag to analize is: link
+es un php
+the tag to analize is: link
+es un =rss
+the tag to analize is: link
+the tag to analize is: script
+the tag to analize is: link
+es un php
+the tag to analize is: link
+the tag to analize is: link
+the tag to analize is: meta
+the tag to analize is: link
+the tag to analize is: link
+the tag to analize is: script
+the tag to analize is: style
+the tag to analize is: style
+the tag to analize is: body
+the tag to analize is: div
+the tag to analize is: header
+the tag to analize is: hgroup
+the tag to analize is: h1
+the tag to analize is: span
+the tag to analize is: a
+Rid Software
+the tag to analize is: h2
+Marketing Software
+the tag to analize is: hgroup
+the tag to analize is: a
+the tag to analize is: img
+the tag to analize is: div
+the tag to analize is: form
+the tag to analize is: label
+Search
+the tag to analize is: label
+the tag to analize is: input
+the tag to analize is: input
+the tag to analize is: nav
+the tag to analize is: h3
+Main menu
+the tag to analize is: div
+the tag to analize is: a
+Skip to primary content
+the tag to analize is: div
+the tag to analize is: a
+Skip to secondary content
+the tag to analize is: div
+the tag to analize is: ul
+the tag to analize is: li
+the tag to analize is: a
+the tag to analize is: li
+the tag to analize is: a
+the tag to analize is: li
+the tag to analize is: a
+the tag to analize is: nav
+the tag to analize is: header
+the tag to analize is: div
+the tag to analize is: div
+the tag to analize is: div
+the tag to analize is: article
+the tag to analize is: header
+the tag to analize is: h1
+Contacto
+the tag to analize is: header
+the tag to analize is: div
+the tag to analize is: div
+the tag to analize is: form
+the tag to analize is: fieldset
+the tag to analize is: legend
+Contacto
+the tag to analize is: legend
+the tag to analize is: ol
+the tag to analize is: li
+the tag to analize is: label
+the tag to analize is: span
+the tag to analize is: label
+the tag to analize is: input
+the tag to analize is: span
+(obligatorio)
+the tag to analize is: li
+the tag to analize is: label
+the tag to analize is: span
+the tag to analize is: label
+the tag to analize is: input
+the tag to analize is: span
+(Email válido requerido)
+the tag to analize is: li
+the tag to analize is: label
+the tag to analize is: span
+the tag to analize is: label
+the tag to analize is: input
+the tag to analize is: li
+the tag to analize is: label
+the tag to analize is: span
+the tag to analize is: label
+the tag to analize is: textarea
+the tag to analize is: span
+(obligatorio)
+the tag to analize is: li
+the tag to analize is: label
+the tag to analize is: span
+the tag to analize is: label
+the tag to analize is: input
+the tag to analize is: img
+the tag to analize is: a
+Wed Jan 18 19:47:25 ART 2012:Found malformed URL: javascript:reset_captcha('')
+the tag to analize is: img
+the tag to analize is: fieldset
+the tag to analize is: fieldset
+the tag to analize is: legend
+ 
+the tag to analize is: legend
+the tag to analize is: input
+the tag to analize is: input
+the tag to analize is: input
+the tag to analize is: input
+the tag to analize is: input
+no text
+the tag to analize is: fieldset
+the tag to analize is: p
+the tag to analize is: input
+the tag to analize is: p
+the tag to analize is: a
+the tag to analize is: em
+cforms
+ contact form by delicious:days
+the tag to analize is: footer
+the tag to analize is: footer
+the tag to analize is: article
+the tag to analize is: div
+the tag to analize is: footer
+the tag to analize is: div
+the tag to analize is: div
+the tag to analize is: aside
+the tag to analize is: div
+the tag to analize is: center
+Copyright 2011 - Rid Software
+the tag to analize is: h5
+http://ridsoftware.com.ar
+the tag to analize is: aside
+the tag to analize is: div
+the tag to analize is: a
+Proudly powered by WordPress
+the tag to analize is: footer
+the tag to analize is: script
+the tag to analize is: script
+Wed Jan 18 19:47:25 ART 2012:Complete: http://ridsoftware.com.ar/?page_id=92
+EL tamaño de waiting6EL tamaño de processesed3
+Wed Jan 18 19:47:25 ART 2012:Processing: http://ridsoftware.com.ar/?p=9
+the tag to analize is: html
+the tag to analize is: head
+the tag to analize is: meta
+the tag to analize is: meta
+the tag to analize is: title
+Acerca de RID | Rid Software
+the tag to analize is: link
+the tag to analize is: link
+the tag to analize is: link
+es un php
+the tag to analize is: link
+es un =rss
+the tag to analize is: link
+the tag to analize is: script
+the tag to analize is: link
+es un php
+the tag to analize is: link
+the tag to analize is: link
+the tag to analize is: link
+the tag to analize is: meta
+the tag to analize is: link
+the tag to analize is: link
+the tag to analize is: script
+the tag to analize is: style
+the tag to analize is: style
+the tag to analize is: body
+the tag to analize is: div
+the tag to analize is: header
+the tag to analize is: hgroup
+the tag to analize is: h1
+the tag to analize is: span
+the tag to analize is: a
+Rid Software
+the tag to analize is: h2
+Marketing Software
+the tag to analize is: hgroup
+the tag to analize is: a
+the tag to analize is: img
+the tag to analize is: div
+the tag to analize is: form
+the tag to analize is: label
+Search
+the tag to analize is: label
+the tag to analize is: input
+the tag to analize is: input
+the tag to analize is: nav
+the tag to analize is: h3
+Main menu
+the tag to analize is: div
+the tag to analize is: a
+Skip to primary content
+the tag to analize is: div
+the tag to analize is: a
+Skip to secondary content
+the tag to analize is: div
+the tag to analize is: ul
+the tag to analize is: li
+the tag to analize is: a
+the tag to analize is: li
+the tag to analize is: a
+the tag to analize is: li
+the tag to analize is: a
+the tag to analize is: nav
+the tag to analize is: header
+the tag to analize is: div
+the tag to analize is: div
+the tag to analize is: div
+the tag to analize is: nav
+the tag to analize is: h3
+Post navigation
+the tag to analize is: span
+the tag to analize is: a
+the tag to analize is: span
+?
+ Previous
+no text
+the tag to analize is: span
+the tag to analize is: a
+Next 
+the tag to analize is: span
+?
+no text
+the tag to analize is: nav
+the tag to analize is: article
+the tag to analize is: header
+the tag to analize is: h1
+Acerca de RID
+the tag to analize is: div
+the tag to analize is: span
+Posted on 
+the tag to analize is: a
+the tag to analize is: time
+the tag to analize is: time
+the tag to analize is: span
+the tag to analize is: span
+by 
+the tag to analize is: span
+the tag to analize is: a
+admin
+the tag to analize is: header
+the tag to analize is: div
+the tag to analize is: p
+Somos una empresa joven integrada por un equipo interdisciplinario en donde los diversos conocimientos y experiencias se conjugan a fin de alcanzar una visión integral.
+the tag to analize is: p
+La investigación y el desarrollo de aplicaciones innovadoras e interactivas  en comunicación y marketing es lo que impulsa nuestra labor diaria.
+the tag to analize is: span
+the tag to analize is: h2
+the tag to analize is: h2
+the tag to analize is: h2
+Visión:
+the tag to analize is: ul
+the tag to analize is: li
+the tag to analize is: strong
+Marketing Tecnológico de Argentina
+.
+the tag to analize is: h2
+Misión:
+the tag to analize is: ul
+the tag to analize is: li
+the tag to analize is: img
+the tag to analize is: strong
+plataformas interactivas innovadoras y de calidad
+.
+the tag to analize is: ul
+the tag to analize is: li
+the tag to analize is: strong
+propuestas innovadoras
+ y completamente 
+the tag to analize is: strong
+interactivas
+ que planteen una nueva forma de relación con  los consumidores finales.
+the tag to analize is: ul
+the tag to analize is: li
+the tag to analize is: strong
+programas de calidad y seguros
+ para el cliente.
+the tag to analize is: ul
+the tag to analize is: li
+the tag to analize is: strong
+ a nuestros clientes mediante 
+the tag to analize is: strong
+servicios integrales de marketing
+ (estadísticas de usos, información centralizada, redes de comunicación e nformación)
+the tag to analize is: h2
+Valores:
+the tag to analize is: ul
+the tag to analize is: li
+the tag to analize is: strong
+ constante.
+the tag to analize is: li
+the tag to analize is: strong
+ en el trabajo realizado.
+the tag to analize is: li
+the tag to analize is: strong
+the tag to analize is: li
+the tag to analize is: strong
+the tag to analize is: li
+the tag to analize is: strong
+ por la competencia.
+the tag to analize is: li
+the tag to analize is: strong
+ en la labor diaria.
+the tag to analize is: footer
+This entry was posted in 
+the tag to analize is: a
+Sin categoría
+ by 
+the tag to analize is: a
+admin
+. Bookmark the 
+the tag to analize is: a
+permalink
+. 
+the tag to analize is: footer
+no text
+the tag to analize is: article
+the tag to analize is: div
+the tag to analize is: p
+Comments are closed.
+the tag to analize is: footer
+the tag to analize is: div
+the tag to analize is: div
+the tag to analize is: aside
+the tag to analize is: div
+the tag to analize is: center
+Copyright 2011 - Rid Software
+the tag to analize is: h5
+http://ridsoftware.com.ar
+the tag to analize is: aside
+the tag to analize is: div
+the tag to analize is: a
+Proudly powered by WordPress
+the tag to analize is: footer
+the tag to analize is: script
+the tag to analize is: script
+Wed Jan 18 19:47:26 ART 2012:Complete: http://ridsoftware.com.ar/?p=9
+EL tamaño de waiting5EL tamaño de processesed4
+Wed Jan 18 19:47:26 ART 2012:Processing: http://ridsoftware.com.ar/?p=14
+the tag to analize is: html
+the tag to analize is: head
+the tag to analize is: meta
+the tag to analize is: meta
+the tag to analize is: title
+Nuestros productos | Rid Software
+the tag to analize is: link
+the tag to analize is: link
+the tag to analize is: link
+es un php
+the tag to analize is: link
+es un =rss
+the tag to analize is: link
+the tag to analize is: script
+the tag to analize is: link
+es un php
+the tag to analize is: link
+the tag to analize is: link
+the tag to analize is: meta
+the tag to analize is: link
+the tag to analize is: link
+the tag to analize is: script
+the tag to analize is: style
+the tag to analize is: style
+the tag to analize is: body
+the tag to analize is: div
+the tag to analize is: header
+the tag to analize is: hgroup
+the tag to analize is: h1
+the tag to analize is: span
+the tag to analize is: a
+Rid Software
+the tag to analize is: h2
+Marketing Software
+the tag to analize is: hgroup
+the tag to analize is: a
+the tag to analize is: img
+the tag to analize is: div
+the tag to analize is: form
+the tag to analize is: label
+Search
+the tag to analize is: label
+the tag to analize is: input
+the tag to analize is: input
+the tag to analize is: nav
+the tag to analize is: h3
+Main menu
+the tag to analize is: div
+the tag to analize is: a
+Skip to primary content
+the tag to analize is: div
+the tag to analize is: a
+Skip to secondary content
+the tag to analize is: div
+the tag to analize is: ul
+the tag to analize is: li
+the tag to analize is: a
+the tag to analize is: li
+the tag to analize is: a
+the tag to analize is: li
+the tag to analize is: a
+the tag to analize is: nav
+the tag to analize is: header
+the tag to analize is: div
+the tag to analize is: div
+the tag to analize is: div
+the tag to analize is: nav
+the tag to analize is: h3
+Post navigation
+the tag to analize is: span
+the tag to analize is: a
+the tag to analize is: span
+?
+ Previous
+no text
+the tag to analize is: span
+the tag to analize is: nav
+the tag to analize is: article
+the tag to analize is: header
+the tag to analize is: h1
+Nuestros productos
+the tag to analize is: div
+the tag to analize is: span
+Posted on 
+the tag to analize is: a
+the tag to analize is: time
+the tag to analize is: time
+the tag to analize is: span
+the tag to analize is: span
+by 
+the tag to analize is: span
+the tag to analize is: a
+admin
+the tag to analize is: header
+the tag to analize is: div
+the tag to analize is: h1
+Plataforma de entretimiento multiusuario
+the tag to analize is: ul
+the tag to analize is: li
+the tag to analize is: span
+the tag to analize is: li
+the tag to analize is: li
+the tag to analize is: li
+the tag to analize is: li
+the tag to analize is: li
+the tag to analize is: h1
+Beneficios:
+the tag to analize is: ul
+the tag to analize is: li
+the tag to analize is: li
+the tag to analize is: li
+the tag to analize is: footer
+This entry was posted in 
+the tag to analize is: a
+Sin categoría
+ by 
+the tag to analize is: a
+admin
+. Bookmark the 
+the tag to analize is: a
+permalink
+. 
+the tag to analize is: footer
+no text
+the tag to analize is: article
+the tag to analize is: div
+the tag to analize is: p
+Comments are closed.
+the tag to analize is: footer
+the tag to analize is: div
+the tag to analize is: div
+the tag to analize is: aside
+the tag to analize is: div
+the tag to analize is: center
+Copyright 2011 - Rid Software
+the tag to analize is: h5
+http://ridsoftware.com.ar
+the tag to analize is: aside
+the tag to analize is: div
+the tag to analize is: a
+Proudly powered by WordPress
+the tag to analize is: footer
+the tag to analize is: script
+the tag to analize is: script
+Wed Jan 18 19:47:26 ART 2012:Complete: http://ridsoftware.com.ar/?p=14
+EL tamaño de waiting4EL tamaño de processesed5
+Wed Jan 18 19:47:26 ART 2012:Processing: http://ridsoftware.com.ar/?author=1
+the tag to analize is: html
+the tag to analize is: head
+the tag to analize is: meta
+the tag to analize is: meta
+the tag to analize is: title
+admin | Rid Software
+the tag to analize is: link
+the tag to analize is: link
+the tag to analize is: link
+es un php
+the tag to analize is: link
+es un =rss
+the tag to analize is: link
+the tag to analize is: link
+es un =rss
+the tag to analize is: script
+the tag to analize is: link
+es un php
+the tag to analize is: link
+the tag to analize is: meta
+the tag to analize is: link
+the tag to analize is: script
+the tag to analize is: style
+the tag to analize is: style
+the tag to analize is: body
+the tag to analize is: div
+the tag to analize is: header
+the tag to analize is: hgroup
+the tag to analize is: h1
+the tag to analize is: span
+the tag to analize is: a
+Rid Software
+the tag to analize is: h2
+Marketing Software
+the tag to analize is: hgroup
+the tag to analize is: a
+the tag to analize is: img
+the tag to analize is: div
+the tag to analize is: form
+the tag to analize is: label
+Search
+the tag to analize is: label
+the tag to analize is: input
+the tag to analize is: input
+the tag to analize is: nav
+the tag to analize is: h3
+Main menu
+the tag to analize is: div
+the tag to analize is: a
+Skip to primary content
+the tag to analize is: div
+the tag to analize is: a
+Skip to secondary content
+the tag to analize is: div
+the tag to analize is: ul
+the tag to analize is: li
+the tag to analize is: a
+the tag to analize is: li
+the tag to analize is: a
+the tag to analize is: li
+the tag to analize is: a
+the tag to analize is: nav
+the tag to analize is: header
+the tag to analize is: div
+the tag to analize is: section
+the tag to analize is: div
+the tag to analize is: header
+the tag to analize is: h1
+Author Archives: 
+the tag to analize is: span
+the tag to analize is: a
+admin
+the tag to analize is: header
+the tag to analize is: article
+the tag to analize is: header
+the tag to analize is: hgroup
+the tag to analize is: h2
+the tag to analize is: a
+Nuestros productos
+the tag to analize is: h3
+Featured
+the tag to analize is: hgroup
+the tag to analize is: div
+the tag to analize is: span
+Posted on 
+the tag to analize is: a
+the tag to analize is: time
+the tag to analize is: time
+the tag to analize is: span
+the tag to analize is: span
+by 
+the tag to analize is: span
+the tag to analize is: a
+admin
+the tag to analize is: header
+the tag to analize is: div
+the tag to analize is: h1
+Plataforma de entretimiento multiusuario
+the tag to analize is: ul
+the tag to analize is: li
+the tag to analize is: a
+Continue reading 
+the tag to analize is: span
+?
+the tag to analize is: footer
+the tag to analize is: span
+the tag to analize is: span
+Posted in
+no text
+the tag to analize is: a
+Sin categoría
+no text
+the tag to analize is: footer
+the tag to analize is: article
+the tag to analize is: article
+the tag to analize is: header
+the tag to analize is: hgroup
+the tag to analize is: h2
+the tag to analize is: a
+Acerca de RID
+the tag to analize is: h3
+Featured
+the tag to analize is: hgroup
+the tag to analize is: div
+the tag to analize is: span
+Posted on 
+the tag to analize is: a
+the tag to analize is: time
+the tag to analize is: time
+the tag to analize is: span
+the tag to analize is: span
+by 
+the tag to analize is: span
+the tag to analize is: a
+admin
+the tag to analize is: header
+the tag to analize is: div
+the tag to analize is: p
+Somos una empresa joven integrada por un equipo interdisciplinario en donde los diversos conocimientos y experiencias se conjugan a fin de alcanzar una visión integral.
+the tag to analize is: p
+La investigación y el desarrollo de aplicaciones innovadoras e interactivas  en comunicación y marketing es lo que impulsa nuestra labor diaria. 
+the tag to analize is: a
+Continue reading 
+the tag to analize is: span
+?
+the tag to analize is: footer
+the tag to analize is: span
+the tag to analize is: span
+Posted in
+no text
+the tag to analize is: a
+Sin categoría
+no text
+the tag to analize is: footer
+the tag to analize is: article
+the tag to analize is: article
+the tag to analize is: header
+the tag to analize is: hgroup
+the tag to analize is: h2
+the tag to analize is: a
+Reconocimientos
+the tag to analize is: h3
+Featured
+the tag to analize is: hgroup
+the tag to analize is: div
+the tag to analize is: span
+Posted on 
+the tag to analize is: a
+the tag to analize is: time
+the tag to analize is: time
+the tag to analize is: span
+the tag to analize is: span
+by 
+the tag to analize is: span
+the tag to analize is: a
+admin
+the tag to analize is: header
+the tag to analize is: div
+the tag to analize is: p
+En 
+the tag to analize is: strong
+the tag to analize is: em
+the tag to analize is: a
+Rid Software
+ hemos sido distinguidos en prestigiosos eventos de desarrollo de software e innovación. Algunas de nuestras medallas son: 
+the tag to analize is: a
+Continue reading 
+the tag to analize is: span
+?
+the tag to analize is: footer
+the tag to analize is: span
+the tag to analize is: span
+Posted in
+no text
+the tag to analize is: a
+Sin categoría
+no text
+the tag to analize is: footer
+the tag to analize is: article
+the tag to analize is: section
+the tag to analize is: footer
+the tag to analize is: div
+the tag to analize is: div
+the tag to analize is: aside
+the tag to analize is: div
+the tag to analize is: center
+Copyright 2011 - Rid Software
+the tag to analize is: h5
+http://ridsoftware.com.ar
+the tag to analize is: aside
+the tag to analize is: div
+the tag to analize is: a
+Proudly powered by WordPress
+the tag to analize is: footer
+the tag to analize is: script
+the tag to analize is: script
+Wed Jan 18 19:47:27 ART 2012:Complete: http://ridsoftware.com.ar/?author=1
+EL tamaño de waiting3EL tamaño de processesed6
+Wed Jan 18 19:47:27 ART 2012:Processing: http://ridsoftware.com.ar/?cat=1
+the tag to analize is: html
+the tag to analize is: head
+the tag to analize is: meta
+the tag to analize is: meta
+the tag to analize is: title
+Sin categoría | Rid Software
+the tag to analize is: link
+the tag to analize is: link
+the tag to analize is: link
+es un php
+the tag to analize is: link
+es un =rss
+the tag to analize is: link
+the tag to analize is: link
+es un =rss
+the tag to analize is: script
+the tag to analize is: link
+es un php
+the tag to analize is: link
+the tag to analize is: meta
+the tag to analize is: link
+the tag to analize is: script
+the tag to analize is: style
+the tag to analize is: style
+the tag to analize is: body
+the tag to analize is: div
+the tag to analize is: header
+the tag to analize is: hgroup
+the tag to analize is: h1
+the tag to analize is: span
+the tag to analize is: a
+Rid Software
+the tag to analize is: h2
+Marketing Software
+the tag to analize is: hgroup
+the tag to analize is: a
+the tag to analize is: img
+the tag to analize is: div
+the tag to analize is: form
+the tag to analize is: label
+Search
+the tag to analize is: label
+the tag to analize is: input
+the tag to analize is: input
+the tag to analize is: nav
+the tag to analize is: h3
+Main menu
+the tag to analize is: div
+the tag to analize is: a
+Skip to primary content
+the tag to analize is: div
+the tag to analize is: a
+Skip to secondary content
+the tag to analize is: div
+the tag to analize is: ul
+the tag to analize is: li
+the tag to analize is: a
+the tag to analize is: li
+the tag to analize is: a
+the tag to analize is: li
+the tag to analize is: a
+the tag to analize is: nav
+the tag to analize is: header
+the tag to analize is: div
+the tag to analize is: section
+the tag to analize is: div
+the tag to analize is: header
+the tag to analize is: h1
+Category Archives: 
+the tag to analize is: span
+Sin categoría
+the tag to analize is: header
+the tag to analize is: article
+the tag to analize is: header
+the tag to analize is: hgroup
+the tag to analize is: h2
+the tag to analize is: a
+Nuestros productos
+the tag to analize is: h3
+Featured
+the tag to analize is: hgroup
+the tag to analize is: div
+the tag to analize is: span
+Posted on 
+the tag to analize is: a
+the tag to analize is: time
+the tag to analize is: time
+the tag to analize is: span
+the tag to analize is: span
+by 
+the tag to analize is: span
+the tag to analize is: a
+admin
+the tag to analize is: header
+the tag to analize is: div
+the tag to analize is: h1
+Plataforma de entretimiento multiusuario
+the tag to analize is: ul
+the tag to analize is: li
+the tag to analize is: a
+Continue reading 
+the tag to analize is: span
+?
+the tag to analize is: footer
+the tag to analize is: span
+the tag to analize is: span
+Posted in
+no text
+the tag to analize is: a
+Sin categoría
+no text
+the tag to analize is: footer
+the tag to analize is: article
+the tag to analize is: article
+the tag to analize is: header
+the tag to analize is: hgroup
+the tag to analize is: h2
+the tag to analize is: a
+Acerca de RID
+the tag to analize is: h3
+Featured
+the tag to analize is: hgroup
+the tag to analize is: div
+the tag to analize is: span
+Posted on 
+the tag to analize is: a
+the tag to analize is: time
+the tag to analize is: time
+the tag to analize is: span
+the tag to analize is: span
+by 
+the tag to analize is: span
+the tag to analize is: a
+admin
+the tag to analize is: header
+the tag to analize is: div
+the tag to analize is: p
+Somos una empresa joven integrada por un equipo interdisciplinario en donde los diversos conocimientos y experiencias se conjugan a fin de alcanzar una visión integral.
+the tag to analize is: p
+La investigación y el desarrollo de aplicaciones innovadoras e interactivas  en comunicación y marketing es lo que impulsa nuestra labor diaria. 
+the tag to analize is: a
+Continue reading 
+the tag to analize is: span
+?
+the tag to analize is: footer
+the tag to analize is: span
+the tag to analize is: span
+Posted in
+no text
+the tag to analize is: a
+Sin categoría
+no text
+the tag to analize is: footer
+the tag to analize is: article
+the tag to analize is: article
+the tag to analize is: header
+the tag to analize is: hgroup
+the tag to analize is: h2
+the tag to analize is: a
+Reconocimientos
+the tag to analize is: h3
+Featured
+the tag to analize is: hgroup
+the tag to analize is: div
+the tag to analize is: span
+Posted on 
+the tag to analize is: a
+the tag to analize is: time
+the tag to analize is: time
+the tag to analize is: span
+the tag to analize is: span
+by 
+the tag to analize is: span
+the tag to analize is: a
+admin
+the tag to analize is: header
+the tag to analize is: div
+the tag to analize is: p
+En 
+the tag to analize is: strong
+the tag to analize is: em
+the tag to analize is: a
+Rid Software
+ hemos sido distinguidos en prestigiosos eventos de desarrollo de software e innovación. Algunas de nuestras medallas son: 
+the tag to analize is: a
+Continue reading 
+the tag to analize is: span
+?
+the tag to analize is: footer
+the tag to analize is: span
+the tag to analize is: span
+Posted in
+no text
+the tag to analize is: a
+Sin categoría
+no text
+the tag to analize is: footer
+the tag to analize is: article
+the tag to analize is: section
+the tag to analize is: footer
+the tag to analize is: div
+the tag to analize is: div
+the tag to analize is: aside
+the tag to analize is: div
+the tag to analize is: center
+Copyright 2011 - Rid Software
+the tag to analize is: h5
+http://ridsoftware.com.ar
+the tag to analize is: aside
+the tag to analize is: div
+the tag to analize is: a
+Proudly powered by WordPress
+the tag to analize is: footer
+the tag to analize is: script
+the tag to analize is: script
+Wed Jan 18 19:47:28 ART 2012:Complete: http://ridsoftware.com.ar/?cat=1
+EL tamaño de waiting2EL tamaño de processesed7
+Wed Jan 18 19:47:28 ART 2012:Processing: http://ridsoftware.com.ar/?p=52
+the tag to analize is: html
+the tag to analize is: head
+the tag to analize is: meta
+the tag to analize is: meta
+the tag to analize is: title
+Reconocimientos | Rid Software
+the tag to analize is: link
+the tag to analize is: link
+the tag to analize is: link
+es un php
+the tag to analize is: link
+es un =rss
+the tag to analize is: link
+the tag to analize is: script
+the tag to analize is: link
+es un php
+the tag to analize is: link
+the tag to analize is: link
+the tag to analize is: meta
+the tag to analize is: link
+the tag to analize is: link
+the tag to analize is: script
+the tag to analize is: style
+the tag to analize is: style
+the tag to analize is: body
+the tag to analize is: div
+the tag to analize is: header
+the tag to analize is: hgroup
+the tag to analize is: h1
+the tag to analize is: span
+the tag to analize is: a
+Rid Software
+the tag to analize is: h2
+Marketing Software
+the tag to analize is: hgroup
+the tag to analize is: a
+the tag to analize is: img
+the tag to analize is: div
+the tag to analize is: form
+the tag to analize is: label
+Search
+the tag to analize is: label
+the tag to analize is: input
+the tag to analize is: input
+the tag to analize is: nav
+the tag to analize is: h3
+Main menu
+the tag to analize is: div
+the tag to analize is: a
+Skip to primary content
+the tag to analize is: div
+the tag to analize is: a
+Skip to secondary content
+the tag to analize is: div
+the tag to analize is: ul
+the tag to analize is: li
+the tag to analize is: a
+the tag to analize is: li
+the tag to analize is: a
+the tag to analize is: li
+the tag to analize is: a
+the tag to analize is: nav
+the tag to analize is: header
+the tag to analize is: div
+the tag to analize is: div
+the tag to analize is: div
+the tag to analize is: nav
+the tag to analize is: h3
+Post navigation
+the tag to analize is: span
+the tag to analize is: span
+the tag to analize is: a
+Next 
+the tag to analize is: span
+?
+no text
+the tag to analize is: nav
+the tag to analize is: article
+the tag to analize is: header
+the tag to analize is: h1
+Reconocimientos
+the tag to analize is: div
+the tag to analize is: span
+Posted on 
+the tag to analize is: a
+the tag to analize is: time
+the tag to analize is: time
+the tag to analize is: span
+the tag to analize is: span
+by 
+the tag to analize is: span
+the tag to analize is: a
+admin
+the tag to analize is: header
+the tag to analize is: div
+the tag to analize is: p
+En 
+the tag to analize is: strong
+the tag to analize is: em
+the tag to analize is: a
+Rid Software
+ hemos sido distinguidos en prestigiosos eventos de desarrollo de software e innovación. Algunas de nuestras medallas son:
+the tag to analize is: span
+the tag to analize is: ul
+the tag to analize is: li
+the tag to analize is: a
+the tag to analize is: img
+the tag to analize is: strong
+“Empredores tecnológicos 2010”
+ organizado por 
+the tag to analize is: strong
+Junior Achievement.
+the tag to analize is: br
+the tag to analize is: li
+the tag to analize is: strong
+Córdoba Crea Empresas Con Base Tecnologica 2010.
+the tag to analize is: br
+the tag to analize is: li
+the tag to analize is: strong
+Capital Semilla Sepyme 2010.
+the tag to analize is: br
+the tag to analize is: li
+the tag to analize is: strong
+Concepto Innovador
+ en 
+the tag to analize is: strong
+Innovar 2011
+.
+the tag to analize is: footer
+This entry was posted in 
+the tag to analize is: a
+Sin categoría
+ by 
+the tag to analize is: a
+admin
+. Bookmark the 
+the tag to analize is: a
+permalink
+. 
+the tag to analize is: footer
+no text
+the tag to analize is: article
+the tag to analize is: div
+the tag to analize is: p
+Comments are closed.
+the tag to analize is: footer
+the tag to analize is: div
+the tag to analize is: div
+the tag to analize is: aside
+the tag to analize is: div
+the tag to analize is: center
+Copyright 2011 - Rid Software
+the tag to analize is: h5
+http://ridsoftware.com.ar
+the tag to analize is: aside
+the tag to analize is: div
+the tag to analize is: a
+Proudly powered by WordPress
+the tag to analize is: footer
+the tag to analize is: script
+the tag to analize is: script
+Wed Jan 18 19:47:29 ART 2012:Complete: http://ridsoftware.com.ar/?p=52
+EL tamaño de waiting1EL tamaño de processesed8
+Wed Jan 18 19:47:29 ART 2012:Processing: http://ridsoftware.com.ar/wp-admin
+the tag to analize is: html
+the tag to analize is: head
+the tag to analize is: meta
+the tag to analize is: title
+Rid Software › Acceder
+the tag to analize is: link
+the tag to analize is: link
+the tag to analize is: script
+the tag to analize is: meta
+the tag to analize is: body
+the tag to analize is: div
+the tag to analize is: h1
+the tag to analize is: a
+the tag to analize is: form
+the tag to analize is: p
+the tag to analize is: label
+Nombre de usuario
+the tag to analize is: br
+the tag to analize is: input
+the tag to analize is: label
+the tag to analize is: p
+the tag to analize is: label
+Contraseña
+the tag to analize is: br
+the tag to analize is: input
+the tag to analize is: label
+the tag to analize is: p
+the tag to analize is: label
+the tag to analize is: input
+Recuérdame
+the tag to analize is: label
+the tag to analize is: p
+the tag to analize is: input
+the tag to analize is: input
+the tag to analize is: input
+the tag to analize is: p
+the tag to analize is: a
+es un php
+¿Has perdido tu contraseña?
+the tag to analize is: script
+the tag to analize is: p
+the tag to analize is: a
+« Volver a Rid Software
+the tag to analize is: script
+the tag to analize is: script
+the tag to analize is: div
+Wed Jan 18 19:47:31 ART 2012:Complete: http://ridsoftware.com.ar/wp-admin
+EL tamaño de waiting0EL tamaño de processesed9

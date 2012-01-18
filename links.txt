@@ -1,0 +1,11 @@
+Resultados sin .php, .css, =rss
+
+http://ridsoftware.com.ar/wp-admin
+http://ridsoftware.com.ar/?p=52
+http://ridsoftware.com.ar/?cat=1
+http://ridsoftware.com.ar/?author=1
+http://ridsoftware.com.ar/?p=14
+http://ridsoftware.com.ar/?p=9
+http://ridsoftware.com.ar/?page_id=92
+http://ridsoftware.com.ar/?page_id=2
+http://ridsoftware.com.ar
