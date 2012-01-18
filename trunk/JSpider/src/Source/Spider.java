@@ -140,7 +140,7 @@ public class Spider {
           return false;
       
       if ( (connection.getContentType()!=null) && (!connection.getContentType().toLowerCase().startsWith("text/")
-              || (connection.getContentType().endsWith("css")) )  )
+              || (connection.getContentType().endsWith("css")) || (connection.getContentType().endsWith("php"))  )  )
       {
           return false;
       }
@@ -183,7 +183,22 @@ public class Spider {
              connection.getContentType() );
         return;
       }
-      
+  /*    //si esta o no procesada la url ver como se trata dos link casi iguales ejemplo http://ridsoftware.com.ar/ y http://ridsoftware.com.ar
+   *    // otro caso se podria dar https://ridsoftware.com.ar y http://ridsoftware.com.ar
+      if( getWorkloadProcessed().contains(url)){
+          System.out.println("ya fue procesada "+ url.toString());
+      }
+      Iterator i = getWorkloadProcessed().iterator();
+      URL ur = null;
+      while (i.hasNext())
+      {
+      ur = (URL)i.next();
+  
+      if (ur.equals(url))
+      {
+       System.out.println("ya fue procesadasa  "+ url.toString());
+      }
+      }*/
       // read the URL
       InputStream is = connection.getInputStream();
       Reader r = new InputStreamReader(is);
@@ -202,7 +217,7 @@ public class Spider {
     getWorkloadWaiting().remove(url);
     getWorkloadProcessed().add(url);
     log("Complete: " + url );
-
+      System.out.println("EL tamaño de waiting" + getWorkloadWaiting().size() + "EL tamaño de processesed" + getWorkloadProcessed().size() );
   }
 
   /**
@@ -254,6 +269,8 @@ public class Spider {
         undesiredTags.add(HTML.Tag.OPTION.toString());
         undesiredTags.add(HTML.Tag.LI.toString());
         undesiredTags.add(HTML.Tag.SCRIPT.toString());
+        undesiredTags.add(HTML.Tag.STYLE.toString());
+        undesiredTags.add(HTML.Tag.CODE.toString());
         for(String tag : undesiredTags)
         {
             if(tag.equalsIgnoreCase(t.toString()))
