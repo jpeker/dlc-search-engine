@@ -15,10 +15,12 @@ import java.util.regex.Pattern;
  * @version 1.1
  */
 public class Spider {
-    private final static Pattern FILTERS = Pattern.compile(".*(\\.(css|js|bmp|gif|jpe?g"
+    private final static Pattern BOTTOMFILTERS = Pattern.compile(".*(\\.(css|js|bmp|gif|jpe?g"
                                                           + "|png|tiff?|mid|mp2|mp3|mp4"
                                                           + "|wav|avi|mov|mpeg|ram|m4v|pdf"
-                                                          + "|rm|smil|wmv|swf|wma|zip|rar|gz))$");
+                                                          + "|rm|smil|wmv|swf|wma|zip|rar|gz|xml|php\\?rsd))$");
+    //private String string = "rss1[rss], rss2[rss], rss3[rss]";
+    private final static Pattern MIDDLEFILTERS = Pattern.compile(".*(rss).*");
   /**
    * A collection of URLs that resulted in an error
    */
@@ -297,8 +299,8 @@ public class Spider {
       tagHandler(t);
       String href = (String)atributeSet.getAttribute(HTML.Attribute.HREF);
 
-       if((href!=null)&&(FILTERS.matcher(href).matches())){
-             System.out.println("Topo Culiado");
+       if((href!=null)&&((BOTTOMFILTERS.matcher(href).matches())||(MIDDLEFILTERS.matcher(href).matches()))){
+           System.out.println("Link de Busqueda no valido");
            return;
        }
 
@@ -308,20 +310,31 @@ public class Spider {
       // busca href dentro contenedor de framset   http://www.w3schools.com/tags/tag_frame.asp
       if ( href==null )
         return;
-//wtf?
+      
       int i = href.indexOf('#');
       if ( i!=-1 )
-        href = href.substring(0,i);
-          int k = href.indexOf("=rss");
+      href = href.substring(0,i);
+      
+      //Tiene q ser excluido añadido a la lista de patterns
+      
+      
+      /*int k = href.indexOf("=rss");
       if ( k!=-1 )
       {  System.out.println("es un =rss");
       return;
-      }
-      int j = href.indexOf(".php");
+      }*/
+      
+
+
+      /// Tiene q ser incluido
+
+      /*int j = href.indexOf(".php");
       if ( j!=-1 )
       {  System.out.println("es un php");
       return;
-      }
+      }*/
+
+
       if ( href.toLowerCase().startsWith("mailto:") ) {
         report.spiderFoundEMail(href);
         return;
