@@ -5,6 +5,7 @@ import java.net.*;
 import java.io.*;
 import javax.swing.text.*;
 import javax.swing.text.html.*;
+import java.util.regex.Pattern;
 
 /**
  * That class implements a reusable spider that retrieves all possible and 
@@ -14,7 +15,10 @@ import javax.swing.text.html.*;
  * @version 1.1
  */
 public class Spider {
-    
+    private final static Pattern FILTERS = Pattern.compile(".*(\\.(css|js|bmp|gif|jpe?g"
+                                                          + "|png|tiff?|mid|mp2|mp3|mp4"
+                                                          + "|wav|avi|mov|mpeg|ram|m4v|pdf"
+                                                          + "|rm|smil|wmv|swf|wma|zip|rar|gz))$");
   /**
    * A collection of URLs that resulted in an error
    */
@@ -123,7 +127,8 @@ public class Spider {
      String splitslash = url.toString().substring(0, url.toString().length()-1);
      
     try{
-      url = new URL(splitslash);} catch ( MalformedURLException e ) {
+      url = new URL(splitslash);}
+    catch ( MalformedURLException e ) {
         log("Found malformed URL: " + splitslash );
       }
   }
@@ -244,7 +249,8 @@ public class Spider {
   protected class Parser
   extends HTMLEditorKit.ParserCallback {
     protected URL base;
-    
+
+
     private boolean isUndesiredTag = false;
 
     public Parser(URL base)
@@ -285,9 +291,17 @@ public class Spider {
        public void handleSimpleTag(HTML.Tag t,
                                 MutableAttributeSet atributeSet,int pos)
     {
-        System.out.println("the tag to analize is: "+t.toString());
-        tagHandler(t);
+
+
+      System.out.println("the tag to analize is: "+t.toString());
+      tagHandler(t);
       String href = (String)atributeSet.getAttribute(HTML.Attribute.HREF);
+
+       if(!FILTERS.matcher(href).matches()){
+             System.out.println("Topo Culiado");
+           return;
+       }
+
 
       if( (href==null) && (t==HTML.Tag.FRAME) )
         href = (String)atributeSet.getAttribute(HTML.Attribute.SRC);
