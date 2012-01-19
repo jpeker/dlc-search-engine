@@ -1,0 +1,13 @@
+Cualquier caracter 0 o mas veces dentro del grupo donde este contenida la \ cualquier caracter donde esten contenidos los siguientes
+excpeciones con el limite de fin de linea.
+
+
+private final static Pattern FILTERS = Pattern.compile(".*(\\.(css|js|bmp|gif|jpe?g"
+                                                          + "|png|tiff?|mid|mp2|mp3|mp4"
+                                                          + "|wav|avi|mov|mpeg|ram|m4v|pdf"
+                                                          + "|rm|smil|wmv|swf|wma|zip|rar|gz))$");
+														  
+														  
+76 del html href=#content toma el texto que es skip to primary content
+77 del html href=#content toma el texto que es skip to secondary content
+
