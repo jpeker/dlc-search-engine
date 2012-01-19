@@ -297,7 +297,7 @@ public class Spider {
       tagHandler(t);
       String href = (String)atributeSet.getAttribute(HTML.Attribute.HREF);
 
-       if(!FILTERS.matcher(href).matches()){
+       if((href!=null)&&(!FILTERS.matcher(href).matches())){
              System.out.println("Topo Culiado");
            return;
        }
