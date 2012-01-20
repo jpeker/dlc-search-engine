@@ -306,7 +306,8 @@ public class Spider {
            System.out.println("Link de Busqueda no valido");
            return;
        }
-      if (t.toString().equals("p")||t.toString().equals("a"))
+     // if (t.toString().equals("p")||t.toString().equals("a"))
+      if (isTagText(t.toString()))
       {
       permisible = true;
       }
@@ -348,6 +349,33 @@ public class Spider {
 
       handleLink(base,href);
     }
+        private boolean isTagText(String tag)
+        {
+        Collection <String> desiredTags = new ArrayList <String> ();
+        desiredTags.add(HTML.Tag.B.toString());
+        desiredTags.add(HTML.Tag.ADDRESS.toString());
+        desiredTags.add(HTML.Tag.BIG.toString());
+        desiredTags.add(HTML.Tag.BLOCKQUOTE.toString());
+        desiredTags.add(HTML.Tag.CITE.toString());
+        desiredTags.add(HTML.Tag.CODE.toString());
+        desiredTags.add(HTML.Tag.EM.toString());
+        desiredTags.add(HTML.Tag.H4.toString());
+        desiredTags.add(HTML.Tag.I.toString());
+        desiredTags.add(HTML.Tag.KBD.toString());
+        desiredTags.add(HTML.Tag.SAMP.toString());
+        desiredTags.add(HTML.Tag.SMALL.toString());
+        desiredTags.add(HTML.Tag.STRONG.toString());
+        desiredTags.add(HTML.Tag.SUB.toString());
+        desiredTags.add(HTML.Tag.SUP.toString());
+        desiredTags.add(HTML.Tag.TT.toString());
+        desiredTags.add(HTML.Tag.VAR.toString());
+        desiredTags.add(HTML.Tag.S.toString());
+        desiredTags.add(HTML.Tag.U.toString());
+
+        if(desiredTags.contains(tag))
+        return true;
+        return false;
+        }
 
         @Override
     public void handleStartTag(HTML.Tag t,
@@ -361,8 +389,11 @@ public class Spider {
          * @param data gots the tag text
          * @param pos
          */
+
+        
+        
         @Override
-    public void handleText(char[] data, int pos) {
+        public void handleText(char[] data, int pos) {
         if(isUndesiredTag == true)
         {
             isUndesiredTag = false;
@@ -376,14 +407,14 @@ public class Spider {
         if(permisible)
             {
         System.out.println(String.valueOf(data));
-<<<<<<< .mine
+
             }
         
-=======
+
             }
 
->>>>>>> .r21
-    }
+
+    
 
     protected void handleLink(URL base,String str)
     {
