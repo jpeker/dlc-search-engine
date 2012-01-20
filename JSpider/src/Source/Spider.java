@@ -371,6 +371,8 @@ public class Spider {
         desiredTags.add(HTML.Tag.VAR.toString());
         desiredTags.add(HTML.Tag.S.toString());
         desiredTags.add(HTML.Tag.U.toString());
+        desiredTags.add(HTML.Tag.SPAN.toString());
+        desiredTags.add(HTML.Tag.DIV.toString());
 
         if(desiredTags.contains(tag))
         return true;
