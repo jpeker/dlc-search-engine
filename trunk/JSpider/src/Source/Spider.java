@@ -19,7 +19,6 @@ public class Spider {
                                                           + "|png|tiff?|mid|mp2|mp3|mp4"
                                                           + "|wav|avi|mov|mpeg|ram|m4v|pdf"
                                                           + "|rm|smil|wmv|swf|wma|zip|rar|gz|xml|php\\?rsd))$");
-    //private String string = "rss1[rss], rss2[rss], rss3[rss]";
     private final static Pattern MIDDLEFILTERS = Pattern.compile(".*(rss).*");
   /**
    * A collection of URLs that resulted in an error
@@ -273,6 +272,7 @@ public class Spider {
         undesiredTags.add(HTML.Tag.LI.toString());
         undesiredTags.add(HTML.Tag.SCRIPT.toString());
         undesiredTags.add("time");
+        undesiredTags.add("embed");
         undesiredTags.add(HTML.Tag.STYLE.toString());
         undesiredTags.add(HTML.Tag.CODE.toString());
 
