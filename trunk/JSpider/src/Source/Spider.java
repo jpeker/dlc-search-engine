@@ -8,9 +8,9 @@ import javax.swing.text.html.*;
 import java.util.regex.Pattern;
 
 /**
- * That class implements a reusable spider that retrieves all possible and 
+ * That class implements a reusable spider that retrieves all possible and
  * usefull text from an url.
- * 
+ *
  * @author Andres Altamirano
  * @version 1.1
  */
@@ -19,6 +19,7 @@ public class Spider {
                                                           + "|png|tiff?|mid|mp2|mp3|mp4"
                                                           + "|wav|avi|mov|mpeg|ram|m4v|pdf"
                                                           + "|rm|smil|wmv|swf|wma|zip|rar|gz|xml|php\\?rsd))$");
+    //private String string = "rss1[rss], rss2[rss], rss3[rss]";
     private final static Pattern MIDDLEFILTERS = Pattern.compile(".*(rss).*");
   /**
    * A collection of URLs that resulted in an error
@@ -34,7 +35,7 @@ public class Spider {
    * A collection of URLs that were processed
    */
   protected Collection workloadProcessed = new ArrayList(3);
-  
+
   /**
    * A collection of URLs that will not be used because they dont have significant text
    */
@@ -51,9 +52,11 @@ public class Spider {
    */
   protected boolean cancel = false;
 
+  private boolean permisible = false;
+
   /**
    * The constructor
-   * 
+   *
    * @param report A class that implements the ISpiderReportable
    * interface, that will receive information that the
    * spider finds.
@@ -65,7 +68,7 @@ public class Spider {
 
   /**
    * Get the URLs that resulted in an error.
-   * 
+   *
    * @return A collection of URL's.
    */
   public Collection getWorkloadError()
@@ -77,7 +80,7 @@ public class Spider {
    * Get the URLs that were waiting to be processed.
    * You should add one URL to this collection to
    * begin the spider.
-   * 
+   *
    * @return A collection of URLs.
    */
   public Collection getWorkloadWaiting()
@@ -87,13 +90,13 @@ public class Spider {
 
   /**
    * Get the URLs that were processed by this spider.
-   * 
+   *
    * @return A collection of URLs.
    */
   public Collection getWorkloadProcessed()
   {
     return workloadProcessed;
-  }    
+  }
 
   /**
    * Clear all of the workloads.
@@ -117,16 +120,16 @@ public class Spider {
 
   /**
    * Add a URL for processing.
-   * 
+   *
    * @param url
    */
   public void addURL(URL url)
   {
-  
+
   if ( url.toString().endsWith("/"))
   {
      String splitslash = url.toString().substring(0, url.toString().length()-1);
-     
+
     try{
       url = new URL(splitslash);}
     catch ( MalformedURLException e ) {
@@ -154,7 +157,7 @@ public class Spider {
   {
       if(connection ==null)
           return false;
-      
+
       if ( (connection.getContentType()!=null) && (!connection.getContentType().toLowerCase().startsWith("text/")
               || (connection.getContentType().endsWith("css"))   )  )
       {
@@ -177,22 +180,22 @@ public class Spider {
       }
       return false;
   }
-  
-  
+
+
   /**
    * Called internally to process a URL
-   * 
+   *
    * @param url The URL to be processed.
    */
   public void processURL(URL url)
   {
     try {
       log("Processing: " + url );
-      RobotsParser.robotSafe(url); 
+      RobotsParser.robotSafe(url);
       // get the URL's contents
       URLConnection connection = url.openConnection();
-      
-      if(!isTextPage(connection)) {  
+
+      if(!isTextPage(connection)) {
       getWorkloadWaiting().remove(url);
         getWorkloadProcessed().add(url);
         log("Not processing because content type is: " +
@@ -211,7 +214,7 @@ public class Spider {
       getWorkloadError().add(url);
       log("Error: " + url );
       report.spiderFoundURLError(url);
-      
+
       return;
     }
     // mark URL as complete
@@ -243,7 +246,7 @@ public class Spider {
 
 /**
  * A HTML parser callback used by this class to detect links
- * 
+ *
  * @author Jeff Heaton
  * @version 1.0
  */
@@ -258,7 +261,7 @@ public class Spider {
     {
       this.base = base;
     }
-    
+
     /**
      * This method checks if the analized tag is undesired comparing it on a list
      * of undesired tags. If it is undesirable, it changes an external flag to
@@ -272,9 +275,9 @@ public class Spider {
         undesiredTags.add(HTML.Tag.LI.toString());
         undesiredTags.add(HTML.Tag.SCRIPT.toString());
         undesiredTags.add("time");
-        undesiredTags.add("embed");
         undesiredTags.add(HTML.Tag.STYLE.toString());
         undesiredTags.add(HTML.Tag.CODE.toString());
+        undesiredTags.add("embed");
 
 
         for(String tag : undesiredTags)
@@ -286,7 +289,7 @@ public class Spider {
             }
         }
         return;
-        
+
     }
     //recorre  la url en busca de links a otras pag con href
         @Override
@@ -303,27 +306,30 @@ public class Spider {
            System.out.println("Link de Busqueda no valido");
            return;
        }
-
+      if (t.toString().equals("p")||t.toString().equals("a"))
+      {
+      permisible = true;
+      }
 
       if( (href==null) && (t==HTML.Tag.FRAME) )
         href = (String)atributeSet.getAttribute(HTML.Attribute.SRC);
       // busca href dentro contenedor de framset   http://www.w3schools.com/tags/tag_frame.asp
       if ( href==null )
         return;
-      
+
       int i = href.indexOf('#');
       if ( i!=-1 )
       href = href.substring(0,i);
-      
+
       //Tiene q ser excluido añadido a la lista de patterns
-      
-      
+
+
       /*int k = href.indexOf("=rss");
       if ( k!=-1 )
       {  System.out.println("es un =rss");
       return;
       }*/
-      
+
 
 
       /// Tiene q ser incluido
@@ -351,9 +357,9 @@ public class Spider {
 
     }
     /**
-         * 
+         *
          * @param data gots the tag text
-         * @param pos 
+         * @param pos
          */
         @Override
     public void handleText(char[] data, int pos) {
@@ -367,9 +373,11 @@ public class Spider {
             System.out.println("no text");
             return;
         }
+        if(permisible)
+            {
         System.out.println(String.valueOf(data));
-       
-        
+            }
+
     }
 
     protected void handleLink(URL base,String str)
@@ -379,7 +387,7 @@ public class Spider {
         //si encuentra una url la agrega a un contenedor de url, verifica la url q crea y sino te tira un
         //exception
         if ( report.spiderFoundURL(base,url) )
-            
+
           addURL(url);
       } catch ( MalformedURLException e ) {
         log("Found malformed URL: " + str );
@@ -391,7 +399,7 @@ public class Spider {
    * Called internally to log information
    * This basic method just writes the log
    * out to the stdout.
-   * 
+   *
    * @param entry The information to be written to the log.
    */
   public void log(String entry)
