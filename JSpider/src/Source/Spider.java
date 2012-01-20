@@ -339,7 +339,7 @@ public class Spider {
       {  System.out.println("es un php");
       return;
       }*/
-
+     
 
       if ( href.toLowerCase().startsWith("mailto:") ) {
         report.spiderFoundEMail(href);
@@ -376,8 +376,13 @@ public class Spider {
         if(permisible)
             {
         System.out.println(String.valueOf(data));
+<<<<<<< .mine
+            }
+        
+=======
             }
 
+>>>>>>> .r21
     }
 
     protected void handleLink(URL base,String str)
