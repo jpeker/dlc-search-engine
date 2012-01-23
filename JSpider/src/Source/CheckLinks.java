@@ -222,14 +222,7 @@ public class CheckLinks extends javax.swing.JFrame implements
       base = new URL(url.getText());
       spider.addURL(base);
       spider.begin();
-      Runnable doLater = new Runnable()
-      {
-        public void run()
-        {
-          begin.setText("Begin");
-        }
-      };
-      SwingUtilities.invokeLater(doLater);
+      begin.setText("Begin");
       backgroundThread=null;
 
     } catch ( MalformedURLException e ) {
