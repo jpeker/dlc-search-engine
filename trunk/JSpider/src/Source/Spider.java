@@ -206,10 +206,12 @@ public class Spider {
   {
     try {
       log("Processing: " + url );
+
       //RobotsParser.robotSafe(url);
        if(! RobotsParser.robotSafe(url))//verifica si la url esta en el archivo robots para ver si puede entrar
        {return;}
       // get the URL's contents
+
       URLConnection connection = url.openConnection();
 
       if(!isTextPage(connection)) {
