@@ -20,7 +20,7 @@ public class Spider {
                                                           + "|wav|avi|mov|mpeg|ram|m4v|pdf"
                                                           + "|rm|smil|wmv|swf|wma|zip|rar|gz|xml|php\\?rsd))$");
     //private String string = "rss1[rss], rss2[rss], rss3[rss]";
-    private final static Pattern MIDDLEFILTERS = Pattern.compile(".*(rss).*");
+    private final static Pattern MIDDLEFILTERS = Pattern.compile(".*(rss|css).*");
   /**
    * A collection of URLs that resulted in an error
    */
@@ -153,16 +153,28 @@ public class Spider {
    * @param url the url to check
    * @return true if the url is of type text(text/css files are not acepted).
    */
+  
   private boolean isTextPage(URLConnection connection)
   {
       if(connection ==null)
           return false;
 
-      if ( (connection.getContentType()!=null) && (!connection.getContentType().toLowerCase().startsWith("text/")
-              || (connection.getContentType().endsWith("css"))   )  )
+     if ( (connection.getContentType()!=null)
+              && !connection.getContentType().toLowerCase().startsWith("text/")
+              || (connection.getContentType().endsWith("css")))
+              //|| !connection.getContentType().toLowerCase().startsWith("application/")
+              //|| (connection.getContentType().endsWith("rss+xml"))  )
       {
           return false;
       }
+     if ( (connection.getContentType()!=null)
+              && !connection.getContentType().toLowerCase().startsWith("application/")
+              && (connection.getContentType().endsWith("rss+xml")))
+      {
+          return false;
+      }
+
+
       return true;
   }
   private boolean isTextPage(URL url)
@@ -178,8 +190,11 @@ public class Spider {
       {
           System.out.println("Error processing url, "+e.getMessage());
       }
+
+
       return false;
   }
+ 
 
 
   /**
@@ -191,7 +206,9 @@ public class Spider {
   {
     try {
       log("Processing: " + url );
-      RobotsParser.robotSafe(url);
+      //RobotsParser.robotSafe(url);
+       if(! RobotsParser.robotSafe(url))//verifica si la url esta en el archivo robots para ver si puede entrar
+       {return;}
       // get the URL's contents
       URLConnection connection = url.openConnection();
 
@@ -247,8 +264,7 @@ public class Spider {
 /**
  * A HTML parser callback used by this class to detect links
  *
- * @author Jeff Heaton
- * @version 1.0
+ * @author Andres Altamirano Liberal Rodrigo Julian Peker
  */
   protected class Parser
   extends HTMLEditorKit.ParserCallback {
@@ -278,6 +294,7 @@ public class Spider {
         undesiredTags.add(HTML.Tag.STYLE.toString());
         undesiredTags.add(HTML.Tag.CODE.toString());
         undesiredTags.add("embed");
+        undesiredTags.add(HTML.Tag.SPAN.toString());
 
 
         for(String tag : undesiredTags)
@@ -302,7 +319,9 @@ public class Spider {
       tagHandler(t);
       String href = (String)atributeSet.getAttribute(HTML.Attribute.HREF);
 
-       if((href!=null)&&((BOTTOMFILTERS.matcher(href).matches())||(MIDDLEFILTERS.matcher(href).matches()))){
+       if((href!=null)&&((BOTTOMFILTERS.matcher(href).matches())||(MIDDLEFILTERS.matcher(href).matches())))
+       //if((href!=null)&&(BOTTOMFILTERS.matcher(href).matches()))
+       {
            System.out.println("Link de Busqueda no valido");
            return;
        }
@@ -322,25 +341,7 @@ public class Spider {
       if ( i!=-1 )
       href = href.substring(0,i);
 
-      //Tiene q ser excluido añadido a la lista de patterns
 
-
-      /*int k = href.indexOf("=rss");
-      if ( k!=-1 )
-      {  System.out.println("es un =rss");
-      return;
-      }*/
-
-
-
-      /// Tiene q ser incluido
-
-      /*int j = href.indexOf(".php");
-      if ( j!=-1 )
-      {  System.out.println("es un php");
-      return;
-      }*/
-     
 
       if ( href.toLowerCase().startsWith("mailto:") ) {
         report.spiderFoundEMail(href);
@@ -371,7 +372,7 @@ public class Spider {
         desiredTags.add(HTML.Tag.VAR.toString());
         desiredTags.add(HTML.Tag.S.toString());
         desiredTags.add(HTML.Tag.U.toString());
-        desiredTags.add(HTML.Tag.SPAN.toString());
+        //desiredTags.add(HTML.Tag.SPAN.toString());
         desiredTags.add(HTML.Tag.DIV.toString());
         desiredTags.add(HTML.Tag.PRE.toString());
         desiredTags.add(HTML.Tag.BR.toString());
