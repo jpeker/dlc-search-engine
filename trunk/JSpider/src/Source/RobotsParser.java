@@ -36,7 +36,7 @@ public class RobotsParser {
 	try {
 	    InputStream urlRobotStream = urlRobot.openStream();
 
-	    // read in entire file
+	    // read in entire file,el valor queda establecido como parametro definido
 	    byte b[] = new byte[1000];
 	    int numRead = urlRobotStream.read(b);
 	    strCommands = new String(b, 0, numRead);
