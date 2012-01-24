@@ -221,7 +221,7 @@ public class JSpider20View extends FrameView {
      // backgroundThread.start();
       App.setTextSearch(jTextBoxUrlBase.getText());
       //App.runy();
-      App.iniciar();
+      App.iniciar(jBegin);
       App.goodLinksCount=0;
       App.badLinksCount=0;
 
