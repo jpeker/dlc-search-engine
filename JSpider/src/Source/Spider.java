@@ -31,6 +31,9 @@ public class Spider {
    */
   protected Collection workloadWaiting = new ArrayList(3);
 
+  private StringBuilder SBConcatText = new StringBuilder();
+
+  private HashMap HashMapPage = new HashMap();
   /**
    * A collection of URLs that were processed
    */
@@ -204,6 +207,7 @@ public class Spider {
    */
   public void processURL(URL url)
   {
+
     try {
       log("Processing: " + url );
 
@@ -238,16 +242,31 @@ public class Spider {
     }
     // mark URL as complete
     getWorkloadWaiting().remove(url);
+    HashMapPage.put(url,SBConcatText);
+    ///////////////////////////////////////////////////////////////////////////////////////
     getWorkloadProcessed().add(url);
+    //SBConcatText.;
+    SBConcatText.delete(0,SBConcatText.length());
     log("Complete: " + url );
       System.out.println("EL tamaño de waiting" + getWorkloadWaiting().size() + "EL tamaño de processesed" + getWorkloadProcessed().size() );
   }
 
+  public HashMap getHashMapPages()
+  {
+    return HashMapPage;
+  }
+
+  public void clearHashMapPages()
+  {
+    HashMapPage.clear();
+  }
   /**
    * Called to start the spider
    */
+  //public void begin(StringBuilder SB)
   public void begin()
   {
+    //StringBuilder SBConcatText= SB;
     cancel = false;
     while ( !getWorkloadWaiting().isEmpty() && !cancel ) {
       Object list[] = getWorkloadWaiting().toArray(); //Chanchada
@@ -414,7 +433,8 @@ public class Spider {
         if(permisible)
             {
         System.out.println(String.valueOf(data));
-
+        SBConcatText.append(String.valueOf(data));
+        SBConcatText.append(" _ ");
             }
         
 
