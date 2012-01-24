@@ -110,6 +110,8 @@ public class Spider {
     getWorkloadWaiting().clear();
     getWorkloadProcessed().clear();
     getWorkloadUnused().clear();
+    clearHashMapPages();
+
   }
 
   /**
