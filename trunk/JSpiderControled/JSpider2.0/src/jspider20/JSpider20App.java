@@ -14,7 +14,7 @@ import org.jdesktop.application.SingleFrameApplication;
 /**
  * The main class of the application.
  */
-public class JSpider20App extends SingleFrameApplication implements ISpiderReportable {
+public class JSpider20App extends SingleFrameApplication implements  Runnable,ISpiderReportable {
 
       /**
    * The background spider thread
@@ -41,8 +41,11 @@ public class JSpider20App extends SingleFrameApplication implements ISpiderRepor
    * How many good links have been found
    */
   protected int goodLinksCount = 0;
-
-    /**
+/* javax.swing.JTextArea errors = new javax.swing.JTextArea(); es de los pantalla ATENCION !!!!
+  javax.swing.JLabel current = new javax.swing.JLabel();
+   javax.swing.JLabel goodLinksLabel = new javax.swing.JLabel();
+  javax.swing.JLabel badLinksLabel = new javax.swing.JLabel(); */
+  /**
      * At startup create and show the main frame of the application.
      */
     @Override protected void startup() {
@@ -74,8 +77,13 @@ public class JSpider20App extends SingleFrameApplication implements ISpiderRepor
 
     public boolean spiderFoundURL(URL base,URL url)
     {
-
+    /*UpdateCurrentStats cs = new UpdateCurrentStats();
+    cs.msg = url.toString();
+    SwingUtilities.invokeLater(cs);*/
      if ( !checkLink(url) ) {
+         /*  UpdateErrors err = new UpdateErrors();
+      err.msg = url+"(on page " + base + ")\n";
+      SwingUtilities.invokeLater(err);*/
     badLinksCount++;
       return false;
     }
@@ -108,9 +116,13 @@ public class JSpider20App extends SingleFrameApplication implements ISpiderRepor
   {
   textToCrawl=textBoxText;
   }
+public void iniciar()
+    {
+   backgroundThread = new Thread(this);
+      backgroundThread.start();
+    }
 
-
-  public void runy()
+  public void run()
   {
     try {
       //errors.setText("");
@@ -120,7 +132,7 @@ public class JSpider20App extends SingleFrameApplication implements ISpiderRepor
       spider.addURL(base);
       spider.begin();
       //begin.setText("Begin");
-       //spider =null;
+      
      // backgroundThread=null;
 
     } catch ( MalformedURLException e ) {
@@ -132,5 +144,31 @@ public class JSpider20App extends SingleFrameApplication implements ISpiderRepor
 
     //public void spiderFoundURLError(URL url){return;}
     public void spiderFoundEMail(String email){return;}
+  public void spiderURLError(URL url)
+  {
+  }
+    class UpdateErrors implements Runnable {
+    public String msg;
+    public void run()
+    {
+    //  errors.append(msg);
+    }
+  }
+  /**
+   * Used to update the current status information
+   * in a "Thread-Safe" way
+   *
+   * @author Jeff Heaton
+   * @version 1.0
+   */
 
+  class UpdateCurrentStats implements Runnable {
+    public String msg;
+    public void run()
+    {
+     // current.setText("Currently Processing: " + msg );
+      //goodLinksLabel.setText("Good Links: " + goodLinksCount);
+     // badLinksLabel.setText("Bad Links: " + badLinksCount);
+    }
+  }
 }
