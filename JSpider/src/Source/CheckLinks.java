@@ -20,7 +20,7 @@ import java.io.*;
  * @version 1.0
  */
 public class CheckLinks extends javax.swing.JFrame implements
-             Runnable,ISpiderReportable {
+            ISpiderReportable {
 
   /**
    * The constructor. Perform setup here.
@@ -49,12 +49,12 @@ public class CheckLinks extends javax.swing.JFrame implements
     errorScroll.setOpaque(true);
     getContentPane().add(errorScroll);
     errorScroll.setBounds(12,120,384,156);
-    errors.setEditable(false);
-    errorScroll.getViewport().add(errors);
-    errors.setBounds(0,0,366,138);
-    current.setText("Currently Processing: ");
-    getContentPane().add(current);
-    current.setBounds(12,72,384,12);
+    //errors.setEditable(false);
+    //errorScroll.getViewport().add(errors);
+    //errors.setBounds(0,0,366,138);
+    //current.setText("Currently Processing: ");
+    //getContentPane().add(current);
+    //current.setBounds(12,72,384,12);
     goodLinksLabel.setText("Good Links: 0");
     getContentPane().add(goodLinksLabel);
     goodLinksLabel.setBounds(12,96,192,12);
@@ -133,8 +133,8 @@ public class CheckLinks extends javax.swing.JFrame implements
   /**
    * A place to store the errors created
    */
-  javax.swing.JTextArea errors = new javax.swing.JTextArea();
-  javax.swing.JLabel current = new javax.swing.JLabel();
+ // javax.swing.JTextArea errors = new javax.swing.JTextArea();
+ // javax.swing.JLabel current = new javax.swing.JLabel();
   javax.swing.JLabel goodLinksLabel = new javax.swing.JLabel();
   javax.swing.JLabel badLinksLabel = new javax.swing.JLabel();
   //}}
@@ -199,10 +199,12 @@ public class CheckLinks extends javax.swing.JFrame implements
   {
     if ( backgroundThread==null ) {
       begin.setLabel("Cancel");
-      backgroundThread = new Thread(this);
-      backgroundThread.start();
+    //  backgroundThread = new Thread(this);
+     // backgroundThread.start();
+      this.runy();
       goodLinksCount=0;
       badLinksCount=0;
+  
     } else {
       spider.cancel();
     }
@@ -213,22 +215,21 @@ public class CheckLinks extends javax.swing.JFrame implements
    * Perform the background thread operation. This method
    * actually starts the background thread.
    */
-  public void run()
+  public void runy()
   {
     try {
-      errors.setText("");
+      //errors.setText("");
       spider = new Spider(this);
       spider.clear();
       base = new URL(url.getText());
       spider.addURL(base);
       spider.begin();
       begin.setText("Begin");
-      backgroundThread=null;
-
+       //spider =null;
+     // backgroundThread=null;
+      
     } catch ( MalformedURLException e ) {
-      UpdateErrors err = new UpdateErrors();
-      err.msg = "Bad address.";
-      SwingUtilities.invokeLater(err);
+        System.out.println("error "+ e.toString());
 
     }
   }
@@ -242,14 +243,10 @@ public class CheckLinks extends javax.swing.JFrame implements
    */
   public boolean spiderFoundURL(URL base,URL url)
   {
-    UpdateCurrentStats cs = new UpdateCurrentStats();
-    cs.msg = url.toString();
-    SwingUtilities.invokeLater(cs);
+
 
     if ( !checkLink(url) ) {
-      UpdateErrors err = new UpdateErrors();
-      err.msg = url+"(on page " + base + ")\n";
-      SwingUtilities.invokeLater(err);
+      
       badLinksCount++;
       return false;
     }
@@ -296,36 +293,10 @@ public class CheckLinks extends javax.swing.JFrame implements
   public void spiderFoundEMail(String email)
   {
   }
-  /**
-   * Internal class used to update the error information
-   * in a Thread-Safe way
-   * 
-   * @author Jeff Heaton
-   * @version 1.0
-   */
+  
 
-  class UpdateErrors implements Runnable {
-    public String msg;
-    public void run()
-    {
-      errors.append(msg);
-    }
-  }
-  /**
-   * Used to update the current status information
-   * in a "Thread-Safe" way
-   * 
-   * @author Jeff Heaton
-   * @version 1.0
-   */
 
-  class UpdateCurrentStats implements Runnable {
-    public String msg;
-    public void run()
-    {
-      current.setText("Currently Processing: " + msg );
-      goodLinksLabel.setText("Good Links: " + goodLinksCount);
-      badLinksLabel.setText("Bad Links: " + badLinksCount);
-    }
-  }
+
+
+ 
 }
