@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Source;
+package Spider;
 
 import java.awt.*;
 import javax.swing.*;
