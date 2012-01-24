@@ -20,7 +20,9 @@ import javax.swing.JFrame;
  * The application's main frame.
  */
 public class JSpider20View extends FrameView {
+    JSpider20App App=new JSpider20App();
 
+    
     public JSpider20View(SingleFrameApplication app) {
         super(app);
 
@@ -101,6 +103,8 @@ public class JSpider20View extends FrameView {
     private void initComponents() {
 
         mainPanel = new javax.swing.JPanel();
+        jBegin = new javax.swing.JButton();
+        jTextBoxUrlBase = new javax.swing.JTextField();
         menuBar = new javax.swing.JMenuBar();
         javax.swing.JMenu fileMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem exitMenuItem = new javax.swing.JMenuItem();
@@ -114,20 +118,41 @@ public class JSpider20View extends FrameView {
 
         mainPanel.setName("mainPanel"); // NOI18N
 
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(jspider20.JSpider20App.class).getContext().getResourceMap(JSpider20View.class);
+        jBegin.setText(resourceMap.getString("jBegin.text")); // NOI18N
+        jBegin.setName("jBegin"); // NOI18N
+        jBegin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBeginActionPerformed(evt);
+            }
+        });
+
+        jTextBoxUrlBase.setText(resourceMap.getString("jTextBoxUrlBase.text")); // NOI18N
+        jTextBoxUrlBase.setName("jTextBoxUrlBase"); // NOI18N
+
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jBegin)
+                .addGap(30, 30, 30)
+                .addComponent(jTextBoxUrlBase, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 252, Short.MAX_VALUE)
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBegin)
+                    .addComponent(jTextBoxUrlBase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(196, Short.MAX_VALUE))
         );
 
         menuBar.setName("menuBar"); // NOI18N
 
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(jspider20.JSpider20App.class).getContext().getResourceMap(JSpider20View.class);
         fileMenu.setText(resourceMap.getString("fileMenu.text")); // NOI18N
         fileMenu.setName("fileMenu"); // NOI18N
 
@@ -166,7 +191,7 @@ public class JSpider20View extends FrameView {
             .addGroup(statusPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(statusMessageLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 226, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 230, Short.MAX_VALUE)
                 .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(statusAnimationLabel)
@@ -189,7 +214,26 @@ public class JSpider20View extends FrameView {
         setStatusBar(statusPanel);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jBeginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBeginActionPerformed
+     if ( App.backgroundThread==null ) {
+      jBegin.setText("Cancel");
+     //  backgroundThread = new Thread(this);
+     // backgroundThread.start();
+      App.setTextSearch(jTextBoxUrlBase.getText());
+      App.runy();
+      App.goodLinksCount=0;
+      App.badLinksCount=0;
+
+    } else {
+      App.spider.cancel();
+    }
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBeginActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBegin;
+    private javax.swing.JTextField jTextBoxUrlBase;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JProgressBar progressBar;
