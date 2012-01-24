@@ -15,7 +15,7 @@ import org.jdesktop.application.SingleFrameApplication;
  * The main class of the application.
  */
 public class JSpider20App extends SingleFrameApplication implements  Runnable,ISpiderReportable {
-
+    private javax.swing.JButton jBegi;
       /**
    * The background spider thread
    */
@@ -116,8 +116,9 @@ public class JSpider20App extends SingleFrameApplication implements  Runnable,IS
   {
   textToCrawl=textBoxText;
   }
-public void iniciar()
+public void iniciar(javax.swing.JButton jBegin)
     {
+    jBegi =jBegin;
    backgroundThread = new Thread(this);
       backgroundThread.start();
     }
@@ -131,9 +132,9 @@ public void iniciar()
       base = new URL(textToCrawl);
       spider.addURL(base);
       spider.begin();
-      //begin.setText("Begin");
+      jBegi.setText("Begin");
       
-     // backgroundThread=null;
+      backgroundThread=null;
 
     } catch ( MalformedURLException e ) {
         System.out.println("error "+ e.toString());
