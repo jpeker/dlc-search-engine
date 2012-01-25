@@ -14,16 +14,18 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+/**
+ * This class provides the utility of detect the different words that exist on a document
+ * @author aaltamir
+ */
 public final class WordCount {
   
-    //"C:\\Users\\aaltamir\\Desktop\\JSpider TODO.txt"
     /**
      * 
-     * @param filePath
-     * @return 
+     * @param filePath: A path to a disk file
+     * @return a collection of words and the times that those words repeats on the file
      */
-      public static final Map<String, Integer> retrieveWordCount(String filePath){
+      public static Map<String, Integer> retrieveWordCount(String filePath){
           if(filePath.isEmpty()){
               return null;
           }

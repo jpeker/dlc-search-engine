@@ -1,7 +1,6 @@
 package com.utn.searchengine;
 
-import java.io.File;
-import java.util.ArrayList;
+
 
 /**
  * Hello world!
