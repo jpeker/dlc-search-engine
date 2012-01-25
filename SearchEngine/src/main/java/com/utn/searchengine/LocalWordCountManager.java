@@ -55,7 +55,7 @@ public class LocalWordCountManager implements WordCountManager{
      * @return the times that the document contains the word.
      */
     public int timesThatAWordRepeatsOnDocument(Word word, Document document) {
-       return postList.totalTimesThatWordRepeatsOnDocument(null, null);
+       return postList.totalTimesThatWordRepeatsOnDocument(word, document);
     }
     /**
      * 
