@@ -7,7 +7,9 @@ package com.utn.searchengine;
 
 
 /**
- *
+ * This class still gots no behavior, but it 
+ * is supposed to estimate each word weight on each document.
+ * Now it is only ued to prove at least one word.
  * @author aaltamir
  */
 public class WeightManager {
@@ -39,7 +41,7 @@ public class WeightManager {
         wordCountManager.addDocument(document3);
         wordCountManager.addDocument(document4);
         wordCountManager.addDocument(document5);
-        Word wordToProve = new Word("Combustible");
+        Word wordToProve = new Word("combustible");
         double weight = wordCountManager.estimateWeight(wordToProve, document1);
         System.out.println("El peso de la palabra "+word.getName()+"es: "+weight);
         return weight;

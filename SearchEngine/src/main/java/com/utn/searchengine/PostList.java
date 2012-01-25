@@ -10,7 +10,9 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- *
+ * An In-memory representation of a Post list.
+ * This is recommend to be on disc so probably soon, aPostListManager will 
+ * difference this Local Post list form the other.
  * @author aaltamir
  */
 public class PostList {
@@ -29,7 +31,16 @@ public class PostList {
     public PostList(Map<String, WordTracker> postList){
         this.postList = postList;
     }
-    
+    /**
+     * Adds the  words of a document to the postList.
+     * In case a word already exists on the post list, 
+     * it adds the newlocation where the word has been found,
+     * and the amount of times that it appeared.
+     * @param words An array of locations and times that the word that the word
+     * has been found on that document.
+     * @param pageName: Don't remember why the name of this parameter, 
+     * it is the word text.
+     */
     public void addDocumentWords(Map<String, Integer> words, String pageName){
         Iterator iterator = words.entrySet().iterator();
         while(iterator.hasNext()){
@@ -50,6 +61,12 @@ public class PostList {
             }
         }
     }
+    /**
+     * 
+     * @param word: A Word
+     * @param document: A Document
+     * @return The total times that the word appears on the document.
+     */
     public int totalTimesThatWordRepeatsOnDocument(Word word, Document document){
         int totalTimes=0;
         if(postList.containsKey(word.getName())){
@@ -58,7 +75,11 @@ public class PostList {
         }
         return totalTimes;
     }
-    
+    /**
+     * 
+     * @param word: A Word
+     * @return The number of documents where the word has been found at least once.
+     */
     public int numberOfDocumentsWhereWordAppears(Word word){
         int numberOfDocuments = 0;
         if(postList.containsKey(word.getName())){
@@ -67,22 +88,27 @@ public class PostList {
         }
         return numberOfDocuments;
     }
+    /**
+     * 
+     * @return A Single Map containing all the words that exist on the post list.
+     * This number should be the same that the number of words that exist on the
+     * vocabulary.
+     */
     public Set<String> getAllWords(){
        
         return postList.keySet();
     }
-    /**
-    public double getDocumentModule(Document document, int numberOfDocuments){
-        
+  
+    @Override
+    public String toString(){
+        String aux = "";
         Iterator iterator = postList.entrySet().iterator();
         while(iterator.hasNext()){
             Map.Entry entry = (Map.Entry)iterator.next();
-            Word word = new Word(entry.getKey().toString());
-            int wordFrecuencyOnDocument = this.totalTimesThatWordRepeatsOnDocument(word, document);
-            
+            aux+="\n"+entry.getKey().toString()+" - "+entry.getValue().toString();
         }
+        return aux;
     }
-     * **/
     
     
 }

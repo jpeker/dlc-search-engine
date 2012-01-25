@@ -4,9 +4,6 @@
  */
 package com.utn.searchengine;
 
-import java.util.Collection;
-import java.util.Map;
-
 /**
  *
  * @author aaltamir
@@ -45,7 +42,6 @@ public interface WordCountManager {
      * 
      * @return 
      */
-    public Map<String, Collection<String>> getAllWordsAndLocations();
-    
+   
     
 }

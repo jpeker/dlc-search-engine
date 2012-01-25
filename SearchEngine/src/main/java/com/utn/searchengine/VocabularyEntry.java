@@ -5,7 +5,9 @@
 package com.utn.searchengine;
 
 /**
- *
+ * An entry that will be used by the vocabulary.
+ * It consists of a word and some other usefull data
+ * that the Vocabulary needs to know.
  * @author aaltamir
  */
 public class VocabularyEntry {
@@ -52,6 +54,11 @@ public class VocabularyEntry {
     @Override
     public int hashCode (){
 	return word.hashCode();
+    }
+    @Override
+    public String toString(){
+        String aux = "Word: "+word.toString()+", Biggest Term Frecuency: "+ this.DocumentBiggestTermFrecuency+", Total times that word Appears: "+this.totalTimesThatWordAppears;
+        return aux;
     }
     
 }

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 /**
- *
+ * This class is an auxiliar to manage all the basic info about the documents.
  * @author aaltamir
  */
 public class DocumentManager {

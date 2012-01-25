@@ -44,5 +44,8 @@ public class Word {
 		{
 			return name.hashCode();
 		}
+    public String toString(){
+        return name;
+    }
     
 }
