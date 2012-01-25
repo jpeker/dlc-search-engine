@@ -1,6 +1,6 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * RobotsParser clasea que parsea el archivo robots.txt de un sitio web
+ * Usando siempre la direccion base con protocolo http
  */
 package Spider;
 
@@ -10,33 +10,33 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.StringTokenizer;
 
-/**
+/*
  *
- * @author aaltamir
+ *
  */
 public class RobotsParser {
+    //Palabras claves contenidas dentro del archivo robots.txt necesarias
+    //para realizar el parseo ejemplo http://www.facebook.com/robots.txt
     public static final String SEARCH = "Search";
     public static final String STOP = "Stop";
     public static final String DISALLOW = "Disallow:";
     public static final int    SEARCH_LIMIT = 50;
     public  static boolean robotSafe(URL url) {
 	String strHost = url.getHost();
-
-	// form URL of the robots.txt file
+        //Donde se encuentra el archivo robots.txt
+        //http://www.robotstxt.org/robotstxt.html ver estandar aqui
 	String strRobot = "http://" + strHost + "/robots.txt";
 	URL urlRobot;
 	try { 
-	    urlRobot = new URL(strRobot);//check for fileNotFoundException
+	    urlRobot = new URL(strRobot);//Checkea por URL mal formada
 	} catch (MalformedURLException e) {
-	    // something weird is happening, so don't trust it
+	    // URL Mal formada, no confiar devolver false
 	    return false;
 	}
-
 	String strCommands;
 	try {
 	    InputStream urlRobotStream = urlRobot.openStream();
-
-	    // read in entire file,el valor queda establecido como parametro definido
+	    // Lee en todo el archivo, el valor del byte[] queda establecido como parametro definido
 	    byte b[] = new byte[1000];
 	    int numRead = urlRobotStream.read(b);
 	    strCommands = new String(b, 0, numRead);
@@ -51,29 +51,26 @@ public class RobotsParser {
 	    }
 	    urlRobotStream.close();
 	} catch (IOException e) {
-	    // if there is no robots.txt file, it is OK to search
-	    return true;
+	    //Sino existe el archivo robots.txt en el sitio web
+            //crawleo sin limitaciones :)
+            return true;
 	}
-
-	// assume that this robots.txt refers to us and 
-	// search for "Disallow:" commands.
+	// Busco los "Disallow:" dentro del archivo.
 	String strURL = url.getFile();
 	int index = 0;
 	while ((index = strCommands.indexOf(DISALLOW, index)) != -1) {
 	    index += DISALLOW.length();
 	    String strPath = strCommands.substring(index);
 	    StringTokenizer st = new StringTokenizer(strPath);
-            
-	    if (!st.hasMoreTokens())
-		break;
-	    
+            //Empleo StringTokenizer para splitear el path en subsStrings
+	    if (!st.hasMoreTokens()) //Cuando no hay mas Tokens fuiste.
+		break;	    
 	    String strBadPath = st.nextToken();
             System.out.println("The foribidden path is: "+strBadPath);
-	    // if the URL starts with a disallowed path, it is not safe
-	    if (strURL.indexOf(strBadPath) == 0)
+	    //Si la url empieza con un disallowed path no es segura.
+            if (strURL.indexOf(strBadPath) == 0)
 		return false;
 	}
-
 	return true;
     }
 }
