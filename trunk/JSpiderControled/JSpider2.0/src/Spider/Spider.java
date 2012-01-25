@@ -164,20 +164,20 @@ public class Spider {
       if(connection ==null)
           return false;
 
-     if ( (connection.getContentType()!=null)
-              && !connection.getContentType().toLowerCase().startsWith("text/")
-              || (connection.getContentType().endsWith("css")))
-              //|| !connection.getContentType().toLowerCase().startsWith("application/")
-              //|| (connection.getContentType().endsWith("rss+xml"))  )
-      {
-          return false;
-      }
-     if ( (connection.getContentType()!=null)
-              && !connection.getContentType().toLowerCase().startsWith("application/")
-              && (connection.getContentType().endsWith("rss+xml")))
-      {
-          return false;
-      }
+//     if ( (connection.getContentType()!=null)
+//              && !connection.getContentType().toLowerCase().startsWith("text/")
+//              || (connection.getContentType().endsWith("css")))
+//              //|| !connection.getContentType().toLowerCase().startsWith("application/")
+//              //|| (connection.getContentType().endsWith("rss+xml"))  )
+//      {
+//          return false;
+//      }
+//     if ( (connection.getContentType()!=null)
+//              && !connection.getContentType().toLowerCase().startsWith("application/")
+//              && (connection.getContentType().endsWith("rss+xml")))
+//      {
+//          return false;
+//      }
 
 
       return true;
