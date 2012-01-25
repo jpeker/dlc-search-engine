@@ -1,13 +1,12 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * HTMLParse clase que extiende de HTMLEditorKit para parsear streams de HTML
  */
 package Spider;
-
-import javax.swing.text.html.*;
+//HTML Editor clase para reconocer e implementar documentos de html, basado en HTML 3.2 sin implementacion con HTML 4 aun
+import javax.swing.text.html.HTMLEditorKit;
 
 public class HTMLParse extends HTMLEditorKit {
-
+//Trae el parser de HTML que se utilizará para la lectura de streams de HTML.
   public HTMLEditorKit.Parser getParser()
   {
     return super.getParser();

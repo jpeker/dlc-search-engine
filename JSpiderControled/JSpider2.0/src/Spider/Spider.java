@@ -8,41 +8,56 @@ import javax.swing.text.html.*;
 import java.util.regex.Pattern;
 
 /**
- * That class implements a reusable spider that retrieves all possible and
- * usefull text from an url.
  *
- * @author Andres Altamirano
- * @version 1.1
+ * Clase spider empleada para crawlear todo el sitio web, a travez de una url
+ * base sin salir de corriente dominio, y con la capacidad de retornar,
+ * el texto html leido de cada url del sitio que se encuentra dentro de la base
+ * 
  */
 public class Spider {
-    private final static Pattern BOTTOMFILTERS = Pattern.compile(".*(\\.(css|js|bmp|gif|jpe?g"
-                                                          + "|png|tiff?|mid|mp2|mp3|mp4"
-                                                          + "|wav|avi|mov|mpeg|ram|m4v|pdf"
-                                                          + "|rm|smil|wmv|swf|wma|zip|rar|gz|xml|php\\?rsd))$");
-    //private String string = "rss1[rss], rss2[rss], rss3[rss]";
-    private final static Pattern MIDDLEFILTERS = Pattern.compile(".*(rss|css).*");
+    private final static Pattern BOTTOMFILTERS =
+            Pattern.compile(".*(\\.(css|js|bmp|gif|jpe?g"
+            + "|png|tiff?|mid|mp2|mp3|mp4"
+            + "|wav|avi|mov|mpeg|ram|m4v|pdf"
+            + "|rm|smil|wmv|swf|wma|zip|rar|gz|xml|php\\?rsd))$");
+    private final static Pattern MIDDLEFILTERS =
+                                            Pattern.compile(".*(rss|css).*");
   /**
-   * A collection of URLs that resulted in an error
+   * Una Coleccion de URLs que resultan erroneas
    */
   protected Collection workloadError = new ArrayList(3);
 
   /**
-   * A collection of URLs that are waiting to be processed
+   * Una Coleccion de URLs que estan esperando para ser procesadas
+   * Cada URL añadida sirve para iniciar el crawleo del sitio
    */
   protected Collection workloadWaiting = new ArrayList(3);
 
+  /**
+   * StringBuilder empleado para concatenar el texto de cada url
+   * del sitio crawleado
+   */
+
   private StringBuilder SBConcatText = new StringBuilder();
 
-  private HashMap HashMapPage = new HashMap();
   /**
-   * A collection of URLs that were processed
+   * HashMap que se entrega
+   * Conteniendo la url con
+   */
+
+  private HashMap HashMapPage = new HashMap();
+
+  /**
+   * Un hash map que añade URL que estan ya procesadas con su texto
+   * La key es la url y el value es el string builder con todo el texto
    */
   protected Collection workloadProcessed = new ArrayList(3);
 
   /**
-   * A collection of URLs that will not be used because they dont have significant text
+   * Una Coleccion de URLs que no seran usadas porque
+   * no emplean texto significativo
    */
-  private Collection workloadUnused = new ArrayList(3);
+   //private Collection workloadUnused = new ArrayList(3);
 
   /**
    * The class that the spider should report its URLs to
@@ -50,19 +65,19 @@ public class Spider {
   protected ISpiderReportable report;
 
   /**
-   * A flag that indicates whether this process
-   * should be canceled
+   * Flags que indican cuando el proceso del crawler debe
+   * ser cancelado
    */
   protected boolean cancel = false;
 
   private boolean permisible = false;
 
   /**
-   * The constructor
    *
-   * @param report A class that implements the ISpiderReportable
-   * interface, that will receive information that the
-   * spider finds.
+   * @param report Es para aquella clase
+   * que implemente la interface 
+   * ISpiderReportable, y dicha clase va a recibir la informacion
+   * que el spider encuentre
    */
   public Spider(ISpiderReportable report)
   {
@@ -70,9 +85,9 @@ public class Spider {
   }
 
   /**
-   * Get the URLs that resulted in an error.
+   * Trae la coleccion de URL con errores.
    *
-   * @return A collection of URL's.
+   * @return una colleccion de URLs.
    */
   public Collection getWorkloadError()
   {
@@ -80,11 +95,8 @@ public class Spider {
   }
 
   /**
-   * Get the URLs that were waiting to be processed.
-   * You should add one URL to this collection to
-   * begin the spider.
-   *
-   * @return A collection of URLs.
+   * Traen las URLS que estan esperando a ser procesadas
+   * @return una colleccion de URLs.
    */
   public Collection getWorkloadWaiting()
   {
@@ -92,9 +104,8 @@ public class Spider {
   }
 
   /**
-   * Get the URLs that were processed by this spider.
-   *
-   * @return A collection of URLs.
+   * Traen las URLS que estan ya procesadas
+   * @return una colleccion de URLs.
    */
   public Collection getWorkloadProcessed()
   {
@@ -102,21 +113,21 @@ public class Spider {
   }
 
   /**
-   * Clear all of the workloads.
+   * Borra todas las colecciones.
    */
   public void clear()
   {
     getWorkloadError().clear();
     getWorkloadWaiting().clear();
     getWorkloadProcessed().clear();
-    getWorkloadUnused().clear();
+    //getWorkloadUnused().clear();
     clearHashMapPages();
 
   }
 
   /**
-   * Set a flag that will cause the begin
-   * method to return before it is done.
+   * Setea la flag que genera que el metodo begin
+   * retorne al ser terminado.
    */
   public void cancel()
   {
@@ -124,7 +135,7 @@ public class Spider {
   }
 
   /**
-   * Add a URL for processing.
+   * Añado una URL a procesar.
    *
    * @param url
    */
@@ -134,13 +145,16 @@ public class Spider {
   if ( url.toString().endsWith("/"))
   {
      String splitslash = url.toString().substring(0, url.toString().length()-1);
-
+     //Quito el Slash al final del url si existiera
     try{
       url = new URL(splitslash);}
+    //A partir de esa string creo otra url nueva sin la barra para evitar
+    //ambiguedades
     catch ( MalformedURLException e ) {
         log("Found malformed URL: " + splitslash );
       }
   }
+  //Si ya esta presente la url en alguna de las 3 listas no la empleo mas
     if ( getWorkloadWaiting().contains(url) )
       return;
     if ( getWorkloadError().contains(url) )
@@ -150,20 +164,19 @@ public class Spider {
     if(!isTextPage(url))
         return;
     log("Adding to workload: " + url );
+    //Sino la añado al cola de espera
     getWorkloadWaiting().add(url);
   }
 
   /**
-   * Checkes if an URL is of text/html format
-   * @param url the url to check
-   * @return true if the url is of type text(text/css files are not acepted).
+   * Chekea si la url contiene texto de html
+   * @param url la url que se va a verificar
+   * @return 
    */
-  
   private boolean isTextPage(URLConnection connection)
   {
       if(connection ==null)
           return false;
-
 //     if ( (connection.getContentType()!=null)
 //              && !connection.getContentType().toLowerCase().startsWith("text/")
 //              || (connection.getContentType().endsWith("css")))
@@ -178,14 +191,12 @@ public class Spider {
 //      {
 //          return false;
 //      }
-
-
       return true;
   }
   private boolean isTextPage(URL url)
   {
-      if(url == null ||workloadUnused.contains(url))
-          return false;
+     // if(url == null ||workloadUnused.contains(url))
+     //     return false;
       try
       {
         URLConnection connection = url.openConnection();
@@ -195,31 +206,22 @@ public class Spider {
       {
           System.out.println("Error processing url, "+e.getMessage());
       }
-
-
       return false;
   }
- 
-
-
   /**
-   * Called internally to process a URL
-   *
-   * @param url The URL to be processed.
+   * Procesa una URL
+   * @param url la url que va a ser procesada
    */
   public void processURL(URL url)
   {
-
     try {
       log("Processing: " + url );
-
-      //RobotsParser.robotSafe(url);
-       if(! RobotsParser.robotSafe(url))//verifica si la url esta en el archivo robots para ver si puede entrar
-       {return;}
-      // get the URL's contents
-
+       if(! RobotsParser.robotSafe(url)) {return;}
+      //verifica si la url esta en el archivo
+      //robots para ver si puede entrar, sino se puede entrar
+      //retorno terminando el metodo
+      //Trae el contenidos de la url
       URLConnection connection = url.openConnection();
-
       if(!isTextPage(connection)) {
       getWorkloadWaiting().remove(url);
         getWorkloadProcessed().add(url);
@@ -227,51 +229,54 @@ public class Spider {
              connection.getContentType() );
         return;
       }
-
-      // read the URL
-      InputStream is = connection.getInputStream();//change to inputstream
-      Reader r = new InputStreamReader(is);//change to reader
-      // parse the URL
+      //Creo los flujos y reader para leer y parsear la url
+      InputStream inputStreamURL = connection.getInputStream();
+      Reader readerURL = new InputStreamReader(inputStreamURL);
+      //Parseo la URL usando el HTML parser
       HTMLEditorKit.Parser parse = new HTMLParse().getParser();
-      parse.parse(r,new Parser(url),true);
-    } catch ( IOException e ) {
+      parse.parse(readerURL,new Parser(url),true);
+    }
+    catch ( IOException e ) {
+      //Cuando termino de leer la URL fuerzo a que se dispare una excepcion
+      //E informo error en la URL
       getWorkloadWaiting().remove(url);
       getWorkloadError().add(url);
       log("Error: " + url );
       report.spiderFoundURLError(url);
-
       return;
     }
-    // mark URL as complete
+    //Quito la URL actual de waiting ya que fue procesada
+    //Añado hash map la url actual, con todo el texto de esa url
     getWorkloadWaiting().remove(url);
     HashMapPage.put(url,SBConcatText);
-    ///////////////////////////////////////////////////////////////////////////////////////
     getWorkloadProcessed().add(url);
-    //SBConcatText.;
+    //Vacio el StringBuilder
     SBConcatText.delete(0,SBConcatText.length());
     log("Complete: " + url );
-      System.out.println("EL tamaño de waiting" + getWorkloadWaiting().size() + "EL tamaño de processesed" + getWorkloadProcessed().size() );
+    System.out.println("EL tamaño de waiting" + getWorkloadWaiting().size() + "EL tamaño de processesed" + getWorkloadProcessed().size() );
   }
 
+  //Traer el hashMap
   public HashMap getHashMapPages()
   {
     return HashMapPage;
   }
 
+  //Borrar El hashMap
   public void clearHashMapPages()
   {
     HashMapPage.clear();
   }
+
   /**
-   * Called to start the spider
+   * Metodo que lanza el spider
    */
-  //public void begin(StringBuilder SB)
   public void begin()
   {
-    //StringBuilder SBConcatText= SB;
     cancel = false;
     while ( !getWorkloadWaiting().isEmpty() && !cancel ) {
-      Object list[] = getWorkloadWaiting().toArray(); //Chanchada
+      Object list[] = getWorkloadWaiting().toArray();
+      //Lo convierto en un array de object para procesar las URL
       for ( int i=0;(i<list.length)&&!cancel;i++ )
         processURL((URL)list[i]);
     }
@@ -280,36 +285,36 @@ public class Spider {
     /**
      * @return the workLoadUnused
      */
-    public Collection getWorkloadUnused() {
-        return workloadUnused;
-    }
+    //public Collection getWorkloadUnused() {
+    //    return workloadUnused;
+    //}
 
 /**
- * A HTML parser callback used by this class to detect links
- *
- * @author Andres Altamirano Liberal Rodrigo Julian Peker
+ * Creo un parser de HTML en funcion de la clase HTML editor
+ * empleada para parsear y detectar los links
  */
   protected class Parser
   extends HTMLEditorKit.ParserCallback {
+    //URL base del sitio web donde empieza el crawleo
     protected URL base;
-
-
+    //Verifico que si el tag es indeseado o no
     private boolean isUndesiredTag = false;
-
     public Parser(URL base)
     {
       this.base = base;
     }
-
     /**
-     * This method checks if the analized tag is undesired comparing it on a list
-     * of undesired tags. If it is undesirable, it changes an external flag to
-     * notify to handleText that the tag is not useful.
-     * @param t a HTML.Tag
+     * Verifico si existen tags indeseados, es decir tags que no deben
+     * tener texto comparo el tag actual con el tag indeseado, con
+     * eso seteo el flag para notificarle al handleText que el tag
+     * NO debe ser procesado
+     * @param tag a HTML.Tag
      */
-    public void tagHandler(HTML.Tag t)
+    public void tagHandler(HTML.Tag tag)
     {
-        Collection <String> undesiredTags = new ArrayList <String> (); //create collection in another place
+        Collection <String> undesiredTags = new ArrayList <String> (); 
+        //Creo una collecion de los tags indeseados
+        //Y luego verifico si el tag actual esta dentro de los indeseados
         undesiredTags.add(HTML.Tag.OPTION.toString());
         undesiredTags.add(HTML.Tag.LI.toString());
         undesiredTags.add(HTML.Tag.SCRIPT.toString());
@@ -318,63 +323,58 @@ public class Spider {
         undesiredTags.add(HTML.Tag.CODE.toString());
         undesiredTags.add("embed");
         undesiredTags.add(HTML.Tag.SPAN.toString());
-
-
-        for(String tag : undesiredTags)
+        for(String tag2 : undesiredTags)
         {
-            if(tag.equalsIgnoreCase(t.toString()))
+            if(tag2.equalsIgnoreCase(tag.toString()))
             {
                 isUndesiredTag = true;
                 break;
             }
         }
         return;
-
     }
-    //recorre  la url en busca de links a otras pag con href
-        @Override
-       public void handleSimpleTag(HTML.Tag t,
+    
+    //Recorre  la url en busca de links a otras pag con href
+     @Override
+     public void handleSimpleTag(HTML.Tag tag,
                                 MutableAttributeSet atributeSet,int pos)
     {
-
-
-      System.out.println("the tag to analize is: "+t.toString());
-      tagHandler(t);
+      System.out.println("the tag to analize is: "+tag.toString());
+      tagHandler(tag);
       String href = (String)atributeSet.getAttribute(HTML.Attribute.HREF);
-
-       if((href!=null)&&((BOTTOMFILTERS.matcher(href).matches())||(MIDDLEFILTERS.matcher(href).matches())))
+      if((href!=null)&&((BOTTOMFILTERS.matcher(href).matches())
+                ||(MIDDLEFILTERS.matcher(href).matches())))
        //if((href!=null)&&(BOTTOMFILTERS.matcher(href).matches()))
        {
-           System.out.println("Link de Busqueda no valido");
+            //Verifco si el link encontrado tiene extension valida de texto
+            //Html para luego poder acceder a ese contenido
+            System.out.println("Link de Busqueda no valido");
            return;
        }
-     // if (t.toString().equals("p")||t.toString().equals("a"))
-      if (isTagText(t.toString()))
+      if (isTagText(tag.toString()))
       {
       permisible = true;
       }
-
-      if( (href==null) && (t==HTML.Tag.FRAME) )
+      if( (href==null) && (tag==HTML.Tag.FRAME) )
         href = (String)atributeSet.getAttribute(HTML.Attribute.SRC);
-      // busca href dentro contenedor de framset   http://www.w3schools.com/tags/tag_frame.asp
+      //busca href dentro contenedor de framset
+      //mas info en http://www.w3schools.com/tags/tag_frame.asp
       if ( href==null )
         return;
-
+      //Genero un substring de los links que contienen #
       int i = href.indexOf('#');
       if ( i!=-1 )
       href = href.substring(0,i);
-
-
-
-      if ( href.toLowerCase().startsWith("mailto:") ) {
-        report.spiderFoundEMail(href);
-        return;
-      }
-
+      //if ( href.toLowerCase().startsWith("mailto:") ) {
+      //  report.spiderFoundEMail(href);
+      //  return;
+      //}
       handleLink(base,href);
     }
-        private boolean isTagText(String tag)
-        {
+
+    private boolean isTagText(String tag)
+    {
+        //Links deseados a recorrer que contienen texto de html util
         Collection <String> desiredTags = new ArrayList <String> ();
         desiredTags.add(HTML.Tag.B.toString());
         desiredTags.add(HTML.Tag.ADDRESS.toString());
@@ -395,68 +395,67 @@ public class Spider {
         desiredTags.add(HTML.Tag.VAR.toString());
         desiredTags.add(HTML.Tag.S.toString());
         desiredTags.add(HTML.Tag.U.toString());
-        //desiredTags.add(HTML.Tag.SPAN.toString());
         desiredTags.add(HTML.Tag.DIV.toString());
         desiredTags.add(HTML.Tag.PRE.toString());
         desiredTags.add(HTML.Tag.BR.toString());
         desiredTags.add(HTML.Tag.TITLE.toString());
+        //Si el tag es deseado retorno true sino false
         if(desiredTags.contains(tag))
         return true;
         return false;
-        }
+    }
 
-        @Override
+    @Override
     public void handleStartTag(HTML.Tag t,
                                MutableAttributeSet a,int pos)
     {
-      handleSimpleTag(t,a,pos);    // handle the same way
-
+      handleSimpleTag(t,a,pos);// Empiezo el analisis de los tags
     }
     /**
-         *
-         * @param data gots the tag text
-         * @param pos
-         */
-
-        
-        
-        @Override
-        public void handleText(char[] data, int pos) {
+    *
+    * @param data gots the tag text
+    * @param pos
+    */ 
+    @Override
+    public void handleText(char[] data, int pos) {
         if(isUndesiredTag == true)
+        //Si el tag es indeseado no es texto
+        //que desee leer
         {
             isUndesiredTag = false;
             return;
         }
         if(String.valueOf(data).trim().isEmpty())
+        //Si el tag esta vacio de texto
+        //No almaceno y retorno
         {
             System.out.println("no text");
             return;
         }
         if(permisible)
-            {
+        {
+        //Cada tag que contiene texto es almacenado
+        //En el string builder. Dicho Texto de cada tag
+        //Luego es separado por un patron de espacio _ espacio
+        //Para luego poder ser analizado con mas facilidad por el
+        //Search engine
         System.out.println(String.valueOf(data));
         SBConcatText.append(String.valueOf(data));
         SBConcatText.append(" _ ");
-            }
-        
+        }
+   }
 
-            }
-
-
-    
-
-    protected void handleLink(URL base,String str)
-    {
+   protected void handleLink(URL base,String str)
+   {
       try {
         URL url = new URL(base,str);
-        //si encuentra una url la agrega a un contenedor de url, verifica la url q crea y sino te tira un
+        //si encuentra una url la agrega a un contenedor de url,
+        //verifica la url q crea y sino te tira un
         //exception
         if ( report.spiderFoundURL(base,url) )
-
           addURL(url);
-      } catch ( MalformedURLException e ) {
-        log("Found malformed URL: " + str );
       }
+      catch (MalformedURLException e) {log("Found malformed URL: " + str );}
     }
   }
 
@@ -464,7 +463,7 @@ public class Spider {
    * Called internally to log information
    * This basic method just writes the log
    * out to the stdout.
-   *
+   * Emplea un log para controlar lo que va realizando el parser
    * @param entry The information to be written to the log.
    */
   public void log(String entry)
