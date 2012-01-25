@@ -440,7 +440,7 @@ public class Spider {
         //Para luego poder ser analizado con mas facilidad por el
         //Search engine
         System.out.println(String.valueOf(data));
-        SBConcatText.append(String.valueOf(data));
+        SBConcatText.append(String.valueOf(data).toLowerCase());
         SBConcatText.append(" _ ");
         }
    }
