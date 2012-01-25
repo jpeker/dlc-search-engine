@@ -16,7 +16,30 @@ import java.util.Map;
  */
 public class WordTracker {
 
-    public WordTracker(Word word) {
+
+    public WordTracker ()
+    {
+
+    }
+
+    public int getFrequency() {
+        return frequency;
+    }
+
+    public void setFrequency(int frequency) {
+        this.frequency = frequency;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+    private int frequency;
+    private String location;
+   /*/ public WordTracker(Word word) {
         this.word = word;
     }
     
@@ -44,7 +67,7 @@ public class WordTracker {
      * @return the times that a the word of the wordTracker appears on a specified 
      * document.
      */
-    public int timesThatWordRepeatsOnDocument(Document document){
+  /*  public int timesThatWordRepeatsOnDocument(Document document){
         int totalTimes = 0;
         if(documentsPresent.containsKey(document.getLocation())){
             totalTimes = (Integer)documentsPresent.get(document.getLocation());
@@ -55,7 +78,7 @@ public class WordTracker {
      * 
      * @return The number of documents where the word appears at least once.
      */
-    public int numberOfDocumentsWhereWordAppears(){
+   /* public int numberOfDocumentsWhereWordAppears(){
         return documentsPresent.size();
     }
     @Override
@@ -67,6 +90,6 @@ public class WordTracker {
             aux+="\n"+entry.getKey().toString()+"-"+entry.getValue().toString();
         }
         return aux;
-    }
+    }*/
     
 }

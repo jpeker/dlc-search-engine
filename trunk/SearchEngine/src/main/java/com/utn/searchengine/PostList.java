@@ -4,6 +4,7 @@
  */
 package com.utn.searchengine;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -16,19 +17,19 @@ import java.util.Set;
  * @author aaltamir
  */
 public class PostList {
-    private Map<String, WordTracker> postList = new HashMap<String, WordTracker>();
+    private Map<String,  ArrayList<WordTracker> > postList = new HashMap<String,  ArrayList<WordTracker> >();
 
-    public Map<String, WordTracker> getPostList() {
+    public Map<String,  ArrayList<WordTracker> > getPostList() {
         return postList;
     }
 
-    public void setPostList(Map<String, WordTracker> postList) {
+    public void setPostList(Map<String, ArrayList<WordTracker> > postList) {
         this.postList = postList;
     }
 
     public PostList() {
     }
-    public PostList(Map<String, WordTracker> postList){
+    public PostList(Map<String,  ArrayList<WordTracker> > postList){
         this.postList = postList;
     }
     /**
@@ -51,13 +52,13 @@ public class PostList {
                 
                 Map<String, Integer> wordLocations = new HashMap<String, Integer>();
                 wordLocations.put(pageName, timesRepeated);
-                WordTracker wordTracker = new WordTracker(word);
-                wordTracker.setDocumentsPresent(wordLocations);
-                postList.put(word.getName(), wordTracker);
+              //  WordTracker wordTracker = new WordTracker(word);
+               // wordTracker.setDocumentsPresent(wordLocations);
+               // postList.put(word.getName(), wordTracker);
             }
             else{
-                WordTracker wordTrackerToModify = postList.get(entry.getKey().toString());
-                wordTrackerToModify.getDocumentsPresent().put(pageName, timesRepeated);
+              //  WordTracker wordTrackerToModify = postList.get(entry.getKey().toString());
+              //  wordTrackerToModify.getDocumentsPresent().put(pageName, timesRepeated);
             }
         }
     }
@@ -70,8 +71,8 @@ public class PostList {
     public int totalTimesThatWordRepeatsOnDocument(Word word, Document document){
         int totalTimes=0;
         if(postList.containsKey(word.getName())){
-            WordTracker wordTrackerOfRequestedWord = (WordTracker)postList.get(word.getName());
-            totalTimes = wordTrackerOfRequestedWord.timesThatWordRepeatsOnDocument(document);
+          //  WordTracker wordTrackerOfRequestedWord = (WordTracker)postList.get(word.getName());
+           // totalTimes = wordTrackerOfRequestedWord.timesThatWordRepeatsOnDocument(document);
         }
         return totalTimes;
     }
@@ -83,8 +84,8 @@ public class PostList {
     public int numberOfDocumentsWhereWordAppears(Word word){
         int numberOfDocuments = 0;
         if(postList.containsKey(word.getName())){
-            WordTracker wordTracker = postList.get(word.getName());
-            numberOfDocuments = wordTracker.numberOfDocumentsWhereWordAppears();
+//            WordTracker wordTracker = postList.get(word.getName());
+  //          numberOfDocuments = wordTracker.numberOfDocumentsWhereWordAppears();
         }
         return numberOfDocuments;
     }
