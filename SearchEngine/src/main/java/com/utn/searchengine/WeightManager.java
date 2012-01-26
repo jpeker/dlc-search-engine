@@ -31,11 +31,11 @@ public class WeightManager {
     
     public double estimateWeight(){
         LocalWordCountManager wordCountManager = new LocalWordCountManager();
-        Document document1 = new Document("Doc1","C:\\Users\\Peker\\Documents\\Julian Peker\\Final dlc\\SearchEngine\\src\\main\\resources\\TestDocuments\\doc1.txt" );
-        Document document2 = new Document("Doc1","C:\\Users\\Peker\\Documents\\Julian Peker\\Final dlc\\SearchEngine\\src\\main\\resources\\TestDocuments\\doc2.txt" );
-        Document document3 = new Document("Doc1","C:\\Users\\Peker\\Documents\\Julian Peker\\Final dlc\\SearchEngine\\src\\main\\resources\\TestDocuments\\doc3.txt" );
-        Document document4 = new Document("Doc1","C:\\Users\\Peker\\Documents\\Julian Peker\\Final dlc\\SearchEngine\\src\\main\\resources\\TestDocuments\\doc4.txt" );
-        Document document5 = new Document("Doc1","C:\\Users\\Peker\\Documents\\Julian Peker\\Final dlc\\SearchEngine\\src\\main\\resources\\TestDocuments\\doc5.txt" );
+        Document document1 = new Document("Doc1","D:\\Projects\\JavaProjects\\SearchEngine\\SearchEngine\\src\\main\\resources\\TestDocuments\\doc1.txt" );
+        Document document2 = new Document("Doc1","D:\\Projects\\JavaProjects\\SearchEngine\\SearchEngine\\src\\main\\resources\\TestDocuments\\doc2.txt" );
+        Document document3 = new Document("Doc1","D:\\Projects\\JavaProjects\\SearchEngine\\SearchEngine\\src\\main\\resources\\TestDocuments\\doc3.txt" );
+        Document document4 = new Document("Doc1","D:\\Projects\\JavaProjects\\SearchEngine\\SearchEngine\\src\\main\\resources\\TestDocuments\\doc4.txt" );
+        Document document5 = new Document("Doc1","D:\\Projects\\JavaProjects\\SearchEngine\\SearchEngine\\src\\main\\resources\\TestDocuments\\doc5.txt" );
         wordCountManager.addDocument(document1);
         wordCountManager.addDocument(document2);
         wordCountManager.addDocument(document3);
