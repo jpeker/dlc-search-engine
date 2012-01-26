@@ -58,7 +58,7 @@ public class PostList {
                 postList.put(entry.getKey().toString(), wordTrackers);
             }
             else{
-              ArrayList<WordTracker> wordTrackersToModify = (ArrayList<WordTracker>) postList.get(entry.getKey().toString());
+              ArrayList<WordTracker> wordTrackersToModify = postList.get(entry.getKey().toString());
               wordTrackersToModify.add(new WordTracker(timesRepeated, documentLocation));
             }
         }
