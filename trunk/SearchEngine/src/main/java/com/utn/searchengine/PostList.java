@@ -39,26 +39,23 @@ public class PostList {
      * and the amount of times that it appeared.
      * @param words An array of locations and times that the word that the word
      * has been found on that document.
-     * @param pageName: Don't remember why the name of this parameter, 
-     * it is the word text.
+     * @param documentLocation: The document Location
      */
-    public void addDocumentWords(Map<String, Integer> words, String pageName){
+    public void addDocumentWords(Map<String, Integer> words, String documentLocation){
         Iterator iterator = words.entrySet().iterator();
         while(iterator.hasNext()){
             Map.Entry entry = (Map.Entry) iterator.next();
             int timesRepeated = (Integer)entry.getValue();
             if(!postList.containsKey(entry.getKey().toString())){
-                Word word = new Word(entry.getKey().toString());
+                WordTracker wordTracker = new WordTracker(timesRepeated, documentLocation);                
                 
-                Map<String, Integer> wordLocations = new HashMap<String, Integer>();
-                wordLocations.put(pageName, timesRepeated);
-              //  WordTracker wordTracker = new WordTracker(word);
-               // wordTracker.setDocumentsPresent(wordLocations);
-               // postList.put(word.getName(), wordTracker);
+               ArrayList<WordTracker> wordTrackers = new ArrayList<WordTracker>();
+               wordTrackers.add(wordTracker);
+                postList.put(entry.getKey().toString(), wordTrackers);
             }
             else{
-              //  WordTracker wordTrackerToModify = postList.get(entry.getKey().toString());
-              //  wordTrackerToModify.getDocumentsPresent().put(pageName, timesRepeated);
+              ArrayList<WordTracker> wordTrackersToModify = (ArrayList<WordTracker>) postList.get(entry.getKey().toString());
+              wordTrackersToModify.add(new WordTracker(timesRepeated, documentLocation));
             }
         }
     }
@@ -71,8 +68,14 @@ public class PostList {
     public int totalTimesThatWordRepeatsOnDocument(Word word, Document document){
         int totalTimes=0;
         if(postList.containsKey(word.getName())){
-          //  WordTracker wordTrackerOfRequestedWord = (WordTracker)postList.get(word.getName());
-           // totalTimes = wordTrackerOfRequestedWord.timesThatWordRepeatsOnDocument(document);
+            ArrayList<WordTracker> wordTrackerOfRequestedWord = postList.get(word.getName());
+            wordTrackerOfRequestedWord.indexOf(word);
+            for(WordTracker auxiliarWordTracker: wordTrackerOfRequestedWord){
+                if (auxiliarWordTracker.getLocation().equalsIgnoreCase(document.getLocation())){
+                    totalTimes = auxiliarWordTracker.getFrequency();
+                    break;
+                }
+            }
         }
         return totalTimes;
     }
@@ -84,8 +87,8 @@ public class PostList {
     public int numberOfDocumentsWhereWordAppears(Word word){
         int numberOfDocuments = 0;
         if(postList.containsKey(word.getName())){
-//            WordTracker wordTracker = postList.get(word.getName());
-  //          numberOfDocuments = wordTracker.numberOfDocumentsWhereWordAppears();
+            ArrayList<WordTracker> wordTrackers = postList.get(word.getName());
+            numberOfDocuments = wordTrackers.size(); 
         }
         return numberOfDocuments;
     }
