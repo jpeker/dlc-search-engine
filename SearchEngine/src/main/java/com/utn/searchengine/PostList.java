@@ -5,6 +5,8 @@
 package com.utn.searchengine;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -18,7 +20,7 @@ import java.util.Set;
  */
 public class PostList {
     private Map<String,  ArrayList<WordTracker> > postList = new HashMap<String,  ArrayList<WordTracker> >();
-
+    private  ArrayList<WordTracker> wordTrackers=null;
     public Map<String,  ArrayList<WordTracker> > getPostList() {
         return postList;
     }
@@ -43,14 +45,16 @@ public class PostList {
      */
     public void addDocumentWords(Map<String, Integer> words, String documentLocation){
         Iterator iterator = words.entrySet().iterator();
+        
         while(iterator.hasNext()){
             Map.Entry entry = (Map.Entry) iterator.next();
             int timesRepeated = (Integer)entry.getValue();
             if(!postList.containsKey(entry.getKey().toString())){
                 WordTracker wordTracker = new WordTracker(timesRepeated, documentLocation);                
                 
-               ArrayList<WordTracker> wordTrackers = new ArrayList<WordTracker>();
+              wordTrackers = new ArrayList<WordTracker>();
                wordTrackers.add(wordTracker);
+                sort();
                 postList.put(entry.getKey().toString(), wordTrackers);
             }
             else{
@@ -58,7 +62,32 @@ public class PostList {
               wordTrackersToModify.add(new WordTracker(timesRepeated, documentLocation));
             }
         }
+        
+      
     }
+    // lo ordeno mediante
+     private void sort ()
+    {
+        Comparator<WordTracker> comparator = new Compare () ;
+    Collections.sort(wordTrackers,  comparator);
+   /* Iterator i =  wordTrackers.iterator();// recorro para ver que lo ordena
+    while(i.hasNext())
+    {
+        WordTracker w = (WordTracker)i.next();
+        System.out.println("ordena "+w.getFrequency());
+    }*/
+    }
+     //class Comparator que ordena en forma decreciente
+    class Compare implements Comparator<WordTracker> {
+	@Override
+		public int compare(WordTracker lhs, WordTracker rhs) {
+  		if(rhs.getFrequency()>=lhs.getFrequency())
+            return 1 ;
+                else
+                    
+                    return -1;
+		}	
+	}
     /**
      * 
      * @param word: A Word
