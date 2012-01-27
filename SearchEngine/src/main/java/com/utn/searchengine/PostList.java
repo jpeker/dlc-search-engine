@@ -20,7 +20,7 @@ import java.util.Set;
  */
 public class PostList {
     private Map<String,  ArrayList<WordTracker> > postList = new HashMap<String,  ArrayList<WordTracker> >();
-    private  ArrayList<WordTracker> wordTrackers=null;
+   
     public Map<String,  ArrayList<WordTracker> > getPostList() {
         return postList;
     }
@@ -51,25 +51,25 @@ public class PostList {
             int timesRepeated = (Integer)entry.getValue();
             if(!postList.containsKey(entry.getKey().toString())){
                 WordTracker wordTracker = new WordTracker(timesRepeated, documentLocation);                
-                
-              wordTrackers = new ArrayList<WordTracker>();
+                 ArrayList<WordTracker> wordTrackers = new ArrayList<WordTracker>();
                wordTrackers.add(wordTracker);
-                sort();
                 postList.put(entry.getKey().toString(), wordTrackers);
             }
             else{
               ArrayList<WordTracker> wordTrackersToModify = postList.get(entry.getKey().toString());
               wordTrackersToModify.add(new WordTracker(timesRepeated, documentLocation));
+              sort(wordTrackersToModify);
+              
             }
         }
         
       
     }
     // lo ordeno mediante
-     private void sort ()
+     private void sort (ArrayList<WordTracker> wordTra)
     {
         Comparator<WordTracker> comparator = new Compare () ;
-    Collections.sort(wordTrackers,  comparator);
+    Collections.sort(wordTra,  comparator);
    /* Iterator i =  wordTrackers.iterator();// recorro para ver que lo ordena
     while(i.hasNext())
     {
