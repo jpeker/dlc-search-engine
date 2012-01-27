@@ -6,6 +6,7 @@ package com.utn.searchengine;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 
 /**
  * This class is an auxiliar to manage all the basic info about the documents.
@@ -16,6 +17,8 @@ public class DocumentManager {
     public Collection<Document> getDocuments() {
         return documents;
     }
+
+
 
     public void setDocuments(Collection<Document> documents) {
         this.documents = documents;
@@ -36,5 +39,14 @@ public class DocumentManager {
         documents.clear();
     }
     private Collection<Document> documents = new ArrayList<Document>();
-    
+     @Override
+    public String toString() {
+           String aux = "";
+        Iterator iterator = documents.iterator();
+        while(iterator.hasNext()){
+           Document document = (Document)iterator.next();
+            aux+="\n"+document.toString();
+        }
+        return aux;
+    }
 }
