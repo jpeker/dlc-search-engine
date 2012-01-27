@@ -15,6 +15,8 @@ public class Document {
         return location;
     }
 
+
+
     public void setLocation(String location) {
         this.location = location;
     }
@@ -51,5 +53,9 @@ public class Document {
     public boolean gotsModuleAssociated(){
         return this.module!=-1;
     }
-    
+        @Override
+    public String toString() {
+        String aux ="name=" + name + " location=" + location + "module=" + module ;
+        return aux;
+    }
 }
