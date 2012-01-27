@@ -9,9 +9,9 @@ package com.utn.searchengine;
 public class App 
 {
     public static void main( String[] args )
-    {        
+    {      
         Word word = new Word ("combustible");
-        Document document = new Document("doc1", "G:\\Julian Peker\\Final dlc\\SearchEngine\\src\\main\\resources\\TestDocuments\\doc1.txt");
+        Document document = new Document("doc1", " C:\\Users\\Peker\\Documents\\Julian Peker\\Final dlc\\SearchEngine\\src\\main\\resources\\TestDocuments\\doc1.txt");
         WeightManager weight = new WeightManager(word, document);
         weight.estimateWeight();
         
