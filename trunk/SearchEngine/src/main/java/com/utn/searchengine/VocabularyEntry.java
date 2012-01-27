@@ -20,12 +20,12 @@ public class VocabularyEntry {
         this.DocumentBiggestTermFrecuency = DocumentBiggestTermFrecuency;
     }
 
-    public int getTotalTimesThatWordAppears() {
-        return totalTimesThatWordAppears;
+    public int getTotalDocumentsThatWordAppears() {
+        return totalDocumentsWhereWordAppears;
     }
 
-    public void setTotalTimesThatWordAppears(int totalTimesThatWordAppears) {
-        this.totalTimesThatWordAppears = totalTimesThatWordAppears;
+    public void setTotalDocumentsThatWordAppears(int totalTimesThatWordAppears) {
+        this.totalDocumentsWhereWordAppears = totalTimesThatWordAppears;
     }
 
     public Word getWord() {
@@ -39,16 +39,16 @@ public class VocabularyEntry {
     public VocabularyEntry(Word word) {
         this.word = word;
         this.DocumentBiggestTermFrecuency =0;
-        this.totalTimesThatWordAppears = 0;
+        this.totalDocumentsWhereWordAppears = 0;
     }
 
-    public VocabularyEntry(Word word, int totalTimesThatWordAppears, int DocumentBiggestTermFrecuency) {
+    public VocabularyEntry(Word word, int totalDocumentsWhereWordAppears, int DocumentBiggestTermFrecuency) {
         this.word = word;
-        this.totalTimesThatWordAppears = totalTimesThatWordAppears;
+        this.totalDocumentsWhereWordAppears = totalDocumentsWhereWordAppears;
         this.DocumentBiggestTermFrecuency = DocumentBiggestTermFrecuency;
     }
     private Word word;
-    private int totalTimesThatWordAppears;
+    private int totalDocumentsWhereWordAppears;
     private int DocumentBiggestTermFrecuency;
     
     @Override
@@ -57,7 +57,7 @@ public class VocabularyEntry {
     }
     @Override
     public String toString(){
-        String aux = "Word: "+word.toString()+", Biggest Term Frecuency: "+ this.DocumentBiggestTermFrecuency+", Total times that word Appears: "+this.totalTimesThatWordAppears;
+        String aux = "Word: "+word.toString()+", Biggest Term Frecuency: "+ this.DocumentBiggestTermFrecuency+", Total times that word Appears: "+this.totalDocumentsWhereWordAppears;
         return aux;
     }
     

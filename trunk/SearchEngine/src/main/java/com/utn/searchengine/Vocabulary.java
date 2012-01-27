@@ -51,7 +51,7 @@ public class Vocabulary {
                 //if the word appears for the first time on the vocabulary, the values of max term frecuency and 
                 //the biggest frecuency and the total times that the word appears are the same.
                 int values = (Integer)entry.getValue();
-                VocabularyEntry vocabularyEntry = new VocabularyEntry(word, values, values);
+                VocabularyEntry vocabularyEntry = new VocabularyEntry(word, 1, values);
                 vocabularyWords.put(vocabularyEntry.getWord().toString(), vocabularyEntry);
             }
             else{
@@ -62,8 +62,9 @@ public class Vocabulary {
                 if(timesThatWordAppearsOnNewDocument > biggestDocumentTermFrecuency){
                     entryToModify.setDocumentBiggestTermFrecuency(timesThatWordAppearsOnNewDocument);
                 }
-                int newTotalTimes =entryToModify.getTotalTimesThatWordAppears()+timesThatWordAppearsOnNewDocument;
-                entryToModify.setTotalTimesThatWordAppears(newTotalTimes);
+                int newTotalDocuments =entryToModify.getTotalDocumentsThatWordAppears();
+                newTotalDocuments++;
+                entryToModify.setTotalDocumentsThatWordAppears(newTotalDocuments);
             }
         }
     
