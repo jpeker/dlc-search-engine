@@ -83,4 +83,11 @@ public class StopWordMap {
         // Devuelvo en funcion del idioma elegido
         return stopWordFile;
     }
+    //Verifica si la Word esta contenida en el HashMap de stopWords
+    public boolean isStopWord(Word word){
+        if(stopWordMap.containsValue(word.getName())){
+        return true;
+        }
+    return false;
+    }
 }
