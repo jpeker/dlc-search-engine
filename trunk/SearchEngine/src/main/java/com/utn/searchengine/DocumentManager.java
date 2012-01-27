@@ -22,6 +22,7 @@ public class DocumentManager {
     }
     public void addDocument(Document document){
         documents.add(document);
+
     }
     public void remove(Document document){
         documents.remove(document);
