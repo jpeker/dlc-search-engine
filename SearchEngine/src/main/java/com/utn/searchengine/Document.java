@@ -24,17 +24,24 @@ public class Document {
     public String getName() {
         return name;
     }
+    
+    public String getText() {
+        return text;
+    }
+
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public Document(String name, String location) {
+    public Document(String name, String location, String text) {
         this.name = name;
         this.location = location;
+        this.text=text;
     }
     private String name;
     private String location;
+    private String text;
     //it could be a nice idea to save on the document the module in
     //order to rehuse it and dont waste tamir recalculating that value allTime.
     private double module = -1;
