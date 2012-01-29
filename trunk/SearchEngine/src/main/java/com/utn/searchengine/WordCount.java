@@ -4,13 +4,14 @@
  */
 package com.utn.searchengine;
 
-import java.io.FileInputStream;
-import java.nio.CharBuffer;
-import java.nio.MappedByteBuffer;
-import java.nio.channels.FileChannel;
-import java.nio.charset.Charset;
-import java.nio.charset.CharsetDecoder;
+//import java.io.FileInputStream;
+//import java.nio.CharBuffer;
+//import java.nio.MappedByteBuffer;
+//import java.nio.channels.FileChannel;
+//import java.nio.charset.Charset;
+//import java.nio.charset.CharsetDecoder;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -25,23 +26,23 @@ public final class WordCount {
      * @param filePath: A path to a disk file
      * @return a collection of words and the times that those words repeats on the file
      */
-      public static Map<String, Integer> retrieveWordCount(String filePath){
-          if(filePath.isEmpty()){
+      public static Map<String, Integer> retrieveWordCount(Document entry){
+          if(entry==null){
               return null;
           }
-          String filename = filePath;
+          //String filename = filePath;
           try{
     // Map File from filename to byte buffer
-    FileInputStream input = new FileInputStream(filename);
-    FileChannel channel = input.getChannel();
-    int fileLength = (int) channel.size();
-    MappedByteBuffer buffer = channel.map(FileChannel.MapMode.READ_ONLY, 0,
-        fileLength);
+    //FileInputStream input = new FileInputStream(filename);
+    //FileChannel channel = input.getChannel();
+    //int fileLength = (int) channel.size();
+    //MappedByteBuffer buffer = channel.map(FileChannel.MapMode.READ_ONLY, 0,
+    //    fileLength);
 
     // Convert to character buffer
-    Charset charset = Charset.forName("ISO-8859-1");
-    CharsetDecoder decoder = charset.newDecoder();
-    CharBuffer charBuffer = decoder.decode(buffer);
+    //Charset charset = Charset.forName("ISO-8859-1");
+    //CharsetDecoder decoder = charset.newDecoder();
+    //CharBuffer charBuffer = decoder.decode(buffer);
 
     // Create line pattern
     Pattern linePattern = Pattern.compile(".*$", Pattern.MULTILINE);
@@ -50,8 +51,9 @@ public final class WordCount {
     Pattern wordBreakPattern = Pattern.compile("[\\p{Punct}\\s}]");
 
     // Match line pattern to buffer
-    Matcher lineMatcher = linePattern.matcher(charBuffer);
+    Matcher lineMatcher = linePattern.matcher(entry.getText().subSequence(0, entry.getText().toString().length()).toString());
 
+    //
     Map map = new TreeMap();
     Integer ONE = new Integer(1);
 

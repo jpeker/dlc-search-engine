@@ -4,10 +4,13 @@
  */
 package com.utn.searchengine;
 
+import java.lang.String;
+import java.util.AbstractMap;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 /**
@@ -33,12 +36,14 @@ public class LocalWordCountManager implements WordCountManager{
      * @param document a Document
      */
     public void addDocument(Document document){
-        pages = WordCount.retrieveWordCount(document.getLocation());
+       // Map.Entry<String, String> entry= new Map.Entry<String, String>("antichrist", "666");
+        //entry.setValue(document.getLocation());
+        pages = WordCount.retrieveWordCount(document);
         vocabulary.addDocumentWords(pages);
         postList.addDocumentWords(pages, document.getLocation());
         documentManager.addDocument(document);
-         this.updatingModuleDocuments();
-         System.out.println("\nContenido de documentManager: "+documentManager.toString());
+        this.updatingModuleDocuments();
+        System.out.println("\nContenido de documentManager: "+documentManager.toString());
         System.out.println("\nContenido de Vocabulary: "+vocabulary.toString());
         System.out.println("\nContenido de PostList: "+postList.toString());
         
