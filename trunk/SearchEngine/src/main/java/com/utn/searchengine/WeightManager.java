@@ -13,9 +13,9 @@ package com.utn.searchengine;
  * @author aaltamir
  */
 public class WeightManager {
-    private Word word;
+        private Word word;
     private Document document;
-
+    protected HashMap hashMapCrawlered=new HashMap();
     public Word getWord() {
         return word;
     }
@@ -28,14 +28,34 @@ public class WeightManager {
         this.word = word;
         this.document = document;
     }
-  
+
+   
+   
     public double estimateWeight(){
         LocalWordCountManager wordCountManager = new LocalWordCountManager();
-        Document document1 = new Document("Doc1","C:\\Users\\Peker\\Documents\\Julian Peker\\Final dlc\\SearchEngine\\src\\main\\resources\\TestDocuments\\doc1.txt" );
-        Document document2 = new Document("Doc1","C:\\Users\\Peker\\Documents\\Julian Peker\\Final dlc\\SearchEngine\\src\\main\\resources\\TestDocuments\\doc2.txt" );
-        Document document3 = new Document("Doc1","C:\\Users\\Peker\\Documents\\Julian Peker\\Final dlc\\SearchEngine\\src\\main\\resources\\TestDocuments\\doc3.txt" );
-        Document document4 = new Document("Doc1","C:\\Users\\Peker\\Documents\\Julian Peker\\Final dlc\\SearchEngine\\src\\main\\resources\\TestDocuments\\doc4.txt" );
-        Document document5 = new Document("Doc1","C:\\Users\\Peker\\Documents\\Julian Peker\\Final dlc\\SearchEngine\\src\\main\\resources\\TestDocuments\\doc5.txt" );
+   
+        hashMapCrawlered.put("http://www.yatefortuna.com.ar", "El combustible diesel es vital para la agricultura");
+        hashMapCrawlered.put("http://www.yatefortuna.com.ar/index.html","El transporte de pasajeros tiene un subsidio para el combustible diesel");
+        hashMapCrawlered.put("http://www.yatefortuna.com.ar/barcos.htm", "El transporte no funciona hoy");
+        hashMapCrawlered.put("http://www.yatefortuna.com.ar/servicios.htm", "Hay transportes y transportes...");
+        hashMapCrawlered.put("http://www.yatefortuna.com.ar/galeria.htm", "El diesel venezolano es de menor calidad que el diesel argentino");
+
+
+        Collection c =  hashMapCrawlered.values();
+        Vector vValues = new Vector();
+        Iterator itr = c.iterator();
+        while(itr.hasNext())
+        {
+        String s=itr.next().toString();
+        System.out.println(s);
+        vValues.add(s);
+        }
+  
+        Document document1 = new Document("Doc1",hashMapCrawlered.get("http://www.yatefortuna.com.ar").toString(),"El combustible diesel es vital para la agricultura");
+        Document document2 = new Document("Doc2",hashMapCrawlered.get("http://www.yatefortuna.com.ar/index.html").toString(),"El transporte de pasajeros tiene un subsidio para el combustible diesel");
+        Document document3 = new Document("Doc3",hashMapCrawlered.get("http://www.yatefortuna.com.ar/barcos.htm").toString(),"El transporte no funciona hoy");
+        Document document4 = new Document("Doc4",hashMapCrawlered.get("http://www.yatefortuna.com.ar/servicios.htm").toString(),"Hay transportes y transportes...");
+        Document document5 = new Document("Doc5",hashMapCrawlered.get("http://www.yatefortuna.com.ar/galeria.htm").toString(),"El diesel venezolano es de menor calidad que el diesel argentino");
 
         wordCountManager.addDocument(document1);
         wordCountManager.addDocument(document2);
