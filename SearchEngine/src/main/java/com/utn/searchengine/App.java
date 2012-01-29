@@ -11,7 +11,20 @@ public class App
     public static void main( String[] args )
     {      
         Word word = new Word ("combustible");
-        Document document = new Document("doc1", " C:\\Users\\Peker\\Documents\\Julian Peker\\Final dlc\\SearchEngine\\src\\main\\resources\\TestDocuments\\doc1.txt");
+        
+        HashMap hashMapCrawlered= new HashMap();
+        hashMapCrawlered.put("http://www.yatefortuna.com.ar", "El combustible diesel es vital para la agricultura");
+        Collection c = hashMapCrawlered.values();
+        Vector vValues = new Vector();
+        Iterator itr = c.iterator();
+        while(itr.hasNext())
+        {
+        String s=itr.next().toString();
+        System.out.println(s);
+        vValues.add(s);
+        }
+        Document document = new Document("Doc1",hashMapCrawlered.get("http://www.yatefortuna.com.ar").toString(),"El combustible diesel es vital para la agricultura");
+
         WeightManager weight = new WeightManager(word, document);
         weight.estimateWeight();
         
