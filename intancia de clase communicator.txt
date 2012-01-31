@@ -1,0 +1,7 @@
+Communicator com = new Communicator ();
+       
+          Iterator i =  com.beginCrawler("http://ridsoftware.com.ar").entrySet().iterator();
+          while(i.hasNext()){
+                    Map.Entry entry = (Map.Entry) i.next();
+                   System.out.println("url "+entry.getKey()+"\n"+entry.getValue().toString()  );
+               }
