@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.HashMap;
 
 /**
  *
@@ -39,11 +40,12 @@ public class Communicator implements Runnable,ISpiderReportable{
    */
   protected int goodLinksCount = 0;
 
-  public void beginCrawler(String textToCrawl){
+  public void beginCrawler(String textToCrawl)throws FinishException{
      if ( backgroundThread==null ) {
-        backgroundThread = new Thread(this);
-        backgroundThread.start();
-        this.textToCrawl=textToCrawl;
+      this.textToCrawl=textToCrawl;
+         //backgroundThread = new Thread(this);
+        //backgroundThread.start()
+       this.runy() ;
         goodLinksCount=0;
         badLinksCount=0;
     }
@@ -51,21 +53,40 @@ public class Communicator implements Runnable,ISpiderReportable{
         spider.cancel();
     }
 }
+    public HashMap getHashMapPages()
+  {
+    return spider.getHashMapPages();
+  }
     public void run() {
       try {
         spider = new Spider(this);
         spider.clear();
         base = new URL(textToCrawl);
         spider.addURL(base);
-        spider.begin();
+        //   spider.begin();
         backgroundThread=null;
     }
       catch ( MalformedURLException e ) {
         System.out.println("error "+ e.toString());
     }
-        throw new UnsupportedOperationException("Not supported yet.");
+
+
+    }
+ public void runy() throws FinishException {
+      try {
+        spider = new Spider(this);
+        spider.clear();
+        base = new URL(textToCrawl);
+        spider.addURL(base);
+           spider.begin();
+        backgroundThread=null;
+    }
+      catch ( MalformedURLException e ) {
+        System.out.println("error "+ e.toString());
     }
 
+
+    }
  public boolean spiderFoundURL(URL base, URL url) {
     if ( !checkLink(url) ) {
         badLinksCount++;

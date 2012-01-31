@@ -271,7 +271,7 @@ public class Spider {
   /**
    * Metodo que lanza el spider
    */
-  public void begin()
+  public void begin() throws FinishException
   {
     cancel = false;
     while ( !getWorkloadWaiting().isEmpty() && !cancel ) {
@@ -279,6 +279,11 @@ public class Spider {
       //Lo convierto en un array de object para procesar las URL
       for ( int i=0;(i<list.length)&&!cancel;i++ )
         processURL((URL)list[i]);
+     if(getWorkloadWaiting().size()==0)
+     {
+     throw new FinishException("Ha terminado la aplicacion");
+     }
+
     }
   }
 
