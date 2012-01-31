@@ -4,13 +4,11 @@
  */
 package com.utn.searchengine;
 
-import java.lang.String;
-import java.util.AbstractMap;
+
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 /**

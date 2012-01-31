@@ -4,6 +4,11 @@
  */
 package com.utn.searchengine;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Vector;
+
 
 
 /**
@@ -13,7 +18,7 @@ package com.utn.searchengine;
  * @author aaltamir
  */
 public class WeightManager {
-        private Word word;
+    private Word word;
     private Document document;
     protected HashMap hashMapCrawlered=new HashMap();
     public Word getWord() {
