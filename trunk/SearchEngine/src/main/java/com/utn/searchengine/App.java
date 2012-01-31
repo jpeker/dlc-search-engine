@@ -33,7 +33,5 @@ public class App
         WeightManager weight = new WeightManager(word, document);
         weight.estimateWeight();
         
-        //WordCount wordCount = new WordCount();
-        //wordCount.retrieveWordCount("C:\\Users\\aaltamir\\Desktop\\JSpider TODO.txt");
     }
 }
