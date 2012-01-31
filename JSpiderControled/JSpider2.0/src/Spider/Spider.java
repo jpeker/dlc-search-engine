@@ -17,7 +17,7 @@ import java.util.regex.Pattern;
 public class Spider {
     private final static Pattern BOTTOMFILTERS =
             Pattern.compile(".*(\\.(css|js|bmp|gif|jpe?g"
-            + "|png|tiff?|mid|mp2|mp3|mp4"
+            + "|png|tiff?|mid|mp2|mp3|JPG|mp4"
             + "|wav|avi|mov|mpeg|ram|m4v|pdf"
             + "|rm|smil|wmv|swf|wma|zip|rar|gz|xml|php\\?rsd))$");
     private final static Pattern MIDDLEFILTERS =
@@ -248,7 +248,7 @@ public class Spider {
     //Quito la URL actual de waiting ya que fue procesada
     //Añado hash map la url actual, con todo el texto de esa url
     getWorkloadWaiting().remove(url);
-    HashMapPage.put(url,SBConcatText);
+    HashMapPage.put(url,SBConcatText.toString());
     getWorkloadProcessed().add(url);
     //Vacio el StringBuilder
     SBConcatText.delete(0,SBConcatText.length());
@@ -271,7 +271,7 @@ public class Spider {
   /**
    * Metodo que lanza el spider
    */
-  public void begin() throws FinishException
+  public void begin() 
   {
     cancel = false;
     while ( !getWorkloadWaiting().isEmpty() && !cancel ) {
@@ -279,10 +279,7 @@ public class Spider {
       //Lo convierto en un array de object para procesar las URL
       for ( int i=0;(i<list.length)&&!cancel;i++ )
         processURL((URL)list[i]);
-     if(getWorkloadWaiting().size()==0)
-     {
-     throw new FinishException("Ha terminado la aplicacion");
-     }
+  
 
     }
   }
