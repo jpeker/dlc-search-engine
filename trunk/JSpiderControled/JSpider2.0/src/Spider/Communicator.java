@@ -39,50 +39,59 @@ public class Communicator implements Runnable,ISpiderReportable{
    * How many good links have been found
    */
   protected int goodLinksCount = 0;
-
-  public void beginCrawler(String textToCrawl)throws FinishException{
+  private HashMap pages;
+  public HashMap beginCrawler(String textToCrawl){
      if ( backgroundThread==null ) {
       this.textToCrawl=textToCrawl;
-         //backgroundThread = new Thread(this);
-        //backgroundThread.start()
-       this.runy() ;
-        goodLinksCount=0;
+      //  backgroundThread = new Thread(this);
+       // backgroundThread.start();
+     this.runy();
+     goodLinksCount=0;
         badLinksCount=0;
+       return getHashMapPages();  
     }
     else {
-        spider.cancel();
+        pages=null;
+         spider.cancel();
+        return pages;
+       
     }
+     
 }
     public HashMap getHashMapPages()
   {
     return spider.getHashMapPages();
   }
-    public void run() {
+    public void run()  {
       try {
         spider = new Spider(this);
         spider.clear();
         base = new URL(textToCrawl);
         spider.addURL(base);
-        //   spider.begin();
+          spider.begin();
+          
         backgroundThread=null;
     }
       catch ( MalformedURLException e ) {
         System.out.println("error "+ e.toString());
+        
     }
 
 
     }
- public void runy() throws FinishException {
+  public void runy()  {
       try {
         spider = new Spider(this);
         spider.clear();
         base = new URL(textToCrawl);
         spider.addURL(base);
-           spider.begin();
+          spider.begin();
+          
         backgroundThread=null;
     }
       catch ( MalformedURLException e ) {
         System.out.println("error "+ e.toString());
+        
     }
 
 
