@@ -112,6 +112,5 @@ public class Communicator implements Runnable,ISpiderReportable{
     public void spiderFoundURLError(URL url) {
         badLinksCount++;
         System.out.println(url +" gots errors");
-        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
