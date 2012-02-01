@@ -200,7 +200,10 @@ public class Spider {
   {
     try {
       log("Processing: " + url );
-       if(! RobotsParser.robotSafe(url)) {return;}
+       if(! RobotsParser.robotSafe(url)) {
+        getWorkloadWaiting().remove(url);
+        getWorkloadProcessed().add(url);
+           return;}
       //verifica si la url esta en el archivo
       //robots para ver si puede entrar, sino se puede entrar
       //retorno terminando el metodo
