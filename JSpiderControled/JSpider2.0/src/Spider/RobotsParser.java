@@ -1,7 +1,4 @@
-/*
- * RobotsParser clasea que parsea el archivo robots.txt de un sitio web
- * Usando siempre la direccion base con protocolo http
- */
+
 package Spider;
 
 import java.io.IOException;
@@ -11,8 +8,8 @@ import java.net.URL;
 import java.util.StringTokenizer;
 
 /*
- *
- *
+ * RobotsParser clase que parsea el archivo robots.txt de un sitio web
+ * Usando siempre la direccion base con protocolo http
  */
 public class RobotsParser {
     //Palabras claves contenidas dentro del archivo robots.txt necesarias
@@ -27,8 +24,9 @@ public class RobotsParser {
         //http://www.robotstxt.org/robotstxt.html ver estandar aqui
 	String strRobot = "http://" + strHost + "/robots.txt";
 	URL urlRobot;
-	try { 
-	    urlRobot = new URL(strRobot);//Checkea por URL mal formada
+	try {
+            //Checkea por URL mal formada
+	    urlRobot = new URL(strRobot);
 	} catch (MalformedURLException e) {
 	    // URL Mal formada, no confiar devolver false
 	    return false;
@@ -41,8 +39,6 @@ public class RobotsParser {
 	    int numRead = urlRobotStream.read(b);
 	    strCommands = new String(b, 0, numRead);
 	    while (numRead != -1) {
-//		if (Thread.currentThread() != searchThread)
-//		    break;
 		numRead = urlRobotStream.read(b);
 		if (numRead != -1) {
 		    String newCommands = new String(b, 0, numRead);
