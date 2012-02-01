@@ -181,8 +181,6 @@ public class Spider {
   }
   private boolean isTextPage(URL url)
   {
-     // if(url == null ||workloadUnused.contains(url))
-     //     return false;
       try
       {
         URLConnection connection = url.openConnection();
