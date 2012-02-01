@@ -177,20 +177,6 @@ public class Spider {
   {
       if(connection ==null)
           return false;
-//     if ( (connection.getContentType()!=null)
-//              && !connection.getContentType().toLowerCase().startsWith("text/")
-//              || (connection.getContentType().endsWith("css")))
-//              //|| !connection.getContentType().toLowerCase().startsWith("application/")
-//              //|| (connection.getContentType().endsWith("rss+xml"))  )
-//      {
-//          return false;
-//      }
-//     if ( (connection.getContentType()!=null)
-//              && !connection.getContentType().toLowerCase().startsWith("application/")
-//              && (connection.getContentType().endsWith("rss+xml")))
-//      {
-//          return false;
-//      }
       return true;
   }
   private boolean isTextPage(URL url)
@@ -279,18 +265,8 @@ public class Spider {
       //Lo convierto en un array de object para procesar las URL
       for ( int i=0;(i<list.length)&&!cancel;i++ )
         processURL((URL)list[i]);
-  
-
     }
   }
-
-    /**
-     * @return the workLoadUnused
-     */
-    //public Collection getWorkloadUnused() {
-    //    return workloadUnused;
-    //}
-
 /**
  * Creo un parser de HTML en funcion de la clase HTML editor
  * empleada para parsear y detectar los links
@@ -305,6 +281,7 @@ public class Spider {
     {
       this.base = base;
     }
+
     /**
      * Verifico si existen tags indeseados, es decir tags que no deben
      * tener texto comparo el tag actual con el tag indeseado, con
@@ -346,7 +323,6 @@ public class Spider {
       String href = (String)atributeSet.getAttribute(HTML.Attribute.HREF);
       if((href!=null)&&((BOTTOMFILTERS.matcher(href).matches())
                 ||(MIDDLEFILTERS.matcher(href).matches())))
-       //if((href!=null)&&(BOTTOMFILTERS.matcher(href).matches()))
        {
             //Verifco si el link encontrado tiene extension valida de texto
             //Html para luego poder acceder a ese contenido
@@ -367,10 +343,6 @@ public class Spider {
       int i = href.indexOf('#');
       if ( i!=-1 )
       href = href.substring(0,i);
-      //if ( href.toLowerCase().startsWith("mailto:") ) {
-      //  report.spiderFoundEMail(href);
-      //  return;
-      //}
       handleLink(base,href);
     }
 
@@ -411,7 +383,8 @@ public class Spider {
     public void handleStartTag(HTML.Tag t,
                                MutableAttributeSet a,int pos)
     {
-      handleSimpleTag(t,a,pos);// Empiezo el analisis de los tags
+        // Empiezo el analisis de los tags
+        handleSimpleTag(t,a,pos);
     }
     /**
     *
