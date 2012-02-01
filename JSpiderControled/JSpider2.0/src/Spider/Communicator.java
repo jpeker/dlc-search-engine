@@ -7,58 +7,40 @@ import java.net.URLConnection;
 import java.util.HashMap;
 
 public class Communicator implements Runnable,ISpiderReportable{
-   /* The background spider thread */
-  protected Thread backgroundThread;
 
-  /**
-   * The spider object being used
-   */
-  protected String textToCrawl;// variable usadas para la urls que usa el crawler
+  protected Thread backgroundThread; //El hilo de background para el spider
+  protected String textToCrawl;// variable usadas para la urls que usa el
+  //crawler
   protected Spider spider;//objeto que usamos para crawlear las urls
-
-  /**
-   * The URL that the spider began with
-   */
-  protected URL base;
-
-   /**
-   * How many bad links have been found
-   */
-  protected int badLinksCount = 0;
-
-  /**
-   * How many good links have been found
-   */
-  protected int goodLinksCount = 0;
+  protected URL base;//La url base donde el spider empieza a crawlear
+  protected int badLinksCount = 0;//cuantos links malos hay en el recorrido
+  protected int goodLinksCount = 0;//Cuantos links buens hay en el recorrido
   private HashMap pages;//HashMap con todas las urls y su contenido util
-  /* metodo que recibe un link como string, se utiliza para dar comienzo el proceso del crawler
+
+  /* metodo que recibe un link como string, se utiliza para dar
+   * comienzo el proceso del crawler
    * y devuelve el HashMap con las urls y su contenidos
    */
   public HashMap beginCrawler(String textToCrawl){
      if ( backgroundThread==null ) {
-      this.textToCrawl=textToCrawl;
-      //  backgroundThread = new Thread(this);
-       // backgroundThread.start();
-     this.initSpider();
-     goodLinksCount=0;
+        this.textToCrawl=textToCrawl;
+        this.initSpider();
+        goodLinksCount=0;
         badLinksCount=0;
-       return getHashMapPages();  
+        return getHashMapPages();
     }
     else {
-        pages=null;
+         pages=null;
          spider.cancel();
-        return pages;
-       
+         return pages;
+        }
     }
-     
-}
-    public HashMap getHashMapPages()
+  public HashMap getHashMapPages()
   {
     return spider.getHashMapPages();
   }
 
-
-    public void run()  {
+  public void run()  {
       try {
         spider = new Spider(this);
         spider.clear();
@@ -70,20 +52,18 @@ public class Communicator implements Runnable,ISpiderReportable{
     }
       catch ( MalformedURLException e ) {
         System.out.println("error "+ e.toString());
-        
+    }
     }
 
-
-    }
-
-    /*Metodo que da inicio el spider, crea la url , verifica que este bien formado si no tira una excepcion
-     *
+    /*Metodo que da inicio el spider, crea la url ,
+     *verifica que este bien formado si no tira una excepcion
      */
   public void initSpider()  {
       try {
         spider = new Spider(this);// Creo el objeto spider
         spider.clear();
-        base = new URL(textToCrawl);//creo la url con el link en forma de string
+        base = new URL(textToCrawl);
+        //creo la url con el link en forma de string
         spider.addURL(base); //agrego la url como base
         spider.begin();//comienza a crawlear
          }
@@ -92,7 +72,8 @@ public class Communicator implements Runnable,ISpiderReportable{
         }
 }
   /*
-   * es llamado por el spyder cuando encuentra la url, verifica si es buena y luego valida si pertene al mismo dominio
+   * es llamado por el spyder cuando encuentra la url,
+   * verifica si es buena y luego valida si pertene al mismo dominio
    * que la base
    * recibe la base y una url
    * devuelve true si pertence al mismo domnio
@@ -103,7 +84,8 @@ public class Communicator implements Runnable,ISpiderReportable{
         return false;
      }
     goodLinksCount++;
-    if ( !url.getHost().equalsIgnoreCase(base.getHost()) ) //valida que sea del mismo dominio que la base
+    if ( !url.getHost().equalsIgnoreCase(base.getHost()) )
+        //valida que sea del mismo dominio que la base
       return false;
     else
       return true;
