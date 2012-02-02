@@ -43,7 +43,7 @@ public class Similitude {
     public String toString(){
         String aux = "";
         aux+= "First Document: "+this.documentA.getName()+"-Second document: "+this.documentB.getName()
-                + "\nDocument A Module: "+this.documentA.getModule()+"-Query Module: "+this.documentB.getModule() +"-Similitude: "+this.similitude;
+               +"-Similitude: "+this.similitude;
         return aux;
     }
 
