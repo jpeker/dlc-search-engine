@@ -10,6 +10,7 @@ package com.utn.searchengine;
 //import java.nio.channels.FileChannel;
 //import java.nio.charset.Charset;
 //import java.nio.charset.CharsetDecoder;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.regex.Matcher;
@@ -25,13 +26,13 @@ public final class WordCount {
      * @param filePath: A path to a disk file
      * @return a collection of words and the times that those words repeats on the file
      */
-      public static Map<String, Integer> retrieveWordCount(Document entry){
-          if(entry==null){
+      public static Map<String, Integer> retrieveWordCount(Document doc){
+          if(doc==null){
               return null;
           }
           //String filename = filePath;
           try{
-    // Map File from filename to byte buffer
+    //Map File from filename to byte buffer
     //FileInputStream input = new FileInputStream(filename);
     //FileChannel channel = input.getChannel();
     //int fileLength = (int) channel.size();
@@ -48,9 +49,9 @@ public final class WordCount {
 
     // Create word pattern
     Pattern wordBreakPattern = Pattern.compile("[\\p{Punct}\\s}]");
-
+    //"[\\p{Punct}\\s}]"
     // Match line pattern to buffer
-    Matcher lineMatcher = linePattern.matcher(entry.getText().subSequence(0, entry.getText().toString().length()).toString());
+    Matcher lineMatcher = linePattern.matcher(doc.getText().subSequence(0, doc.getText().toString().length()).toString());
 
     //
     Map map = new TreeMap();
@@ -62,11 +63,16 @@ public final class WordCount {
       CharSequence line = lineMatcher.group();
 
       // Get array of words on line
+      ArrayList wordsFiltered= new ArrayList();
       String words[] = wordBreakPattern.split(line);
+      for(int i=0; i<words.length; i++){
+      if(!words[i].equals("")){wordsFiltered.add(words[i]);}
+      }
+        System.out.println("Para aca");
 
       // For each word
-      for (int i = 0, n = words.length; i < n; i++) {
-        if (words[i].length() > 0) {
+      for (int i = 0, n = wordsFiltered.size(); i < n; i++) {
+        if (wordsFiltered.size() > 0) {
           Integer frequency = (Integer) map.get(words[i]);
           if (frequency == null) {
             frequency = ONE;
@@ -74,18 +80,15 @@ public final class WordCount {
             int value = frequency.intValue();
             frequency = new Integer(value + 1);
           }
-          map.put(words[i], frequency);
+          map.put(wordsFiltered.get(i).toString(), frequency);
         }
       }
     }
     System.out.println(map);
     return map;
       }
-      
       catch(Exception e){
           return null;
-      }
-     
-      
+      } 
   }
 }
