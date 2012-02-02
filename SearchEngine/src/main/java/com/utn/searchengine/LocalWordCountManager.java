@@ -7,6 +7,7 @@ package com.utn.searchengine;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -211,14 +212,15 @@ public class LocalWordCountManager implements WordCountManager{
     }
      
     public Map<String, Integer> filterQuery(Map <String, Integer> wordsOfQuery){
+        Map<String, Integer>  filteredQuery= new HashMap<String, Integer> ();
         Iterator iterator = wordsOfQuery.entrySet().iterator();
         while(iterator.hasNext()){
             Map.Entry entry = (Map.Entry) iterator.next();
-            if(!vocabulary.containsWord(entry.getKey().toString())){
-                wordsOfQuery.remove(entry.toString());
+            if(vocabulary.containsWord(entry.getKey().toString())){
+                filteredQuery.put(entry.getKey().toString(), (Integer)entry.getValue());
             }
         }
-        return wordsOfQuery;
+        return filteredQuery;
         
     }
     
