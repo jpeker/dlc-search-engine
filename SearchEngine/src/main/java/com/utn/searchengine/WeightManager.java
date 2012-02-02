@@ -59,7 +59,7 @@ public class WeightManager {
         Document document1 = new Document("Doc1","http://www.yatefortuna.com.ar","el combustible diesel es vital para la agricultura");
         Document document2 = new Document("Doc2","http://www.yatefortuna.com.ar/index.html","el transporte de pasajeros tiene un subsidio para el combustible diesel");
         Document document3 = new Document("Doc3","http://www.yatefortuna.com.ar/barcos.htm","el transporte no funciona hoy");
-        Document document4 = new Document("Doc4","http://www.yatefortuna.com.ar/servicios.htm","Hay transportes y transportes...");
+        Document document4 = new Document("Doc4","http://www.yatefortuna.com.ar/servicios.htm","hay transportes y transportes...");
         Document document5 = new Document("Doc5","http://www.yatefortuna.com.ar/galeria.htm","el diesel venezolano es de menor calidad que el diesel argentino");
 
         wordCountManager.addDocument(document1);
