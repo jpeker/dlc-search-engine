@@ -36,7 +36,7 @@ public class WeightManager {
 
    
    
-    public double estimateWeight(){
+    public void estimateWeight(){
         LocalWordCountManager wordCountManager = new LocalWordCountManager();
    
         hashMapCrawlered.put("http://www.yatefortuna.com.ar", "El combustible diesel es vital para la agricultura");
@@ -67,18 +67,19 @@ public class WeightManager {
         wordCountManager.addDocument(document3);
         wordCountManager.addDocument(document4);
         wordCountManager.addDocument(document5);
+        /**
         Word wordToProve = new Word("combustible");
         double weight = wordCountManager.estimateWeight(wordToProve, document1);
         System.out.println("El peso de la palabra "+word.getName()+"es: "+weight);
         return weight;
+         * **/
+        String query = "todo sobre el diesel en la historia de la agricultura";
         
-        
-        
+        Collection<Similitude> similitudes = wordCountManager.determinateBestSimilitude(new Document("query", "query", query));
+        System.out.println("Probando resultado de la query: \n");
+        for(Similitude similitude: similitudes){
+            System.out.println(similitude.toString());
+        }
     }
-    
-    
-     
-    
-    
     
 }

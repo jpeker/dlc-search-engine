@@ -69,6 +69,10 @@ public class Vocabulary {
         }
     
     }
+    public boolean containsWord(String word){
+        return vocabularyWords.containsKey(word);
+    }
+    
     @Override
     public String toString(){
         String aux ="";

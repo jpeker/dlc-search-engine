@@ -9,7 +9,7 @@ package com.utn.searchengine;
  * or a text document
  * @author aaltamir
  */
-public class Document {
+public class Document implements Comparable{
 
     public String getLocation() {
         return location;
@@ -64,5 +64,10 @@ public class Document {
     public String toString() {
         String aux ="name=" + name + " location=" + location + "module=" + module ;
         return aux;
+    }
+
+    public int compareTo(Object o) {
+        Document documentToCompare = (Document) o;
+        return this.getLocation().compareTo(documentToCompare.getLocation());
     }
 }
