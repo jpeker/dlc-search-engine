@@ -149,6 +149,7 @@ public class LocalWordCountManager implements WordCountManager{
         
         System.out.println("The document module is: "+denominator);
         return numerator/denominator;
+
     }
     
     public Collection<Similitude> determinateBestSimilitude(Document document){
@@ -200,6 +201,8 @@ public class LocalWordCountManager implements WordCountManager{
             Word word = new Word(entry.getKey().toString());
             double weight1 = this.estimateWeight(word, document1);
             double weight2 = this.estimateWeight(word, document2);
+            System.out.println("docmanger "+document1.getLocation()+"peso "+weight1);
+            System.out.println("docquery "+document2.getLocation()+"peso "+weight2);
             coseno+= weight1*weight2;
          
         }

@@ -56,11 +56,11 @@ public class WeightManager {
         vValues.add(s);
         }
   
-        Document document1 = new Document("Doc1",hashMapCrawlered.get("http://www.yatefortuna.com.ar").toString(),"El combustible diesel es vital para la agricultura");
-        Document document2 = new Document("Doc2",hashMapCrawlered.get("http://www.yatefortuna.com.ar/index.html").toString(),"El transporte de pasajeros tiene un subsidio para el combustible diesel");
-        Document document3 = new Document("Doc3",hashMapCrawlered.get("http://www.yatefortuna.com.ar/barcos.htm").toString(),"El transporte no funciona hoy");
-        Document document4 = new Document("Doc4",hashMapCrawlered.get("http://www.yatefortuna.com.ar/servicios.htm").toString(),"Hay transportes y transportes...");
-        Document document5 = new Document("Doc5",hashMapCrawlered.get("http://www.yatefortuna.com.ar/galeria.htm").toString(),"El diesel venezolano es de menor calidad que el diesel argentino");
+        Document document1 = new Document("Doc1","http://www.yatefortuna.com.ar","El combustible diesel es vital para la agricultura");
+        Document document2 = new Document("Doc2","http://www.yatefortuna.com.ar/index.html","El transporte de pasajeros tiene un subsidio para el combustible diesel");
+        Document document3 = new Document("Doc3","http://www.yatefortuna.com.ar/barcos.htm","El transporte no funciona hoy");
+        Document document4 = new Document("Doc4","http://www.yatefortuna.com.ar/servicios.htm","Hay transportes y transportes...");
+        Document document5 = new Document("Doc5","http://www.yatefortuna.com.ar/galeria.htm","El diesel venezolano es de menor calidad que el diesel argentino");
 
         wordCountManager.addDocument(document1);
         wordCountManager.addDocument(document2);
