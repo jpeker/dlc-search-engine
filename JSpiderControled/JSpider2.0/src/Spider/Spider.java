@@ -17,7 +17,7 @@ import java.util.regex.Pattern;
 public class Spider {
     private final static Pattern BOTTOMFILTERS =
             Pattern.compile(".*(\\.(css|js|bmp|gif|jpe?g"
-            + "|png|tiff?|mid|mp2|mp3|JPG|mp4"
+            + "|png|tiff?|mid|mp2|mp3|ppt|ico|JPG|mp4"
             + "|wav|avi|mov|mpeg|ram|m4v|pdf"
             + "|rm|smil|wmv|swf|wma|zip|rar|gz|xml|php\\?rsd))$");
     private final static Pattern MIDDLEFILTERS =
