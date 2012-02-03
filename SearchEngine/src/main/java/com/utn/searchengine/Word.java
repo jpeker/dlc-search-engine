@@ -12,7 +12,7 @@ public class Word {
 
     public Word(String name, int totalDocumentsWhereWordAppears, int maxTF) {
         this.name = name;
-        this.totalDocumentsWhereWordAppears = totalDocumentsWhereWordAppears;
+        this.nr = totalDocumentsWhereWordAppears;
         this.maxTF = maxTF;
     }
     private String name;
@@ -26,14 +26,14 @@ public class Word {
     }
 
  
-    private int totalDocumentsWhereWordAppears;
+    private int nr;
 
     public int getTotalDocumentsWhereWordAppears() {
-        return totalDocumentsWhereWordAppears;
+        return nr;
     }
 
     public void setTotalDocumentsWhereWordAppears(int totalDocumentsWhereWordAppears) {
-        this.totalDocumentsWhereWordAppears = totalDocumentsWhereWordAppears;
+        this.nr = totalDocumentsWhereWordAppears;
     }
     private int maxTF;
 
