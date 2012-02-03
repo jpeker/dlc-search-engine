@@ -68,7 +68,6 @@ public final class WordCount {
       for(int i=0; i<words.length; i++){
       if(!words[i].equals("")){wordsFiltered.add(words[i]);}
       }
-        System.out.println("Para aca");
 
       // For each word
       for (int i = 0, n = wordsFiltered.size(); i < n; i++) {

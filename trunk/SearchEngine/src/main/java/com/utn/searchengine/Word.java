@@ -10,25 +10,7 @@ package com.utn.searchengine;
  */
 public class Word {
     private String name;
-    private int totalFrecuency;
-    private int maxTF;
-
-    public int getMaxTF(){
-        return maxTF;
-    }
-
-    public void setMaxTF(int maxTF) {
-        this.maxTF = maxTF;
-    }
-
-    public int getTotalFrecuency() {
-        return totalFrecuency;
-    }
-
-    public void setTotalFrecuency(int totalFrecuency) {
-        this.totalFrecuency = totalFrecuency;
-    }
-
+    
     public String getName() {
         return name;
     }
