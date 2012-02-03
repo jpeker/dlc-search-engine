@@ -15,19 +15,19 @@ import java.util.Map;
  */
 public class Vocabulary {
 
-    public Map<String, VocabularyEntry> getVocabularyWords() {
+    public Map<String, Word> getVocabularyWords() {
         return vocabularyWords;
     }
 
-    public void setVocabularyWords(Map<String, VocabularyEntry> vocabularyWords) {
+    public void setVocabularyWords(Map<String, Word> vocabularyWords) {
         this.vocabularyWords = vocabularyWords;
     }
 
     public Vocabulary() {
     }
-    private Map<String, VocabularyEntry> vocabularyWords = new HashMap<String, VocabularyEntry>();
+    private Map<String, Word> vocabularyWords = new HashMap<String, Word>();
     
-    public Vocabulary(Map<String, VocabularyEntry> vocabularyWords){
+    public Vocabulary(Map<String, Word> vocabularyWords){
         this.vocabularyWords = vocabularyWords;
     }
     /**
@@ -35,8 +35,8 @@ public class Vocabulary {
      * @param word
      * @return 
      */
-    public void addWord(VocabularyEntry entry){
-        this.vocabularyWords.put(entry.getWord().toString(), entry);
+    public void addWord(Word entry){
+        this.vocabularyWords.put(entry.getName(), entry);
     }
     /**
      * adds all the new words of a new document to the vocabulary
@@ -47,24 +47,28 @@ public class Vocabulary {
         while(iterator.hasNext()){
             Map.Entry entry = (Map.Entry)iterator.next();
             if(!vocabularyWords.containsKey(entry.getKey().toString())){
-                Word word = new Word(entry.getKey().toString());
                 //if the word appears for the first time on the vocabulary, the values of max term frecuency and 
                 //the biggest frecuency and the total times that the word appears are the same.
                 int values = (Integer)entry.getValue();
-                VocabularyEntry vocabularyEntry = new VocabularyEntry(word, 1, values);
-                vocabularyWords.put(vocabularyEntry.getWord().toString(), vocabularyEntry);
+                Word word = new Word(entry.getKey().toString(), 1, values);
+                //VocabularyEntry vocabularyEntry = new VocabularyEntry(word, 1, values);
+                vocabularyWords.put(word.getName(), word);
             }
             else{
                 //the word already exists so it is necesarry to update their attributes.
-                VocabularyEntry entryToModify = vocabularyWords.get(entry.getKey().toString());
+                Word wordToModify = vocabularyWords.get(entry.getKey().toString());
+                //VocabularyEntry entryToModify = vocabularyWords.get(entry.getKey().toString());
                 int timesThatWordAppearsOnNewDocument = (Integer)entry.getValue();
-                int biggestDocumentTermFrecuency = entryToModify.getDocumentBiggestTermFrecuency();
+                
+                int biggestDocumentTermFrecuency = wordToModify.getMaxTF();
                 if(timesThatWordAppearsOnNewDocument > biggestDocumentTermFrecuency){
-                    entryToModify.setDocumentBiggestTermFrecuency(timesThatWordAppearsOnNewDocument);
+                    wordToModify.setMaxTF(timesThatWordAppearsOnNewDocument);
+                    //entryToModify.setDocumentBiggestTermFrecuency(timesThatWordAppearsOnNewDocument);
                 }
-                int newTotalDocuments =entryToModify.getTotalDocumentsThatWordAppears();
+                int newTotalDocuments =wordToModify.getTotalDocumentsWhereWordAppears();
                 newTotalDocuments++;
-                entryToModify.setTotalDocumentsThatWordAppears(newTotalDocuments);
+                wordToModify.setTotalDocumentsWhereWordAppears(newTotalDocuments);
+                //entryToModify.setTotalDocumentsThatWordAppears(newTotalDocuments);
             }
         }
     

@@ -152,7 +152,12 @@ public class LocalWordCountManager implements WordCountManager{
         return numerator/denominator;
 
     }
-    
+    /**
+     * A query can have different similitudes between documents. 
+     * Here the list of similitudes between a query and all the documents
+     * @param document the query
+     * @return An Array of Similitude.
+     */
     public Collection<Similitude> determinateBestSimilitude(Document document){
         Map <String, Integer> wordsOfQuery = WordCount.retrieveWordCount(document);
         wordsOfQuery = this.filterQuery(wordsOfQuery);
