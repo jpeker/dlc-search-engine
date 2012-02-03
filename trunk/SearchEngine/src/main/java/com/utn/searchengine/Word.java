@@ -10,8 +10,10 @@ package com.utn.searchengine;
  */
 public class Word {
     private String name;
+    private int totalFrecuency;
+    private int maxTF;
 
-    public int getMaxTF() {
+    public int getMaxTF(){
         return maxTF;
     }
 
@@ -26,8 +28,6 @@ public class Word {
     public void setTotalFrecuency(int totalFrecuency) {
         this.totalFrecuency = totalFrecuency;
     }
-    private int totalFrecuency;
-    private int maxTF;
 
     public String getName() {
         return name;
@@ -40,10 +40,11 @@ public class Word {
     public Word(String name) {
         this.name = name;
     }
-    public int hashCode ()
-		{
-			return name.hashCode();
-		}
+    @Override
+    public int hashCode (){
+    return name.hashCode();
+    }
+    @Override
     public String toString(){
         return name;
     }
