@@ -20,7 +20,7 @@ import java.util.Set;
  */
 public class PostList {
     private Map<String,  ArrayList<WordTracker> > postList = new HashMap<String,  ArrayList<WordTracker> >();
-    
+   
     public Map<String,  ArrayList<WordTracker> > getPostList() {
         return postList;
     }
