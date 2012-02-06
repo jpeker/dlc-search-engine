@@ -6,18 +6,17 @@ package com.utn.searchengine;
 
 /**
  * This class represents a word and gots some extra info that can be used on the Vocabulary
- * @author aaltamir
+ * @author aaltamirano
  */
 public class Word {
-    private int maxTF;
-    private String name;
-    private int nr;
+
     public Word(String name, int totalDocumentsWhereWordAppears, int maxTF) {
         this.name = name;
         this.nr = totalDocumentsWhereWordAppears;
         this.maxTF = maxTF;
     }
-   
+    private String name;
+
     public int getMaxTF() {
         return maxTF;
     }
@@ -26,14 +25,18 @@ public class Word {
         this.maxTF = maxTF;
     }
 
-    public int getNr() {
+ 
+    private int nr;
+
+    public int getTotalDocumentsWhereWordAppears() {
         return nr;
     }
 
     public void setTotalDocumentsWhereWordAppears(int totalDocumentsWhereWordAppears) {
         this.nr = totalDocumentsWhereWordAppears;
     }
-    
+    private int maxTF;
+
     public String getName() {
         return name;
     }
@@ -66,7 +69,7 @@ public class Word {
     }
     @Override
     public String toString(){
-        return "Name: "+name+"N: "+this.getNr()+" - Max tf: "+this.getMaxTF();
+        return "Name: "+name+"N: "+this.getTotalDocumentsWhereWordAppears()+" - Max tf: "+this.getMaxTF();
     }
     
 }
