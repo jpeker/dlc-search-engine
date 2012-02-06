@@ -7,6 +7,8 @@ package com.utn.searchengine;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -166,14 +168,33 @@ public class LocalWordCountManager implements WordCountManager{
         Map <String, Integer> wordsOfQuery = WordCount.retrieveWordCount(document);
         wordsOfQuery = this.filterQuery(wordsOfQuery);
         document.setModule(this.getQueryModule(document, wordsOfQuery));
-        Collection<Similitude> sumilitudes = new ArrayList<Similitude>();
+        ArrayList<Similitude> sumilitudes = new ArrayList<Similitude>();
         Collection<Document> documents = documentManager.getDocuments();
         for(Document auxiliarDocument: documents){
             sumilitudes.add(this.determinateSimilitude(wordsOfQuery, auxiliarDocument, document));
         }
+        sortSimilitude(sumilitudes);
         return sumilitudes;
        
     }
+       //  ordeno Similitudes de documentos
+   private void sortSimilitude (  ArrayList<Similitude> sumilitu)
+    {
+        Comparator<Similitude> comparator = new Compare () ;
+    Collections.sort(sumilitu,  comparator);
+   
+    }
+     //class Comparator que ordena en forma decreciente
+    class Compare implements Comparator<Similitude> {
+	@Override
+		public int compare(Similitude lhs, Similitude rhs) {
+  		if(rhs.getSimilitude()>=lhs.getSimilitude())
+            return 1 ;
+                else
+                    
+                    return -1;
+		}	
+	}
     /**
      * The words of a query need to be taken as a document,  and the document
      * needs to have a module. Because htis module is temporal and wount be 
