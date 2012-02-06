@@ -73,7 +73,7 @@ public class WeightManager {
         System.out.println("El peso de la palabra "+word.getName()+"es: "+weight);
         return weight;
          * **/
-        String query = "todo sobre el diesel en la historia de la agricultura";
+        String query = "todo sobre diesel en la historia de la agricultura";
         
         Collection<Similitude> similitudes = wordCountManager.determinateBestSimilitude(new Document("query", "query", query));
         System.out.println("Probando resultado de la query: \n");
