@@ -62,11 +62,13 @@ public class WeightManager {
         Document document4 = new Document("Doc4","http://www.yatefortuna.com.ar/servicios.htm","hay transportes y transportes...");
         Document document5 = new Document("Doc5","http://www.yatefortuna.com.ar/galeria.htm","el diesel venezolano es de menor calidad que el diesel argentino");
 
+
         wordCountManager.addDocument(document1);
         wordCountManager.addDocument(document2);
         wordCountManager.addDocument(document3);
         wordCountManager.addDocument(document4);
         wordCountManager.addDocument(document5);
+    
         /**
         Word wordToProve = new Word("combustible");
         double weight = wordCountManager.estimateWeight(wordToProve, document1);

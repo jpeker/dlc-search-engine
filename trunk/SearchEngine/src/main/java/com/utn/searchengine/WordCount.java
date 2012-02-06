@@ -65,6 +65,8 @@ public final class WordCount {
       // Get array of words on line
       ArrayList wordsFiltered= new ArrayList();
       String words[] = wordBreakPattern.split(line);
+      StopWordMap.stopWordIdiomDocumentFinder(1);
+      StopWordMap.readStopWordList();
       for(int i=0; i<words.length; i++){
       if(!words[i].equals("")){wordsFiltered.add(words[i]);}
       }
@@ -72,7 +74,8 @@ public final class WordCount {
       // For each word
       for (int i = 0, n = wordsFiltered.size(); i < n; i++) {
         if (wordsFiltered.size() > 0) {
-          Integer frequency = (Integer) map.get(words[i]);
+          if(!StopWordMap.isStopWord(wordsFiltered.get(i).toString())){              
+            Integer frequency = (Integer) map.get(words[i]);
           if (frequency == null) {
             frequency = ONE;
           } else {
@@ -80,6 +83,7 @@ public final class WordCount {
             frequency = new Integer(value + 1);
           }
           map.put(wordsFiltered.get(i).toString(), frequency);
+            }
         }
       }
     }

@@ -11,19 +11,19 @@ import java.util.HashMap;
  * que no deben ser indexadas.
  * 
  */
-public class StopWordMap {
+public final class StopWordMap {
     //Archivo de stops words
     //Para instanciar y asignar un archivo primero
     //Debe identificarse el idioma antes de leer el archivo.
     //Luego de leer el idioma el archivo es recorrido y
     //se añade al hashMap
-    File stopWordFile=null;
+    private static File stopWordFile=null;
 
     // HashMap que contiene las stop words que no seran indexadas
-    private HashMap stopWordMap= new HashMap();
+    private static HashMap stopWordMap= new HashMap();
 
     // Añade una nueva stop word al HashMap
-    private void addStopWord(String stopWordString)
+    private static void addStopWord(String stopWordString)
     {
          stopWordMap.put(stopWordString.hashCode(), stopWordString);
     }
@@ -31,7 +31,7 @@ public class StopWordMap {
     //readStopWordList sirve para leer las stopword que empleo para la busqueda
     //para eso leo un archivo .txt del idioma de stopWord que quieda de
     //del documento o sitio visitado
-    public boolean readStopWordList()
+    public static boolean readStopWordList()
     {
         if(stopWordFile==null){return false;}
         try{
@@ -48,7 +48,7 @@ public class StopWordMap {
         while ((stopWordLine = bufferReaderStreamStopWordFile.readLine()) != null){
         //Muestro Las Stop Word y las añado
          System.out.println (stopWordLine);
-         this.addStopWord(stopWordLine);
+         addStopWord(stopWordLine);
         }
         //Cierro el flujo
         bufferReaderStreamStopWordFile.close();
@@ -60,7 +60,7 @@ public class StopWordMap {
     }
 
     // Traigo el hashMap con todo su contenido
-    public HashMap getStopWordMap()
+    public static HashMap getStopWordMap()
     {
     return stopWordMap;
     }
@@ -69,23 +69,23 @@ public class StopWordMap {
     // El archivo de stopwordXXX.txt que necesite
     // El documento debe reconocer que tipo de idioma es.
     // XXX es el idioma deseado
-    public File stopWordIdiomDocumentFinder(int selectedIdiom){
+    public static File stopWordIdiomDocumentFinder(int selectedIdiom){
         // 0=ingles
         // 1=español
         // ir agregando en funcion de las ganas.
         switch(selectedIdiom)
         {
-        case 0: {stopWordFile= new File("stopwordsENG.txt");
+        case 0: {stopWordFile= new File("G:\\Julian Peker\\Final DLC\\SearchEngine\\src\\main\\resources\\TestDocuments\\stopwordsENG.txt");
             break;}
-        case 1: {stopWordFile= new File("stopwordsSPA.txt");
+        case 1: {stopWordFile= new File("G:\\Julian Peker\\Final DLC\\SearchEngine\\src\\main\\resources\\TestDocuments\\stopwordsSPA.txt");
             break;}
         }
         // Devuelvo en funcion del idioma elegido
         return stopWordFile;
     }
     //Verifica si la Word esta contenida en el HashMap de stopWords
-    public boolean isStopWord(Word word){
-        if(stopWordMap.containsValue(word.getName())){
+    public static boolean isStopWord(String word){
+        if(stopWordMap.containsValue(word)){
         return true;
         }
     return false;
