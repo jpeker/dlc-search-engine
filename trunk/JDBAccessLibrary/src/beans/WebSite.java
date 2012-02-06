@@ -34,7 +34,7 @@ public class WebSite implements java.io.Serializable {
      */
     private boolean esBase;
     
-    private Hashtable<Palabra, Long> palabras;
+    private Hashtable<Word, Long> palabras;
 
     public WebSite() {}
 
@@ -44,7 +44,7 @@ public class WebSite implements java.io.Serializable {
         this.estado = estado;
         this.timeStamp = timeStamp;
         this.esBase = esBase;
-        this.palabras=new Hashtable<Palabra, Long>();
+        this.palabras=new Hashtable<Word, Long>();
     }
     public WebSite(String url) {
         this.url = url;
@@ -70,7 +70,7 @@ public class WebSite implements java.io.Serializable {
         this.estado = estado;
     }
 
-    public Hashtable<Palabra, Long> getPalabras() {
+    public Hashtable<Word, Long> getPalabras() {
         //Lazy Load
         if(this.palabras==null)
         {
@@ -81,7 +81,7 @@ public class WebSite implements java.io.Serializable {
         return palabras;
     }
 
-    public void setPalabras(Hashtable<Palabra, Long> palabras) {
+    public void setPalabras(Hashtable<Word, Long> palabras) {
         this.palabras = palabras;
     }
 

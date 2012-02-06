@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  * @author Christian Adam
  * @author Federico Schaefer
  */
-public class DBManager {
+public class MySqlDBManager {
     
     /**
      * URL de la base de datos

@@ -1,7 +1,7 @@
 package dao;
 
 import beans.WebSite;
-import beans.Palabra;
+import beans.Word;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.LinkedList;
@@ -63,7 +63,7 @@ public interface WebSiteDAO {
      * @return la lista de palabras de la website, si la website no tiene palabras
      * se devuelve una lista vacia.
      */
-    Hashtable<Palabra, Long> obtenerPalabrasDeWebSite(WebSite website);
+    Hashtable<Word, Long> obtenerPalabrasDeWebSite(WebSite website);
 
     /**
      * Obtiene el identificador de la website en la base de datos
@@ -101,7 +101,7 @@ public interface WebSiteDAO {
      * @param palabra
      * @return la cantidad de veces que aparece la palabra en la website
      */
-    long getFrecuenciaDePalabra(WebSite site, Palabra palabra);
+    long getFrecuenciaDePalabra(WebSite site, Word palabra);
     
     /**
      * Obtiene las websites para una palabra determinada
@@ -109,5 +109,5 @@ public interface WebSiteDAO {
      * @return un HashMap conteniendo las websites de la palabra junto con la frecuencia
      * de ocurrencia de la misma en cada una
      */
-    HashMap<WebSite, Long> getWebSitesDePalabra(Palabra palabra);
+    HashMap<WebSite, Long> getWebSitesDePalabra(Word palabra);
 }
