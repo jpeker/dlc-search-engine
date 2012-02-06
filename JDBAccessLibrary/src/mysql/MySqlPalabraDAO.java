@@ -2,7 +2,7 @@ package mysql;
 
 import dbmanager.*;
 import dao.PalabraDAO;
-import beans.Palabra;
+import beans.Word;
 import java.util.LinkedList;
 import java.sql.*;
 import java.sql.ResultSet;
@@ -25,7 +25,7 @@ public class MySqlPalabraDAO implements PalabraDAO{
      * @return true si se pudo realizar exitosamente la operación, false en caso
      * contrario.
      */
-    public boolean grabarPalabra(Palabra palabra) {
+    public boolean grabarPalabra(Word palabra) {
         boolean ret=false;
         if(this.obtenerId(palabra)!=-1)
         {
@@ -46,12 +46,12 @@ public class MySqlPalabraDAO implements PalabraDAO{
      * @return la palabra almacenada en la base de datos, null si la misma no existia
      * o existen problemas de acceso a la base.
      */
-    public Palabra obtenerPalabra(Palabra palabra) {
-        Palabra ret=null;
+    public Word obtenerPalabra(Word palabra) {
+        Word ret=null;
         PreparedStatement st;
         Connection con;
         try {
-            con = DBManager.getConnection();
+            con = MySqlDBManager.getConnection();
             synchronized(con)
             {
             
@@ -61,7 +61,7 @@ public class MySqlPalabraDAO implements PalabraDAO{
                 ResultSet results=st.executeQuery();
                 if(results.next())
                 {
-                    ret=new Palabra(results.getString("palabra"),results.getLong("nr"));
+                    ret=new Word(results.getString("palabra"),results.getLong("nr"));
                 }
                 results.close();
                 st.close(); 
@@ -77,10 +77,10 @@ public class MySqlPalabraDAO implements PalabraDAO{
      * @param palabra palabra a eliminar
      * @return true si se pudo eliminar correctamente, false en caso contrario.
      */
-    public boolean eliminarPalabra(Palabra palabra){ 
+    public boolean eliminarPalabra(Word palabra){ 
         boolean ret=false;
         PreparedStatement st;
-        Connection con = DBManager.getConnection();
+        Connection con = MySqlDBManager.getConnection();
         synchronized(con)
         {
             //Si la palabra no existe no hay nada que borrar
@@ -162,12 +162,12 @@ public class MySqlPalabraDAO implements PalabraDAO{
      * @return NR que representa la cantidad de documentos en los que esta presente
      * la palabra, -1 si sucedio algun error.
      */
-    public long calcularNrDePalabra(Palabra palabra){
+    public long calcularNrDePalabra(Word palabra){
         long ret=0;
         PreparedStatement st;
         Connection con;
         try {
-            con = DBManager.getConnection();
+            con = MySqlDBManager.getConnection();
             synchronized(con)
             {
                 String query="Select Count(*) from palabra as p, listaposteo lp where p.idPalabra=lp.idPalabra and p.hash=?";
@@ -194,14 +194,14 @@ public class MySqlPalabraDAO implements PalabraDAO{
      * @param palabra palabra de la cual se desea conocer su ID
      * @return el ID de la palabra, -1 si la palabra era nula o se produjo un error
      */
-    public int obtenerId(Palabra palabra)
+    public int obtenerId(Word palabra)
     {
         int ret=-1;
         if(palabra==null){return ret;}
         PreparedStatement st;
         Connection con;
         try {
-            con = DBManager.getConnection();
+            con = MySqlDBManager.getConnection();
             synchronized(con)
             {
                 String query="Select idPalabra from palabra where hash = ?";
@@ -228,13 +228,13 @@ public class MySqlPalabraDAO implements PalabraDAO{
      * @return true si se inserto correctamente, false en caso contrario o si sucedió
      * algún error.
      */
-    public boolean insertarPalabra(Palabra palabra) {
+    public boolean insertarPalabra(Word palabra) {
         boolean ret=false;
         PreparedStatement st;
         Connection con;
         if(this.obtenerId(palabra)!=-1){return ret;}
         try {
-            con = DBManager.getConnection();
+            con = MySqlDBManager.getConnection();
             synchronized(con){
                 String query="INSERT INTO palabra (palabra,nr,hash) VALUES (?,?,?)";
                 st = con.prepareStatement(query);
@@ -260,13 +260,13 @@ public class MySqlPalabraDAO implements PalabraDAO{
      * @return true si se pudo hacer la actualización correctamente y false
      * en caso contrario.
      */
-    public boolean actualizarPalabra(Palabra palabra) {
+    public boolean actualizarPalabra(Word palabra) {
         boolean ret=false;
         PreparedStatement st;
         Connection con;
         if(this.obtenerId(palabra)==-1){return ret;}
         try {
-            con = DBManager.getConnection();
+            con = MySqlDBManager.getConnection();
             synchronized(con){
                 String query="UPDATE palabra "
                         + "SET nr = ? "
@@ -294,9 +294,9 @@ public class MySqlPalabraDAO implements PalabraDAO{
      * para ser considerada stopWord. Por ejemplo 0.8 significa 80%
      * @return la lista de stopWords para la razon pasada por parámetro
      */
-    public LinkedList<Palabra> getStopWords(float razonStopWords) {
+    public LinkedList<Word> getStopWords(float razonStopWords) {
        
-       LinkedList<Palabra> stopWords = new LinkedList<Palabra>();
+       LinkedList<Word> stopWords = new LinkedList<Word>();
        
        //razonStopWords válidos: 0 - 1 :)
        if(razonStopWords<0 || razonStopWords>1){return stopWords;}
@@ -307,7 +307,7 @@ public class MySqlPalabraDAO implements PalabraDAO{
        PreparedStatement st;
        Connection con;
        try {
-            con = DBManager.getConnection();
+            con = MySqlDBManager.getConnection();
             synchronized(con)
             {
                 String query="Select nr, palabra from palabra where nr >= ?";
@@ -316,7 +316,7 @@ public class MySqlPalabraDAO implements PalabraDAO{
                 ResultSet results=st.executeQuery();
                 while(results.next())
                 {
-                    stopWords.add(new Palabra(results.getString("palabra"),results.getLong("nr")));
+                    stopWords.add(new Word(results.getString("palabra"),results.getLong("nr")));
                 }
                 results.close();
                 st.close();              

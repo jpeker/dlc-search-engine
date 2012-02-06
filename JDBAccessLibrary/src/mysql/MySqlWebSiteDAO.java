@@ -3,7 +3,7 @@ package mysql;
 import dbmanager.*;
 import dao.*;
 import beans.WebSite;
-import beans.Palabra;
+import beans.Word;
 import java.util.LinkedList;
 import java.sql.*;
 import java.sql.ResultSet;
@@ -52,7 +52,7 @@ public class MySqlWebSiteDAO implements WebSiteDAO {
         PreparedStatement st;
         Connection con;
         try {
-            con = DBManager.getConnection();
+            con = MySqlDBManager.getConnection();
             synchronized (con) {
                 String query = "Select idUrl, timestamp, estado, titulo, base, url from website where hash = ?";
                 st = con.prepareStatement(query);
@@ -82,7 +82,7 @@ public class MySqlWebSiteDAO implements WebSiteDAO {
         PreparedStatement st;
         Connection con;
         try {
-            con = DBManager.getConnection();
+            con = MySqlDBManager.getConnection();
             synchronized (con) {
                 String query = "Select idUrl, timestamp, estado, titulo, base, url from website where idUrl = ?";
                 st = con.prepareStatement(query);
@@ -105,12 +105,12 @@ public class MySqlWebSiteDAO implements WebSiteDAO {
      * Obtiene las palabras y frecuencia de las mismas para la website dada.
      * @param website website cuyas palabras se desean conocer
      * @return Un Hashtable<Palabra,Long> donde la KEY es la palabra y el VALUE
-     * es la frecuencia de esa palabra. El hashcode utilizado en la KEY para Palabra
+     * es la frecuencia de esa palabra. El hashcode utilizado en la KEY para Word
      * esta basado en el string propio de la palabra.
      */
-    public Hashtable<Palabra, Long> obtenerPalabrasDeWebSite(WebSite website) {
-        Hashtable<Palabra, Long> ret = new Hashtable<Palabra, Long>();
-        Connection con = DBManager.getConnection();
+    public Hashtable<Word, Long> obtenerPalabrasDeWebSite(WebSite website) {
+        Hashtable<Word, Long> ret = new Hashtable<Word, Long>();
+        Connection con = MySqlDBManager.getConnection();
         PreparedStatement st;
         try {
             synchronized (con) {
@@ -121,7 +121,7 @@ public class MySqlWebSiteDAO implements WebSiteDAO {
                 ResultSet results = st.executeQuery();
                 PalabraDAO palabraDAO = new MySqlPalabraDAO();
                 while (results.next()) {
-                    ret.put(palabraDAO.obtenerPalabra(new Palabra(results.getString("palabra"))), new Long(results.getLong("fr")));
+                    ret.put(palabraDAO.obtenerPalabra(new Word(results.getString("palabra"))), new Long(results.getLong("fr")));
                 }
                 results.close();
                 st.close();
@@ -146,7 +146,7 @@ public class MySqlWebSiteDAO implements WebSiteDAO {
             return ret;
         }
         PreparedStatement st;
-        Connection con = DBManager.getConnection();
+        Connection con = MySqlDBManager.getConnection();
         synchronized (con) {
             try {
                 //Para borrar la website necesito antes borrar su lista de posteo
@@ -206,7 +206,7 @@ public class MySqlWebSiteDAO implements WebSiteDAO {
         PreparedStatement st;
         Connection con;
         try {
-            con = DBManager.getConnection();
+            con = MySqlDBManager.getConnection();
             synchronized (con) {
                 String query = "Select idUrl from website where hash = ?";
                 st = con.prepareStatement(query);
@@ -240,7 +240,7 @@ public class MySqlWebSiteDAO implements WebSiteDAO {
 
         boolean ret = true;
         PreparedStatement st;
-        Connection con = DBManager.getConnection();
+        Connection con = MySqlDBManager.getConnection();
         synchronized (con) {
             try {
                 //1. Comienza la transacción
@@ -338,7 +338,7 @@ public class MySqlWebSiteDAO implements WebSiteDAO {
             }
 
             //3. Vemos las palabras de la website
-            Hashtable<Palabra, Long> palabras = website.getPalabras();
+            Hashtable<Word, Long> palabras = website.getPalabras();
 
             int inserts = 0;
             int updates = 0;
@@ -347,7 +347,7 @@ public class MySqlWebSiteDAO implements WebSiteDAO {
             HashSet<Integer> palabrasProcesadas = new HashSet<Integer>();
             Enumeration e = palabras.keys();
             while (e.hasMoreElements()) {
-                Palabra palabraCandidataAInsertar = (Palabra) e.nextElement();
+                Word palabraCandidataAInsertar = (Word) e.nextElement();
                 Long frecuencia = palabras.get(palabraCandidataAInsertar);
                 MySqlPalabraDAO palabraDAO = new MySqlPalabraDAO();
                 int idPalabra = palabraDAO.obtenerId(palabraCandidataAInsertar);
@@ -366,7 +366,7 @@ public class MySqlWebSiteDAO implements WebSiteDAO {
                     palabrasProcesadas.add(new Integer(idPalabra));
                 }
 
-                Palabra palabraAInsertar = palabraDAO.obtenerPalabra(palabraCandidataAInsertar);
+                Word palabraAInsertar = palabraDAO.obtenerPalabra(palabraCandidataAInsertar);
 
                 //4. Aseguramos que la palabra esta en la BD
                 if (palabraAInsertar != null) {
@@ -472,7 +472,7 @@ public class MySqlWebSiteDAO implements WebSiteDAO {
      */
     private boolean yaExistePalabraParaWebSite(int idPalabra, int idWebSite) {
         boolean ret = false;
-        Connection con = DBManager.getConnection();
+        Connection con = MySqlDBManager.getConnection();
         PreparedStatement st;
         String query = "Select idPalabra from listaposteo where idPalabra=? and idUrl=?";
         synchronized (con) {
@@ -510,7 +510,7 @@ public class MySqlWebSiteDAO implements WebSiteDAO {
 
         boolean ret = true;
         PreparedStatement st;
-        Connection con = DBManager.getConnection();
+        Connection con = MySqlDBManager.getConnection();
 
         synchronized (con) {
 
@@ -569,7 +569,7 @@ public class MySqlWebSiteDAO implements WebSiteDAO {
         PreparedStatement st;
         Connection con;
         try {
-            con = DBManager.getConnection();
+            con = MySqlDBManager.getConnection();
             
             synchronized (con) {
                 String query = "Select idUrl, timestamp, estado, titulo, base, url from website where base = ? limit ?";
@@ -630,7 +630,7 @@ public class MySqlWebSiteDAO implements WebSiteDAO {
         PreparedStatement st;
         Connection con;
         try {
-            con = DBManager.getConnection();
+            con = MySqlDBManager.getConnection();
             synchronized (con) {
                 String query = "Select url from website where estado = ? and timestamp <= ? limit ?";
                 st = con.prepareStatement(query);
@@ -662,7 +662,7 @@ public class MySqlWebSiteDAO implements WebSiteDAO {
         Connection con;
         Statement st;
         try {
-            con = DBManager.getConnection();
+            con = MySqlDBManager.getConnection();
             st = con.createStatement();
             synchronized (con) {
                String query = "Select Count(distinct idUrl) as cantWebSites from dlc.listaposteo";
@@ -696,7 +696,7 @@ public class MySqlWebSiteDAO implements WebSiteDAO {
         }
         if(websites.size()==0){return;}       
         PreparedStatement st;
-        Connection con = DBManager.getConnection();
+        Connection con = MySqlDBManager.getConnection();
         synchronized (con) {
            try {
                 String query = "INSERT INTO website (timestamp, estado, titulo, base, url, hash) VALUES (?,?,?,?,?,?)";
@@ -745,7 +745,7 @@ public class MySqlWebSiteDAO implements WebSiteDAO {
      * @return numero de ocurrencias de la palabra en la website dadas, -1 si
      * la palabra o website no existen en la base de datos.
      */
-    public long getFrecuenciaDePalabra(WebSite site, Palabra palabra) {
+    public long getFrecuenciaDePalabra(WebSite site, Word palabra) {
 
         MySqlPalabraDAO palabraDAO = new MySqlPalabraDAO();
         int idUrl = this.obtenerId(site);
@@ -757,7 +757,7 @@ public class MySqlWebSiteDAO implements WebSiteDAO {
         Connection con;
         PreparedStatement st;
         try {
-            con = DBManager.getConnection();
+            con = MySqlDBManager.getConnection();
 
             synchronized (con) {
 
@@ -793,7 +793,7 @@ public class MySqlWebSiteDAO implements WebSiteDAO {
      * ocurrencias de la palabra en dicha website. Retorna null si la palabra no
      * esta registrada en la base.
      */
-    public HashMap<WebSite, Long> getWebSitesDePalabra(Palabra palabra) {
+    public HashMap<WebSite, Long> getWebSitesDePalabra(Word palabra) {
 
         MySqlPalabraDAO palabraDAO = new MySqlPalabraDAO();
         int idPalabra = palabraDAO.obtenerId(palabra);
@@ -805,7 +805,7 @@ public class MySqlWebSiteDAO implements WebSiteDAO {
         PreparedStatement st;
         try {
 
-            con = DBManager.getConnection();
+            con = MySqlDBManager.getConnection();
            
             synchronized (con) {
                 String query = "Select idUrl, fr from dlc.listaposteo "

@@ -7,6 +7,7 @@ package factories;
 
 import dao.PalabraDAO;
 import dao.WebSiteDAO;
+import postgresql.PostgreSQLPalabraDAO;
 
 /**
  *
@@ -21,7 +22,7 @@ public class PostgreSQLDAOFactory extends DAOFactory{
 
     @Override
     public PalabraDAO getPalabraDAO() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return new PostgreSQLPalabraDAO();
     }
 
 }
