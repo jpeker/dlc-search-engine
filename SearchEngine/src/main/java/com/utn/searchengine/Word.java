@@ -9,14 +9,15 @@ package com.utn.searchengine;
  * @author aaltamir
  */
 public class Word {
-
+    private int maxTF;
+    private String name;
+    private int nr;
     public Word(String name, int totalDocumentsWhereWordAppears, int maxTF) {
         this.name = name;
         this.nr = totalDocumentsWhereWordAppears;
         this.maxTF = maxTF;
     }
-    private String name;
-
+   
     public int getMaxTF() {
         return maxTF;
     }
@@ -25,18 +26,14 @@ public class Word {
         this.maxTF = maxTF;
     }
 
- 
-    private int nr;
-
-    public int getTotalDocumentsWhereWordAppears() {
+    public int getNr() {
         return nr;
     }
 
     public void setTotalDocumentsWhereWordAppears(int totalDocumentsWhereWordAppears) {
         this.nr = totalDocumentsWhereWordAppears;
     }
-    private int maxTF;
-
+    
     public String getName() {
         return name;
     }
@@ -69,7 +66,7 @@ public class Word {
     }
     @Override
     public String toString(){
-        return "Name: "+name+"N: "+this.getTotalDocumentsWhereWordAppears()+" - Max tf: "+this.getMaxTF();
+        return "Name: "+name+"N: "+this.getNr()+" - Max tf: "+this.getMaxTF();
     }
     
 }
