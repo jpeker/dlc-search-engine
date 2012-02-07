@@ -188,7 +188,7 @@ $$ LANGUAGE plpgsql;
 -- Entre ellos, el id.
 -- Si existe lo actualiza.
 -- Si no existe lo crea.
-CREATE OR REPLACE FUNCTION fn_Save_Word (
+CREATE OR REPLACE FUNCTION fn_Save_Page (
     pin_id_Url                    INTEGER,
     pin_url_Name                  VARCHAR,
     pin_Modulo                    DECIMAL 
