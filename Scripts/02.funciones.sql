@@ -64,13 +64,13 @@ CREATE OR REPLACE FUNCTION pr_deleteWord (
     DECLARE   
     var_count                    INTEGER         := 0;
     BEGIN
-             -- Cuento postlist del usuario a eliminar
+             -- Cuento postlist del page a eliminar
             SELECT COUNT(*)
             INTO var_count
             FROM  PostList p
             WHERE p.id_Word  =  pin_id_Word ;
 
-            IF (var_count = 0) THEN -- si no tiene amigo lo elimino
+            IF (var_count = 0) THEN -- si no tiene postlist lo elimino
             DELETE FROM  Word w
             WHERE w.id_Word = pin_id_Word;
             END IF;
@@ -163,6 +163,84 @@ CREATE OR REPLACE FUNCTION pr_deletePostList(
             IF (var_id_Word  > 0 and var_id_Url  > 0) THEN
               DELETE FROM  PostList p
               WHERE p.id_Word  =  var_id_Word and p. id_Url = var_id_Url; 
+            END IF;
+
+        RETURN;
+    END;
+$$ LANGUAGE plpgsql;
+-- =============================================================================
+-- PAGE
+-- =============================================================================
+-- La siguiente función obtiene el próximo id de Pae para ser insertado.
+CREATE OR REPLACE FUNCTION fn_Get_Id_Page (
+) RETURNS INTEGER AS $$
+
+    DECLARE
+        var_Id_Url              INTEGER         := NULL;
+
+    BEGIN
+        var_Id_Url:= NEXTVAL('sq_Page');
+        RETURN var_Id_Url;
+    END;
+$$ LANGUAGE plpgsql;
+-- La siguiente función "guarda" una page en la BBDD.
+-- Toma como parámetros de entrada los datos del mismo.
+-- Entre ellos, el id.
+-- Si existe lo actualiza.
+-- Si no existe lo crea.
+CREATE OR REPLACE FUNCTION fn_Save_Word (
+    pin_id_Url                    INTEGER,
+    pin_url_Name                  VARCHAR,
+    pin_Modulo                    DECIMAL 
+
+   
+  
+) RETURNS SMALLINT AS $$
+
+    DECLARE
+        var_id_Url                 INTEGER         :=  pin_id_Url;
+        var_url_Name               VARCHAR         := TRIM(  pin_url_Name );
+        var_Modulo                 INTEGER         :=  pin_Modulo;  
+        var_count                  INTEGER         := 0;
+ BEGIN
+            -- cuento page
+            SELECT COUNT(*)
+            INTO var_count
+            FROM Page p
+            WHERE p.id_Url = var_id_Url;
+            
+                -- veo si existe la page
+            IF (var_count > 0) THEN
+            UPDATE Page p SET -- sí existe ==> update
+                url_Name  =  var_url_Name,
+                Modulo =   var_Modulo
+                WHERE p.id_Url = var_id_Url;
+        ELSE -- no existe ==> insert
+           
+            INSERT INTO Page(id_Url,url_Name, Modulo)
+                VALUES ( var_id_Url, var_url_Name,var_Modulo );
+        END IF;
+
+        RETURN var_id_Url;
+    END;
+$$ LANGUAGE plpgsql;
+-- La siguiente función elimina una page de la BBDD.
+CREATE OR REPLACE FUNCTION pr_deletePage (
+     pin_id_Url                    INTEGER
+) RETURNS VOID AS $$
+
+    DECLARE   
+    var_count                    INTEGER         := 0;
+    BEGIN
+             -- Cuento postlist del page a eliminar
+            SELECT COUNT(*)
+            INTO var_count
+            FROM  PostList p
+            WHERE p.id_Url  =  pin_id_Url;
+
+            IF (var_count = 0) THEN -- si no tiene postlist lo elimino
+            DELETE FROM  Page u
+               WHERE u.id_Url = pin_id_Url;
             END IF;
 
         RETURN;
