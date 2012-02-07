@@ -69,6 +69,7 @@ public final class WordCount {
       StopWordMap.readStopWordList();
       for(int i=0; i<words.length; i++){
       if(!words[i].equals("")){wordsFiltered.add(words[i]);}
+    
       }
 
       // For each word

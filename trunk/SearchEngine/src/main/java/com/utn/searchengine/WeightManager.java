@@ -8,6 +8,8 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Vector;
+import Spider.*;
+import java.util.Map;
 
 
 
@@ -39,24 +41,16 @@ public class WeightManager {
     public void estimateWeight(){
         LocalWordCountManager wordCountManager = new LocalWordCountManager();
    
-        hashMapCrawlered.put("http://www.yatefortuna.com.ar", "El combustible diesel es vital para la agricultura");
-        hashMapCrawlered.put("http://www.yatefortuna.com.ar/index.html","El transporte de pasajeros tiene un subsidio para el combustible diesel");
-        hashMapCrawlered.put("http://www.yatefortuna.com.ar/barcos.htm", "El transporte no funciona hoy");
-        hashMapCrawlered.put("http://www.yatefortuna.com.ar/servicios.htm", "Hay transportes y transportes...");
-        hashMapCrawlered.put("http://www.yatefortuna.com.ar/galeria.htm", "El diesel venezolano es de menor calidad que el diesel argentino");
-
-
-        Collection c =  hashMapCrawlered.values();
-        Vector vValues = new Vector();
-        Iterator itr = c.iterator();
-        while(itr.hasNext())
-        {
-        String s=itr.next().toString();
-        System.out.println(s);
-        vValues.add(s);
-        }
+    Communicator com = new Communicator ();
+       
+          Iterator i =  com.beginCrawler("http://www.yatefortuna.com.ar").entrySet().iterator();
+          while(i.hasNext()){
+                    Map.Entry entry = (Map.Entry) i.next();
+                    Document documento = new Document(entry.getKey().toString(),entry.getKey().toString(),entry.getValue().toString());
+                     wordCountManager.addDocument(documento);
+               }
   
-        Document document1 = new Document("Doc1","http://www.yatefortuna.com.ar","el combustible diesel es vital para la agricultura");
+       /* Document document1 = new Document("Doc1","http://www.yatefortuna.com.ar","el combustible diesel es vital para la agricultura");
         Document document2 = new Document("Doc2","http://www.yatefortuna.com.ar/index.html","el transporte de pasajeros tiene un subsidio para el combustible diesel");
         Document document3 = new Document("Doc3","http://www.yatefortuna.com.ar/barcos.htm","el transporte no funciona hoy");
         Document document4 = new Document("Doc4","http://www.yatefortuna.com.ar/servicios.htm","hay transportes y transportes...");
@@ -70,14 +64,14 @@ public class WeightManager {
         wordCountManager.addDocument(document4);
         wordCountManager.addDocument(document5);
         //wordCountManager.addDocument(document6);
-        //wordCountManager.addDocument(document7);
+        //wordCountManager.addDocument(document7);*/
         /**
         Word wordToProve = new Word("combustible");
         double weight = wordCountManager.estimateWeight(wordToProve, document1);
         System.out.println("El peso de la palabra "+word.getName()+"es: "+weight);
         return weight;
          * **/
-        String query = "todo sobre diesel en la historia de la agricultura";
+        String query = "Cada pescador debe traer su propio equipo de pesca";
         
         Collection<Similitude> similitudes = wordCountManager.determinateBestSimilitude(new Document("query", "query", query));
         System.out.println("Probando resultado de la query: \n");
