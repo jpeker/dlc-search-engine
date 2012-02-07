@@ -99,7 +99,7 @@ CREATE OR REPLACE FUNCTION fn_Save_Postlist (
     DECLARE
         var_id_Word                INTEGER         :=0;
         var_id_Url                 INTEGER         :=0;
-        var_url_Name			   VARCHAR		   := TRIM(  pin_url_Name);
+        var_url_Name			   VARCHAR		   := TRIM(pin_url_Name);
 		var_name_Word			   VARCHAR		   := TRIM(pin_name_Word);
 		var_frequency              INTEGER         := pin_frequency ; 
         var_count                  INTEGER         := 0;		
@@ -111,7 +111,7 @@ CREATE OR REPLACE FUNCTION fn_Save_Postlist (
             FROM  Word w
             WHERE w.name_Word  = var_name_Word;
             -- recupero el id de la page
-			SELECT w.id_Url
+			SELECT u.id_Url
             INTO  var_id_Url
             FROM  Page u
             WHERE u.url_Name =  var_url_Name;
@@ -155,7 +155,7 @@ CREATE OR REPLACE FUNCTION pr_deletePostList(
             FROM  Word w
             WHERE w.name_Word  = var_name_Word;
             -- recupero el id de la page
-			SELECT w.id_Url
+			SELECT u.id_Url
             INTO  var_id_Url
             FROM  Page u
             WHERE u.url_Name =  var_url_Name;
