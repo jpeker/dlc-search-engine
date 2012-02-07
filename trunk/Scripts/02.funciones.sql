@@ -200,7 +200,7 @@ CREATE OR REPLACE FUNCTION fn_Save_Page (
     DECLARE
         var_id_Url                 INTEGER         :=  pin_id_Url;
         var_url_Name               VARCHAR         := TRIM(  pin_url_Name );
-        var_Modulo                 INTEGER         :=  pin_Modulo;  
+        var_Modulo                 DECIMAL         :=  pin_Modulo;  
         var_count                  INTEGER         := 0;
  BEGIN
             -- cuento page
