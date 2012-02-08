@@ -43,7 +43,7 @@ public class WeightManager {
    
     Communicator com = new Communicator ();
        
-          Iterator i =  com.beginCrawler("http://www.yatefortuna.com.ar").entrySet().iterator();
+          Iterator i =  com.beginCrawler("http://www.sandokanpesca.com.ar").entrySet().iterator();
           while(i.hasNext()){
                     Map.Entry entry = (Map.Entry) i.next();
                     Document documento = new Document(entry.getKey().toString(),entry.getKey().toString(),entry.getValue().toString());
@@ -71,7 +71,7 @@ public class WeightManager {
         System.out.println("El peso de la palabra "+word.getName()+"es: "+weight);
         return weight;
          * **/
-        String query = "Cada pescador debe traer su propio equipo de pesca";
+        String query = "Se entrega las carnadas cortadas y seleccionadas";
         
         Collection<Similitude> similitudes = wordCountManager.determinateBestSimilitude(new Document("query", "query", query));
         System.out.println("Probando resultado de la query: \n");
