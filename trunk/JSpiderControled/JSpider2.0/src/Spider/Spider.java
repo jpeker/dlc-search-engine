@@ -417,7 +417,7 @@ public class Spider {
         //Search engine
         System.out.println(String.valueOf(data));
         SBConcatText.append(String.valueOf(data).toLowerCase().trim());
-        SBConcatText.append(" _ ");
+        SBConcatText.append("_");
         }
    }
 
