@@ -6,7 +6,7 @@ package com.utn.searchengine;
 
 /**
  * This class represents a word and gots some extra info that can be used on the Vocabulary
- * @author aaltamirano
+ * @author altamirano,peker,liberal
  */
 public class Word {
 

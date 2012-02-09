@@ -18,7 +18,7 @@ import java.util.Set;
  * An implementation of  services that are usefull to count words
  * This are using local Structures and can dissapear once the structure
  * is migrated to database, but the interface probably will be the same.
- * @author aaltamir
+ * @author altamirano,peker,liberal
  */
 public class LocalWordCountManager implements WordCountManager{
 

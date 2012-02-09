@@ -17,7 +17,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 /**
  * This class provides the utility of detect the different words that exist on a document
- * @author aaltamir
+ * @author altamirano,peker,liberal
  */
 public final class WordCount {
   

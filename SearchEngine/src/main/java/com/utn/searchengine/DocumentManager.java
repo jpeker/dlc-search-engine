@@ -10,7 +10,7 @@ import java.util.Iterator;
 
 /**
  * This class is an auxiliar to manage all the basic info about the documents.
- * @author aaltamir
+ * @author altamirano,peker,liberal
  */
 public class DocumentManager {
 

@@ -16,7 +16,7 @@ import java.util.Set;
  * An In-memory representation of a Post list.
  * This is recommend to be on disc so probably soon, aPostListManager will 
  * difference this Local Post list form the other.
- * @author aaltamir
+ * @author  altamirano,peker,liberal
  */
 public class PostList {
     private Map<String,  ArrayList<WordTracker> > postList = new HashMap<String,  ArrayList<WordTracker> >();

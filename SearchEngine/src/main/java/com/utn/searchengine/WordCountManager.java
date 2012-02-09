@@ -6,7 +6,7 @@ package com.utn.searchengine;
 
 /**
  *
- * @author aaltamir
+ * @author altamirano,peker,liberal
  */
 public interface WordCountManager {
     /**
