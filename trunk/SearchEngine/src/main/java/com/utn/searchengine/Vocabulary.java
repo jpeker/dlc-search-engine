@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * This class is a temporal-in memory array that manages the information about
  * the words
- * @author aaltamir
+ * @author altamirano,peker,liberal
  */
 public class Vocabulary {
 

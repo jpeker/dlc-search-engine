@@ -17,7 +17,7 @@ import java.util.Map;
  * This class still gots no behavior, but it 
  * is supposed to estimate each word weight on each document.
  * Now it is only ued to prove at least one word.
- * @author aaltamir
+ * @author altamirano,peker,liberal
  */
 public class WeightManager {
     private Word word;
@@ -72,7 +72,7 @@ public class WeightManager {
         return weight;
          * **/
         String query = "Cada pescador debe traer su propio equipo de pesca";
-        
+         // String query = "todo sobre diesel en la historia de la agricultura";
         Collection<Similitude> similitudes = wordCountManager.determinateBestSimilitude(new Document("query", "query", query));
         System.out.println("Probando resultado de la query: \n");
         for(Similitude similitude: similitudes){

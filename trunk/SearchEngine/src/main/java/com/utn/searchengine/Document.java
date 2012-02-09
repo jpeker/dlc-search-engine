@@ -7,7 +7,7 @@ package com.utn.searchengine;
 /**
  * This class represents a text source, it can be a page
  * or a text document
- * @author aaltamir
+ * @author altamirano,peker,liberal
  */
 public class Document implements Comparable{
 

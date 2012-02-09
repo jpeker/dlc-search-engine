@@ -22,12 +22,12 @@ public class App
         Collection c = hashMapCrawlered.values();
         Vector vValues = new Vector();
         Iterator itr = c.iterator();
-        while(itr.hasNext())
+        /*while(itr.hasNext())
         {
         String s=itr.next().toString();
         System.out.println(s);
         vValues.add(s);
-        }
+        }*/
         Document document = new Document("Doc1",hashMapCrawlered.get("http://www.yatefortuna.com.ar").toString(),"El combustible diesel es vital para la agricultura");
 
         WeightManager weight = new WeightManager(word, document);

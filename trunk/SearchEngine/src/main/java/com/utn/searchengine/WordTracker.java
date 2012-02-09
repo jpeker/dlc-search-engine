@@ -9,7 +9,7 @@ package com.utn.searchengine;
  * This Class is created in order to take atrack of the info of the
  * words, it will consist of a location and a frecuency
  * @TODO: check the way to order de locations and times in descendant order by amount of times.
- * @author aaltamir
+ * @author altamirano,peker,liberal
  */
 public class WordTracker {
 
