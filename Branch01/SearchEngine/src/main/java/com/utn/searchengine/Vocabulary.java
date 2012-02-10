@@ -65,9 +65,9 @@ public class Vocabulary {
                     wordToModify.setMaxTF(timesThatWordAppearsOnNewDocument);
                     //entryToModify.setDocumentBiggestTermFrecuency(timesThatWordAppearsOnNewDocument);
                 }
-                int newTotalDocuments =wordToModify.getTotalDocumentsWhereWordAppears();
+                int newTotalDocuments =wordToModify.getNr();
                 newTotalDocuments++;
-                wordToModify.setTotalDocumentsWhereWordAppears(newTotalDocuments);
+                wordToModify.setNr(newTotalDocuments);
                 //entryToModify.setTotalDocumentsThatWordAppears(newTotalDocuments);
             }
         }
