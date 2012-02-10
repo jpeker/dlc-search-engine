@@ -69,7 +69,7 @@ public class Word {
     }
     @Override
     public String toString(){
-        return "Name: "+name+"N: "+this.getTotalDocumentsWhereWordAppears()+" - Max tf: "+this.getMaxTF();
+        return "Name: "+name+"N: "+this.getNr()+" - Max tf: "+this.getMaxTF();
     }
     
 }
