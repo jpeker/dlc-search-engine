@@ -22,8 +22,8 @@ public class ComparadorSearchResult implements Comparator {
         TITULO
     };  
     
-    private WebSite siteO1;
-    private WebSite siteO2;
+    private Document siteO1;
+    private Document siteO2;
     
     private LinkedList<NRLevel> nivelesNRO1;
     private LinkedList<NRLevel> nivelesNRO2;    
@@ -46,8 +46,8 @@ public class ComparadorSearchResult implements Comparator {
         int ret = 0;
         
         //Obtenemos las websites de los SearchResult
-        this.siteO1 = ((SearchResult)o1).getWebsite();
-        this.siteO2 = ((SearchResult)o2).getWebsite();
+        this.siteO1 = ((SearchResult)o1).getDocument();
+        this.siteO2 = ((SearchResult)o2).getDocument();
         
         //Obtenemos las palabras de cada SearchResult
         this.nivelesNRO1 = new LinkedList<NRLevel>(((SearchResult)o1).getNivelesNR().values());
@@ -103,7 +103,7 @@ public class ComparadorSearchResult implements Comparator {
        {
            case NR:
            {
-               if((o1.getLevel() == o2.getLevel()) && (o1.getCantPalabras() == o2.getCantPalabras()))
+               if((o1.getLevel() == o2.getLevel()) && (o1.getNumberOfWords() == o2.getNumberOfWords()))
                {
                    ret = true;
                }
@@ -111,23 +111,7 @@ public class ComparadorSearchResult implements Comparator {
            }
            case FRECUENCIA:
            {
-               if(o1.getFrecuenciaAcumulada()==o2.getFrecuenciaAcumulada())
-               {
-                   ret = true;
-               }
-               break;
-           }
-           case LINK:
-           {
-               if(o1.getPresenciaEnLinkAcumulada() == o2.getPresenciaEnLinkAcumulada())
-               {
-                   ret = true;
-               }
-               break;               
-           }
-           case TITULO:
-           {
-               if(o1.getPresenciaEnTituloAcumulada() == o2.getPresenciaEnTituloAcumulada())
+               if(o1.getTotalFreq()==o2.getTotalFreq())
                {
                    ret = true;
                }
@@ -210,13 +194,13 @@ public class ComparadorSearchResult implements Comparator {
                    else
                    {
                        //Son iguales en NIVEL. Desempatar por cantidad de palabras en la banda.
-                       if(o1.getCantPalabras()>o2.getCantPalabras())
+                       if(o1.getNumberOfWords()>o2.getNumberOfWords())
                        {
                            ret = -1;
                        }
                        else
                        {
-                           if(o1.getCantPalabras()<o2.getCantPalabras())
+                           if(o1.getNumberOfWords()<o2.getNumberOfWords())
                            {
                                ret = 1;
                            }
@@ -232,49 +216,18 @@ public class ComparadorSearchResult implements Comparator {
            }
            case FRECUENCIA:
            {
-               if(o1.getFrecuenciaAcumulada()>o2.getFrecuenciaAcumulada())
+               if(o1.getTotalFreq()>o2.getTotalFreq())
                {
                    ret = -1;
                }
                else
                {
-                   if(o1.getFrecuenciaAcumulada()<o2.getFrecuenciaAcumulada())
+                   if(o1.getTotalFreq()<o2.getTotalFreq())
                    {
                        ret = 1;                       
                    }
                }
                break;
-           }
-           case LINK:
-           {
-               if(o1.getPresenciaEnLinkAcumulada() > o2.getPresenciaEnLinkAcumulada())
-               {
-                   ret = -1;
-               }
-               else
-               {
-                  if(o1.getPresenciaEnLinkAcumulada() < o2.getPresenciaEnLinkAcumulada())
-                  {
-                      ret = 1;
-                  }                  
-               }
-               break;               
-           }
-           case TITULO:
-           {
-               if(o1.getPresenciaEnTituloAcumulada() > o2.getPresenciaEnTituloAcumulada())
-               {
-                   ret = -1;
-               }
-               else
-               {
-                  if(o1.getPresenciaEnTituloAcumulada() < o2.getPresenciaEnTituloAcumulada())
-                  {
-                      ret = 1;
-                  }                  
-               }
-               break; 
-               
            }
            default:
            {
