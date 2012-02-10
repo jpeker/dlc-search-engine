@@ -16,7 +16,7 @@ public class SearchResult {
     /**
      * WebSite resultado
      */
-    private DocumentManager documentManager;
+    private Document document;
     /**
      * Palabras asociadas a la query que estan relacionadas con esta website
      * y frecuencia de cada una de ellas para esta website.
@@ -28,8 +28,8 @@ public class SearchResult {
      * Constructor para crear una nuevo resultado de búsqueda
      * @param website website asociada
      */
-    public SearchResult(DocumentManager documentManager) {
-        this.documentManager = documentManager;
+    public SearchResult(Document document) {
+        this.document = document;
         this.nrLevels = new HashMap<Long, NRLevel>();
         this.words = new LinkedList<Word>();
     }
@@ -66,8 +66,8 @@ public class SearchResult {
      * Obtiene la website de este resultado de búsqueda
      * @return la website asociada a este resultado de búsqueda 
      */
-    public DocumentManager getDocumentManager() {
-        return documentManager;
+    public Document getDocument() {
+        return document;
     }  
     
    
@@ -86,9 +86,9 @@ public class SearchResult {
             return false;
         }
         final SearchResult other = (SearchResult) obj;
-        if (this.documentManager != other.documentManager &&
-                (this.documentManager == null
-                || !this.documentManager.equals(other.documentManager))) {
+        if (this.document != other.document &&
+                (this.document == null
+                || !this.document.equals(other.document))) {
             return false;
         }
         return true;
@@ -102,8 +102,8 @@ public class SearchResult {
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 47 * hash + (this.documentManager
-                != null ? this.documentManager.hashCode() : 0);
+        hash = 47 * hash + (this.document
+                != null ? this.document.hashCode() : 0);
         return hash;
     }
     
