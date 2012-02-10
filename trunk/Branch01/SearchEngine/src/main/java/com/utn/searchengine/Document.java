@@ -65,7 +65,26 @@ public class Document implements Comparable{
         String aux ="name=" + name + " location=" + location + "module=" + module ;
         return aux;
     }
-
+ @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 79 * hash + (this.location != null ? this.location.hashCode() : 0);
+        return hash;
+    }
+   @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Document other = (Document) obj;
+        if ((this.location == null) ? (other.location != null) : !this.location.equals(other.location)) {
+            return false;
+        }
+        return true;
+    }
     public int compareTo(Object o) {
         Document documentToCompare = (Document) o;
         return this.getLocation().compareTo(documentToCompare.getLocation());
