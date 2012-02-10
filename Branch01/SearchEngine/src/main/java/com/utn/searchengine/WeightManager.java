@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Vector;
 import Spider.*;
+import java.text.SimpleDateFormat;
 import java.util.Map;
 
 
@@ -39,18 +40,23 @@ public class WeightManager {
    
    
     public void estimateWeight(){
-        LocalWordCountManager wordCountManager = new LocalWordCountManager();
-   
-    Communicator com = new Communicator ();
-       
+       LocalWordCountManager wordCountManager = new LocalWordCountManager();
+
+          Communicator com = new Communicator ();
+          long start = System.currentTimeMillis();
           Iterator i =  com.beginCrawler("http://www.yatefortuna.com.ar").entrySet().iterator();
+          long elapsed = System.currentTimeMillis() - start;
+         /// System.out.println("Iterator time"+elapsed);
+          long elapsed2 = System.currentTimeMillis();
           while(i.hasNext()){
                     Map.Entry entry = (Map.Entry) i.next();
                     Document documento = new Document(entry.getKey().toString(),entry.getKey().toString(),entry.getValue().toString());
                      wordCountManager.addDocument(documento);
                }
-  
-       /* Document document1 = new Document("Doc1","http://www.yatefortuna.com.ar","el combustible diesel es vital para la agricultura");
+          long elapsed3 = System.currentTimeMillis() - elapsed2;
+         // System.out.println("While time"+elapsed3);
+
+          /* Document document1 = new Document("Doc1","http://www.yatefortuna.com.ar","el combustible diesel es vital para la agricultura");
         Document document2 = new Document("Doc2","http://www.yatefortuna.com.ar/index.html","el transporte de pasajeros tiene un subsidio para el combustible diesel");
         Document document3 = new Document("Doc3","http://www.yatefortuna.com.ar/barcos.htm","el transporte no funciona hoy");
         Document document4 = new Document("Doc4","http://www.yatefortuna.com.ar/servicios.htm","hay transportes y transportes...");
@@ -73,11 +79,17 @@ public class WeightManager {
          * **/
         String query = "Cada pescador debe traer su propio equipo de pesca";
          // String query = "todo sobre diesel en la historia de la agricultura";
+        long elapsed4 = System.currentTimeMillis();
         Collection<Similitude> similitudes = wordCountManager.determinateBestSimilitude(new Document("query", "query", query));
         System.out.println("Probando resultado de la query: \n");
         for(Similitude similitude: similitudes){
             System.out.println(similitude.toString());
         }
+        long elapsed5 = System.currentTimeMillis() - elapsed4;
+
+        System.out.println("Crawler time  "+elapsed);
+        System.out.println("Indexing time  "+elapsed3);
+        System.out.println("Query time  "+elapsed5);
     }
     
 }
