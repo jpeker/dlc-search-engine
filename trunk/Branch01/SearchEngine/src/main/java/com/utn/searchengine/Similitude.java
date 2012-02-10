@@ -42,8 +42,9 @@ public class Similitude {
     @Override
     public String toString(){
         String aux = "";
-        aux+= "First Document: "+this.documentA.getName()+"-Second document: "+this.documentB.getName()
+       aux+= "First Document: "+this.documentA.getName()+"-Module: " +this.documentA.getModule()+"-Second document: "+this.documentB.getName()
                +"-Similitude: "+this.similitude;
+
         return aux;
     }
 

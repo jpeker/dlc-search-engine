@@ -37,7 +37,7 @@ public class LocalWordCountManager implements WordCountManager{
         vocabulary.addDocumentWords(pages);
         postList.addDocumentWords(pages, document.getLocation());
         documentManager.addDocument(document);
-        this.updatingModuleDocuments();
+       // this.updatingModuleDocuments();
         System.out.println("\nContenido de documentManager: "+documentManager.toString());
         System.out.println("\nContenido de Vocabulary: "+vocabulary.toString());
         System.out.println("\nContenido de PostList: "+postList.toString());
@@ -109,7 +109,8 @@ public class LocalWordCountManager implements WordCountManager{
      * @return The module that represents de vector of the document.
      */
     public double getDocumentModule(Document document){
-        Set<String> words = postList.getAllWords();
+         //Set<String> words = postList.getAllWords();
+        Set<String> words = WordCount.retrieveWordCount(document).keySet();
         Iterator iterator = words.iterator();
         double moduleResult =0;
         while(iterator.hasNext()){
@@ -122,6 +123,7 @@ public class LocalWordCountManager implements WordCountManager{
             moduleResult+= potency;
         }
         moduleResult =  Math.pow(moduleResult, 0.5);
+      
         return moduleResult;
     }
 
@@ -151,7 +153,9 @@ public class LocalWordCountManager implements WordCountManager{
             denominator = document.getModule();
         }
         else{
-            denominator = this.getDocumentModule(document);
+             document.setModule(getDocumentModule(document));
+            denominator =document.getModule();
+           // denominator=getDocumentModule(document);
         }
         
         System.out.println("The document module is: "+denominator);
