@@ -1,23 +1,19 @@
-package engine.searcher;
+package com.utn.searchengine;
 
-import dal.beans.Palabra;
 
 /**
  * Representa un nivel NR
  * 
- * @author Christian Adam
- * @author Federico Schaefer
+ * @author Altamirano,Liberal,Peker
  */
 public class NRLevel implements Comparable {
     
     private long level;
     
-    private long cantPalabras;
+    private long numberOfWords;
     
-    private long frecuenciaAcumulada;
+    private long totalFreq;
     
-    private long presenciaEnLinkAcumulada;
-    private long presenciaEnTituloAcumulada;
     
     public NRLevel()
     {
@@ -28,48 +24,31 @@ public class NRLevel implements Comparable {
         this.level = level;
     }
     
-    public void addPalabra(Palabra palabra, long frecuencia, boolean presenciaEnLink, boolean presenciaEnTitulo)
+    public void addWord(Word word, long freq)
     {
-        if(palabra.getNr()==level)
+        if(word.getNr()==level)
         {
-            cantPalabras++;
-            frecuenciaAcumulada += frecuencia;
-            if(presenciaEnLink){presenciaEnLinkAcumulada++;}
-            if(presenciaEnTitulo){presenciaEnTituloAcumulada++;}
+            numberOfWords++;
+            totalFreq += freq;
         }
     }
 
-    public long getCantPalabras() {
-        return cantPalabras;
+    public long getNumberOfWords() {
+        return numberOfWords;
     }
 
-    public void setCantPalabras(long cantPalabras) {
-        this.cantPalabras = cantPalabras;
+    public void setNumberOfWords(long numberOfWords) {
+        this.numberOfWords = numberOfWords;
     }
 
-    public long getFrecuenciaAcumulada() {
-        return frecuenciaAcumulada;
+    public long getTotalFreq() {
+        return totalFreq;
     }
 
-    public void setFrecuenciaAcumulada(long frecuenciaAcumulada) {
-        this.frecuenciaAcumulada = frecuenciaAcumulada;
+    public void setTotalFreq(long frecuenciaAcumulada) {
+        this.totalFreq = frecuenciaAcumulada;
     }
     
-    public long getPresenciaEnLinkAcumulada() {
-        return presenciaEnLinkAcumulada;
-    }
-
-    public void setPresenciaEnLinkAcumulada(long presenciaEnLinkAcumulada) {
-        this.presenciaEnLinkAcumulada = presenciaEnLinkAcumulada;
-    }
-
-    public long getPresenciaEnTituloAcumulada() {
-        return presenciaEnTituloAcumulada;
-    }
-
-    public void setPresenciaEnTituloAcumulada(long presenciaEnTituloAcumulada) {
-        this.presenciaEnTituloAcumulada = presenciaEnTituloAcumulada;
-    }
 
     @Override
     public boolean equals(Object obj) {

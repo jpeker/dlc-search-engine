@@ -1,7 +1,7 @@
-package engine.searcher;
+package com.utn.searchengine;
 
-import dal.beans.Palabra;
-import dal.beans.WebSite;
+//import dal.beans.Palabra;
+//import dal.beans.WebSite;
 import java.util.HashMap;
 import java.util.LinkedList;
 
@@ -16,22 +16,22 @@ public class SearchResult {
     /**
      * WebSite resultado
      */
-    private WebSite website;
+    private DocumentManager documentManager;
     /**
      * Palabras asociadas a la query que estan relacionadas con esta website
      * y frecuencia de cada una de ellas para esta website.
      */
-    private HashMap<Long, NRLevel> nivelesNR;
-    private LinkedList<Palabra> palabras;
+    private HashMap<Long, NRLevel> nrLevels;
+    private LinkedList<Word> words;
 
     /**
      * Constructor para crear una nuevo resultado de búsqueda
      * @param website website asociada
      */
-    public SearchResult(WebSite website) {
-        this.website = website;
-        this.nivelesNR = new HashMap<Long, NRLevel>();
-        this.palabras = new LinkedList<Palabra>();
+    public SearchResult(DocumentManager documentManager) {
+        this.documentManager = documentManager;
+        this.nrLevels = new HashMap<Long, NRLevel>();
+        this.words = new LinkedList<Word>();
     }
     
     /**
@@ -40,23 +40,23 @@ public class SearchResult {
      * @param fr frecuencia
      * @return true si la agrego, false en caso contrario
      */
-    public boolean addPalabra(Palabra pal, Long fr)
+    public boolean addPalabra(Word currentWord, Long fr)
     {
-        if(!this.palabras.contains(pal) && fr > 0)
+        if(!this.words.contains(currentWord) && fr > 0)
         {
-            this.palabras.add(pal);
+            this.words.add(currentWord);
             
-            long nr =  pal.getNr();
+            long nr =  currentWord.getNr();
             
-            NRLevel nivelNR = nivelesNR.get(new Long(nr));
+            NRLevel nivelNR = nrLevels.get(new Long(nr));
             
             if(nivelNR==null)
             {
                 nivelNR = new NRLevel(nr);
-                nivelesNR.put(new Long(nr), nivelNR);
+                nrLevels.put(new Long(nr), nivelNR);
             }
             
-            nivelNR.addPalabra(pal, fr, this.presenteEnLinkDeWebSite(pal), this.presenteEnTituloDeWebSite(pal));
+            nivelNR.addWord(currentWord, fr);
             return true;
         }
         return false;
@@ -66,8 +66,8 @@ public class SearchResult {
      * Obtiene la website de este resultado de búsqueda
      * @return la website asociada a este resultado de búsqueda 
      */
-    public WebSite getWebsite() {
-        return website;
+    public DocumentManager getDocumentManager() {
+        return documentManager;
     }  
     
    
@@ -86,35 +86,29 @@ public class SearchResult {
             return false;
         }
         final SearchResult other = (SearchResult) obj;
-        if (this.website != other.website && (this.website == null || !this.website.equals(other.website))) {
+        if (this.documentManager != other.documentManager &&
+                (this.documentManager == null
+                || !this.documentManager.equals(other.documentManager))) {
             return false;
         }
         return true;
     }
 
     /**
-     * Determina el hashcode del SearchResult. Basado en el hashcode de la website
-     * asociada.
+     * Determina el hashcode del SearchResult. Basado en el hashcode de la 
+     * website asociada.
      * @return hashcode de este SearchResult
      */
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 47 * hash + (this.website != null ? this.website.hashCode() : 0);
+        hash = 47 * hash + (this.documentManager
+                != null ? this.documentManager.hashCode() : 0);
         return hash;
     }
     
-    private boolean presenteEnLinkDeWebSite(Palabra p)
-    {
-       return this.website.getUrl().toUpperCase().contains(p.getPalabra());
-    }
-    
-    private boolean presenteEnTituloDeWebSite(Palabra p)
-    {
-        return this.website.getTitulo().contains(p.getPalabra());
-    }
 
     public HashMap<Long, NRLevel> getNivelesNR() {
-        return nivelesNR;
+        return nrLevels;
     }   
 }
