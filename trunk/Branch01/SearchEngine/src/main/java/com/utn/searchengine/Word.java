@@ -28,11 +28,11 @@ public class Word {
  
     private int nr;
 
-    public int getTotalDocumentsWhereWordAppears() {
+    public int getNr() {
         return nr;
     }
 
-    public void setTotalDocumentsWhereWordAppears(int totalDocumentsWhereWordAppears) {
+    public void setNr(int totalDocumentsWhereWordAppears) {
         this.nr = totalDocumentsWhereWordAppears;
     }
     private int maxTF;

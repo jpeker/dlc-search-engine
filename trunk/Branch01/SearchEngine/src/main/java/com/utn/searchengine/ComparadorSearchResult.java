@@ -1,6 +1,6 @@
-package engine.searcher;
+package com.utn.searchengine;
 
-import dal.beans.WebSite;
+//import dal.beans.WebSite;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
