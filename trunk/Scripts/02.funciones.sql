@@ -18,16 +18,16 @@ $$ LANGUAGE plpgsql;
 -- Si existe lo actualiza.
 -- Si no existe lo crea.
 CREATE OR REPLACE FUNCTION fn_Save_Word (
-    pin_id_Word                    INTEGER,
+  
     pin_name_Word                  VARCHAR,
     pin_nr                     	   INTEGER,
     pin_max_Tf                     INTEGER
    
   
-) RETURNS SMALLINT AS $$
+) RETURNS BOOLEAN AS $$
 
     DECLARE
-        var_id_Word                INTEGER         :=  pin_id_Word;
+        var_flag	           BOOLEAN         := TRUE;
         var_name_Word              VARCHAR         := TRIM( pin_name_Word );
         var_nr                     INTEGER         :=  pin_nr ;  
         var_max_Tf                 INTEGER         :=  pin_max_Tf; 
@@ -37,42 +37,48 @@ CREATE OR REPLACE FUNCTION fn_Save_Word (
             SELECT COUNT(*)
             INTO var_count
             FROM Word w
-            WHERE w.id_Word =  var_id_Word ;
+            WHERE w.name_Word =  var_name_Word ;
             
                 -- veo si existe
             IF (var_count > 0) THEN
-            UPDATE Word w SET -- sí existe ==> update
-                name_Word  =   var_name_Word,
-               nr   =  var_nr,
+            var_flag := false;
+           UPDATE Word w SET -- sí existe ==> update
+                nr   =  var_nr,
                 max_Tf =  var_max_Tf 
              
-            WHERE w.id_Word =     var_id_Word ;
+            WHERE w.name_Word =    var_name_Word ;
         ELSE -- no existe ==> insert
            
             INSERT INTO Word(id_Word, name_Word, nr,max_Tf)
-                VALUES ( var_id_Word, var_name_Word,var_nr,var_max_Tf);
+                VALUES ( NEXTVAL('sq_Word'), var_name_Word,var_nr,var_max_Tf);
         END IF;
 
-        RETURN var_id_Word;
+        RETURN var_flag;
     END;
 $$ LANGUAGE plpgsql;
 -- La siguiente función elimina una Word de la BBDD.
 CREATE OR REPLACE FUNCTION pr_deleteWord (
-     pin_id_Word                     INTEGER
+   pin_name_Word                  VARCHAR
 ) RETURNS VOID AS $$
 
     DECLARE   
     var_count                    INTEGER         := 0;
+    var_Id_Word                  INTEGER         := NULL;
     BEGIN
+            -- Recupero la id de la palabra
+            SELECT id_Word
+            INTO var_Id_Word  
+            FROM  Word w
+            WHERE w.name_Word = pin_name_Word;
              -- Cuento postlist del page a eliminar
             SELECT COUNT(*)
             INTO var_count
             FROM  PostList p
-            WHERE p.id_Word  =  pin_id_Word ;
+            WHERE p.id_Word  =  var_Id_Word  ;
 
             IF (var_count = 0) THEN -- si no tiene postlist lo elimino
             DELETE FROM  Word w
-            WHERE w.id_Word = pin_id_Word;
+            WHERE w.name_Word = pin_name_Word;
             END IF;
 
         RETURN;
