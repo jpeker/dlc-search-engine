@@ -59,9 +59,10 @@ $$ LANGUAGE plpgsql;
 -- La siguiente función elimina una Word de la BBDD.
 CREATE OR REPLACE FUNCTION pr_deleteWord (
    pin_name_Word                  VARCHAR
-) RETURNS VOID AS $$
+) RETURNS BOOLEAN AS $$
 
-    DECLARE   
+    DECLARE
+    var_flag			 BOOLEAN         := false;   
     var_count                    INTEGER         := 0;
     var_Id_Word                  INTEGER         := NULL;
     BEGIN
@@ -77,11 +78,12 @@ CREATE OR REPLACE FUNCTION pr_deleteWord (
             WHERE p.id_Word  =  var_Id_Word  ;
 
             IF (var_count = 0) THEN -- si no tiene postlist lo elimino
+            var_flag :=true;
             DELETE FROM  Word w
             WHERE w.name_Word = pin_name_Word;
             END IF;
 
-        RETURN;
+        RETURN var_flag;
     END;
 $$ LANGUAGE plpgsql;
 -- =============================================================================
