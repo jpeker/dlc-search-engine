@@ -195,16 +195,16 @@ $$ LANGUAGE plpgsql;
 -- Si existe lo actualiza.
 -- Si no existe lo crea.
 CREATE OR REPLACE FUNCTION fn_Save_Page (
-    pin_id_Url                    INTEGER,
     pin_url_Name                  VARCHAR,
     pin_Modulo                    DECIMAL 
 
    
   
-) RETURNS SMALLINT AS $$
+) RETURNS BOOLEAN AS $$
 
     DECLARE
-        var_id_Url                 INTEGER         :=  pin_id_Url;
+
+        var_flag	           BOOLEAN         := TRUE;
         var_url_Name               VARCHAR         := TRIM(  pin_url_Name );
         var_Modulo                 DECIMAL         :=  pin_Modulo;  
         var_count                  INTEGER         := 0;
@@ -213,40 +213,45 @@ CREATE OR REPLACE FUNCTION fn_Save_Page (
             SELECT COUNT(*)
             INTO var_count
             FROM Page p
-            WHERE p.id_Url = var_id_Url;
+            WHERE p. url_Name = var_url_Name;
             
                 -- veo si existe la page
             IF (var_count > 0) THEN
+            var_flag := false;
             UPDATE Page p SET -- sí existe ==> update
-                url_Name  =  var_url_Name,
-                Modulo =   var_Modulo
-                WHERE p.id_Url = var_id_Url;
+            Modulo =   var_Modulo
+            WHERE p. url_Name = var_url_Name;
         ELSE -- no existe ==> insert
            
             INSERT INTO Page(id_Url,url_Name, Modulo)
-                VALUES ( var_id_Url, var_url_Name,var_Modulo );
+                VALUES ( NEXTVAL('sq_Page'), var_url_Name,var_Modulo );
         END IF;
 
-        RETURN var_id_Url;
+        RETURN var_flag;
     END;
 $$ LANGUAGE plpgsql;
 -- La siguiente función elimina una page de la BBDD.
 CREATE OR REPLACE FUNCTION pr_deletePage (
-     pin_id_Url                    INTEGER
+    pin_url_Name                  VARCHAR
 ) RETURNS VOID AS $$
 
-    DECLARE   
+    DECLARE
+    var_id_Url                 INTEGER         :=  NULL;   
     var_count                    INTEGER         := 0;
     BEGIN
+	    SELECT id_Url 
+	    INTO  var_id_Url
+	    FROM  Page u
+	    WHERE u.url_Name = pin_url_Name; 
              -- Cuento postlist del page a eliminar
             SELECT COUNT(*)
             INTO var_count
             FROM  PostList p
-            WHERE p.id_Url  =  pin_id_Url;
+            WHERE p.id_Url  = var_id_Url;
 
             IF (var_count = 0) THEN -- si no tiene postlist lo elimino
             DELETE FROM  Page u
-               WHERE u.id_Url = pin_id_Url;
+               WHERE u.url_Name = pin_url_Name; 
             END IF;
 
         RETURN;
