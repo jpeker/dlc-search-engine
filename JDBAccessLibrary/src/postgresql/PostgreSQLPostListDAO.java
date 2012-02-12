@@ -18,32 +18,25 @@ import java.util.Iterator;
  * @author Julian
  */
 public class PostgreSQLPostListDAO implements PostListDAO{
-    
-    /////
-    ////  
+  
     public static void main(String[] args) {
-        //Word w0= new Word("Fede", 8, 2);
+   
         
        PostgreSQLPostListDAO paldao= new  PostgreSQLPostListDAO();
-        //paldao.grabarPalabra(w0);
+    
         Word w1= new Word("casa", 8, 2);
        Word w2= new Word("cara", 8, 2);
         Word w3= new Word("Julián", 8, 2); 
-        ArrayList<Word> worda= new ArrayList();
-        worda.add(w1);
-        worda.add(w2);
-        worda.add(w3);
-        Iterator i=paldao.obtenerDocumentoCandidatos(worda).iterator();
-        while(i.hasNext())
-        {
-            Document doc =(Document)i.next();
-            System.out.println(doc.toString());
-        }
+        Document docu = new Document ("doc","peker.com.ar/index","");
+        
+        System.out.println(  paldao.grabarPostList(w1, docu,45));
         // TODO code application logic here
     }
-    ////  
-    /////  
-      
+ 
+      /* Recupera los documentos candidatos de la busqueda
+     *  @param ArrayList<Word> words
+     * Return arraylist de los documentos candidatos
+     */
     public ArrayList<Document> obtenerDocumentoCandidatos( ArrayList<Word> words )
     {
      ArrayList<Document> ret=new ArrayList();
@@ -78,4 +71,97 @@ public class PostgreSQLPostListDAO implements PostListDAO{
         }
     return ret;
     }
+    /* Recupera el nr de una palabra
+     * @param Word word
+     * return el nr  y -1 en caso de que no pudo recuperarse
+     */
+    public int getNrWord(Word word)
+    {
+   int nr=-1;
+    PreparedStatement st;
+        Connection con;
+      try {
+            con = PostgreDBManager.getConnection();
+            synchronized(con)
+            {
+                String query="select nr from Word where name_Word = ?";
+                st = con.prepareStatement(query);
+                st.setString(1,word.getName());
+                ResultSet results=st.executeQuery();
+                while(results.next())
+                {
+                   nr=results.getInt("nr");
+                }
+                results.close();
+                st.close();
+            }
+        } catch (SQLException ex) {
+            nr=-1;
+        }
+    return nr;
+    
+    }
+    /* Recupera la cantidad de veces que aparece una palabra en un documento
+     * @param Word word
+     * @param Document document
+     * return el tf y -1 en caso de que no pudo recuperarse
+     */
+    public int getTF(Word word,Document document)
+    {
+   int tf=-1;
+    PreparedStatement st;
+        Connection con;
+      try {
+            con = PostgreDBManager.getConnection();
+            synchronized(con)
+            {
+                String query="select p.frequency from PostList p inner join page d on p.id_Url = d.id_Url inner join word w on p.id_Word = w.id_Word  where w.name_Word = ? and d.url_Name = ?";
+                st = con.prepareStatement(query);
+                st.setString(1,word.getName());
+                st.setString(2,document.getLocation());
+                ResultSet results=st.executeQuery();
+                while(results.next())
+                {
+                   tf=results.getInt(1);
+                }
+                results.close();
+                st.close();
+            }
+        } catch (SQLException ex) {
+            tf=-1;
+        }
+    return tf;
+    
+    }
+    /* graba un documento por palabra en el postlist indicandole la frecuencia
+     * @param Word word
+     * @param Document document
+     * @param int fr es la frecuencia de la palbra en un documento
+     * return true si se pudo grabar en la base de datos
+     */
+   public boolean grabarPostList(Word word,Document document,int fr)
+   {
+   
+    PreparedStatement st;
+        Connection con;
+        try {
+            con = PostgreDBManager.getConnection();
+            synchronized(con)
+            {
+                String query="SELECT fn_Save_Postlist(?,?,?);";
+                st = con.prepareStatement(query);
+                st.setString(1, word.getName());
+                st.setString(2, document.getLocation());
+                st.setInt(3, fr);
+                st.executeQuery();
+                st.close();
+                return true;
+            }
+        } catch (SQLException ex) {
+            System.out.println(""+ex.toString());
+           return false;
+          
+        }
+   
+   }
 }
