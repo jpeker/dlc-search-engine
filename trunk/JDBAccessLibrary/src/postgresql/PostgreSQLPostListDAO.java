@@ -47,7 +47,6 @@ public class PostgreSQLPostListDAO {
     public ArrayList<Document> obtenerDocumentoCandidatos( ArrayList<Word> words )
     {
      ArrayList<Document> ret=new ArrayList();
-     ArrayList<String> cadena= new ArrayList();
      Iterator i = words.iterator();
      StringBuilder cad = new StringBuilder();
      while(i.hasNext())
@@ -64,7 +63,7 @@ public class PostgreSQLPostListDAO {
             con = PostgreDBManager.getConnection();
             synchronized(con)
             {
-                String query="select distinct d.url_Name from postlist p inner join page d on p.id_Url = d.id_Url inner join word w on p.id_Word = w.id_Word  where w.name_Word in ("+cad.toString()+")";
+                String query="select distinct d.url_Name from postlist p inner join page d on p.id_Url = d.id_Url inner join word w on p.id_Word = w.id_Word  where w.name_Word in ("+cad.toString()+");";
                 st = con.prepareStatement(query);
                 ResultSet results=st.executeQuery();
                 while(results.next())
