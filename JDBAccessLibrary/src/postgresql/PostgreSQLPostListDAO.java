@@ -15,21 +15,6 @@ import java.util.Iterator;
  * @author Altamirano Peker Liberal
  */
 public class PostgreSQLPostListDAO implements PostListDAO{
-  
-    public static void main(String[] args) {
-   
-        
-       PostgreSQLPostListDAO paldao= new  PostgreSQLPostListDAO();
-    
-        Word w1= new Word("casa", 8, 2);
-       Word w2= new Word("cara", 8, 2);
-        Word w3= new Word("Julián", 8, 2); 
-        Document docu = new Document ("doc","peker.com.ar/index","");
-        
-        System.out.println(  paldao.grabarPostList(w1, docu,45));
-        // TODO code application logic here
-    }
- 
       /* Recupera los documentos candidatos de la busqueda
      *  @param ArrayList<Word> words
      * Return arraylist de los documentos candidatos
