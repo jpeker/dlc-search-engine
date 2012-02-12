@@ -1,6 +1,7 @@
 package dao;
 
 import beans.Word;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 /**
@@ -10,7 +11,7 @@ import java.util.LinkedList;
  * @author Christian Adam
  * @author Federico Schaefer
  */
-public interface PalabraDAO {
+public interface WordDAO {
     
     /**
      * Graba una palabra en la base de datos. Si la palabra ya existia la 
@@ -19,20 +20,6 @@ public interface PalabraDAO {
      * @return true si la operacion se pudo realizar exitosamente, false en caso contrario 
      */
     boolean grabarPalabra(Word palabra);
-    
-    /**
-     * Inserta la palabra en la base de datos.
-     * @param palabra la palabra a insertar
-     * @return true si se pudo insertar exitosamente, false en caso contrario
-     */    
-    boolean insertarPalabra(Word palabra);
-    
-    /**
-     * Actualiza la palabra en la base de datos.
-     * @param palabra la palabra a actualizar
-     * @return true si se pudo actualizar exitosamente, false en caso contrario
-     */
-    boolean actualizarPalabra(Word palabra);
     
     /**
      * Elimina la palabra de la base de datos
@@ -53,22 +40,5 @@ public interface PalabraDAO {
      * @param palabra la palabra de la cual se desea saber su ID
      * @return el id de la palabra
      */
-    int obtenerId(Word palabra);
-    
-    /**
-     * Calcula el NR de la palabra.
-     * @param palabra la palabra de la cual se desea obtener su NR.
-     * @return el NR de la palabra.
-     */
-    long calcularNrDePalabra(Word palabra);
-    
-
-    
-    /**
-     * Obtiene las stop words para el porcentaje indicado
-     * @param percentage el porcentaje de websites en el que tiene que estar
-     * una palabra para ser considerada una stopWord.
-     * @return lista de las stop words.
-     */
-    LinkedList<Word> getStopWords(float percentage);
+     public ArrayList<Word> obtenerVocabulary();
 }

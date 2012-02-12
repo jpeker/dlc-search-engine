@@ -3,28 +3,25 @@
  * and open the template in the editor.
  */
 package postgresql;
-import dbmanager.*;
-import dao.*;
-//import beans.WebSite;
 import beans.Document;
 import beans.Word;
-import java.util.LinkedList;
-import java.sql.*;
+import dao.PostListDAO;
+import dbmanager.PostgreDBManager;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Collections.*;
-import java.util.Enumeration;
-import java.util.HashSet;
-import java.util.Hashtable;
 import java.util.Iterator;
 /**
  *
  * @author Julian
  */
-public class PostgreSQLPostListDAO {
+public class PostgreSQLPostListDAO implements PostListDAO{
     
-      public static void main(String[] args) {
+    /////
+    ////  
+    public static void main(String[] args) {
         //Word w0= new Word("Fede", 8, 2);
         
        PostgreSQLPostListDAO paldao= new  PostgreSQLPostListDAO();
@@ -44,19 +41,22 @@ public class PostgreSQLPostListDAO {
         }
         // TODO code application logic here
     }
+    ////  
+    /////  
+      
     public ArrayList<Document> obtenerDocumentoCandidatos( ArrayList<Word> words )
     {
      ArrayList<Document> ret=new ArrayList();
      Iterator i = words.iterator();
      StringBuilder cad = new StringBuilder();
      while(i.hasNext())
-     {
-     Word word =(Word)i.next();
-     cad.append("'");
-    cad.append(word.getName());
-    cad.append("'");
-    if(i.hasNext())cad.append(",");
-     }
+        {
+            Word word =(Word)i.next();
+            cad.append("'");
+            cad.append(word.getName());
+            cad.append("'");
+            if(i.hasNext())cad.append(",");
+        }
     PreparedStatement st;
         Connection con;
       try {
@@ -76,12 +76,6 @@ public class PostgreSQLPostListDAO {
         } catch (SQLException ex) {
             ret=null;
         }
-       
-    
-    
-    
     return ret;
-    
     }
-    
 }

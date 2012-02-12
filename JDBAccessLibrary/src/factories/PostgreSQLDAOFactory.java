@@ -5,9 +5,11 @@
 
 package factories;
 
-import dao.PalabraDAO;
-import dao.WebSiteDAO;
-import postgresql.PostgreSQLPalabraDAO;
+import dao.WordDAO;
+import dao.DocumentDAO;
+import postgresql.PostgreSQLDocumentDAO;
+import postgresql.PostgreSQLWordDAO;
+import dao.PostListDAO;
 
 /**
  *
@@ -16,13 +18,13 @@ import postgresql.PostgreSQLPalabraDAO;
 public class PostgreSQLDAOFactory extends DAOFactory{
 
     @Override
-    public WebSiteDAO getWebSiteDAO() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public DocumentDAO getDocumentDAO() {
+       return new  PostgreSQLDocumentDAO();
     }
 
     @Override
-    public PalabraDAO getPalabraDAO() {
-        return new PostgreSQLPalabraDAO();
+    public WordDAO getWordDAO() {
+        return new PostgreSQLWordDAO();
     }
 
 }
