@@ -4,6 +4,8 @@
  */
 package com.utn.searchengine;
 
+import dataaccess.dao.WordDAO;
+import dataaccess.factories.DAOFactory;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -19,7 +21,11 @@ public class Vocabulary {
     public Map<String, Word> getVocabularyWords() {
         return vocabularyWords;
     }
-
+    
+    private WordDAO getWordDAO(){
+    return DAOFactory.getActiveDAOFactory().getWordDAO();
+}
+    
     public void setVocabularyWords(Map<String, Word> vocabularyWords) {
         this.vocabularyWords = vocabularyWords;
     }
@@ -58,6 +64,7 @@ public class Vocabulary {
                 Word word = new Word(entry.getKey().toString(), 1, values);
                 //VocabularyEntry vocabularyEntry = new VocabularyEntry(word, 1, values);
                 vocabularyWords.put(word.getName(), word);
+              DAOFactory.getActiveDAOFactory().getWordDAO().saveWord(word);
             }
             else{
                 //the word already exists so it is necesarry to update their attributes.
@@ -74,6 +81,7 @@ public class Vocabulary {
                 newTotalDocuments++;
                 wordToModify.setNr(newTotalDocuments);
                 //entryToModify.setTotalDocumentsThatWordAppears(newTotalDocuments);
+                DAOFactory.getActiveDAOFactory().getWordDAO().saveWord(wordToModify);
             }
         }
     

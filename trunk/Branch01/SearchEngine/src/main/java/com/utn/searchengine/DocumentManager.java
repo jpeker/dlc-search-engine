@@ -4,6 +4,7 @@
  */
 package com.utn.searchengine;
 
+import dataaccess.factories.DAOFactory;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -38,6 +39,7 @@ public class DocumentManager {
     }
     public void addDocument(Document document){
         documents.add(document);
+          DAOFactory.getActiveDAOFactory().getDocumentDAO().grabarWebSite(document);
 
     }
     public void remove(Document document){

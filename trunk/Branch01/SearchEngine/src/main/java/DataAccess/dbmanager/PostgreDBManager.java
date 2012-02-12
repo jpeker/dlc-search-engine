@@ -27,7 +27,7 @@ public class PostgreDBManager {
     /**
      * Contraseña de la base de datos
      */
-    private static String contraseña="dlc2012";
+    private static String contrasenia="dlc2012";
 
     /**
      * Representa la conexión a la base de datos
@@ -62,7 +62,7 @@ public class PostgreDBManager {
             System.exit(2);
         }
         try{
-            con = DriverManager.getConnection(DBURL, usuario, contraseña);
+            con = DriverManager.getConnection(DBURL, usuario, contrasenia);
         }
         catch (SQLException ex)
         {
