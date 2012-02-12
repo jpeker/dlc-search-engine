@@ -31,7 +31,7 @@ CREATE SEQUENCE sq_Page;
 DROP TABLE IF EXISTS Page CASCADE;
 CREATE TABLE Page (
   id_Url         	INTEGER                    	NOT NULL,
-  url_Name              VARCHAR(32)                     NOT NULL,
+  url_Name              VARCHAR                    NOT NULL,
   Modulo                DECIMAL 			NOT NULL,
   PRIMARY KEY (id_Url)
 );
