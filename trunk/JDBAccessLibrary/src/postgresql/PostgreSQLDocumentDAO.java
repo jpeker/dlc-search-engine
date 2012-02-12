@@ -24,16 +24,8 @@ import java.util.Iterator;
  *
  * @author Administrador
  */
-public class PostgreSQLWebSiteDAO  {
+public class PostgreSQLDocumentDAO implements DocumentDAO  {
 
-      public static void main(String[] args) {
-        Document d0 = new Document("doc12","peker/loca","plasticola");
-        d0.setModule(12.5);
-       PostgreSQLWebSiteDAO  paldao= new  PostgreSQLWebSiteDAO ();
-       paldao.obtenerWebSite(d0);
-          System.out.println(""+   paldao.obtenerCantidadDocument());
-        // TODO code application logic here
-    }
     /**
      * Graba la website en la base de datos. Si no existia la inserta y si existia
      * la actualiza

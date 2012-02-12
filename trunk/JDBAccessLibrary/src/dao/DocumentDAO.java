@@ -14,7 +14,7 @@ import java.util.LinkedList;
  * @author Christian Adam
  * @author Federico Schaefer
  */
-public interface WebSiteDAO {
+public interface DocumentDAO {
     /**
      * Graba una website en la base de datos. Si la website ya existia la 
      * actualiza y si no existia la inserta en la base de datos.

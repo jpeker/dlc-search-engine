@@ -1,7 +1,7 @@
 package factories;
 
-import dao.PalabraDAO;
-import dao.WebSiteDAO;
+import dao.WordDAO;
+import dao.DocumentDAO;
 
 /**
  * Clase abstracta que representa una fábrica de DAOs.
@@ -12,25 +12,22 @@ import dao.WebSiteDAO;
 public abstract class DAOFactory {
     
   //Definimos los tipos de factories
-  public static final int MYSQL = 1;
-  public static final int POSTGRE = 2;
+  public static final int POSTGRE = 1;
 
 
   //Definimos la factory activa (tipo de persistencia a utilizar) 
-  public static final int activeFactoryMySql = MYSQL;
+  
   public static final int activeFactoryPostgre = POSTGRE;
 
-  public abstract WebSiteDAO getWebSiteDAO();
-  public abstract PalabraDAO getPalabraDAO();
+  public abstract DocumentDAO getDocumentDAO();
+  public abstract WordDAO getWordDAO();
 
   public static DAOFactory getDAOFactory(int factory) {
   
     switch (factory) {
-      ///case MYSQL: 
-        //  return new MySqlDAOFactory();
        case POSTGRE:
           return new PostgreSQLDAOFactory();
-      default           : 
+      default: 
           return null;
     }
   }
