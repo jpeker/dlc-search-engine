@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package notificator2;
+package notificator;
 import java.util.ArrayList;
 
 /**
