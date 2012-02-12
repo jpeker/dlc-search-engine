@@ -303,8 +303,8 @@ public class PostgreSQLPalabraDAO implements PalabraDAO{
      */
     public LinkedList<Word> getStopWords(float razonStopWords) {
 
-       LinkedList<Word> stopWords = new LinkedList<Word>();
-
+      LinkedList<Word> stopWords = new LinkedList<Word>();
+/* 
        //razonStopWords válidos: 0 - 1 :)
        if(razonStopWords<0 || razonStopWords>1){return stopWords;}
 
@@ -331,7 +331,7 @@ public class PostgreSQLPalabraDAO implements PalabraDAO{
             }
          } catch (SQLException ex) {
             //Notificador.getInstancia().reportar(Evento.CONDICION_DE_ERROR,"Error al obtener las stopWords", ex);
-        }
+        }*/
         return stopWords;
     }
 }

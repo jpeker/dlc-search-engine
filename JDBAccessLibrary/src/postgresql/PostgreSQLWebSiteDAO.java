@@ -7,7 +7,8 @@ package postgresql;
 
 import dbmanager.*;
 import dao.*;
-import beans.WebSite;
+//import beans.WebSite;
+import beans.Document;
 import beans.Word;
 import java.util.LinkedList;
 import java.sql.*;
@@ -23,23 +24,73 @@ import java.util.Iterator;
  *
  * @author Administrador
  */
-public class PostgreSQLWebSiteDAO implements WebSiteDAO {
-/**
+public class PostgreSQLWebSiteDAO  {
+
+      public static void main(String[] args) {
+        Document d0 = new Document("doc12","peker/loca","plasticola");
+        d0.setModule(12.5);
+       PostgreSQLWebSiteDAO  paldao= new  PostgreSQLWebSiteDAO ();
+       paldao.obtenerWebSite(d0);
+          System.out.println(""+   paldao.obtenerCantidadDocument());
+        // TODO code application logic here
+    }
+    /**
      * Graba la website en la base de datos. Si no existia la inserta y si existia
      * la actualiza
      * @param website website a grabar
      * @return true si se pudo grabar con éxito, false en caso contrario
      */
-    public boolean grabarWebSite(WebSite website) {
-        boolean ret = false;
-        if (this.obtenerId(website) != -1) {
-            ret = this.actualizarWebSite(website);
-        } else {
-            ret = this.insertarWebSite(website);
+    public boolean grabarWebSite(Document document) {
+        PreparedStatement st;
+        Connection con;
+        try {
+            con = PostgreDBManager.getConnection();
+            synchronized(con)
+            {
+                String query="SELECT fn_save_page(?,?);";
+                st = con.prepareStatement(query);
+                st.setString(1, document.getLocation());
+                st.setDouble(2, document.getModule());
+                st.executeQuery();
+                st.close();
+                return true;
+            }
+        } catch (SQLException ex) {
+            System.out.println(""+ex.toString());
+           return false;
+            // Notificador.getInstancia().reportar(Evento.CONDICION_DE_ERROR,"Error al obtener palabra: " +  palabra.getPalabra(), ex);
         }
-        return ret;
     }
-
+    /*
+     * obtiene la cantidad total de documento
+     */
+   public int obtenerCantidadDocument()
+   {
+    int cant;
+    PreparedStatement st;
+        Connection con;
+        try {
+            con = PostgreDBManager.getConnection();
+            synchronized(con)
+            {
+                String query="SELECT COUNT(*) FROM Page p;";
+                st = con.prepareStatement(query);
+                ResultSet results= st.executeQuery();
+                results.next();
+                cant = results.getInt(1);
+                st.close();
+                
+            }
+        } catch (SQLException ex) {
+            System.out.println(""+ex.toString());
+            cant=-1;
+         
+            // Notificador.getInstancia().reportar(Evento.CONDICION_DE_ERROR,"Error al obtener palabra: " +  palabra.getPalabra(), ex);
+        }
+   
+     return cant;
+   
+   }
     /**
      * Obtiene la website desde la base de datos que se corresponde a la
      * website de busqueda dada.
@@ -47,28 +98,30 @@ public class PostgreSQLWebSiteDAO implements WebSiteDAO {
      * @return la website de la base de datos, null en caso que no exista o se
      * produzca algun error.
      */
-    public WebSite obtenerWebSite(WebSite website) {
-        WebSite ret = null;
+    public Document obtenerWebSite(Document website) {
+        Document ret = null;
         PreparedStatement st;
         Connection con;
         try {
-            con = MySqlDBManager.getConnection();
-            synchronized (con) {
-                String query = "Select idUrl, timestamp, estado, titulo, base, url from website where hash = ?";
+            con = PostgreDBManager.getConnection();
+              String query="select id_Url ,url_Name,Modulo from Page where url_Name = ?";
                 st = con.prepareStatement(query);
-                st.setInt(1, website.hashCode());
-                ResultSet results = st.executeQuery();
-                if (results.next()) {
-                    ret = new WebSite(results.getString("titulo"), results.getString("url"), results.getBoolean("estado"), results.getLong("timestamp"), results.getBoolean("base"));
+                st.setString(1, website.getLocation());
+                ResultSet results=st.executeQuery();
+                if(results.next())
+                {
+                    ret=new Document(results.getString("url_Name"),results.getString("url_Name"),"");
+                    ret.setModule(results.getDouble("Modulo"));
                 }
                 results.close();
                 st.close();
-            }
+            
         } catch (SQLException ex) {
              //Notificador.getInstancia().reportar(Evento.CONDICION_DE_ERROR,"Error al obtener website por objeto website: " + website.getUrl(), ex);
         }
         return ret;
     }
+    
 
     /**
      * Obtiene la website de la base de datos que se corresponde con el id
@@ -77,19 +130,19 @@ public class PostgreSQLWebSiteDAO implements WebSiteDAO {
      * @return la website correspondiente de la base de datos, null en caso de que
      * no exista una website para ese id, o si sucedió algun error.
      */
-    public WebSite obtenerWebSite(int idUrl) {
-        WebSite ret = null;
+   /** public Document obtenerWebSite(int idUrl) {
+        Document ret = null;
         PreparedStatement st;
         Connection con;
         try {
-            con = MySqlDBManager.getConnection();
+            con = PostgreDBManager.getConnection();
             synchronized (con) {
                 String query = "Select idUrl, timestamp, estado, titulo, base, url from website where idUrl = ?";
                 st = con.prepareStatement(query);
                 st.setInt(1, idUrl);
                 ResultSet results = st.executeQuery();
                 if (results.next()) {
-                    ret = new WebSite(results.getString("titulo"), results.getString("url"), results.getBoolean("estado"), results.getLong("timestamp"), results.getBoolean("base"));
+                 //   ret = new WebSite(results.getString("titulo"), results.getString("url"), results.getBoolean("estado"), results.getLong("timestamp"), results.getBoolean("base"));
                 }
                 //No obtener las palabras de esa website por default, cargarlas por lazy load.
                 results.close();
@@ -100,7 +153,7 @@ public class PostgreSQLWebSiteDAO implements WebSiteDAO {
         }
         return ret;
     }
-
+*/
     /**
      * Obtiene las palabras y frecuencia de las mismas para la website dada.
      * @param website website cuyas palabras se desean conocer
@@ -108,7 +161,7 @@ public class PostgreSQLWebSiteDAO implements WebSiteDAO {
      * es la frecuencia de esa palabra. El hashcode utilizado en la KEY para Word
      * esta basado en el string propio de la palabra.
      */
-    public Hashtable<Word, Long> obtenerPalabrasDeWebSite(WebSite website) {
+    /*public Hashtable<Word, Long> obtenerPalabrasDeWebSite(WebSite website) {
         Hashtable<Word, Long> ret = new Hashtable<Word, Long>();
         Connection con = MySqlDBManager.getConnection();
         PreparedStatement st;
@@ -138,7 +191,7 @@ public class PostgreSQLWebSiteDAO implements WebSiteDAO {
      * @return true si la website se pudo eliminar exitosamente, false en caso
      * contrario
      */
-    public boolean eliminarWebSite(WebSite website) {
+    /*public boolean eliminarWebSite(WebSite website) {
         boolean ret = false;
         //Si la website no existe no hay nada que borrar
         int idUrl = this.obtenerId(website);
@@ -200,7 +253,7 @@ public class PostgreSQLWebSiteDAO implements WebSiteDAO {
      * @param website website de la cual se desea saber su id de base de datos
      * @return el id de la base de datos o -1 si no se pudo determinar el mismo
      */
-    public int obtenerId(WebSite website) {
+    /*public int obtenerId(WebSite website) {
         int ret = -1;
         if(website==null){return ret;}
         PreparedStatement st;
@@ -229,7 +282,7 @@ public class PostgreSQLWebSiteDAO implements WebSiteDAO {
      * @param website website a insertar
      * @return true si se pudo insertar exitosamente, false en caso contrario
      */
-    public boolean insertarWebSite(WebSite website) {
+  /*  public boolean insertarWebSite(WebSite website) {
 
         int idUrl = this.obtenerId(website);
 
@@ -294,7 +347,7 @@ public class PostgreSQLWebSiteDAO implements WebSiteDAO {
      * insertar o actualizar esta website.
      * @return true si se pudo grabar exitosamente, false en caso contrario
      */
-    private boolean grabarListaPosteo(WebSite website, Connection con) {
+    /*private boolean grabarListaPosteo(WebSite website, Connection con) {
         if (con == null) {
              //Notificador.getInstancia().reportar(Evento.CONDICION_DE_ERROR,"Conexión nula al intentar grabar lista de posteo de website: " + website.getUrl(), null);
              return false;
@@ -374,7 +427,7 @@ public class PostgreSQLWebSiteDAO implements WebSiteDAO {
                     /*5. Ahora si sabemos que efectivamente tenemos una website y una palabra
                      *   con un id válido. A insertar en la lista de posteo!
                      */  //Verificamos que la entrada existe. (Ya estaba registrada esta palabra para esta website)
-                    try {
+                  /*  try {
 
                         boolean firstTimeInPage = false;
 
@@ -470,7 +523,7 @@ public class PostgreSQLWebSiteDAO implements WebSiteDAO {
      *
      * @return true si ya existia, false en caso contrario
      */
-    private boolean yaExistePalabraParaWebSite(int idPalabra, int idWebSite) {
+   /** private boolean yaExistePalabraParaWebSite(int idPalabra, int idWebSite) {
         boolean ret = false;
         Connection con = MySqlDBManager.getConnection();
         PreparedStatement st;
@@ -499,7 +552,7 @@ public class PostgreSQLWebSiteDAO implements WebSiteDAO {
      * @param website website a actualizar
      * @return true si se pudo actualizar exitosamente, false en caso contrario
      */
-    public boolean actualizarWebSite(WebSite website) {
+   /* public boolean actualizarWebSite(WebSite website) {
 
         int idUrl = this.obtenerId(website);
 
@@ -564,7 +617,7 @@ public class PostgreSQLWebSiteDAO implements WebSiteDAO {
      * @param rowLimit cantidad de websites bases que se desea obtener
      * @return una lista con las websites base
      */
-    public LinkedList<WebSite> obtenerWebSitesBase(int rowLimit) {
+    /*public LinkedList<WebSite> obtenerWebSitesBase(int rowLimit) {
         LinkedList<WebSite> ret = new LinkedList<WebSite>();
         PreparedStatement st;
         Connection con;
@@ -594,7 +647,7 @@ public class PostgreSQLWebSiteDAO implements WebSiteDAO {
      * @param cantidad cantidad de websites analizables que se desean obtener
      * @return lista de websites analizables
      */
-    public LinkedList<WebSite> obtenerWebSitesAnalizables(int cantidad) {
+  /*  public LinkedList<WebSite> obtenerWebSitesAnalizables(int cantidad) {
         //Esta lista es la que será retornada
         LinkedList<WebSite> analizables = new LinkedList<WebSite>();
 
@@ -624,7 +677,7 @@ public class PostgreSQLWebSiteDAO implements WebSiteDAO {
      * @param cantidad cantidad de websites analizables a obtener
      * @return lista de websites analizables
      */
-    private LinkedList<WebSite> obtenerWebSiteAnalizables(boolean estado, long reScan, int cantidad) {
+    /*private LinkedList<WebSite> obtenerWebSiteAnalizables(boolean estado, long reScan, int cantidad) {
         LinkedList<WebSite> webSiteAnalizables = new LinkedList<WebSite>();
         long limit = System.currentTimeMillis() - reScan;
         PreparedStatement st;
@@ -639,7 +692,7 @@ public class PostgreSQLWebSiteDAO implements WebSiteDAO {
                 st.setInt(3, cantidad);
                 ResultSet results = st.executeQuery();
                 while (results.next()) {
-                    webSiteAnalizables.add(this.obtenerWebSite(new WebSite(results.getString("url"))));
+                 //   webSiteAnalizables.add(this.obtenerWebSite(new WebSite(results.getString("url"))));
                 }
                 results.close();
                 st.close();
@@ -657,7 +710,7 @@ public class PostgreSQLWebSiteDAO implements WebSiteDAO {
      * asociadas.
      * @return cantidad de websites indexadas
      */
-    public long getCantidadWebsitesIndexadas() {
+ /*   public long getCantidadWebsitesIndexadas() {
         long cantWebSitesIndexadas = 0;
         Connection con;
         Statement st;
@@ -678,12 +731,12 @@ public class PostgreSQLWebSiteDAO implements WebSiteDAO {
         }
         return cantWebSitesIndexadas;
     }
-
+*/
     /**
      * Reporta las websites base
      * @param websites websites bases a reportar
      */
-    public void reportarWebSitesBase(LinkedList<WebSite> websites) {
+   /* public void reportarWebSitesBase(LinkedList<WebSite> websites) {
          if(websites==null){return;}
         //Descartar aquellas websites que ya existen en la base!
         Iterator<WebSite> it = websites.iterator();
@@ -745,7 +798,7 @@ public class PostgreSQLWebSiteDAO implements WebSiteDAO {
      * @return numero de ocurrencias de la palabra en la website dadas, -1 si
      * la palabra o website no existen en la base de datos.
      */
-    public long getFrecuenciaDePalabra(WebSite site, Word palabra) {
+   /*public long getFrecuenciaDePalabra(WebSite site, Word palabra) {
 
         PostgreSQLPalabraDAO palabraDAO = new PostgreSQLPalabraDAO();
         int idUrl = this.obtenerId(site);
@@ -793,9 +846,9 @@ public class PostgreSQLWebSiteDAO implements WebSiteDAO {
      * ocurrencias de la palabra en dicha website. Retorna null si la palabra no
      * esta registrada en la base.
      */
-    public HashMap<WebSite, Long> getWebSitesDePalabra(Word palabra) {
-
-        PostgreSQLPalabraDAO palabraDAO = new PostgreSQLPalabraDAO();
+  /*  public HashMap<WebSite, Long> getWebSitesDePalabra(Word palabra) {
+*/
+  /*      PostgreSQLPalabraDAO palabraDAO = new PostgreSQLPalabraDAO();
         int idPalabra = palabraDAO.obtenerId(palabra);
         if (idPalabra == -1) {
             return null;
@@ -818,9 +871,9 @@ public class PostgreSQLWebSiteDAO implements WebSiteDAO {
 
                 while (results.next()) {
                     int idUrl = results.getInt("idUrl");
-                    WebSite insertar = this.obtenerWebSite(idUrl);
+//                    WebSite insertar = this.obtenerWebSite(idUrl);
                     long fr = results.getLong("fr");
-                    sitesDePalabra.put(insertar, fr);
+                  sitesDePalabra.put(insertar, fr);
                 }
                 results.close();
                 st.close();
@@ -829,5 +882,5 @@ public class PostgreSQLWebSiteDAO implements WebSiteDAO {
             //Notificador.getInstancia().reportar(Evento.CONDICION_DE_ERROR, "Excepción al tratar de obtener websites de palabra: " + palabra.getPalabra(), ex);
         }
         return sitesDePalabra;
-    }
+    }*/
 }

@@ -26,8 +26,8 @@ public abstract class DAOFactory {
   public static DAOFactory getDAOFactory(int factory) {
   
     switch (factory) {
-      case MYSQL: 
-          return new MySqlDAOFactory();
+      ///case MYSQL: 
+        //  return new MySqlDAOFactory();
        case POSTGRE:
           return new PostgreSQLDAOFactory();
       default           : 
