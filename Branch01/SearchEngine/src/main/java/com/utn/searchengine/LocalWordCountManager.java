@@ -139,7 +139,7 @@ public class LocalWordCountManager implements WordCountManager{
      */
     public double estimateWeight(Word word, Document document){
         double tfri;
-        if(document.getName().equalsIgnoreCase("query")){
+        if(document.getLocation().equalsIgnoreCase("query")){
             tfri = WordCount.getTF(word, document);
         }
         else{
@@ -148,7 +148,7 @@ public class LocalWordCountManager implements WordCountManager{
         }
             tfri = this.timesThatAWordRepeatsOnDocument(word, document);
         }
-        System.out.println("Determining the weight of word "+word.getName()+" on document "+document.getName());
+        System.out.println("Determining the weight of word "+word.getName()+" on document "+document.getLocation());
         
   
          
@@ -246,7 +246,7 @@ public class LocalWordCountManager implements WordCountManager{
             double weight1 = this.estimateWeight(word, document1);
             double weight2 = this.estimateWeight(word, document2);
             System.out.println("el peso de la palabra-----  >  "+word.getName());
-            System.out.println("docmanger "+document1.getName()+" peso "+weight1);
+            System.out.println("docmanger "+document1.getLocation()+" peso "+weight1);
             System.out.println("docquery "+document2.getLocation()+" peso "+weight2);
             coseno+= weight1*weight2;
          

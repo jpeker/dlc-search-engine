@@ -26,12 +26,8 @@ public class DocumentManager {
      * documentManager or its module hasn't been set, it returns -1
      */
     public double getDocumentModule(Document document){
-        for(Document actualDocument : documents){
-            if(document.compareTo(actualDocument)==0){
-                return actualDocument.getModule();
-            }
-        }
-        return -1;
+       
+        return  DAOFactory.getActiveDAOFactory().getDocumentDAO().obtenerDocument(document).getModule();
     }
 
     public void setDocuments(Collection<Document> documents) {
@@ -46,7 +42,7 @@ public class DocumentManager {
         documents.remove(document);
     }
     public int documentsSize(){
-        return documents.size();
+        return  DAOFactory.getActiveDAOFactory().getDocumentDAO().obtenerCantidadDocument();
     }
     public DocumentManager() {
     }

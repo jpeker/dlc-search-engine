@@ -13,4 +13,7 @@ import java.util.ArrayList;
 public  interface PostListDAO {
     public ArrayList<Document> 
             obtenerDocumentoCandidatos( ArrayList<Word> words );
+     public int getTF(Word word,Document document);
+      public boolean grabarPostList(Word word,Document document,int fr);
+       public int getNrWord(Word word);
 }

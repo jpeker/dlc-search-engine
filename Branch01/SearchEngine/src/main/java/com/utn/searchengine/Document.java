@@ -4,6 +4,8 @@
  */
 package com.utn.searchengine;
 
+import dataaccess.factories.DAOFactory;
+
 /**
  * This class represents a text source, it can be a page
  * or a text document
@@ -20,26 +22,20 @@ public class Document implements Comparable{
     public void setLocation(String location) {
         this.location = location;
     }
-
-    public String getName() {
-        return name;
-    }
     
     public String getText() {
         return text;
     }
 
 
-    public void setName(String name) {
-        this.name = name;
-    }
+ 
 
-    public Document(String name, String location, String text) {
-        this.name = name;
+    public Document( String location, String text) {
+    
         this.location = location;
         this.text=text;
     }
-    private String name;
+ 
     private String location;
     private String text;
     //it could be a nice idea to save on the document the module in
@@ -52,6 +48,7 @@ public class Document implements Comparable{
 
     public void setModule(double module) {
         this.module = module;
+        DAOFactory.getActiveDAOFactory().getDocumentDAO().grabarWebSite(this);
     }
     /**
      * 
@@ -62,7 +59,7 @@ public class Document implements Comparable{
     }
         @Override
     public String toString() {
-        String aux ="name=" + name + " location=" + location + "module=" + module ;
+        String aux = " location=" + location + "module=" + module ;
         return aux;
     }
  @Override

@@ -43,10 +43,13 @@ public class Word {
 
     public void setName(String name) {
         this.name = name;
+        
     }
 
     public Word(String name) {
         this.name = name;
+        this.nr =-1;
+        this.maxTF=-1;
     }
 
     @Override
