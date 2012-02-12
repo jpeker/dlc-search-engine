@@ -15,7 +15,7 @@ public class PostgreDBManager {
  /**
      * URL de la base de datos
      */
-    private static final String DBURL="jdbc:postgresql://localhost:5432";
+    private static final String DBURL="jdbc:postgresql://localhost:5432/SearchEngineDB";
 
     /**
      * Driver para acceder a la Base de Datos de MySQL
