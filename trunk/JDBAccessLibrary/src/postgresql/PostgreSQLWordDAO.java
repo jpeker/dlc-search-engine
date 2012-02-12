@@ -1,34 +1,30 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package postgresql;
 
-import dbmanager.*;
-import dao.WordDAO;
 import beans.Word;
-import java.util.LinkedList;
-import java.sql.*;
+import dao.WordDAO;
+import dbmanager.PostgreDBManager;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  *
- * @author Administrador
+ * @author Altamirano Peker Liberal
  */
 public class PostgreSQLWordDAO implements WordDAO{
 
     /**
-     * Graba una palabra en la base de datos. Si la misma ya existia la actualiza
+     * Graba un Word en la base de datos. Si la misma ya existia la actualiza
      * y sino la inserta.
-     * @param palabra palabra que se desea grabar
+     * @param word Word que se desea grabar
      * @return true si se pudo realizar exitosamente la operación, false en caso
      * contrario.
      */
     //Actualiza o graba una palabra
-    public boolean grabarPalabra(Word word) {
+    public boolean saveWord(Word word) {
         PreparedStatement st;
         Connection con;
         try {
@@ -51,16 +47,16 @@ public class PostgreSQLWordDAO implements WordDAO{
 
     /**
      * 
-     * Obtiene la palabra de la base de datos en base al objeto de búsqueda pasado
+     * Obtiene la word de la base de datos en base al objeto de búsqueda pasado
      * por parámetro.
      *
-     * @param palabra palabra a buscar
-     * @return la palabra almacenada en la base de datos, null si la misma no existia
+     * @param word Word a buscar
+     * @return la word almacenada en la base de datos, null si la misma no existia
      * o existen problemas de acceso a la base.
      */
     
     ///Terminado
-    public Word obtenerPalabra(Word palabra) {
+    public Word getWord(Word palabra) {
         Word ret=null;
         PreparedStatement st;
         Connection con;
@@ -79,14 +75,13 @@ public class PostgreSQLWordDAO implements WordDAO{
                 results.close();
                 st.close();
             }
-        } catch (SQLException ex) {
-           // Notificador.getInstancia().reportar(Evento.CONDICION_DE_ERROR,"Error al obtener palabra: " +  palabra.getPalabra(), ex);
+        } catch (SQLException ex) {          
         }
         return ret;
     }
 
     //Obtiene todo el vocabulary
-    public ArrayList<Word> obtenerVocabulary() {
+    public ArrayList<Word> getVocabulary() {
         ArrayList Vocabulary = new ArrayList<Word>();
         PreparedStatement st;
         Connection con;
@@ -105,17 +100,16 @@ public class PostgreSQLWordDAO implements WordDAO{
                 st.close();
             }
         } catch (SQLException ex) {
-           // Notificador.getInstancia().reportar(Evento.CONDICION_DE_ERROR,"Error al obtener palabra: " +  palabra.getPalabra(), ex);
         }
         return Vocabulary;
     }
     
     /**
-     * Elimina la palabra de la base de datos
-     * @param palabra palabra a eliminar
+     * Elimina la word de la base de datos
+     * @param word Word a eliminar
      * @return true si se pudo eliminar correctamente, false en caso contrario.
      */
-    public boolean eliminarPalabra(Word palabra){
+    public boolean deleteWord(Word palabra){
         boolean ret;
         PreparedStatement st;
         Connection con = PostgreDBManager.getConnection();
@@ -137,5 +131,4 @@ public class PostgreSQLWordDAO implements WordDAO{
         }
         return ret;
     }
-
 }

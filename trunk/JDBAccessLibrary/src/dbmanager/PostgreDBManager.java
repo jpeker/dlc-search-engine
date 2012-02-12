@@ -1,15 +1,12 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package dbmanager;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
-/**
+/**Clase que tiene el driver sql para la coneccion a Postgres
  *
- * @author Administrador
+ * @author Altamirado Liberal Peker
  */
 public class PostgreDBManager {
  /**
@@ -18,7 +15,7 @@ public class PostgreDBManager {
     private static final String DBURL="jdbc:postgresql://localhost:5432/SearchEngineDB";
 
     /**
-     * Driver para acceder a la Base de Datos de MySQL
+     * Driver para acceder a la Base de Datos de Postgre
      */
     private static final String DRIVER="org.postgresql.Driver";
 
@@ -38,7 +35,6 @@ public class PostgreDBManager {
     private static Connection con = null;
 
     /**
-     * Método del singleton que devuelve una única instancia de la clase
      * @return la única instancia válida de DBManager
      */
     public static synchronized Connection getConnection()
@@ -49,7 +45,6 @@ public class PostgreDBManager {
                 crearConnection();
             }
         } catch (SQLException ex) {
-            //Notificador.getInstancia().reportar(Evento.CONDICION_DE_ERROR,"Error al intentar realizar un getConnection()", ex);
         }
         return con;
     }
@@ -64,7 +59,6 @@ public class PostgreDBManager {
         }
           catch (ClassNotFoundException ex)
         {
-            //Notificador.getInstancia().reportar(Evento.CONDICION_DE_ERROR, "No se pudo cargar: " + DRIVER, ex);
             System.exit(2);
         }
         try{
@@ -72,7 +66,6 @@ public class PostgreDBManager {
         }
         catch (SQLException ex)
         {
-            //Notificador.getInstancia().reportar(Evento.CONDICION_DE_ERROR, "Error al crear conexión a la base de datos", ex);
         }
     }
 }

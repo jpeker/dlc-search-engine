@@ -1,13 +1,9 @@
 package beans;
 
-import factories.DAOFactory;
-//import engine.indexer.Indexer;
-
 /**
  * Clase que representa una palabra
  * 
- * @author Christian Adam
- * @author Federico Schaefer
+ * @author altamirano,peker,liberal
  */
 public class Word implements java.io.Serializable {
    
@@ -17,7 +13,9 @@ public class Word implements java.io.Serializable {
         this.maxTF = maxTF;
     }
     private String name;
-
+    private int nr;
+    private int maxTF;
+    
     public int getMaxTF() {
         return maxTF;
     }
@@ -26,9 +24,6 @@ public class Word implements java.io.Serializable {
         this.maxTF = maxTF;
     }
 
- 
-    private int nr;
-
     public int getNr() {
         return nr;
     }
@@ -36,7 +31,6 @@ public class Word implements java.io.Serializable {
     public void setNr(int totalDocumentsWhereWordAppears) {
         this.nr = totalDocumentsWhereWordAppears;
     }
-    private int maxTF;
 
     public String getName() {
         return name;
@@ -72,5 +66,4 @@ public class Word implements java.io.Serializable {
     public String toString(){
         return "Name: "+name+"N: "+this.getNr()+" - Max tf: "+this.getMaxTF();
     }
-    
 }

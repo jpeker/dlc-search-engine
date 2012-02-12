@@ -1,13 +1,13 @@
 package factories;
 
-import dao.WordDAO;
 import dao.DocumentDAO;
+import dao.PostListDAO;
+import dao.WordDAO;
 
 /**
  * Clase abstracta que representa una fábrica de DAOs.
  * 
- * @author Christian Adam
- * @author Federico Schaefer
+ * @author Altamirano Liberal Peker
  */
 public abstract class DAOFactory {
     
@@ -19,8 +19,9 @@ public abstract class DAOFactory {
   
   public static final int activeFactoryPostgre = POSTGRE;
 
-  public abstract DocumentDAO getDocumentDAO();
   public abstract WordDAO getWordDAO();
+  public abstract DocumentDAO getDocumentDAO();
+  public abstract PostListDAO getPostListDAO();
 
   public static DAOFactory getDAOFactory(int factory) {
   
