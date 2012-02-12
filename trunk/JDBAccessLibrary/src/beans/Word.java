@@ -10,7 +10,7 @@ import factories.DAOFactory;
  * @author Federico Schaefer
  */
 public class Word implements java.io.Serializable {
-    
+   
     public Word(String name, int totalDocumentsWhereWordAppears, int maxTF) {
         this.name = name;
         this.nr = totalDocumentsWhereWordAppears;
@@ -33,7 +33,7 @@ public class Word implements java.io.Serializable {
         return nr;
     }
 
-    public void setTotalDocumentsWhereWordAppears(int totalDocumentsWhereWordAppears) {
+    public void setNr(int totalDocumentsWhereWordAppears) {
         this.nr = totalDocumentsWhereWordAppears;
     }
     private int maxTF;
@@ -70,22 +70,7 @@ public class Word implements java.io.Serializable {
     }
     @Override
     public String toString(){
-        return "Name: "+this.getName()+"N: "+this.getNr()+" - Max tf: "+this.getMaxTF();
+        return "Name: "+name+"N: "+this.getNr()+" - Max tf: "+this.getMaxTF();
     }
-
     
-    public boolean esStopWord()
-    {
-        //Palabra pal = DAOFactory.getActiveDAOFactory().getPalabraDAO().obtenerPalabra(this);
-        // ver mañana
-        //long cantWebSites = Indexer.getInstancia().getCantWebSitesIndexadas();
-        //long nrMax = (long) (cantWebSites * Setting.getInstancia().getStopWords());
-        //if(pal.nr >= nrMax)
-        //{
-        //    return true;
-        //}
-        return false;
-    }
-
-
 }

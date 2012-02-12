@@ -400,7 +400,7 @@ public class PostgreSQLWebSiteDAO implements WebSiteDAO {
 
                         if (firstTimeInPage) {
                             long newNr = palabraAInsertar.getNr() + 1;
-                            palabraAInsertar.setNr(newNr);
+                        //    palabraAInsertar.setNr(newNr);
                             palabraDAO.grabarPalabra(palabraAInsertar);
                         }
 

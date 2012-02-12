@@ -61,7 +61,7 @@ public class MySqlPalabraDAO implements PalabraDAO{
                 ResultSet results=st.executeQuery();
                 if(results.next())
                 {
-                    ret=new Word(results.getString("palabra"),results.getLong("nr"));
+               //     ret=new Word(results.getString("palabra"),results.getLong("nr"));
                 }
                 results.close();
                 st.close(); 
@@ -238,7 +238,7 @@ public class MySqlPalabraDAO implements PalabraDAO{
             synchronized(con){
                 String query="INSERT INTO palabra (palabra,nr,hash) VALUES (?,?,?)";
                 st = con.prepareStatement(query);
-                st.setString(1, palabra.getPalabra());
+              //  st.setString(1, palabra.getPalabra());
                 st.setLong(2, palabra.getNr());
                 st.setInt(3,palabra.hashCode());
                 if(st.executeUpdate()==1)
@@ -316,7 +316,7 @@ public class MySqlPalabraDAO implements PalabraDAO{
                 ResultSet results=st.executeQuery();
                 while(results.next())
                 {
-                    stopWords.add(new Word(results.getString("palabra"),results.getLong("nr")));
+             //       stopWords.add(new Word(results.getString("palabra"),results.getLong("nr")));
                 }
                 results.close();
                 st.close();              

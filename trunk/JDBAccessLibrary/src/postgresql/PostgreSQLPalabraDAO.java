@@ -11,6 +11,8 @@ import beans.Word;
 import java.util.LinkedList;
 import java.sql.*;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
@@ -25,20 +27,51 @@ public class PostgreSQLPalabraDAO implements PalabraDAO{
      * @return true si se pudo realizar exitosamente la operación, false en caso
      * contrario.
      */
-    public boolean grabarPalabra(Word palabra) {
-        boolean ret=false;
-        if(this.obtenerId(palabra)!=-1)
-        {
-            ret=this.actualizarPalabra(palabra);
+        ////
+    ////
+    ///MAIN
+    public static void main(String[] args) {
+        //Word w0= new Word("Fede", 8, 2);
+        
+        PostgreSQLPalabraDAO paldao= new  PostgreSQLPalabraDAO();
+        //paldao.grabarPalabra(w0);
+        Word w1= new Word("casa", 8, 2);
+        paldao.eliminarPalabra(w1);
+         Iterator peker = paldao.obtenerVocabulary().iterator();
+         while(peker.hasNext())
+         {Word a = (Word) peker.next();
+             System.out.println(a.toString());
+         }
+         
+        // TODO code application logic here
+    }
+    
+    
+    //Actualiza o graba una palabra
+    public boolean grabarPalabra(Word word) {
+        PreparedStatement st;
+        Connection con;
+        try {
+            con = PostgreDBManager.getConnection();
+            synchronized(con)
+            {
+                String query="select fn_save_word(?,?,?);";
+                st = con.prepareStatement(query);
+                st.setString(1, word.getName());
+                st.setInt(2, word.getNr());
+                st.setInt(3, word.getMaxTF());
+                st.executeQuery();
+                st.close();
+                return true;
+            }
+        } catch (SQLException ex) {
+           return false;
+            // Notificador.getInstancia().reportar(Evento.CONDICION_DE_ERROR,"Error al obtener palabra: " +  palabra.getPalabra(), ex);
         }
-        else
-        {
-            ret=this.insertarPalabra(palabra);
-        }
-        return ret;
     }
 
     /**
+     * 
      * Obtiene la palabra de la base de datos en base al objeto de búsqueda pasado
      * por parámetro.
      *
@@ -56,13 +89,13 @@ public class PostgreSQLPalabraDAO implements PalabraDAO{
             con = PostgreDBManager.getConnection();
             synchronized(con)
             {
-                String query="select name,nr,maxTf from word where name = ?";
+                String query="select name_Word,nr,max_Tf from Word where name_Word = ?";
                 st = con.prepareStatement(query);
-                st.setInt(1, palabra.hashCode());
+                st.setString(1, palabra.getName());
                 ResultSet results=st.executeQuery();
                 if(results.next())
                 {
-                    ret=new Word(results.getString("name"),results.getInt("nr"),results.getInt("maxTf"));
+                    ret=new Word(results.getString("name_Word"),results.getInt("nr"),results.getInt("max_Tf"));
                 }
                 results.close();
                 st.close();
@@ -73,89 +106,60 @@ public class PostgreSQLPalabraDAO implements PalabraDAO{
         return ret;
     }
 
+    //Obtiene todo el vocabulary
+    public ArrayList<Word> obtenerVocabulary() {
+        ArrayList Vocabulary = new ArrayList<Word>();
+        PreparedStatement st;
+        Connection con;
+        try {
+            con = PostgreDBManager.getConnection();
+            synchronized(con)
+            {
+                String query="select name_Word,nr,max_Tf from Word";
+                st = con.prepareStatement(query);
+                ResultSet results=st.executeQuery();
+                while(results.next())
+                {
+                    Vocabulary.add( new Word(results.getString("name_Word"),results.getInt("nr"),results.getInt("max_Tf")));
+                }
+                results.close();
+                st.close();
+            }
+        } catch (SQLException ex) {
+           // Notificador.getInstancia().reportar(Evento.CONDICION_DE_ERROR,"Error al obtener palabra: " +  palabra.getPalabra(), ex);
+        }
+        return Vocabulary;
+    }
+    
     /**
      * Elimina la palabra de la base de datos
      * @param palabra palabra a eliminar
      * @return true si se pudo eliminar correctamente, false en caso contrario.
      */
     public boolean eliminarPalabra(Word palabra){
-        boolean ret=false;
+        boolean ret;
         PreparedStatement st;
         Connection con = PostgreDBManager.getConnection();
         synchronized(con)
         {
-            //Si la palabra no existe no hay nada que borrar
-            if(this.obtenerId(palabra)==-1){return ret;}
             try {
-
-                //Para borrar la palabra necesito antes borrar su lista de posteo
-
-                //Empezar transacción transaccion
-                con.setAutoCommit(false);
-
-                //Borrar la lista de posteo de la palabra
-                String queryIdPalabra="select lp.idWord from postlist as lp, word as p "
-                                            + "where p.idWord = lp.idWord and p.name = ?";
-
-                st = con.prepareStatement(queryIdPalabra);
-                st.setInt(1, palabra.hashCode());
-                ResultSet idSet=st.executeQuery();
-                int idPalabra=0;
-
-                if(idSet.next())
-                {
-                    idPalabra=idSet.getInt("idWord");
-                }
-                else
-                {
-                    idPalabra=obtenerId(palabra);
-                }
-
-                String queryListaPosteo="delete from postlist "
-                        + "where idWord = ?";
-
-                st = con.prepareStatement(queryListaPosteo);
-                st.setInt(1, idPalabra);
-                st.executeUpdate();
-
-                //Borrar la palabra
-                String queryPalabra="delete from word "
-                        + "where idWord = ? ";
-
+                String queryPalabra="select pr_deleteWord(?);";
                 st = con.prepareStatement(queryPalabra);
-                st.setInt(1, idPalabra);
-                st.executeUpdate();
-
-                //Finaliza transacción
-                con.commit();
-
-                ret=true;
-
-                idSet.close();
+                st.setString(1, palabra.getName());
+                ResultSet rs = st.executeQuery();
+                rs.next();
+                System.out.println(""+rs.getBoolean(1));
                 st.close();
+                ret=true;
             }
             catch (SQLException ex) {
-                 //Notificador.getInstancia().reportar(Evento.CONDICION_DE_ERROR,"Error al eliminar palabra", ex);
-                if(con!=null)
-                {
-                   try {
-                        con.rollback();
-                    } catch (SQLException ex1) {
-                        //Notificador.getInstancia().reportar(Evento.CONDICION_DE_ERROR,"Error al hacer rollback al eliminar palabra", ex1);
-                    }
-                }
-            }
-            finally{
-                try {
-                    con.setAutoCommit(true);
-                } catch (SQLException ex) {
-                    //Notificador.getInstancia().reportar(Evento.CONDICION_DE_ERROR,"Error al cambiar autoCommit property al final de eliminación de palabra", ex);
-                }
+                 ret=false;
             }
         }
         return ret;
     }
 
+    
     /**
      * Calcula el NR de una palabra
      *
