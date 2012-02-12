@@ -95,4 +95,67 @@ public final class WordCount {
           return null;
       } 
   }
+      /**
+       * Calcula cuantas veces aparece la palabra en un documento
+       * @param word 
+       * @param document
+       * @return el tf de la word 
+       */
+  public static int getTF(Word word,Document document)
+  {
+      Integer totalFrecuency =0;
+    if(document==null){
+              return 0;
+          }
+         try{
+   
+    // Create line pattern
+    Pattern linePattern = Pattern.compile(".*$", Pattern.MULTILINE);
+
+    // Create word pattern
+    Pattern wordBreakPattern = Pattern.compile("[\\p{Punct}\\s}]");
+    //"[\\p{Punct}\\s}]"
+    // Match line pattern to buffer
+    Matcher lineMatcher = linePattern.matcher(document.getText().subSequence(0, document.getText().toString().length()).toString());
+
+    Map map = new TreeMap();
+    Integer ONE = new Integer(1);
+
+    // For each line
+    while (lineMatcher.find()) {
+      // Get line
+      CharSequence line = lineMatcher.group();
+      
+      // Get array of words on line
+      ArrayList wordsFiltered= new ArrayList();
+      String words[] = wordBreakPattern.split(line);
+        for(int i=0; i<words.length; i++){
+      if(!words[i].equals("")){wordsFiltered.add(words[i]);}
+    
+      }
+      // For each word
+       for (int i = 0, n = wordsFiltered.size(); i < n; i++) {
+        if (wordsFiltered.size() > 0 && wordsFiltered.get(i).toString().equalsIgnoreCase(word.getName())) {            
+            Integer frequency = (Integer) map.get(words[i]);
+          if (frequency == null) {
+            frequency = ONE;
+          } else {
+            int value = frequency.intValue();
+            frequency = new Integer(value + 1);
+          }
+          map.put(wordsFiltered.get(i).toString(), frequency);
+        totalFrecuency = frequency;    
+      }
+        
+    }
+   
+      }
+         }
+      catch(Exception e){
+          return 0;
+      } 
+          return totalFrecuency;
+  
+  }
+  
 }

@@ -137,12 +137,20 @@ public class LocalWordCountManager implements WordCountManager{
      * @return The weight of the word on the Document.
      */
     public double estimateWeight(Word word, Document document){
-        System.out.println("Determining the weight of word "+word.getName()+" on document "+document.getName());
-        if(!document.getName().equalsIgnoreCase("query") &&
-            postList.totalTimesThatWordRepeatsOnDocument(word, document)==0){
+        double tfri;
+        if(document.getName().equalsIgnoreCase("query")){
+            tfri = WordCount.getTF(word, document);
+        }
+        else{
+            if( postList.totalTimesThatWordRepeatsOnDocument(word, document)==0){
             return 0;
         }
-        double tfri = this.numberOfDocumentsWhereWordAppears(word);
+            tfri = this.timesThatAWordRepeatsOnDocument(word, document);
+        }
+        System.out.println("Determining the weight of word "+word.getName()+" on document "+document.getName());
+        
+  
+         
         System.out.println("tfri is: "+tfri);
         double invFrec = this.inverseFrecuency(word);
         System.out.println("Inverse Frecuency is: "+ invFrec);
