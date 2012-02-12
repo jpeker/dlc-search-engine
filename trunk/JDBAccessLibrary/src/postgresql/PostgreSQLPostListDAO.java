@@ -77,7 +77,7 @@ public class PostgreSQLPostListDAO implements PostListDAO{
      */
     public int getNrWord(Word word)
     {
-   int nr=-1;
+   int nr=0;
     PreparedStatement st;
         Connection con;
       try {
@@ -108,7 +108,7 @@ public class PostgreSQLPostListDAO implements PostListDAO{
      */
     public int getTF(Word word,Document document)
     {
-   int tf=-1;
+   int tf=0;
     PreparedStatement st;
         Connection con;
       try {
