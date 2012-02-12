@@ -1,18 +1,15 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package beans;
 
 /**
- * This class represents a text source, it can be a page
- * or a text document
+ * Clase que representa un Word
+ * 
  * @author altamirano,peker,liberal
  */
 public class Document implements Comparable{
     private String name;
     private String location;
     private String text;
+    private double module = -1;
     
     public Document(String name, String location, String text) {
         this.name = name;
@@ -40,10 +37,6 @@ public class Document implements Comparable{
         this.name = name;
     }
 
-    //it could be a nice idea to save on the document the module in
-    //order to rehuse it and dont waste tamir recalculating that value allTime.
-    private double module = -1;
-
     public double getModule() {
         return module;
     }
@@ -53,14 +46,15 @@ public class Document implements Comparable{
     }
     /**
      * 
-     * @return -1 if no module is associated to a document. 
+     * @return -1 si el modulo no esta asociando al documento.
      */
     public boolean gotsModuleAssociated(){
         return this.module!=-1;
     }
     @Override
     public String toString() {
-        String aux ="name=" + name + " location=" + location + "module=" + module ;
+        String aux ="name=" + name 
+                + " location=" + location + "module=" + module ;
         return aux;
     }
     @Override

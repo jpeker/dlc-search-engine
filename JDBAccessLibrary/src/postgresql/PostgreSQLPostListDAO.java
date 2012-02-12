@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package postgresql;
 import beans.Document;
 import beans.Word;
@@ -15,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 /**
  *
- * @author Julian
+ * @author Altamirano Peker Liberal
  */
 public class PostgreSQLPostListDAO implements PostListDAO{
   

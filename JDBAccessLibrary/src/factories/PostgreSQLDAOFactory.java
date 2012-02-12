@@ -1,20 +1,17 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package factories;
 
-import dao.WordDAO;
 import dao.DocumentDAO;
-import postgresql.PostgreSQLDocumentDAO;
-import postgresql.PostgreSQLWordDAO;
 import dao.PostListDAO;
+import dao.WordDAO;
+import postgresql.PostgreSQLDocumentDAO;
+import postgresql.PostgreSQLPostListDAO;
+import postgresql.PostgreSQLWordDAO;
 
 /**
- *
- * @author Administrador
+ * Factory concreta para manejar DAOs Postgres.
+ * @author Altamirano Liberal Peker
  */
+
 public class PostgreSQLDAOFactory extends DAOFactory{
 
     @Override
@@ -26,5 +23,10 @@ public class PostgreSQLDAOFactory extends DAOFactory{
     public WordDAO getWordDAO() {
         return new PostgreSQLWordDAO();
     }
-
+    
+    @Override
+    public PostListDAO getPostListDAO() {
+        return new PostgreSQLPostListDAO();
+    }
+    
 }
