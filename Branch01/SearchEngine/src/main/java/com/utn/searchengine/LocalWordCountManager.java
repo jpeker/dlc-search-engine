@@ -35,8 +35,9 @@ public class LocalWordCountManager implements WordCountManager{
         //entry.setValue(document.getLocation());
         Map<String, Integer> pages  = WordCount.retrieveWordCount(document);
         vocabulary.addDocumentWords(pages);
-        postList.addDocumentWords(pages, document.getLocation());
         documentManager.addDocument(document);
+        postList.addDocumentWords(pages, document.getLocation());
+        
        // this.updatingModuleDocuments();
         System.out.println("\nContenido de documentManager: "+documentManager.toString());
         System.out.println("\nContenido de Vocabulary: "+vocabulary.toString());
