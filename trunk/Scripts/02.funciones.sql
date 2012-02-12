@@ -198,7 +198,7 @@ $$ LANGUAGE plpgsql;
 -- Si no existe lo crea.
 CREATE OR REPLACE FUNCTION fn_Save_Page (
     pin_url_Name                  VARCHAR,
-    pin_Modulo                    DECIMAL 
+    pin_Modulo                    DOUBLE PRECISION 
 
    
   
