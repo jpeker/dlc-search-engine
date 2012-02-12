@@ -43,7 +43,7 @@ public class PostgreSQLPostListDAO implements PostListDAO{
                 ResultSet results=st.executeQuery();
                 while(results.next())
                 {
-                   ret.add(new Document("doc"+results.getRow(),results.getString(1),""));
+                   ret.add(new Document("doc"+results.getRow(),""));
                 }
                 results.close();
                 st.close();

@@ -4,6 +4,7 @@
  */
 package com.utn.searchengine;
 
+import dataaccess.factories.DAOFactory;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -45,7 +46,8 @@ public class PostList {
      */
     public void addDocumentWords(Map<String, Integer> words, String documentLocation){
         Iterator iterator = words.entrySet().iterator();
-        
+         Word wordToAdd;
+         Document docToAdd;
         while(iterator.hasNext()){
             Map.Entry entry = (Map.Entry) iterator.next();
             int timesRepeated = (Integer)entry.getValue();
@@ -54,10 +56,16 @@ public class PostList {
                  ArrayList<WordTracker> wordTrackers = new ArrayList<WordTracker>();
                wordTrackers.add(wordTracker);
                 postList.put(entry.getKey().toString(), wordTrackers);
+                 wordToAdd = new Word (entry.getKey().toString(),1,wordTracker.getFrequency());
+                docToAdd = new Document (documentLocation,"");
+                  DAOFactory.getActiveDAOFactory().getPostListDAO().grabarPostList(wordToAdd, docToAdd, timesRepeated);
             }
             else{
               ArrayList<WordTracker> wordTrackersToModify = postList.get(entry.getKey().toString());
               wordTrackersToModify.add(new WordTracker(timesRepeated, documentLocation));
+               wordToAdd = new Word (entry.getKey().toString());
+                docToAdd = new Document (documentLocation,"");
+                  DAOFactory.getActiveDAOFactory().getPostListDAO().grabarPostList(wordToAdd, docToAdd, timesRepeated);
               sort(wordTrackersToModify);
               
             }
@@ -95,18 +103,8 @@ public class PostList {
      * @return The total times that the word appears on the document.
      */
     public int totalTimesThatWordRepeatsOnDocument(Word word, Document document){
-        int totalTimes=0;
-        if(postList.containsKey(word.getName())){
-            ArrayList<WordTracker> wordTrackerOfRequestedWord = postList.get(word.getName());
-            wordTrackerOfRequestedWord.indexOf(word);
-            for(WordTracker auxiliarWordTracker: wordTrackerOfRequestedWord){
-                if (auxiliarWordTracker.getLocation().equalsIgnoreCase(document.getLocation())){
-                    totalTimes = auxiliarWordTracker.getFrequency();
-                    break;
-                }
-            }
-        }
-        return totalTimes;
+     
+        return     DAOFactory.getActiveDAOFactory().getPostListDAO().getTF(word, document);
     }
     /**
      * 
@@ -114,12 +112,8 @@ public class PostList {
      * @return The number of documents where the word has been found at least once.
      */
     public int numberOfDocumentsWhereWordAppears(Word word){
-        int numberOfDocuments = 0;
-        if(postList.containsKey(word.getName())){
-            ArrayList<WordTracker> wordTrackers = postList.get(word.getName());
-            numberOfDocuments = wordTrackers.size(); 
-        }
-        return numberOfDocuments;
+      
+        return DAOFactory.getActiveDAOFactory().getPostListDAO().getNrWord(word);
     }
     /**
      * 

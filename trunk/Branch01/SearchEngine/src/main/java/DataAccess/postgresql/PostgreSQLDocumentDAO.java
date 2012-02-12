@@ -88,7 +88,7 @@ public class PostgreSQLDocumentDAO implements DocumentDAO  {
                 ResultSet results=st.executeQuery();
                 if(results.next())
                 {
-                    ret=new Document(results.getString("url_Name"),results.getString("url_Name"),"");
+                    ret=new Document(results.getString("url_Name"),"");
                     ret.setModule(results.getDouble("Modulo"));
                 }
                 results.close();

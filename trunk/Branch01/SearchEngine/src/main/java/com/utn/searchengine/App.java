@@ -28,7 +28,7 @@ public class App
         System.out.println(s);
         vValues.add(s);
         }*/
-        Document document = new Document("Doc1",hashMapCrawlered.get("http://www.yatefortuna.com.ar").toString(),"El combustible diesel es vital para la agricultura");
+        Document document = new Document(hashMapCrawlered.get("http://www.yatefortuna.com.ar").toString(),"El combustible diesel es vital para la agricultura");
 
         WeightManager weight = new WeightManager(word, document);
         weight.estimateWeight();
