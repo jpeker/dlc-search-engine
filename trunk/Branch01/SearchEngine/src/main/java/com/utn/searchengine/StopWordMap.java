@@ -77,7 +77,7 @@ public final class StopWordMap {
         {
         case 0: {stopWordFile= new File("G:\\Users\\Peker\\Documents\\Julian Peker\\Final DLC\\SearchEngine\\src\\main\\resources\\TestDocuments\\stopwordsENG.txt");
             break;}
-        case 1: {stopWordFile= new File("C:\\Users\\Peker\\Documents\\Julian Peker\\Final DLC\\SearchEngine\\src\\main\\resources\\TestDocuments\\stopwordsSPA.txt");
+        case 1: {stopWordFile= new File("G:\\Julian Peker\\Final DLC\\SearchEngine\\src\\main\\resources\\TestDocuments\\stopwordsSPA.txt");
             break;}
         }
         // Devuelvo en funcion del idioma elegido
