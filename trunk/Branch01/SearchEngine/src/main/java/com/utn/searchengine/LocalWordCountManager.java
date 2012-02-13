@@ -22,9 +22,16 @@ import java.util.Map;
  */
 public class LocalWordCountManager implements WordCountManager{
 
-    private Vocabulary vocabulary = new Vocabulary();
-    private PostList postList = new PostList();
-    private DocumentManager documentManager=new DocumentManager();
+    private Vocabulary vocabulary; 
+    private PostList postList ;
+    private DocumentManager documentManager;
+
+    public LocalWordCountManager() {
+         vocabulary = new Vocabulary();
+         postList = new PostList();
+         documentManager=new DocumentManager();
+         vocabulary.loadVocabularyWords();
+    }
         
     /**
      * Adds a document to all the structures.
@@ -172,10 +179,7 @@ public class LocalWordCountManager implements WordCountManager{
      * @return An Array of Similitude.
      */
     public Collection<Similitude> determinateBestSimilitude(Document document){
-        
-        vocabulary.loadVocabularyWords();
         Map <String, Integer> wordsOfQuery = WordCount.retrieveWordCount(document);
-        //wordsOfQuery = this.filterQuery(wordsOfQuery);
         Collection<String> c = wordsOfQuery.keySet();
         document.setModule(this.getQueryModule(document, wordsOfQuery));
         ArrayList<Similitude> sumilitudes = new ArrayList<Similitude>();

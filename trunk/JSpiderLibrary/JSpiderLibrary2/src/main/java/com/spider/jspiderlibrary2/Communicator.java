@@ -21,7 +21,7 @@ public class Communicator implements Runnable,ISpiderReportable{
 
   
   /**
-   * 
+   * metodo que comienza a crawlear
    * @param textToCrawl: el texto que sevaa crawlear
    * @return HashMap con las urls y su contenidos
    */
@@ -56,7 +56,7 @@ public class Communicator implements Runnable,ISpiderReportable{
         backgroundThread=null;
     }
       catch ( MalformedURLException e ) {
-        System.out.println("error "+ e.toString());
+      //  System.out.println("error "+ e.toString());
     }
     }
 
@@ -73,7 +73,7 @@ public class Communicator implements Runnable,ISpiderReportable{
         spider.begin();//comienza a crawlear
          }
       catch ( MalformedURLException e ) {
-        System.out.println("error "+ e.toString());
+       // System.out.println("error "+ e.toString());
         }
 }
   /*
