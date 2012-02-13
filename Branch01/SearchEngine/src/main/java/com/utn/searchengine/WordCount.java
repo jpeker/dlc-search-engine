@@ -88,7 +88,7 @@ public final class WordCount {
         }
       }
     }
-    System.out.println(map);
+    //System.out.println(map);
     return map;
       }
       catch(Exception e){

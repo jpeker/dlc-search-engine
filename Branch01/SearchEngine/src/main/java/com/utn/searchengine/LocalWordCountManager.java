@@ -11,9 +11,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
+
 
 /**
  * An implementation of  services that are usefull to count words
@@ -162,10 +161,7 @@ public class LocalWordCountManager implements WordCountManager{
              document.setModule(getDocumentModule(document));
             documentManager.setDocumentModule(document);
             denominator =document.getModule();
-           // denominator=getDocumentModule(document);
         }
-        
-        System.out.println("The document module is: "+denominator);
         return numerator/denominator;
 
     }
@@ -176,7 +172,8 @@ public class LocalWordCountManager implements WordCountManager{
      * @return An Array of Similitude.
      */
     public Collection<Similitude> determinateBestSimilitude(Document document){
-        //loadVocabularyWords();
+        
+        vocabulary.loadVocabularyWords();
         Map <String, Integer> wordsOfQuery = WordCount.retrieveWordCount(document);
         //wordsOfQuery = this.filterQuery(wordsOfQuery);
         Collection<String> c = wordsOfQuery.keySet();
@@ -205,8 +202,7 @@ public class LocalWordCountManager implements WordCountManager{
   		if(rhs.getSimilitude()>=lhs.getSimilitude())
             return 1 ;
                 else
-                    
-                    return -1;
+                     return -1;
 		}	
 	}
     /**

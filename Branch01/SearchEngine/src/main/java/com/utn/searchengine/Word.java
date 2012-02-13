@@ -72,7 +72,7 @@ public class Word {
     }
     @Override
     public String toString(){
-        return "Name: "+name+"N: "+this.getNr()+" - Max tf: "+this.getMaxTF();
+        return "Name: "+name+"nr: "+this.getNr()+" - Max tf: "+this.getMaxTF();
     }
     
 }

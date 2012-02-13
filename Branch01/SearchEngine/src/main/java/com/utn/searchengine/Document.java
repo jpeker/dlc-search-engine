@@ -4,7 +4,7 @@
  */
 package com.utn.searchengine;
 
-import dataaccess.factories.DAOFactory;
+
 
 /**
  * This class represents a text source, it can be a page
@@ -26,11 +26,7 @@ public class Document implements Comparable{
     public String getText() {
         return text;
     }
-
-
- 
-
-    public Document( String location, String text) {
+ public Document( String location, String text) {
     
         this.location = location;
         this.text=text;
