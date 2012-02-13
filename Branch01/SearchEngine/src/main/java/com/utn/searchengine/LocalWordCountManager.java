@@ -11,6 +11,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -87,18 +88,18 @@ public class LocalWordCountManager implements WordCountManager{
      * of documents where the word appears.
      */
     public double inverseFrecuency(Word word) {
-        System.out.println("Determinating inverse frecuency of word \" "+word.getName()+"\"");
+        //System.out.println("Determinating inverse frecuency of word \" "+word.getName()+"\"");
         double N = getTotalNumberOfDocuments();
-        System.out.println("Total of documents: "+N);
+        //System.out.println("Total of documents: "+N);
         double nr = numberOfDocumentsWhereWordAppears(word);//este metodo se va a poder rehusar desde getAllWordsAndLocations
-        System.out.println("nr: "+nr);
+        //System.out.println("nr: "+nr);
         if(nr ==0){
             return 0;
         }
         double cociente = N/nr;
-        System.out.println("Cociente: "+cociente);
+        //System.out.println("Cociente: "+cociente);
         double result = Math.log10(cociente);
-        System.out.println("result: "+result);
+        //System.out.println("result: "+result);
         return result;
     }
     /**
@@ -111,12 +112,11 @@ public class LocalWordCountManager implements WordCountManager{
      */
     public double getDocumentModule(Document document){
          //Set<String> words = postList.getAllWords();
-        Set<String> words = WordCount.retrieveWordCount(document).keySet();
+       ArrayList<Word> words = postList.getWordsDocument(document);
         Iterator iterator = words.iterator();
         double moduleResult =0;
         while(iterator.hasNext()){
-            String wordName = (String)iterator.next();
-            Word word = new Word(wordName);
+            Word word = (Word)iterator.next();
             double termFrecuencyOnDocument = this.timesThatAWordRepeatsOnDocument(word, document);
             double invFrecuency = this.inverseFrecuency(word);
             double product = termFrecuencyOnDocument*invFrecuency;
@@ -124,7 +124,7 @@ public class LocalWordCountManager implements WordCountManager{
             moduleResult+= potency;
         }
         moduleResult =  Math.pow(moduleResult, 0.5);
-      
+        System.out.println("The document module is "+moduleResult);
         return moduleResult;
     }
 
@@ -148,21 +148,21 @@ public class LocalWordCountManager implements WordCountManager{
         }
             tfri = this.timesThatAWordRepeatsOnDocument(word, document);
         }
-        System.out.println("Determining the weight of word "+word.getName()+" on document "+document.getLocation());
-        
-  
-         
+        System.out.println("Determining the weight of word "+word.getName()+" on document "+document.getLocation()); 
         System.out.println("tfri is: "+tfri);
         double invFrec = this.inverseFrecuency(word);
         System.out.println("Inverse Frecuency is: "+ invFrec);
         double numerator = tfri*invFrec;
         System.out.println("Numerator is: "+numerator);
         double denominator;
-        if(document.gotsModuleAssociated()){
+        if(document.getModule()!=-1){
             denominator = document.getModule();
         }
         else{
              document.setModule(getDocumentModule(document));
+            if( documentManager.setDocumentModule(document)){
+                System.out.println("pude");
+            }
             denominator =document.getModule();
            // denominator=getDocumentModule(document);
         }
@@ -180,11 +180,13 @@ public class LocalWordCountManager implements WordCountManager{
     public Collection<Similitude> determinateBestSimilitude(Document document){
         Map <String, Integer> wordsOfQuery = WordCount.retrieveWordCount(document);
         wordsOfQuery = this.filterQuery(wordsOfQuery);
+        Collection<String> c = wordsOfQuery.keySet();
         document.setModule(this.getQueryModule(document, wordsOfQuery));
         ArrayList<Similitude> sumilitudes = new ArrayList<Similitude>();
-        Collection<Document> documents = documentManager.getDocuments();
+        Collection<Document> documents = postList.getCandidateDocuments(c);
         for(Document auxiliarDocument: documents){
-            sumilitudes.add(this.determinateSimilitude(wordsOfQuery, auxiliarDocument, document));
+           
+          sumilitudes.add(this.determinateSimilitude(wordsOfQuery, auxiliarDocument, document));
         }
         sortSimilitude(sumilitudes);
         return sumilitudes;
@@ -216,12 +218,10 @@ public class LocalWordCountManager implements WordCountManager{
      * @return The module of the query
      */
     public double getQueryModule(Document query, Map<String, Integer> wordsOfQuery){
-        Set<String> words = postList.getAllWords();
-        Iterator iterator = words.iterator();
+        List<Word> words = postList.getAllWords();
         double moduleResult =0;
-        while(iterator.hasNext()){
-            String wordName = (String)iterator.next();
-            Word word = new Word(wordName);
+        for(Word word: words){
+  
             double termFrecuencyOnDocument;
             if(wordsOfQuery.containsKey(word.getName())){
                 termFrecuencyOnDocument = wordsOfQuery.get(word.getName());

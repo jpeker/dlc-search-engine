@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 /**
  *
@@ -19,9 +20,14 @@ public class PostgreSQLPostListDAO implements PostListDAO{
      *  @param ArrayList<Word> words
      * Return arraylist de los documentos candidatos
      */
-    public ArrayList<Document> obtenerDocumentoCandidatos( ArrayList<Word> words )
+    public ArrayList<Document> obtenerDocumentoCandidatos( Collection<String> c   )
     {
      ArrayList<Document> ret=new ArrayList();
+     ArrayList<Word> words=new ArrayList();
+     for(String name : c)
+     {
+         words.add(new Word (name));
+     }
      Iterator i = words.iterator();
      StringBuilder cad = new StringBuilder();
      while(i.hasNext())
@@ -32,18 +38,19 @@ public class PostgreSQLPostListDAO implements PostListDAO{
             cad.append("'");
             if(i.hasNext())cad.append(",");
         }
+        System.out.println("cadenala"+cad.toString());
     PreparedStatement st;
         Connection con;
       try {
             con = PostgreDBManager.getConnection();
             synchronized(con)
             {
-                String query="select distinct d.url_Name from postlist p inner join page d on p.id_Url = d.id_Url inner join word w on p.id_Word = w.id_Word  where w.name_Word in ("+cad.toString()+");";
+                String query="select distinct d.url_Name,d.Modulo from postlist p inner join page d on p.id_Url = d.id_Url inner join word w on p.id_Word = w.id_Word  where w.name_Word in ("+cad.toString()+");";
                 st = con.prepareStatement(query);
                 ResultSet results=st.executeQuery();
                 while(results.next())
                 {
-                   ret.add(new Document("doc"+results.getRow(),""));
+                   ret.add(new Document(results.getString(1),"",results.getDouble(2)));
                 }
                 results.close();
                 st.close();
@@ -110,6 +117,7 @@ public class PostgreSQLPostListDAO implements PostListDAO{
                 st.close();
             }
         } catch (SQLException ex) {
+            System.out.println("exception en getTF"+ex.getMessage());
             tf=-1;
         }
     return tf;
@@ -146,4 +154,53 @@ public class PostgreSQLPostListDAO implements PostListDAO{
         }
    
    }
+    public boolean isContains(String palabra) {
+        boolean ret=false;
+        PreparedStatement st;
+        Connection con;
+        try {
+            con = PostgreDBManager.getConnection();
+            synchronized(con)
+            {
+                String query="select  * from postlist p  inner join word w on p.id_Word = w.id_Word where w.name_Word = ?";
+                st = con.prepareStatement(query);
+                st.setString(1, palabra);
+                ResultSet results=st.executeQuery();
+                if(results.next())
+                {
+                   ret=true;
+                }
+                results.close();
+                st.close();
+            }
+        } catch (SQLException ex) {          
+        }
+        return ret;
+    }
+      public ArrayList<Word> getWordsDocument(Document document)
+      {
+      ArrayList<Word> ret=new ArrayList();
+      PreparedStatement st;
+        Connection con;
+      try {
+            con = PostgreDBManager.getConnection();
+            synchronized(con)
+            {
+                String query="select w.name_Word, w.nr,w.max_Tf  from postlist p inner join page d on p.id_Url = d.id_Url inner join word w on p.id_Word = w.id_Word  where d.url_Name = ?";
+                st = con.prepareStatement(query);
+                   st.setString(1, document.getLocation());
+                ResultSet results=st.executeQuery();
+                while(results.next())
+                {
+                   ret.add(new Word(results.getString(1),results.getInt(2),results.getInt(3)));
+                }
+                results.close();
+                st.close();
+            }
+        } catch (SQLException ex) {
+            ret=null;
+        }
+    return ret;
+      
+      }
 }

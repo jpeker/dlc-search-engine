@@ -33,8 +33,11 @@ public class DocumentManager {
     public void setDocuments(Collection<Document> documents) {
         this.documents = documents;
     }
+     public boolean setDocumentModule(Document document) {
+        return DAOFactory.getActiveDAOFactory().getDocumentDAO().grabarWebSite(document);
+    }
     public void addDocument(Document document){
-        documents.add(document);
+      
           DAOFactory.getActiveDAOFactory().getDocumentDAO().grabarWebSite(document);
 
     }

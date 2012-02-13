@@ -47,7 +47,7 @@ public final class StopWordMap {
         //El archivo debe tener una estructura de una palabra por linea
         while ((stopWordLine = bufferReaderStreamStopWordFile.readLine()) != null){
         //Muestro Las Stop Word y las añado
-         System.out.println (stopWordLine);
+       //  System.out.println (stopWordLine);
          addStopWord(stopWordLine);
         }
         //Cierro el flujo
