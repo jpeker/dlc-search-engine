@@ -452,4 +452,23 @@ public class Spider {
   {
     System.out.println( (new Date()) + ":" + entry );
   }
+  
+  public ArrayList viewUrlArray(int selectArray)
+  {
+  ArrayList ret=null;
+      switch(selectArray){
+          case 1:{
+          ret=(ArrayList)workloadWaiting;    
+          break;
+          }
+          case 2:{
+          ret=(ArrayList)workloadError;
+              break;
+          }
+          case 3:{
+              ret=(ArrayList)workloadProcessed;
+              break;}        
+  }
+      return ret;
+  }
 }

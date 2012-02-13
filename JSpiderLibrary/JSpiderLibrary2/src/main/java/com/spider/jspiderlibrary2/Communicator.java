@@ -11,6 +11,7 @@ public class Communicator implements Runnable,ISpiderReportable{
   protected Thread backgroundThread; //El hilo de background para el spider
   protected String textToCrawl;// variable usadas para la urls que usa el
   //crawler
+  private ArrayList contentToUi;
   protected Spider spider;//objeto que usamos para crawlear las urls
   protected URL base;//La url base donde el spider empieza a crawlear
   protected int badLinksCount = 0;//cuantos links malos hay en el recorrido
@@ -118,4 +119,7 @@ public class Communicator implements Runnable,ISpiderReportable{
         badLinksCount++;
         System.out.println(url +" gots errors");
     }
+	public ArrayList contentToUi(int workLoadArrayList){
+  return spider.viewUrlArray(workLoadArrayList);
+  }
 }
