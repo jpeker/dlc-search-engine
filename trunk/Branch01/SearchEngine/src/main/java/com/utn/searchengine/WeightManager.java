@@ -42,7 +42,7 @@ public class WeightManager {
     public void estimateWeight(){
        LocalWordCountManager wordCountManager = new LocalWordCountManager();
 
-          /*Communicator com = new Communicator ();
+          Communicator com = new Communicator ();
           long start = System.currentTimeMillis();
           Iterator i =  com.beginCrawler("http://www.yatefortuna.com.ar").entrySet().iterator();
           long elapsed = System.currentTimeMillis() - start;
@@ -52,25 +52,25 @@ public class WeightManager {
                     Map.Entry entry = (Map.Entry) i.next();
                     Document documento = new Document(entry.getKey().toString(),entry.getValue().toString());
                      wordCountManager.addDocument(documento);
-               }*/
-         // long elapsed3 = System.currentTimeMillis() - elapsed2;
-         // System.out.println("While time"+elapsed3);
+               }
+          long elapsed3 = System.currentTimeMillis() - elapsed2;
+          System.out.println("While time"+elapsed3);
 
-          Document document1 = new Document("http://www.yatefortuna.com.ar","el combustible diesel es vital para la agricultura");
+         /* Document document1 = new Document("http://www.yatefortuna.com.ar","el combustible diesel es vital para la agricultura");
         Document document2 = new Document("http://www.yatefortuna.com.ar/index.html","el transporte de pasajeros tiene un subsidio para el combustible diesel");
         Document document3 = new Document("http://www.yatefortuna.com.ar/barcos.htm","el transporte no funciona hoy");
         Document document4 = new Document("http://www.yatefortuna.com.ar/servicios.htm","hay transportes y transportes...");
         Document document5 = new Document("http://www.yatefortuna.com.ar/galeria.htm","el diesel venezolano es de menor calidad que el diesel argentino");
-        //Document document6 = new Document("Doc6","http://www.yatefortuna.com.ar/gato.htm","todo sobre combustible en la futura de la agricultura");
-        //Document document7 = new Document("Doc7","http://www.yatefortuna.com.ar/ga.htm","todo sobre diesel en la futura de la agricultura");
+        Document document6 = new Document("http://www.yatefortuna.com.ar/gato.htm","todo sobre combustible en la futura de la agricultura");
+        Document document7 = new Document("http://www.yatefortuna.com.ar/ga.htm","todo sobre diesel en la futura de la agricultura");
 
         wordCountManager.addDocument(document1);
         wordCountManager.addDocument(document2);
         wordCountManager.addDocument(document3);
         wordCountManager.addDocument(document4);
         wordCountManager.addDocument(document5);
-        //wordCountManager.addDocument(document6);
-        //wordCountManager.addDocument(document7);*/
+        wordCountManager.addDocument(document6);
+        wordCountManager.addDocument(document7);*/
         /**
         Word wordToProve = new Word("combustible");
         double weight = wordCountManager.estimateWeight(wordToProve, document1);
@@ -79,8 +79,8 @@ public class WeightManager {
          * **/
     
      
-      // String query = "Cada pescador debe traer su propio equipo de pesca";
-          String query = "todo sobre diesel en la historia de la agricultura";
+       String query = "Cada pescador debe traer su propio equipo de pesca";
+         // String query = "todo sobre diesel en la historia de la agricultura";
         long elapsed4 = System.currentTimeMillis();
         Collection<Similitude> similitudes = wordCountManager.determinateBestSimilitude(new Document( "query", query));
         System.out.println("Probando resultado de la query: \n");
@@ -89,8 +89,8 @@ public class WeightManager {
         }
         long elapsed5 = System.currentTimeMillis() - elapsed4;
 
-       // System.out.println("Crawler time  "+elapsed);
-       // System.out.println("Indexing time  "+elapsed3);
+        System.out.println("Crawler time  "+elapsed);
+        System.out.println("Indexing time  "+elapsed3);
         System.out.println("Query time  "+elapsed5);
     }
     
