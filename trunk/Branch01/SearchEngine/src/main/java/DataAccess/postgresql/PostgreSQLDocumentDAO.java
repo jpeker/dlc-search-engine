@@ -38,7 +38,7 @@ public class PostgreSQLDocumentDAO implements DocumentDAO  {
                 return true;
             }
         } catch (SQLException ex) {
-            System.out.println(""+ex.toString());
+            System.out.println("sqlexcep"+ex.toString());
            return false;}
     }
     /*

@@ -6,10 +6,12 @@ package com.utn.searchengine;
 
 import dataaccess.factories.DAOFactory;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -51,51 +53,23 @@ public class PostList {
         while(iterator.hasNext()){
             Map.Entry entry = (Map.Entry) iterator.next();
             int timesRepeated = (Integer)entry.getValue();
-            if(!postList.containsKey(entry.getKey().toString())){
+            if(!  DAOFactory.getActiveDAOFactory().getPostListDAO().isContains(entry.getKey().toString())){
                 WordTracker wordTracker = new WordTracker(timesRepeated, documentLocation);                
                  ArrayList<WordTracker> wordTrackers = new ArrayList<WordTracker>();
-               wordTrackers.add(wordTracker);
-                postList.put(entry.getKey().toString(), wordTrackers);
                  wordToAdd = new Word (entry.getKey().toString(),1,wordTracker.getFrequency());
                 docToAdd = new Document (documentLocation,"");
                   DAOFactory.getActiveDAOFactory().getPostListDAO().grabarPostList(wordToAdd, docToAdd, timesRepeated);
             }
             else{
-              ArrayList<WordTracker> wordTrackersToModify = postList.get(entry.getKey().toString());
-              wordTrackersToModify.add(new WordTracker(timesRepeated, documentLocation));
-               wordToAdd = new Word (entry.getKey().toString());
+                wordToAdd = new Word (entry.getKey().toString());
                 docToAdd = new Document (documentLocation,"");
-                  DAOFactory.getActiveDAOFactory().getPostListDAO().grabarPostList(wordToAdd, docToAdd, timesRepeated);
-              sort(wordTrackersToModify);
-              
+               DAOFactory.getActiveDAOFactory().getPostListDAO().grabarPostList(wordToAdd, docToAdd, timesRepeated);
             }
         }
         
       
     }
-    // lo ordeno mediante
-     private void sort (ArrayList<WordTracker> wordTra)
-    {
-        Comparator<WordTracker> comparator = new Compare () ;
-    Collections.sort(wordTra,  comparator);
-   /* Iterator i =  wordTrackers.iterator();// recorro para ver que lo ordena
-    while(i.hasNext())
-    {
-        WordTracker w = (WordTracker)i.next();
-        System.out.println("ordena "+w.getFrequency());
-    }*/
-    }
-     //class Comparator que ordena en forma decreciente
-    class Compare implements Comparator<WordTracker> {
-	@Override
-		public int compare(WordTracker lhs, WordTracker rhs) {
-  		if(rhs.getFrequency()>=lhs.getFrequency())
-            return 1 ;
-                else
-                    
-                    return -1;
-		}	
-	}
+
     /**
      * 
      * @param word: A Word
@@ -121,19 +95,25 @@ public class PostList {
      * This number should be the same that the number of words that exist on the
      * vocabulary.
      */
-    public Set<String> getAllWords(){
+    public List<Word> getAllWords(){
        
-        return postList.keySet();
+        return DAOFactory.getActiveDAOFactory().getWordDAO().getVocabulary();
     }
-  
+  public Collection<Document> getCandidateDocuments(Collection<String> c  ){
+      return DAOFactory.getActiveDAOFactory().getPostListDAO().obtenerDocumentoCandidatos(c);
+  }
+  public ArrayList<Word> getWordsDocument(Document document)
+  {
+    return DAOFactory.getActiveDAOFactory().getPostListDAO().getWordsDocument(document);
+  }
     @Override
     public String toString(){
         String aux = "";
-        Iterator iterator = postList.entrySet().iterator();
+       /* Iterator iterator = postList.entrySet().iterator();
         while(iterator.hasNext()){
             Map.Entry entry = (Map.Entry)iterator.next();
             aux+="\n"+entry.getKey().toString()+" - "+entry.getValue().toString();
-        }
+        }*/
         return aux;
     }
     

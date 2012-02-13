@@ -34,21 +34,30 @@ public class Document implements Comparable{
     
         this.location = location;
         this.text=text;
+        this.module=-1;
+    }
+    public Document( String location, String text,double d) {
+    
+        this.location = location;
+        this.text=text;
+        this.module=d;
     }
  
     private String location;
     private String text;
     //it could be a nice idea to save on the document the module in
     //order to rehuse it and dont waste tamir recalculating that value allTime.
-    private double module = -1;
+    private double module;
 
     public double getModule() {
+       
         return module;
     }
 
     public void setModule(double module) {
         this.module = module;
-        DAOFactory.getActiveDAOFactory().getDocumentDAO().grabarWebSite(this);
+       
+        
     }
     /**
      * 
