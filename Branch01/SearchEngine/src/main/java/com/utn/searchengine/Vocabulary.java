@@ -29,10 +29,10 @@ public class Vocabulary {
     public void setVocabularyWords(Map<String, Word> vocabularyWords) {
         this.vocabularyWords = vocabularyWords;
     }
-     public void loadVocabularyWords(List< Word> vocabularyWords) {
-        for (Word w : vocabularyWords){
-            this.vocabularyWords.put(w.getName(), w);
-        }
+     public void loadVocabularyWords() {
+       
+        this.vocabularyWords =  DAOFactory.getActiveDAOFactory().getWordDAO().getVocabulary();
+        
     }
     public Vocabulary() {
     }

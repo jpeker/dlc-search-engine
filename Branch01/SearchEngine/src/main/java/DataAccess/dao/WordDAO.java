@@ -2,6 +2,7 @@ package dataaccess.dao;
 
 import com.utn.searchengine.Word;
 import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * Esta interface define las operaciones validas a realizarse en términos de
@@ -38,5 +39,5 @@ public interface WordDAO {
      * @param word el Word de la cual se desea saber su ID
      * @return el id del word
      */
-     public ArrayList<Word> getVocabulary();
+     public  Map<String, Word> getVocabulary();
 }

@@ -9,6 +9,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -81,8 +83,8 @@ public class PostgreSQLWordDAO implements WordDAO{
     }
 
     //Obtiene todo el vocabulary
-    public ArrayList<Word> getVocabulary() {
-        ArrayList Vocabulary = new ArrayList<Word>();
+    public  Map<String, Word> getVocabulary() {
+         Map<String, Word> Vocabulary = new HashMap<String, Word>();
         PreparedStatement st;
         Connection con;
         try {
@@ -94,7 +96,7 @@ public class PostgreSQLWordDAO implements WordDAO{
                 ResultSet results=st.executeQuery();
                 while(results.next())
                 {
-                    Vocabulary.add( new Word(results.getString("name_Word"),results.getInt("nr"),results.getInt("max_Tf")));
+                    Vocabulary.put(results.getString("name_Word"), new Word(results.getString("name_Word"),results.getInt("nr"),results.getInt("max_Tf")));
                 }
                 results.close();
                 st.close();
