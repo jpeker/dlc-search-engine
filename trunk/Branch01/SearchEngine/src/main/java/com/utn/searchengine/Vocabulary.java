@@ -21,11 +21,6 @@ public class Vocabulary {
     public Map<String, Word> getVocabularyWords() {
         return vocabularyWords;
     }
-    
-    private WordDAO getWordDAO(){
-    return DAOFactory.getActiveDAOFactory().getWordDAO();
-}
-    
     public void setVocabularyWords(Map<String, Word> vocabularyWords) {
         this.vocabularyWords = vocabularyWords;
     }

@@ -8,7 +8,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Vector;
-import Spider.*;
+import com.spider.jspiderlibrary2.*;
 import java.text.SimpleDateFormat;
 import java.util.Map;
 
@@ -42,9 +42,9 @@ public class WeightManager {
     public void estimateWeight(){
        LocalWordCountManager wordCountManager = new LocalWordCountManager();
 
-         /* Communicator com = new Communicator ();
+          Communicator com = new Communicator ();
           long start = System.currentTimeMillis();
-          Iterator i =  com.beginCrawler("http://www.sandokanpesca.com.ar").entrySet().iterator();
+          Iterator i =  com.beginCrawler("http://www.yatefortuna.com.ar").entrySet().iterator();
           long elapsed = System.currentTimeMillis() - start;
          /// System.out.println("Iterator time"+elapsed);
           long elapsed2 = System.currentTimeMillis();
@@ -80,13 +80,14 @@ public class WeightManager {
     
      
        String query = "donde hay buenos mariscos y pollo";
+       query = query.toLowerCase();
          // String query = "todo sobre diesel en la historia de la agricultura";
         long elapsed4 = System.currentTimeMillis();
-        Collection<Similitude> similitudes = wordCountManager.determinateBestSimilitude(new Document( "query", query));
+        /*Collection<Similitude> similitudes = wordCountManager.determinateBestSimilitude(new Document( "query", query));
         System.out.println("Probando resultado de la query: \n");
         for(Similitude similitude: similitudes){
             System.out.println(similitude.toString());
-        }
+        }*/
         long elapsed5 = System.currentTimeMillis() - elapsed4;
 
        // System.out.println("Crawler time  "+elapsed);

@@ -23,8 +23,7 @@ public class WordTracker {
     {
 
     }
-
-    public int getFrequency() {
+   public int getFrequency() {
         return frequency;
     }
 
