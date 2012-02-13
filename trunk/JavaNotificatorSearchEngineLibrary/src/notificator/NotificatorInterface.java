@@ -12,8 +12,9 @@ import java.util.ArrayList;
  * @author Altamirado Liberal Peker
  */
 public interface NotificatorInterface {
-    public void sendNotification(String notificaton);
-    public String recieveNotification();
-    public void sendSetOfNotifications(ArrayList<String> notificaton);
-    public ArrayList<String> recieveNotificationSetOfNotifications();
+    public String sendNotification(String notification);
+    public void recieveNotification(String notification);
+    public ArrayList<String> sendSetOfNotifications(ArrayList<String> notifications);
+    public ArrayList<String> sendSetOfNotifications(String notification);
+    public void recieveNotificationSetOfNotifications(ArrayList<String> notifications);
 }
