@@ -55,7 +55,6 @@ public class PostList {
             int timesRepeated = (Integer)entry.getValue();
             if(!  DAOFactory.getActiveDAOFactory().getPostListDAO().isContains(entry.getKey().toString())){
                 WordTracker wordTracker = new WordTracker(timesRepeated, documentLocation);                
-                 ArrayList<WordTracker> wordTrackers = new ArrayList<WordTracker>();
                  wordToAdd = new Word (entry.getKey().toString(),1,wordTracker.getFrequency());
                 docToAdd = new Document (documentLocation,"");
                   DAOFactory.getActiveDAOFactory().getPostListDAO().grabarPostList(wordToAdd, docToAdd, timesRepeated);

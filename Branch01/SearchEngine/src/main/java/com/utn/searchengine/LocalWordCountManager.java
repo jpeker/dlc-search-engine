@@ -160,9 +160,7 @@ public class LocalWordCountManager implements WordCountManager{
         }
         else{
              document.setModule(getDocumentModule(document));
-            if( documentManager.setDocumentModule(document)){
-                System.out.println("pude");
-            }
+            documentManager.setDocumentModule(document);
             denominator =document.getModule();
            // denominator=getDocumentModule(document);
         }

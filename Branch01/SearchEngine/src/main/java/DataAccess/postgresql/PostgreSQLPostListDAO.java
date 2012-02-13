@@ -38,7 +38,6 @@ public class PostgreSQLPostListDAO implements PostListDAO{
             cad.append("'");
             if(i.hasNext())cad.append(",");
         }
-        System.out.println("cadenala"+cad.toString());
     PreparedStatement st;
         Connection con;
       try {
