@@ -42,9 +42,9 @@ public class WeightManager {
     public void estimateWeight(){
        LocalWordCountManager wordCountManager = new LocalWordCountManager();
 
-          Communicator com = new Communicator ();
+         /* Communicator com = new Communicator ();
           long start = System.currentTimeMillis();
-          Iterator i =  com.beginCrawler("http://www.yatefortuna.com.ar").entrySet().iterator();
+          Iterator i =  com.beginCrawler("http://www.sandokanpesca.com.ar").entrySet().iterator();
           long elapsed = System.currentTimeMillis() - start;
          /// System.out.println("Iterator time"+elapsed);
           long elapsed2 = System.currentTimeMillis();
@@ -79,7 +79,7 @@ public class WeightManager {
          * **/
     
      
-       String query = "Cada pescador debe traer su propio equipo de pesca";
+       String query = "donde hay buenos mariscos y pollo";
          // String query = "todo sobre diesel en la historia de la agricultura";
         long elapsed4 = System.currentTimeMillis();
         Collection<Similitude> similitudes = wordCountManager.determinateBestSimilitude(new Document( "query", query));
@@ -89,8 +89,8 @@ public class WeightManager {
         }
         long elapsed5 = System.currentTimeMillis() - elapsed4;
 
-        System.out.println("Crawler time  "+elapsed);
-        System.out.println("Indexing time  "+elapsed3);
+       // System.out.println("Crawler time  "+elapsed);
+        //System.out.println("Indexing time  "+elapsed3);
         System.out.println("Query time  "+elapsed5);
     }
     

@@ -94,7 +94,7 @@ public class PostList {
      * This number should be the same that the number of words that exist on the
      * vocabulary.
      */
-    public List<Word> getAllWords(){
+    public Map<String, Word> getAllWords(){
        
         return DAOFactory.getActiveDAOFactory().getWordDAO().getVocabulary();
     }

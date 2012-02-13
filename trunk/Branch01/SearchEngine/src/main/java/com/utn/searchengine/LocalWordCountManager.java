@@ -40,9 +40,9 @@ public class LocalWordCountManager implements WordCountManager{
         postList.addDocumentWords(pages, document.getLocation());
         
        // this.updatingModuleDocuments();
-        System.out.println("\nContenido de documentManager: "+documentManager.toString());
-        System.out.println("\nContenido de Vocabulary: "+vocabulary.toString());
-        System.out.println("\nContenido de PostList: "+postList.toString());
+       // System.out.println("\nContenido de documentManager: "+documentManager.toString());
+        //System.out.println("\nContenido de Vocabulary: "+vocabulary.toString());
+        //System.out.println("\nContenido de PostList: "+postList.toString());
         
     }
     //actualiza los modulos de los documento por que se modifican cuando se agregan nuevos documentos
@@ -176,8 +176,9 @@ public class LocalWordCountManager implements WordCountManager{
      * @return An Array of Similitude.
      */
     public Collection<Similitude> determinateBestSimilitude(Document document){
+        //loadVocabularyWords();
         Map <String, Integer> wordsOfQuery = WordCount.retrieveWordCount(document);
-        wordsOfQuery = this.filterQuery(wordsOfQuery);
+        //wordsOfQuery = this.filterQuery(wordsOfQuery);
         Collection<String> c = wordsOfQuery.keySet();
         document.setModule(this.getQueryModule(document, wordsOfQuery));
         ArrayList<Similitude> sumilitudes = new ArrayList<Similitude>();
@@ -216,10 +217,12 @@ public class LocalWordCountManager implements WordCountManager{
      * @return The module of the query
      */
     public double getQueryModule(Document query, Map<String, Integer> wordsOfQuery){
-        List<Word> words = postList.getAllWords();
+        Map<String, Word> words = postList.getAllWords();
         double moduleResult =0;
-        for(Word word: words){
-  
+        Iterator iterator = words.entrySet().iterator();
+        while(iterator.hasNext()){
+            Map.Entry entry = (Map.Entry) iterator.next();
+            Word word =(Word) entry.getValue();
             double termFrecuencyOnDocument;
             if(wordsOfQuery.containsKey(word.getName())){
                 termFrecuencyOnDocument = wordsOfQuery.get(word.getName());
