@@ -63,7 +63,7 @@ public class RobotsParser {
 	    if (!st.hasMoreTokens()) //Cuando no hay mas Tokens fuiste.
 		break;	    
 	    String strBadPath = st.nextToken();
-            System.out.println("The foribidden path is: "+strBadPath);
+            //System.out.println("The foribidden path is: "+strBadPath);
 	    //Si la url empieza con un disallowed path no es segura.
             if (strURL.indexOf(strBadPath) == 0)
 		return false;

@@ -6,6 +6,7 @@ package com.spider.jspiderlibrary2;
 import javax.swing.text.html.HTMLEditorKit;
 public class HTMLParse extends HTMLEditorKit {
 //Trae el parser de HTML que se utilizará para la lectura de streams de HTML.
+    @Override
   public HTMLEditorKit.Parser getParser()
   {
     return super.getParser();
