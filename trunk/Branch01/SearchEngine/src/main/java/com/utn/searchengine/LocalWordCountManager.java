@@ -119,10 +119,8 @@ public class LocalWordCountManager implements WordCountManager{
     public double getDocumentModule(Document document){
          //Set<String> words = postList.getAllWords();
        ArrayList<Word> words = postList.getWordsDocument(document);
-        Iterator iterator = words.iterator();
         double moduleResult =0;
-        while(iterator.hasNext()){
-            Word word = (Word)iterator.next();
+        for(Word word: words){
             double termFrecuencyOnDocument = this.timesThatAWordRepeatsOnDocument(word, document);
             double invFrecuency = this.inverseFrecuency(word);
             double product = termFrecuencyOnDocument*invFrecuency;
