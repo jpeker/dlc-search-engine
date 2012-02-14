@@ -179,7 +179,7 @@ public class LocalWordCountManager implements WordCountManager{
     public Collection<Similitude> determinateBestSimilitude(Document document){
         Map <String, Integer> wordsOfQuery = WordCount.retrieveWordCount(document);
         Collection<String> c = wordsOfQuery.keySet();
-        document.setModule(this.getQueryModule(document, wordsOfQuery));
+        document.setModule( this.getQueryModule(wordsOfQuery));
         ArrayList<Similitude> sumilitudes = new ArrayList<Similitude>();
         Collection<Document> documents = postList.getCandidateDocuments(c);
         for(Document auxiliarDocument: documents){
@@ -214,20 +214,14 @@ public class LocalWordCountManager implements WordCountManager{
      * @param query
      * @return The module of the query
      */
-    public double getQueryModule(Document query, Map<String, Integer> wordsOfQuery){
-        Map<String, Word> words = postList.getAllWords();
+   public double getQueryModule(Map<String, Integer> wordsOfQuery){
+        //Map<String, Integer> words = WordCount.retrieveWordCount(query);
         double moduleResult =0;
-        Iterator iterator = words.entrySet().iterator();
+        Iterator iterator = wordsOfQuery.entrySet().iterator();
         while(iterator.hasNext()){
             Map.Entry entry = (Map.Entry) iterator.next();
-            Word word =(Word) entry.getValue();
-            double termFrecuencyOnDocument;
-            if(wordsOfQuery.containsKey(word.getName())){
-                termFrecuencyOnDocument = wordsOfQuery.get(word.getName());
-            }
-            else {
-                termFrecuencyOnDocument = 0 ;
-            }
+            Word word = new Word (entry.getKey().toString());
+            double termFrecuencyOnDocument =  (Double)entry.getValue() ;
             double invFrecuency = this.inverseFrecuency(word);
             double product = termFrecuencyOnDocument*invFrecuency;
             double potency = Math.pow(product, 2);
