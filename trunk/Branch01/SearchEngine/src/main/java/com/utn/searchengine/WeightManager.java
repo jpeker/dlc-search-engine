@@ -79,7 +79,7 @@ public class WeightManager {
          * **/
     
      
-       String query = "river plate";
+       String query = "un acto de habla ritualizado";
        query = query.toLowerCase();
          // String query = "todo sobre diesel en la historia de la agricultura";
         long elapsed4 = System.currentTimeMillis();

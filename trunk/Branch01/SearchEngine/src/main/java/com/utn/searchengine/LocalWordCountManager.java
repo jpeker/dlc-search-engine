@@ -165,7 +165,6 @@ public class LocalWordCountManager implements WordCountManager{
          this.documentManager.upDocumentSize();
         document.setModule( this.getQueryModule(wordsOfQuery));
         ArrayList<Similitude> sumilitudes = new ArrayList<Similitude>();
-         this.documentManager.upDocumentSize();
         Collection<Document> documents = postList.getCandidateDocuments(c);
         for(Document auxiliarDocument: documents){
            
