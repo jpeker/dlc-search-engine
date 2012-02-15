@@ -25,11 +25,12 @@ public class LocalWordCountManager implements WordCountManager{
     private Vocabulary vocabulary; 
     private PostList postList ;
     private DocumentManager documentManager;
-
+    private Map<String,Double> weigthQuery;
     public LocalWordCountManager() {
          vocabulary = new Vocabulary();
          postList = new PostList();
          documentManager=new DocumentManager();
+          weigthQuery = new HashMap<String,Double>();
          vocabulary.loadVocabularyWords();
     }
         
@@ -101,7 +102,7 @@ public class LocalWordCountManager implements WordCountManager{
     public double getDocumentModule(Document document){
          //Set<String> words = postList.getAllWords();
        ArrayList<Word> words = postList.getWordsDocument(document);
-        double moduleResult =0;
+       double moduleResult =0;
        
         for(Word word: words){
             double termFrecuencyOnDocument = word.getMaxTF();
@@ -216,12 +217,16 @@ public class LocalWordCountManager implements WordCountManager{
     }
     public Similitude determinateSimilitude(Map <String, Integer> wordsOfQuery, Document document1, Document document2){
         double coseno =0; 
+        double weight2=0;
         Iterator iterator = wordsOfQuery.entrySet().iterator();
         while(iterator.hasNext()){
             Map.Entry entry = (Map.Entry) iterator.next();
            Word word= this.vocabulary.getVocabularyWords().get(entry.getKey().toString());
-            double weight1 = this.estimateWeight(word, document1);
-            double weight2 = this.estimateWeight(word, document2);
+           double weight1 = this.estimateWeight(word, document1);
+             if(!this.weigthQuery.containsKey(word.getName()))
+             { weight2 = this.estimateWeight(word, document2);
+              this.weigthQuery.put(word.getName(), weight2);
+             }
             System.out.println("el peso de la palabra-----  >  "+word.getName());
             System.out.println("docmanger "+document1.getLocation()+" peso "+weight1);
             System.out.println("docquery "+document2.getLocation()+" peso "+weight2);
