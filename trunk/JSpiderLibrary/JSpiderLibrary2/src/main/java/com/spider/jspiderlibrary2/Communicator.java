@@ -21,8 +21,8 @@ public class Communicator implements ISpiderReportable, Runnable{
   protected int goodLinksCount = 0;//Cuantos links buens hay en el recorrido
   public static HashMap pages;//HashMap con todas las urls y su contenido util
   public static int totalLinks;// variable usadas para la urls que usa el
-  public static ArrayList<String> linksprocessed=new ArrayList<String>();
-  public static ArrayList<String> linkserror=new ArrayList<String>();
+  public static ArrayList linksprocessed=new ArrayList();
+  public static ArrayList linkserror=new ArrayList();
   
   private HashMap getHashMapPages()
   {
@@ -33,13 +33,23 @@ public void run()  {
     if(crawl){
     Communicator.totalLinks=0;
     this.initSpider();
-    linksprocessed=(ArrayList<String>)this.spider.workloadProcessed;
-    linkserror=(ArrayList<String>)this.spider.workloadError;
+    linksprocessed=this.spider.workloadProcessed;
+    linkserror=this.spider.workloadError;
     pages=getHashMapPages();
     crawl=false;
+
+synchronized(this){
+   try {
+
+       this.wait();
+        } catch (InterruptedException ex) {
+
+        }
+    }
     }
 }  
-  
+
+
 
     /*Metodo que da inicio el spider, crea la url ,
      *verifica que este bien formado si no tira una excepcion
