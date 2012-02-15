@@ -19,7 +19,7 @@ import java.util.Map;
  * @author  altamirano,peker,liberal
  */
 public class PostList {
-    private Map<String,  ArrayList<WordTracker> > postList = new HashMap<String,  ArrayList<WordTracker> >();
+    private Map<String,  ArrayList<WordTracker> > postList;
    
     public Map<String,  ArrayList<WordTracker> > getPostList() {
         return postList;
@@ -30,6 +30,7 @@ public class PostList {
     }
 
     public PostList() {
+         postList = new HashMap<String,  ArrayList<WordTracker> >();
     }
     public PostList(Map<String,  ArrayList<WordTracker> > postList){
         this.postList = postList;

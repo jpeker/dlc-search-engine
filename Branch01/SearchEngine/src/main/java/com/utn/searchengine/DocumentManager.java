@@ -44,9 +44,12 @@ public class DocumentManager {
     public void remove(Document document){
         documents.remove(document);
     }
+    /**
+     * devuelve la cantidad de documento de la base de datos
+     * @return el size que es la cantidad de documentos
+     */
     public int documentsSize(){
-      
-        return size; 
+       return size; 
     }
     /*
      * recupera la cantidad de documento 
