@@ -19,4 +19,5 @@ public  interface PostListDAO {
        public int getNrWord(Word word);
        public boolean isContains(String palabra);
        public ArrayList<Word> getWordsDocument(Document document); 
+      
 }

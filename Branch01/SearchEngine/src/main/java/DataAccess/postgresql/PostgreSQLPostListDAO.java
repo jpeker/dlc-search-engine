@@ -185,7 +185,7 @@ public class PostgreSQLPostListDAO implements PostListDAO{
             con = PostgreDBManager.getConnection();
             synchronized(con)
             {
-                String query="select w.name_Word, w.nr,w.max_Tf  from postlist p inner join page d on p.id_Url = d.id_Url inner join word w on p.id_Word = w.id_Word  where d.url_Name = ?";
+                String query="select w.name_Word, w.nr,p.frequency  from postlist p inner join page d on p.id_Url = d.id_Url inner join word w on p.id_Word = w.id_Word  where d.url_Name = ?";
                 st = con.prepareStatement(query);
                    st.setString(1, document.getLocation());
                 ResultSet results=st.executeQuery();

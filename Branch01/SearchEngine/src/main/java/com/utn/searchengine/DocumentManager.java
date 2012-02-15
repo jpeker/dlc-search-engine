@@ -18,7 +18,7 @@ public class DocumentManager {
     public Collection<Document> getDocuments() {
         return documents;
     }
-
+    private int size;
     /**
      * 
      * @param document A document
@@ -45,8 +45,18 @@ public class DocumentManager {
         documents.remove(document);
     }
     public int documentsSize(){
-        return  DAOFactory.getActiveDAOFactory().getDocumentDAO().obtenerCantidadDocument();
+      
+        return size; 
     }
+    /*
+     * recupera la cantidad de documento 
+     * 
+     */
+    public void upDocumentSize()
+    {
+        size=DAOFactory.getActiveDAOFactory().getDocumentDAO().obtenerCantidadDocument();
+    }
+    
     public DocumentManager() {
     }
     public void clearDocuments(){
