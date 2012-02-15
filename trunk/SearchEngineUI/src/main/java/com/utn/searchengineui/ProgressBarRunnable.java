@@ -25,21 +25,15 @@ public class ProgressBarRunnable extends Thread{
     @Override
     public void run()
     {
-//gestor.getEstado() == GUIManager.Estado.crawlear &&
-        //try {
-        while ( Communicator.crawl==true)
+
+        while ( Communicator.crawl==true )
           {
            gestor.actualizarLabel(true);
           }
             gestor.actualizarLabel(false);
-         //} 
-        //catch (InterruptedException ex) {
-        //       System.out.println("Error: " + ex.getMessage());
-        //}
+
+         } 
+
     }
     
-    
-
-
-}
 

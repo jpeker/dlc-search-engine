@@ -5,19 +5,15 @@
 package com.utn.searchengineui;
 
 import com.spider.jspiderlibrary2.Communicator;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+
 
 /**
  *
  * @author PC ACER
  */
 public class JFrameSearchEngineGUI extends javax.swing.JFrame {
-    
-    //Communicator com = new Communicator();
+
     DefaultListModel listmodel= new DefaultListModel();
     /**
      * Creates new form JFrameSearchEngineGUI
@@ -26,7 +22,6 @@ public class JFrameSearchEngineGUI extends javax.swing.JFrame {
         initComponents(); 
         blockPanels();
         jLabelCrawl.setVisible(false);
-        
     }
 
     /**
@@ -279,23 +274,26 @@ public class JFrameSearchEngineGUI extends javax.swing.JFrame {
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         System.exit(0);
-        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void JButtonCrawlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonCrawlActionPerformed
      Thread com = new Thread(new Communicator());
+     listmodel.clear();
      Communicator.textToCrawl=jTextFieldTextToCrawl.getText();
      Communicator.crawl=true;
      GUIManager g1= new GUIManager(jLabelCrawl);
      GUIManager g2= new GUIManager(jLabelTotalLinks);
-     GUIManager g3= new GUIManager(jListWorkloads,listmodel);
+     JListWorker jlw = new JListWorker(jListWorkloads,listmodel);
      ProgressBarRunnable pb1= new ProgressBarRunnable(g1);
      ReturnDataRunnable pb2= new ReturnDataRunnable(g2);
-     JListRunnable jl= new JListRunnable(g3);
+     JButtonWorker jb = new JButtonWorker(JButtonCrawl);
+     JTextBoxWorker jt = new JTextBoxWorker(jTextFieldTextToCrawl);
      com.start();
+     jb.execute();
+     jt.execute();
      pb1.start();
      pb2.start();
-     jl.start();
+     jlw.execute();
     }//GEN-LAST:event_JButtonCrawlActionPerformed
 
     private void blockPanels(){
@@ -306,8 +304,6 @@ public class JFrameSearchEngineGUI extends javax.swing.JFrame {
     /*
      * @param args the command line arguments
      */
-    
-    
 
     public static void main(String args[]) {
         /*

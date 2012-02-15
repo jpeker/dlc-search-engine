@@ -4,12 +4,9 @@
  */
 package com.utn.searchengineui;
 
-import com.spider.jspiderlibrary2.Communicator;
-import java.util.ArrayList;
-import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JProgressBar;
+
 
 /**
  *
@@ -17,39 +14,24 @@ import javax.swing.JProgressBar;
  */
 public class GUIManager {
 
-
     private JProgressBar _jpbArchivo;
 
     private JProgressBar _jpbProceso;
     
     private JLabel _jLabel;
-    
-    private JList _jList;
-    
-    private DefaultListModel _jListModel;
-    
+   
     public static enum Estado {iniciado, crawlear, descomprimir , comprimirPausado, descomprimirPausado};
+
     private  Estado estado ;
 
-     
     public GUIManager( JProgressBar _jpbArchivo)
     {
-   
      this._jpbArchivo = _jpbArchivo;
     }
-    
     
     public GUIManager( JLabel _jLabel)
     {
      this._jLabel = _jLabel;
-    }
-    
-   
-    public GUIManager( JList _jList, DefaultListModel _jListModel)
-    {
-    this._jListModel = _jListModel;
-     this._jList = _jList;
-
     }
 
      public void actualizarJPBCrawler (int i,boolean oscil)
@@ -68,48 +50,12 @@ public class GUIManager {
         this._jLabel.setVisible(true);
         else       
         this._jLabel.setVisible(false);
-
     }
 
-    
-    public void returnDataList()
-    {
-   
-        //DefaultListModel listmodel= new DefaultListModel();
-       // this._jList.setModel(listmodel);
-        ArrayList<String>a=Communicator.linksprocessed;
-        ArrayList<String>c=Communicator.linkserror;
-        for(int b=0;b<2;b++)
-        {
-        switch(b){
-            case 0:{
-                _jListModel.addElement("List of Error Links");
-                _jListModel.addElement(" ");
-                for(int i=0;i<c.size();i++)
-                {
-                _jListModel.addElement((String)c.get(i).toString());
-                }
-                break;}
-            case 1:{
-                _jListModel.addElement("List of Processed Links");
-                _jListModel.addElement(" ");
-              for(int i=0;i<a.size();i++)
-                {
-               // _jListModel.addElement((String)a.get(i).toString());
-                }
-                break;}
-        }
-
-      }
-        
-        
-    }
-    
     public void returnDataLabel (String value)
     {
         this._jLabel.setText(value);
     }
-     
      
     /*
      * Actualiza la progress Bar de Archivos
@@ -127,7 +73,6 @@ public class GUIManager {
     }
 
     public Estado getEstado()
-
     {
         return estado;
     }

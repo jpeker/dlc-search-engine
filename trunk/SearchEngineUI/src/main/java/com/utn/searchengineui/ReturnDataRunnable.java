@@ -24,6 +24,8 @@ public class ReturnDataRunnable extends Thread{
            int  i = Communicator.totalLinks;
            gestor.returnDataLabel((i+""));
           }
+
     }
+
     
 }
