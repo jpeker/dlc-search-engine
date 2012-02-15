@@ -99,12 +99,11 @@ public class LocalWordCountManager implements WordCountManager{
      * @param document: A document
      * @return The module that represents de vector of the document.
      */
-    public double getDocumentModule(Document document){
+    public double getDocumentModule(Document document, double invFrecuency){
        ArrayList<Word> words = postList.getWordsDocument(document);
        double moduleResult =0;
         for(Word word: words){
             double termFrecuencyOnDocument = word.getMaxTF();
-            double invFrecuency = this.inverseFrecuency(word);
             double product = termFrecuencyOnDocument*invFrecuency;
             double potency = Math.pow(product, 2);
             moduleResult+= potency;
@@ -146,7 +145,7 @@ public class LocalWordCountManager implements WordCountManager{
             denominator = document.getModule();
         }
         else{
-             document.setModule(getDocumentModule(document));
+             document.setModule(getDocumentModule(document, invFrec));
             documentManager.setDocumentModule(document);
             denominator =document.getModule();
         }
