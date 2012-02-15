@@ -79,7 +79,7 @@ public class WeightManager {
          * **/
     
      
-       String query = "Cada pescador debe traer su propio equipo de pesca";
+       String query = "telefono celular";
        query = query.toLowerCase();
          // String query = "todo sobre diesel en la historia de la agricultura";
         long elapsed4 = System.currentTimeMillis();
