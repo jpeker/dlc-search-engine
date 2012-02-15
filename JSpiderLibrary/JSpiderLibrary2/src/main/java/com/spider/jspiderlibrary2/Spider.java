@@ -25,15 +25,15 @@ public class Spider {
   /**
    * Una Coleccion de URLs que resultan erroneas
    */
-  protected  Collection workloadError = new ArrayList(3);
+  protected  ArrayList workloadError = new ArrayList(3);
 
   /**
    * Una Coleccion de URLs que estan esperando para ser procesadas
    * Cada URL añadida sirve para iniciar el crawleo del sitio
    */
-  protected  Collection workloadWaiting = new ArrayList(3);
+  protected  ArrayList workloadWaiting = new ArrayList(3);
 
-   protected  Collection workloadProcessed = new ArrayList(3);
+   protected  ArrayList workloadProcessed = new ArrayList(3);
   
   /**
    * StringBuilder empleado para concatenar el texto de cada url
