@@ -6,59 +6,40 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class Communicator implements Runnable,ISpiderReportable{
+public class Communicator implements ISpiderReportable, Runnable{
 
-  protected Thread backgroundThread; //El hilo de background para el spider
-  protected String textToCrawl;// variable usadas para la urls que usa el
+ // protected Thread backgroundThread; //El hilo de background para el spider
+  public static String textToCrawl;// variable usadas para la urls que usa el
   //crawler
-  private ArrayList contentToUi;
+  public static boolean crawl=false;
   protected Spider spider;//objeto que usamos para crawlear las urls
   protected URL base;//La url base donde el spider empieza a crawlear
   protected int badLinksCount = 0;//cuantos links malos hay en el recorrido
   protected int goodLinksCount = 0;//Cuantos links buens hay en el recorrido
-  private HashMap pages;//HashMap con todas las urls y su contenido util
-
+  public static HashMap pages;//HashMap con todas las urls y su contenido util
+  public static int totalLinks;// variable usadas para la urls que usa el
+  public static ArrayList<String> linksprocessed=new ArrayList<String>();
+  public static ArrayList<String> linkserror=new ArrayList<String>();
   
-  /**
-   * metodo que comienza a crawlear
-   * @param textToCrawl: el texto que sevaa crawlear
-   * @return HashMap con las urls y su contenidos
-   */
-  public HashMap beginCrawler(String textToCrawl){
-     if ( backgroundThread==null ) {
-        this.textToCrawl=textToCrawl;
-        this.initSpider();
-        goodLinksCount=0;
-        badLinksCount=0;
-        return getHashMapPages();
-    }
-    else {
-         pages=null;
-         spider.cancel();
-         return pages;
-        }
-    }
-  public HashMap getHashMapPages()
+  private HashMap getHashMapPages()
   {
     return spider.getHashMapPages();
   }
 
-    @Override
-  public void run()  {
-      try {
-        spider = new Spider(this);
-        spider.clear();
-        base = new URL(textToCrawl);
-        spider.addURL(base);
-          spider.begin();
-          
-        backgroundThread=null;
+public void run()  {
+    if(crawl){
+    Communicator.totalLinks=0;
+    this.initSpider();
+    linksprocessed=(ArrayList<String>)this.spider.workloadProcessed;
+    linkserror=(ArrayList<String>)this.spider.workloadError;
+    pages=getHashMapPages();
+    crawl=false;
     }
-      catch ( MalformedURLException e ) {
-      //  System.out.println("error "+ e.toString());
-    }
-    }
+}  
+  
 
     /*Metodo que da inicio el spider, crea la url ,
      *verifica que este bien formado si no tira una excepcion
@@ -73,7 +54,7 @@ public class Communicator implements Runnable,ISpiderReportable{
         spider.begin();//comienza a crawlear
          }
       catch ( MalformedURLException e ) {
-       // System.out.println("error "+ e.toString());
+        System.out.println("error communicator2  "+ e.toString());
         }
 }
   /*
@@ -120,7 +101,15 @@ public class Communicator implements Runnable,ISpiderReportable{
         badLinksCount++;
         System.out.println(url +" gots errors");
     }
-	public ArrayList contentToUi(int workLoadArrayList){
-  return spider.viewUrlArray(workLoadArrayList);
-  }
+   
+    
+    //public void SpiderContentToUi(int workLoadArrayList){
+    //      linksprocessed = spider.viewUrlArray(workLoadArrayList);}
+    
+   // public void SpiderContentToUi(){
+   //       linksprocessed = (ArrayList)spider.workloadProcessed;}
+    
+   public static  ArrayList SearchEngineContentToUi(ArrayList<String> listOfLinks){
+          return listOfLinks;}
+   
 }
