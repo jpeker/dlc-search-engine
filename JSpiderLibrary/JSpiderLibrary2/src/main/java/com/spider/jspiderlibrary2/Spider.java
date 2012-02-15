@@ -25,14 +25,16 @@ public class Spider {
   /**
    * Una Coleccion de URLs que resultan erroneas
    */
-  protected Collection workloadError = new ArrayList(3);
+  protected  Collection workloadError = new ArrayList(3);
 
   /**
    * Una Coleccion de URLs que estan esperando para ser procesadas
    * Cada URL añadida sirve para iniciar el crawleo del sitio
    */
-  protected Collection workloadWaiting = new ArrayList(3);
+  protected  Collection workloadWaiting = new ArrayList(3);
 
+   protected  Collection workloadProcessed = new ArrayList(3);
+  
   /**
    * StringBuilder empleado para concatenar el texto de cada url
    * del sitio crawleado
@@ -51,7 +53,7 @@ public class Spider {
    * Un hash map que añade URL que estan ya procesadas con su texto
    * La key es la url y el value es el string builder con todo el texto
    */
-  protected Collection workloadProcessed = new ArrayList(3);
+ 
 
   /**
    * Una Coleccion de URLs que no seran usadas porque
@@ -238,9 +240,8 @@ public class Spider {
     //Vacio el StringBuilder
     SBConcatText.delete(0,SBConcatText.length());
    // log("Complete: " + url );
-   
     System.out.println("EL tamao de waiting" + getWorkloadWaiting().size() + "EL tamaño de processesed" + getWorkloadProcessed().size() );
-  
+   Communicator.totalLinks++; 
   }
 
   //Traer el hashMap
@@ -454,22 +455,22 @@ public class Spider {
     System.out.println( (new Date()) + ":" + entry );
   }
   
-  public ArrayList viewUrlArray(int selectArray)
-  {
-  ArrayList ret=null;
-      switch(selectArray){
-          case 1:{
-          ret=(ArrayList)workloadWaiting;    
-          break;
-          }
-          case 2:{
-          ret=(ArrayList)workloadError;
-              break;
-          }
-          case 3:{
-              ret=(ArrayList)workloadProcessed;
-              break;}        
-  }
-      return ret;
-  }
+//  public  ArrayList viewUrlArray(int selectArray)
+//  {
+//  ArrayList ret=null;
+//      switch(selectArray){
+//          case 1:{
+//          ret=(ArrayList)workloadWaiting;    
+//          break;
+//          }
+//          case 2:{
+//          ret=(ArrayList)workloadError;
+//              break;
+//          }
+//          case 3:{
+//              ret=(ArrayList)workloadProcessed;
+//              break;}        
+//  }
+//      return ret;
+//  }
 }
