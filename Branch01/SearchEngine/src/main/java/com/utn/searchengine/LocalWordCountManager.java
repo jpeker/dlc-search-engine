@@ -217,16 +217,18 @@ public class LocalWordCountManager implements WordCountManager{
     }
     public Similitude determinateSimilitude(Map <String, Integer> wordsOfQuery, Document document1, Document document2){
         double coseno =0; 
-        double weight2=0;
+        double weight2;
         Iterator iterator = wordsOfQuery.entrySet().iterator();
         while(iterator.hasNext()){
             Map.Entry entry = (Map.Entry) iterator.next();
            Word word= this.vocabulary.getVocabularyWords().get(entry.getKey().toString());
            double weight1 = this.estimateWeight(word, document1);
-             if(!this.weigthQuery.containsKey(word.getName()))
+             if(!weigthQuery.containsKey(word.getName()))
              { weight2 = this.estimateWeight(word, document2);
-              this.weigthQuery.put(word.getName(), weight2);
+              weigthQuery.put(word.getName(), weight2);
              }
+             else
+                 weight2 =weigthQuery.get(word.getName());
             System.out.println("el peso de la palabra-----  >  "+word.getName());
             System.out.println("docmanger "+document1.getLocation()+" peso "+weight1);
             System.out.println("docquery "+document2.getLocation()+" peso "+weight2);
