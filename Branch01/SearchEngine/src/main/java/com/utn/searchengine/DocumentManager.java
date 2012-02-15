@@ -51,16 +51,10 @@ public class DocumentManager {
     public int documentsSize(){
        return size; 
     }
-    /*
-     * recupera la cantidad de documento 
-     * 
-     */
-    public void upDocumentSize()
-    {
-        size=DAOFactory.getActiveDAOFactory().getDocumentDAO().obtenerCantidadDocument();
-    }
+ 
     
     public DocumentManager() {
+        size=DAOFactory.getActiveDAOFactory().getDocumentDAO().obtenerCantidadDocument();
     }
     public void clearDocuments(){
         documents.clear();
