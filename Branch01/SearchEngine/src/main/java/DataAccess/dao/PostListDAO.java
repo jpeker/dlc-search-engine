@@ -1,8 +1,9 @@
 package dataaccess.dao;
 
 import com.utn.searchengine.Document;
+import com.utn.searchengine.DocumentResults;
 import com.utn.searchengine.Word;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Collection;
 
 /**
@@ -12,12 +13,13 @@ import java.util.Collection;
  * @author Altamirado Liberal Peker
  */
 public  interface PostListDAO {
-    public ArrayList<Document> 
+    public List<Document> 
             obtenerDocumentoCandidatos(Collection<String> c  );
      public int getTF(Word word,Document document);
       public boolean grabarPostList(Word word,Document document,int fr);
        public int getNrWord(Word word);
        public boolean isContains(String palabra);
-       public ArrayList<Word> getWordsDocument(Document document); 
+       public List<Word> getWordsDocument(Document document); 
+       public List<DocumentResults> getFilteredCandidates(Collection <String> c);
       
 }
