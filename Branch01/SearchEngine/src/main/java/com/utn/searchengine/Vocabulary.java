@@ -33,7 +33,7 @@ public class Vocabulary {
     }
     
     private Map<String, Word> vocabularyWords = new HashMap<String, Word>();
-    
+   
     public Vocabulary(Map<String, Word> vocabularyWords){
         this.vocabularyWords = vocabularyWords;
     }
