@@ -43,9 +43,7 @@ public class DocumentResults {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 43 * hash + (this.document.getLocation() != null ? this.document.getLocation().hashCode() : 0);
-        return hash;
+        return this.getDocument().getLocation().hashCode();
     }
 
     public DocumentResults(Document document, int numberOfQueryWords) {
