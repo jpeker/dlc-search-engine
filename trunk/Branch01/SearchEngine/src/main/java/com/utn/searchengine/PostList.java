@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 
@@ -99,7 +100,7 @@ public class PostList {
   public Collection<Document> getCandidateDocuments(Collection<String> c  ){
       return DAOFactory.getActiveDAOFactory().getPostListDAO().obtenerDocumentoCandidatos(c);
   }
-  public ArrayList<Word> getWordsDocument(Document document)
+  public List<Word> getWordsDocument(Document document)
   {
     return DAOFactory.getActiveDAOFactory().getPostListDAO().getWordsDocument(document);
   }

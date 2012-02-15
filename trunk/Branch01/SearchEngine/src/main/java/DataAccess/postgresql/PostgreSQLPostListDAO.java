@@ -1,6 +1,7 @@
 
 package dataaccess.postgresql;
 import com.utn.searchengine.Document;
+import com.utn.searchengine.DocumentResults;
 import com.utn.searchengine.Word;
 import dataaccess.dao.PostListDAO;
 import dataaccess.dbmanager.PostgreDBManager;
@@ -10,7 +11,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 /**
  *
  * @author Altamirano Peker Liberal
@@ -57,6 +61,7 @@ public class PostgreSQLPostListDAO implements PostListDAO{
         } catch (SQLException ex) {
             ret=null;
         }
+        System.out.println("---Cantidad de documentos encontrados: " + ret.size());
     return ret;
     }
     /* Recupera el nr de una palabra
@@ -202,4 +207,81 @@ public class PostgreSQLPostListDAO implements PostListDAO{
     return ret;
       
       }
+
+    public List<DocumentResults> getFilteredCandidates(Collection<String> c) {
+         {
+     ArrayList<DocumentResults> ret=new ArrayList();
+     ArrayList<Word> words=new ArrayList();
+     for(String name : c)
+     {
+         words.add(new Word (name));
+     }
+     Iterator i = words.iterator();
+     StringBuilder cad = new StringBuilder();
+     while(i.hasNext())
+        {
+            Word word =(Word)i.next();
+            cad.append("'");
+            cad.append(word.getName());
+            cad.append("'");
+            if(i.hasNext())cad.append(",");
+        }
+    PreparedStatement st;
+        Connection con;
+      try {
+            con = PostgreDBManager.getConnection();
+            synchronized(con)
+            {
+                Map<String, Integer> documentsCount = new HashMap<String, Integer>();
+                Map <String, Integer>wordsCount= new HashMap<String, Integer>();
+                StringBuilder query=new StringBuilder("select   w.name_Word,p.frequency, d.url_Name,d.Modulo");
+                query.append("from postlist p inner join page d on p.id_Url = d.id_Url inner join word w on p.id_Word = w.id_Word ");
+                query.append("where w.name_Word in (").append(cad.toString()).append(") ");
+                query.append("group by  w.name_Word,p.frequency, d.url_Name,d.Modulo ");
+                query.append("order by  w.name_Word,p.frequency desc;");
+                st = con.prepareStatement(query.toString());
+                ResultSet results=st.executeQuery();
+                String wordToCompare = "";
+                String wordToIgnore = "";
+                int count = 0;
+                while(results.next())
+                {
+                    if(!wordToIgnore.equalsIgnoreCase(results.getString(1))&& count<5){
+                        if(!wordToCompare.equalsIgnoreCase(results.getString(1))){
+                            wordToCompare = results.getString(1);
+                            count = 1;
+                        }
+                        else{
+                            count++;
+                        }
+                        Document document = new Document(results.getString(3), "", results.getDouble(4));
+                        if(!documentsCount.containsKey(results.getString(3).toString())){
+                            documentsCount.put(results.getString(3), 1);
+                            
+                            ret.add(new DocumentResults(document, 1));
+                        }
+                        else{
+                            int newValue = documentsCount.get(results.getString(3));
+                            newValue++;
+                            DocumentResults documentResult= ret.get(ret.indexOf(new DocumentResults(document, newValue)));
+                            documentResult.setNumberOfQueryWords(newValue);
+                        }
+                    }
+                    else{
+                        count =0;
+                        wordToIgnore= results.getString(1);
+                    }
+                    
+                }
+                results.close();
+                st.close();
+            }
+        } catch (SQLException ex) {
+            System.out.println("Exception retrieving filtered candidate documents"+ex.getMessage());
+            ret=null;
+        }
+        System.out.println("---Cantidad de documentos encontrados: " + ret.size());
+    return ret;
+    }
+    }
 }

@@ -11,6 +11,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 
@@ -100,7 +101,7 @@ public class LocalWordCountManager implements WordCountManager{
      * @return The module that represents de vector of the document.
      */
     public double getDocumentModule(Document document, double invFrecuency){
-       ArrayList<Word> words = postList.getWordsDocument(document);
+       List<Word> words = postList.getWordsDocument(document);
        double moduleResult =0;
         for(Word word: words){
             double termFrecuencyOnDocument = word.getMaxTF();
@@ -173,7 +174,7 @@ public class LocalWordCountManager implements WordCountManager{
        
     }
        //  ordeno Similitudes de documentos
-   private void sortSimilitude (  ArrayList<Similitude> sumilitu)
+   private void sortSimilitude (  List<Similitude> sumilitu)
     {
         Comparator<Similitude> comparator = new Compare () ;
     Collections.sort(sumilitu,  comparator);
