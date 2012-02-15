@@ -44,25 +44,7 @@ public class LocalWordCountManager implements WordCountManager{
         vocabulary.addDocumentWords(pages);
         documentManager.addDocument(document);
         postList.addDocumentWords(pages, document.getLocation());
-        
-       // this.updatingModuleDocuments();
-       // System.out.println("\nContenido de documentManager: "+documentManager.toString());
-        //System.out.println("\nContenido de Vocabulary: "+vocabulary.toString());
-        //System.out.println("\nContenido de PostList: "+postList.toString());
-        
     }
-    //actualiza los modulos de los documento por que se modifican cuando se agregan nuevos documentos
-    public void updatingModuleDocuments ()
-    {
-     Collection<Document> documentos= documentManager.getDocuments();
-     Iterator i = documentos.iterator();
-        while(i.hasNext())
-        {
-        Document docum =(Document) i.next();
-        docum.setModule(getDocumentModule(docum));
-          }
-     documentManager.setDocuments(documentos);
-   }
     /**
      * 
      * @return the total of documents that exist. 
