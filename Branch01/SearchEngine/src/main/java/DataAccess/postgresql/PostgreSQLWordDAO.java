@@ -102,6 +102,7 @@ public class PostgreSQLWordDAO implements WordDAO{
                 st.close();
             }
         } catch (SQLException ex) {
+            System.out.println("SQL Exception:"+ex.getMessage());
         }
         return Vocabulary;
     }
