@@ -114,6 +114,9 @@ public class PostList {
         }*/
         return aux;
     }
+    public List<DocumentResults> getCandidateDocumentsFiltered(Collection <String> c){
+        return DAOFactory.getActiveDAOFactory().getPostListDAO().getFilteredCandidates(c);
+    }
     
     
 }
