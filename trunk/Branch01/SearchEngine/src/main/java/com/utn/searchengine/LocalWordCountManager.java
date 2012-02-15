@@ -80,7 +80,7 @@ public class LocalWordCountManager implements WordCountManager{
         //System.out.println("Determinating inverse frecuency of word \" "+word.getName()+"\"");
         double N = getTotalNumberOfDocuments();
         //System.out.println("Total of documents: "+N);
-        double nr = word.getNr();//este metodo se va a poder rehusar desde getAllWordsAndLocations
+        double nr = word.getNr();
         //System.out.println("nr: "+nr);
         if(nr ==0){
             return 0;
@@ -100,10 +100,8 @@ public class LocalWordCountManager implements WordCountManager{
      * @return The module that represents de vector of the document.
      */
     public double getDocumentModule(Document document){
-         //Set<String> words = postList.getAllWords();
        ArrayList<Word> words = postList.getWordsDocument(document);
        double moduleResult =0;
-       
         for(Word word: words){
             double termFrecuencyOnDocument = word.getMaxTF();
             double invFrecuency = this.inverseFrecuency(word);
@@ -131,10 +129,11 @@ public class LocalWordCountManager implements WordCountManager{
             tfri = WordCount.getTF(word, document);
         }
         else{
-            if( postList.totalTimesThatWordRepeatsOnDocument(word, document)==0){
+            int nr = this.timesThatAWordRepeatsOnDocument(word, document);
+            if(nr==0){
             return 0;
         }
-            tfri = this.timesThatAWordRepeatsOnDocument(word, document);
+            tfri = nr;
         }
         System.out.println("Determining the weight of word "+word.getName()+" on document "+document.getLocation()); 
         System.out.println("tfri is: "+tfri);
