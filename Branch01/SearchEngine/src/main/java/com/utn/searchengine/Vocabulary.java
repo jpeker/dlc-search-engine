@@ -4,11 +4,9 @@
  */
 package com.utn.searchengine;
 
-import dataaccess.dao.WordDAO;
 import dataaccess.factories.DAOFactory;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -58,25 +56,20 @@ public class Vocabulary {
                 //the biggest frecuency and the total times that the word appears are the same.
                 int values = (Integer)entry.getValue();
                 Word word = new Word(entry.getKey().toString(), 1, values);
-                //VocabularyEntry vocabularyEntry = new VocabularyEntry(word, 1, values);
                 vocabularyWords.put(word.getName(), word);
               DAOFactory.getActiveDAOFactory().getWordDAO().saveWord(word);
             }
             else{
                 //the word already exists so it is necesarry to update their attributes.
                 Word wordToModify = vocabularyWords.get(entry.getKey().toString());
-                //VocabularyEntry entryToModify = vocabularyWords.get(entry.getKey().toString());
                 int timesThatWordAppearsOnNewDocument = (Integer)entry.getValue();
-                
                 int biggestDocumentTermFrecuency = wordToModify.getMaxTF();
                 if(timesThatWordAppearsOnNewDocument > biggestDocumentTermFrecuency){
                     wordToModify.setMaxTF(timesThatWordAppearsOnNewDocument);
-                    //entryToModify.setDocumentBiggestTermFrecuency(timesThatWordAppearsOnNewDocument);
                 }
                 int newTotalDocuments =wordToModify.getNr();
                 newTotalDocuments++;
                 wordToModify.setNr(newTotalDocuments);
-                //entryToModify.setTotalDocumentsThatWordAppears(newTotalDocuments);
                 DAOFactory.getActiveDAOFactory().getWordDAO().saveWord(wordToModify);
             }
         }

@@ -234,18 +234,5 @@ public class LocalWordCountManager implements WordCountManager{
         }
         return new Similitude(document1, document2, coseno);
     }
-     
-    public Map<String, Integer> filterQuery(Map <String, Integer> wordsOfQuery){
-        Map<String, Integer>  filteredQuery= new HashMap<String, Integer> ();
-        Iterator iterator = wordsOfQuery.entrySet().iterator();
-        while(iterator.hasNext()){
-            Map.Entry entry = (Map.Entry) iterator.next();
-            if(vocabulary.containsWord(entry.getKey().toString())){
-                filteredQuery.put(entry.getKey().toString(), (Integer)entry.getValue());
-            }
-        }
-        return filteredQuery;
-        
-    }
-    
+ 
 }
