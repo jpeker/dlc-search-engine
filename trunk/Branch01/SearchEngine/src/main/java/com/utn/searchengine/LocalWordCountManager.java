@@ -161,7 +161,6 @@ public class LocalWordCountManager implements WordCountManager{
     public Collection<Similitude> determinateBestSimilitude(Document document){
         Map <String, Integer> wordsOfQuery = WordCount.retrieveWordCount(document);
         Collection<String> c = wordsOfQuery.keySet();
-         this.documentManager.upDocumentSize();
         document.setModule( this.getQueryModule(wordsOfQuery));
         ArrayList<Similitude> sumilitudes = new ArrayList<Similitude>();
         Collection<Document> documents = postList.getCandidateDocuments(c);
