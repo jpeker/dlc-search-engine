@@ -171,12 +171,14 @@ public class LocalWordCountManager implements WordCountManager{
         Collection<Document> documents = postList.getCandidateDocuments(c);
         Collection <DocumentResults> documentResults = postList.getCandidateDocumentsFiltered(c);
         for(DocumentResults res: documentResults){
+            sumilitudes.add(this.determinateSimilitude(wordsOfQuery, res.getDocument(), document));
             System.out.println(res.getDocument().toString()+"-times: "+res.getNumberOfQueryWords());
         }
+        /**
         for(Document auxiliarDocument: documents){
            
           sumilitudes.add(this.determinateSimilitude(wordsOfQuery, auxiliarDocument, document));
-        }
+        }**/
         sortSimilitude(sumilitudes);
         return sumilitudes;
        
