@@ -6,6 +6,10 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.HashMap;
+/**
+ *
+ * @author altamirano,peker,liberal
+ */
 
 public class Communicator implements ISpiderReportable, Runnable {
 

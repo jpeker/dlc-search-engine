@@ -5,7 +5,10 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.StringTokenizer;
-
+/**
+ *
+ * @author altamirano,peker,liberal
+ */
 /*
  * RobotsParser clase que parsea el archivo robots.txt de un sitio web
  * Usando siempre la direccion base con protocolo http
