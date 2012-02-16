@@ -6,6 +6,7 @@ package com.utn.searchengineui;
 
 import com.spider.jspiderlibrary2.Communicator;
 import javax.swing.DefaultListModel;
+import com.utn.searchengine.*;
 
 
 /**
@@ -124,7 +125,7 @@ public class JFrameSearchEngineGUI extends javax.swing.JFrame {
                 .addGroup(jPanelCrawlerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelTotalLinks)
                     .addComponent(jLabel5))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         jLabel6.setText("Inserte aqui la palabra que desea Searchear");
@@ -134,6 +135,11 @@ public class JFrameSearchEngineGUI extends javax.swing.JFrame {
         jLabelSearching.setText("Buscando...");
 
         jButtonSearch.setText("Buscar");
+        jButtonSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSearchActionPerformed(evt);
+            }
+        });
 
         jScrollPane2.setViewportView(jListLinksFounded);
 
@@ -200,7 +206,7 @@ public class JFrameSearchEngineGUI extends javax.swing.JFrame {
             .addGroup(jPanelWorkingLayout.createSequentialGroup()
                 .addGap(126, 126, 126)
                 .addComponent(jLabelCrawling)
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addContainerGap(144, Short.MAX_VALUE))
         );
 
         jMenu1.setText("Opciones");
@@ -247,7 +253,7 @@ public class JFrameSearchEngineGUI extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
+            .addGap(0, 284, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanelCrawler, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -295,6 +301,11 @@ public class JFrameSearchEngineGUI extends javax.swing.JFrame {
      pb2.start();
      jlw.execute();
     }//GEN-LAST:event_JButtonCrawlActionPerformed
+
+    private void jButtonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchActionPerformed
+    LocalWordCountManager lwcm = new LocalWordCountManager();
+    lwcm.determinateBestSimilitude(new Document("query",jTextFieldWordToSearch.getText()));
+    }//GEN-LAST:event_jButtonSearchActionPerformed
 
     private void blockPanels(){
     jPanelCrawler.setVisible(false);
