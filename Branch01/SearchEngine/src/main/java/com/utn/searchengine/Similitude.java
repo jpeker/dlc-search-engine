@@ -39,12 +39,12 @@ public class Similitude {
     public void setSimilitude(double similitude) {
         this.similitude = similitude;
     }
-    
+
     @Override
-    public String toString(){
+    public String toString() {
         String aux = "";
-       aux+= "First Document: "+this.documentA.getLocation()+"-Module: " +this.documentA.getModule()+"-Second document: "+this.documentB.getLocation()
-               +"-Similitude: "+this.similitude;
+        aux += "First Document: " + this.documentA.getLocation() + "-Module: " + this.documentA.getModule() + "-Second document: " + this.documentB.getLocation()
+                + "-Similitude: " + this.similitude;
 
         return aux;
     }

@@ -17,11 +17,11 @@ public class DocumentResults {
     public void setDocument(Document document) {
         this.document = document;
     }
+
     /**
      * numero de la palabras de la query
      * @return 
      */
-    
     public int getNumberOfQueryWords() {
         return numberOfQueryWords;
     }
@@ -29,7 +29,7 @@ public class DocumentResults {
     public void setNumberOfQueryWords(int numberOfQueryWords) {
         this.numberOfQueryWords = numberOfQueryWords;
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
@@ -56,5 +56,4 @@ public class DocumentResults {
     }
     private Document document;
     private int numberOfQueryWords;
-    
 }

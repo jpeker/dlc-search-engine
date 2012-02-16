@@ -4,38 +4,38 @@
  */
 package com.utn.searchengine;
 
-
-
 /**
  * This class represents a text source, it can be a page
  * or a text document
  * @author altamirano,peker,liberal
  */
-public class Document implements Comparable{
+public class Document implements Comparable {
 
     public String getLocation() {
         return location;
     }
- public void setLocation(String location) {
+
+    public void setLocation(String location) {
         this.location = location;
     }
-    
+
     public String getText() {
         return text;
     }
- public Document( String location, String text) {
-    
+
+    public Document(String location, String text) {
+
         this.location = location;
-        this.text=text;
-        this.module=-1;
+        this.text = text;
+        this.module = -1;
     }
-    public Document( String location, String text,double d) {
-    
+
+    public Document(String location, String text, double d) {
+
         this.location = location;
-        this.text=text;
-        this.module=d;
+        this.text = text;
+        this.module = d;
     }
- 
     private String location;
     private String text;
     //it could be a nice idea to save on the document the module in
@@ -43,27 +43,30 @@ public class Document implements Comparable{
     private double module;
 
     public double getModule() {
-       
+
         return module;
     }
 
     public void setModule(double module) {
         this.module = module;
-       
-        
+
+
     }
-        @Override
+
+    @Override
     public String toString() {
-        String aux = " location=" + location + "module=" + module ;
+        String aux = " location=" + location + "module=" + module;
         return aux;
     }
- @Override
+
+    @Override
     public int hashCode() {
         int hash = 7;
         hash = 79 * hash + (this.location != null ? this.location.hashCode() : 0);
         return hash;
     }
-   @Override
+
+    @Override
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;
@@ -77,6 +80,7 @@ public class Document implements Comparable{
         }
         return true;
     }
+
     public int compareTo(Object o) {
         Document documentToCompare = (Document) o;
         return this.getLocation().compareTo(documentToCompare.getLocation());

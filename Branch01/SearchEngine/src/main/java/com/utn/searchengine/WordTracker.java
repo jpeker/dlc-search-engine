@@ -4,7 +4,6 @@
  */
 package com.utn.searchengine;
 
-
 /**
  * This Class is created in order to take atrack of the info of the
  * words, it will consist of a location and a frecuency
@@ -18,12 +17,10 @@ public class WordTracker {
         this.location = location;
     }
 
-
-    public WordTracker ()
-    {
-
+    public WordTracker() {
     }
-   public int getFrequency() {
+
+    public int getFrequency() {
         return frequency;
     }
 
@@ -38,12 +35,12 @@ public class WordTracker {
     public void setLocation(String location) {
         this.location = location;
     }
+
     @Override
-    public String toString(){
-        String aux = "Location: "+location+"- Frecuency: "+frequency;
+    public String toString() {
+        String aux = "Location: " + location + "- Frecuency: " + frequency;
         return aux;
     }
     private int frequency;
     private String location;
-    
 }

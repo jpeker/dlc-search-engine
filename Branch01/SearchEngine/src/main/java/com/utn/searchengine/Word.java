@@ -20,14 +20,14 @@ public class Word {
     public int getMaxTF() {
         return maxTF;
     }
-  public int getFrecuency() {
+
+    public int getFrecuency() {
         return maxTF;
     }
+
     public void setMaxTF(int maxTF) {
         this.maxTF = maxTF;
     }
-
- 
     private int nr;
 
     public int getNr() {
@@ -45,13 +45,13 @@ public class Word {
 
     public void setName(String name) {
         this.name = name;
-        
+
     }
 
     public Word(String name) {
         this.name = name;
-        this.nr =-1;
-        this.maxTF=-1;
+        this.nr = -1;
+        this.maxTF = -1;
     }
 
     @Override
@@ -68,13 +68,14 @@ public class Word {
         }
         return true;
     }
+
     @Override
-    public int hashCode (){
-	return name.hashCode();
+    public int hashCode() {
+        return name.hashCode();
     }
+
     @Override
-    public String toString(){
-        return "Name: "+name+"nr: "+this.getNr()+" - Max tf: "+this.getMaxTF();
+    public String toString() {
+        return "Name: " + name + "nr: " + this.getNr() + " - Max tf: " + this.getMaxTF();
     }
-    
 }
