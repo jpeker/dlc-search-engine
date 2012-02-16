@@ -12,11 +12,13 @@ import java.util.HashMap;
  * 
  */
 public final class StopWordMap {
-    //Archivo de stops words
-    //Para instanciar y asignar un archivo primero
-    //Debe identificarse el idioma antes de leer el archivo.
-    //Luego de leer el idioma el archivo es recorrido y
-    //se añade al hashMap
+    /**
+     * Archivo de stops words
+    *Para instanciar y asignar un archivo primero
+    *Debe identificarse el idioma antes de leer el archivo.
+    *Luego de leer el idioma el archivo es recorrido y
+    *se añade al hashMap
+     */
     private static File stopWordFile=null;
 
     // HashMap que contiene las stop words que no seran indexadas
@@ -28,9 +30,12 @@ public final class StopWordMap {
          stopWordMap.put(stopWordString.hashCode(), stopWordString);
     }
     
-    //readStopWordList sirve para leer las stopword que empleo para la busqueda
-    //para eso leo un archivo .txt del idioma de stopWord que quieda de
-    //del documento o sitio visitado
+    /**
+     * readStopWordList sirve para leer las stopword que empleo para la busqueda
+    para eso leo un archivo .txt del idioma de stopWord que quieda de
+    del documento o sitio visitado
+     * @return 
+     */
     public static boolean readStopWordList()
     {
         if(stopWordFile==null){return false;}
@@ -65,10 +70,13 @@ public final class StopWordMap {
     return stopWordMap;
     }
 
-    // En funcion del idioma en que este el documento trae
-    // El archivo de stopwordXXX.txt que necesite
-    // El documento debe reconocer que tipo de idioma es.
-    // XXX es el idioma deseado
+   /**
+     * En funcion del idioma en que este el documento trae
+     *El archivo de stopwordXXX.txt que necesite
+     *El documento debe reconocer que tipo de idioma es.
+     * @param selectedIdiom el idioma deseado: 0 para ingles, 1 para español
+     * @return un File con las stop words del idioma seleccionado.
+     */
     public static File stopWordIdiomDocumentFinder(int selectedIdiom){
         // 0=ingles
         // 1=español

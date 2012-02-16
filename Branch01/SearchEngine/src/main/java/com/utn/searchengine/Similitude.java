@@ -5,7 +5,8 @@
 package com.utn.searchengine;
 
 /**
- *
+ *  This class represents the similitude between two 
+ * documents
  * @author altamirano,peker,liberal
  */
 public class Similitude {

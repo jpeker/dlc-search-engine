@@ -75,6 +75,11 @@ public class Vocabulary {
         }
     
     }
+    /**
+     * 
+     * @param word a word
+     * @return true if word is containes
+     */
     public boolean containsWord(String word){
         return vocabularyWords.containsKey(word);
     }
