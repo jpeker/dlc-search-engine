@@ -1,4 +1,3 @@
-
 package dataaccess.postgresql;
 
 import com.utn.searchengine.Word;
@@ -16,7 +15,7 @@ import java.util.Map;
  *
  * @author Altamirano Peker Liberal
  */
-public class PostgreSQLWordDAO implements WordDAO{
+public class PostgreSQLWordDAO implements WordDAO {
 
     /**
      * Graba un Word en la base de datos. Si la misma ya existia la actualiza
@@ -31,9 +30,8 @@ public class PostgreSQLWordDAO implements WordDAO{
         Connection con;
         try {
             con = PostgreDBManager.getConnection();
-            synchronized(con)
-            {
-                String query="select fn_save_word(?,?,?);";
+            synchronized (con) {
+                String query = "select fn_save_word(?,?,?);";
                 st = con.prepareStatement(query);
                 st.setString(1, word.getName());
                 st.setInt(2, word.getNr());
@@ -43,7 +41,7 @@ public class PostgreSQLWordDAO implements WordDAO{
                 return true;
             }
         } catch (SQLException ex) {
-           return false;
+            return false;
         }
     }
 
@@ -56,80 +54,73 @@ public class PostgreSQLWordDAO implements WordDAO{
      * @return la word almacenada en la base de datos, null si la misma no existia
      * o existen problemas de acceso a la base.
      */
-    
     ///Terminado
     public Word getWord(Word palabra) {
-        Word ret=null;
+        Word ret = null;
         PreparedStatement st;
         Connection con;
         try {
             con = PostgreDBManager.getConnection();
-            synchronized(con)
-            {
-                String query="select name_Word,nr,max_Tf from Word where name_Word = ?";
+            synchronized (con) {
+                String query = "select name_Word,nr,max_Tf from Word where name_Word = ?";
                 st = con.prepareStatement(query);
                 st.setString(1, palabra.getName());
-                ResultSet results=st.executeQuery();
-                if(results.next())
-                {
-                    ret=new Word(results.getString("name_Word"),results.getInt("nr"),results.getInt("max_Tf"));
-                }
-                results.close();
-                st.close();
-            }
-        } catch (SQLException ex) {          
-        }
-        return ret;
-    }
-
-    //Obtiene todo el vocabulary
-    public  Map<String, Word> getVocabulary() {
-         Map<String, Word> Vocabulary = new HashMap<String, Word>();
-        PreparedStatement st;
-        Connection con;
-        try {
-            con = PostgreDBManager.getConnection();
-            synchronized(con)
-            {
-                String query="select name_Word,nr,max_Tf from Word";
-                st = con.prepareStatement(query);
-                ResultSet results=st.executeQuery();
-                while(results.next())
-                {
-                    Vocabulary.put(results.getString("name_Word"), new Word(results.getString("name_Word"),results.getInt("nr"),results.getInt("max_Tf")));
+                ResultSet results = st.executeQuery();
+                if (results.next()) {
+                    ret = new Word(results.getString("name_Word"), results.getInt("nr"), results.getInt("max_Tf"));
                 }
                 results.close();
                 st.close();
             }
         } catch (SQLException ex) {
-            System.out.println("SQL Exception:"+ex.getMessage());
+        }
+        return ret;
+    }
+
+    //Obtiene todo el vocabulary
+    public Map<String, Word> getVocabulary() {
+        Map<String, Word> Vocabulary = new HashMap<String, Word>();
+        PreparedStatement st;
+        Connection con;
+        try {
+            con = PostgreDBManager.getConnection();
+            synchronized (con) {
+                String query = "select name_Word,nr,max_Tf from Word";
+                st = con.prepareStatement(query);
+                ResultSet results = st.executeQuery();
+                while (results.next()) {
+                    Vocabulary.put(results.getString("name_Word"), new Word(results.getString("name_Word"), results.getInt("nr"), results.getInt("max_Tf")));
+                }
+                results.close();
+                st.close();
+            }
+        } catch (SQLException ex) {
+            System.out.println("SQL Exception:" + ex.getMessage());
         }
         return Vocabulary;
     }
-    
+
     /**
      * Elimina la word de la base de datos
      * @param word Word a eliminar
      * @return true si se pudo eliminar correctamente, false en caso contrario.
      */
-    public boolean deleteWord(Word palabra){
+    public boolean deleteWord(Word palabra) {
         boolean ret;
         PreparedStatement st;
         Connection con = PostgreDBManager.getConnection();
-        synchronized(con)
-        {
+        synchronized (con) {
             try {
-                String queryPalabra="select pr_deleteWord(?);";
+                String queryPalabra = "select pr_deleteWord(?);";
                 st = con.prepareStatement(queryPalabra);
                 st.setString(1, palabra.getName());
                 ResultSet rs = st.executeQuery();
                 rs.next();
-                System.out.println(""+rs.getBoolean(1));
+                System.out.println("" + rs.getBoolean(1));
                 st.close();
-                ret=true;
-            }
-            catch (SQLException ex) {
-                 ret=false;
+                ret = true;
+            } catch (SQLException ex) {
+                ret = false;
             }
         }
         return ret;

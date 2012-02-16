@@ -9,26 +9,23 @@ import java.sql.SQLException;
  * @author Altamirado Liberal Peker
  */
 public class PostgreDBManager {
- /**
+
+    /**
      * URL de la base de datos
      */
-    private static final String DBURL="jdbc:postgresql://localhost:5432/SearchEngineDB";
-
+    private static final String DBURL = "jdbc:postgresql://localhost:5432/SearchEngineDB";
     /**
      * Driver para acceder a la Base de Datos de Postgre
      */
-    private static final String DRIVER="org.postgresql.Driver";
-
+    private static final String DRIVER = "org.postgresql.Driver";
     /**
      * Usuario de la base de datos
      */
-    private static String usuario="postgres";
-
+    private static String usuario = "postgres";
     /**
      * Contraseña de la base de datos
      */
-    private static String contrasenia="dlc2012";
-
+    private static String contrasenia = "dlc2012";
     /**
      * Representa la conexión a la base de datos
      */
@@ -37,11 +34,9 @@ public class PostgreDBManager {
     /**
      * @return la única instancia válida de DBManager
      */
-    public static synchronized Connection getConnection()
-    {
+    public static synchronized Connection getConnection() {
         try {
-            if(con == null || con.isClosed())
-            {
+            if (con == null || con.isClosed()) {
                 crearConnection();
             }
         } catch (SQLException ex) {
@@ -52,20 +47,15 @@ public class PostgreDBManager {
     /**
      * Crea una nueva conexión a la base de datos
      */
-    private static void crearConnection()
-    {
+    private static void crearConnection() {
         try {
             Class.forName(DRIVER);
-        }
-          catch (ClassNotFoundException ex)
-        {
+        } catch (ClassNotFoundException ex) {
             System.exit(2);
         }
-        try{
+        try {
             con = DriverManager.getConnection(DBURL, usuario, contrasenia);
-        }
-        catch (SQLException ex)
-        {
+        } catch (SQLException ex) {
         }
     }
 }

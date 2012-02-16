@@ -11,22 +11,20 @@ import dataaccess.postgresql.PostgreSQLWordDAO;
  * Factory concreta para manejar DAOs Postgres.
  * @author Altamirano Liberal Peker
  */
-
-public class PostgreSQLDAOFactory extends DAOFactory{
+public class PostgreSQLDAOFactory extends DAOFactory {
 
     @Override
     public DocumentDAO getDocumentDAO() {
-       return new  PostgreSQLDocumentDAO();
+        return new PostgreSQLDocumentDAO();
     }
 
     @Override
     public WordDAO getWordDAO() {
         return new PostgreSQLWordDAO();
     }
-    
+
     @Override
     public PostListDAO getPostListDAO() {
         return new PostgreSQLPostListDAO();
     }
-    
 }

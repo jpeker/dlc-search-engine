@@ -9,6 +9,7 @@ import com.utn.searchengine.Document;
  * @author Altamirado Liberal Peker
  */
 public interface DocumentDAO {
+
     /**
      * Graba un Document en la base de datos. Si la Document ya existia la 
      * actualiza y si no existia la inserta en la base de datos.
@@ -17,6 +18,8 @@ public interface DocumentDAO {
      * exitosamente, false en caso contrario 
      */
     boolean grabarWebSite(Document document);
+
     public int obtenerCantidadDocument();
-    public Document obtenerDocument(Document website);  
+
+    public Document obtenerDocument(Document website);
 }
