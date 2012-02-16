@@ -23,7 +23,6 @@ public class PostgreSQLWordDAO implements WordDAO {
      * @return true si se pudo realizar exitosamente la operación, false en caso
      * contrario.
      */
-    //Actualiza o graba una palabra
     public boolean saveWord(Word word) {
         PreparedStatement st;
         Connection con;
@@ -53,7 +52,6 @@ public class PostgreSQLWordDAO implements WordDAO {
      * @return la word almacenada en la base de datos, null si la misma no existia
      * o existen problemas de acceso a la base.
      */
-    ///Terminado
     public Word getWord(Word palabra) {
         Word ret = null;
         PreparedStatement st;
@@ -76,7 +74,6 @@ public class PostgreSQLWordDAO implements WordDAO {
         return ret;
     }
 
-    //Obtiene todo el vocabulary
     public Map<String, Word> getVocabulary() {
         Map<String, Word> Vocabulary = new HashMap<String, Word>();
         PreparedStatement st;
@@ -99,11 +96,6 @@ public class PostgreSQLWordDAO implements WordDAO {
         return Vocabulary;
     }
 
-    /**
-     * Elimina la word de la base de datos
-     * @param word Word a eliminar
-     * @return true si se pudo eliminar correctamente, false en caso contrario.
-     */
     public boolean deleteWord(Word palabra) {
         boolean ret;
         PreparedStatement st;
@@ -124,10 +116,6 @@ public class PostgreSQLWordDAO implements WordDAO {
         }
         return ret;
     }
-       /* Recupera el nr de una palabra
-     * @param Word word
-     * return el nr  y -1 en caso de que no pudo recuperarse
-     */
 
     public int getNrWord(Word word) {
         int nr = 0;

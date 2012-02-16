@@ -19,7 +19,15 @@ public interface DocumentDAO {
      */
     boolean grabarWebSite(Document document);
 
+    /**
+     * Obtiene la cantidad de documentos
+     * @return la cantidad de documentos
+     */
     public int obtenerCantidadDocument();
-
+     /**
+     * 
+     * @param website
+     * @return El documento correspondiente
+     */
     public Document obtenerDocument(Document website);
 }
