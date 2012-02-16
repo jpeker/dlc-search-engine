@@ -1,4 +1,3 @@
-
 package dataaccess.postgresql;
 
 import com.utn.searchengine.Document;
@@ -9,12 +8,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
 /**
  *
  * @author Altamirano Peker Liberal
  */
-public class PostgreSQLDocumentDAO implements DocumentDAO  {
+public class PostgreSQLDocumentDAO implements DocumentDAO {
 
     /**
      * Graba el Document en la base de datos. Si no existia la inserta y si existia
@@ -27,9 +25,8 @@ public class PostgreSQLDocumentDAO implements DocumentDAO  {
         Connection con;
         try {
             con = PostgreDBManager.getConnection();
-            synchronized(con)
-            {
-                String query="SELECT fn_save_page(?,?);";
+            synchronized (con) {
+                String query = "SELECT fn_save_page(?,?);";
                 st = con.prepareStatement(query);
                 st.setString(1, document.getLocation());
                 st.setDouble(2, document.getModule());
@@ -38,37 +35,38 @@ public class PostgreSQLDocumentDAO implements DocumentDAO  {
                 return true;
             }
         } catch (SQLException ex) {
-            System.out.println("sqlexcep"+ex.toString());
-           return false;}
+            System.out.println("sqlexcep" + ex.toString());
+            return false;
+        }
     }
     /*
      * obtiene la cantidad total de documento
      */
-   public int obtenerCantidadDocument()
-   {
-    int cant;
-    PreparedStatement st;
+
+    public int obtenerCantidadDocument() {
+        int cant;
+        PreparedStatement st;
         Connection con;
         try {
             con = PostgreDBManager.getConnection();
-            synchronized(con)
-            {
-                String query="SELECT COUNT(*) FROM Page p;";
+            synchronized (con) {
+                String query = "SELECT COUNT(*) FROM Page p;";
                 st = con.prepareStatement(query);
-                ResultSet results= st.executeQuery();
+                ResultSet results = st.executeQuery();
                 results.next();
                 cant = results.getInt(1);
                 st.close();
-                
+
             }
         } catch (SQLException ex) {
-            System.out.println(""+ex.toString());
-            cant=-1;
+            System.out.println("" + ex.toString());
+            cant = -1;
         }
-   
-     return cant;
-   
-   }
+
+        return cant;
+
+    }
+
     /**
      * Obtiene el Document desde la base de datos que se corresponde a la
      * Document de busqueda dada.
@@ -82,19 +80,19 @@ public class PostgreSQLDocumentDAO implements DocumentDAO  {
         Connection con;
         try {
             con = PostgreDBManager.getConnection();
-              String query="select id_Url ,url_Name,Modulo from Page where url_Name = ?";
-                st = con.prepareStatement(query);
-                st.setString(1, website.getLocation());
-                ResultSet results=st.executeQuery();
-                if(results.next())
-                {
-                    ret=new Document(results.getString("url_Name"),"");
-                    ret.setModule(results.getDouble("Modulo"));
-                }
-                results.close();
-                st.close();
-            
-        } catch (SQLException ex) {}
+            String query = "select id_Url ,url_Name,Modulo from Page where url_Name = ?";
+            st = con.prepareStatement(query);
+            st.setString(1, website.getLocation());
+            ResultSet results = st.executeQuery();
+            if (results.next()) {
+                ret = new Document(results.getString("url_Name"), "");
+                ret.setModule(results.getDouble("Modulo"));
+            }
+            results.close();
+            st.close();
+
+        } catch (SQLException ex) {
+        }
         return ret;
     }
-  }
+}
