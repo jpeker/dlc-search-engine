@@ -40,4 +40,6 @@ public interface WordDAO {
      * @return el id del word
      */
     public Map<String, Word> getVocabulary();
+    
+     public int getNrWord(Word word);
 }

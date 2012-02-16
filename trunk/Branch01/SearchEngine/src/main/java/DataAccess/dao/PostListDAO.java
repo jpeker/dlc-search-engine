@@ -20,8 +20,6 @@ public interface PostListDAO {
 
     public boolean grabarPostList(Word word, Document document, int fr);
 
-    public int getNrWord(Word word);
-
     public boolean isContains(String palabra);
 
     public List<Word> getWordsDocument(Document document);
