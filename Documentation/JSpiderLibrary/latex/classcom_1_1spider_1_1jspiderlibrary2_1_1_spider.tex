@@ -1,0 +1,360 @@
+\hypertarget{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider}{\section{com.\-spider.\-jspiderlibrary2.\-Spider \-Class \-Reference}
+\label{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider}\index{com.\-spider.\-jspiderlibrary2.\-Spider@{com.\-spider.\-jspiderlibrary2.\-Spider}}
+}
+\subsection*{\-Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_1_1_parser}{\-Parser}
+\end{DoxyCompactItemize}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_a1522b55496fac7640ea54b6623d1072f}{\-Spider} (\hyperlink{interfacecom_1_1spider_1_1jspiderlibrary2_1_1_i_spider_reportable}{\-I\-Spider\-Reportable} \hyperlink{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_a234dbec15186b1bc7750700697ef233b}{report})
+\item 
+\-Collection \hyperlink{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_aa2331130fc2e5be2a54b120da24bc348}{get\-Workload\-Error} ()
+\item 
+\-Collection \hyperlink{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_a77c4d59ea95fc8c7661b87bbf5da4f86}{get\-Workload\-Waiting} ()
+\item 
+\-Collection \hyperlink{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_a6dca4a5d46dcdf9b97bc9cb799ba2c9c}{get\-Workload\-Processed} ()
+\item 
+void \hyperlink{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_ae38b2465861c53a4dac6920a32daa2a2}{clear} ()
+\item 
+void \hyperlink{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_a9053f35d953c1311c1c98710561b49e4}{cancel} ()
+\item 
+void \hyperlink{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_a6c7061bb6b58bdbe6be1a162cf470c85}{add\-U\-R\-L} (\-U\-R\-L url)
+\item 
+void \hyperlink{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_aff157f7c46f1ba056dac08797299e0f5}{process\-U\-R\-L} (\-U\-R\-L url)
+\item 
+\-Hash\-Map \hyperlink{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_adbf2d01cc0ea713a8c4a8ea9c1cbaf56}{get\-Hash\-Map\-Pages} ()
+\item 
+void \hyperlink{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_a472cd53008e1a952f2d8dcfe06f6e744}{clear\-Hash\-Map\-Pages} ()
+\item 
+void \hyperlink{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_af82be12bad4bc1e88f494645106ac7e0}{begin} ()
+\item 
+void \hyperlink{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_a953b39d3048cc57e3b5a6050a52931fa}{log} (\-String entry)
+\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\-Array\-List \hyperlink{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_aa28c7efd1d89fd2b553833f289946477}{workload\-Error} = new \-Array\-List(3)
+\item 
+\-Array\-List \hyperlink{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_a7ab086f00e291c450e31bac92b3b1f3a}{workload\-Waiting} = new \-Array\-List(3)
+\item 
+\-Array\-List \hyperlink{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_ad9e3dbf06a7d4a976fadc85df5fcf81e}{workload\-Processed} = new \-Array\-List(3)
+\item 
+\hyperlink{interfacecom_1_1spider_1_1jspiderlibrary2_1_1_i_spider_reportable}{\-I\-Spider\-Reportable} \hyperlink{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_a234dbec15186b1bc7750700697ef233b}{report}
+\item 
+boolean \hyperlink{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_a2dbab52498bf5a06ce0344116aed3b3b}{cancel} = false
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\begin{DoxyAuthor}{\-Author}
+altamirano,peker,liberal
+\end{DoxyAuthor}
+\-Clase spider empleada para crawlear todo el sitio web, a travez de una url base sin salir de corriente dominio, y con la capacidad de retornar, el texto html leido de cada url del sitio que se encuentra dentro de la base 
+
+\-Definition at line 20 of file \-Spider.\-java.
+
+
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_a1522b55496fac7640ea54b6623d1072f}{\index{com\-::spider\-::jspiderlibrary2\-::\-Spider@{com\-::spider\-::jspiderlibrary2\-::\-Spider}!\-Spider@{\-Spider}}
+\index{\-Spider@{\-Spider}!com::spider::jspiderlibrary2::Spider@{com\-::spider\-::jspiderlibrary2\-::\-Spider}}
+\subsubsection[{\-Spider}]{\setlength{\rightskip}{0pt plus 5cm}{\bf com.\-spider.\-jspiderlibrary2.\-Spider.\-Spider} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-I\-Spider\-Reportable}}]{report}
+\end{DoxyParamCaption}
+)}}\label{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_a1522b55496fac7640ea54b6623d1072f}
+
+\begin{DoxyParams}{\-Parameters}
+{\em report} & \-Es para aquella clase que implemente la interface \hyperlink{interfacecom_1_1spider_1_1jspiderlibrary2_1_1_i_spider_reportable}{\-I\-Spider\-Reportable}, y dicha clase va a recibir la informacion que el spider encuentre \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 70 of file \-Spider.\-java.
+
+
+
+\-References com.\-spider.\-jspiderlibrary2.\-Spider.\-report.
+
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_a6c7061bb6b58bdbe6be1a162cf470c85}{\index{com\-::spider\-::jspiderlibrary2\-::\-Spider@{com\-::spider\-::jspiderlibrary2\-::\-Spider}!add\-U\-R\-L@{add\-U\-R\-L}}
+\index{add\-U\-R\-L@{add\-U\-R\-L}!com::spider::jspiderlibrary2::Spider@{com\-::spider\-::jspiderlibrary2\-::\-Spider}}
+\subsubsection[{add\-U\-R\-L}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf com.\-spider.\-jspiderlibrary2.\-Spider.\-add\-U\-R\-L} (
+\begin{DoxyParamCaption}
+\item[{\-U\-R\-L}]{url}
+\end{DoxyParamCaption}
+)}}\label{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_a6c7061bb6b58bdbe6be1a162cf470c85}
+\-Añado una \-U\-R\-L a procesar.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em url} & \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 122 of file \-Spider.\-java.
+
+
+
+\-References com.\-spider.\-jspiderlibrary2.\-Spider.\-get\-Workload\-Error(), com.\-spider.\-jspiderlibrary2.\-Spider.\-get\-Workload\-Processed(), com.\-spider.\-jspiderlibrary2.\-Spider.\-get\-Workload\-Waiting(), and com.\-spider.\-jspiderlibrary2.\-Spider.\-log().
+
+
+
+\-Referenced by com.\-spider.\-jspiderlibrary2.\-Spider.\-Parser.\-handle\-Link(), and com.\-spider.\-jspiderlibrary2.\-Communicator.\-init\-Spider().
+
+\hypertarget{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_af82be12bad4bc1e88f494645106ac7e0}{\index{com\-::spider\-::jspiderlibrary2\-::\-Spider@{com\-::spider\-::jspiderlibrary2\-::\-Spider}!begin@{begin}}
+\index{begin@{begin}!com::spider::jspiderlibrary2::Spider@{com\-::spider\-::jspiderlibrary2\-::\-Spider}}
+\subsubsection[{begin}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf com.\-spider.\-jspiderlibrary2.\-Spider.\-begin} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_af82be12bad4bc1e88f494645106ac7e0}
+\-Metodo que lanza el spider 
+
+\-Definition at line 234 of file \-Spider.\-java.
+
+
+
+\-References com.\-spider.\-jspiderlibrary2.\-Spider.\-cancel(), com.\-spider.\-jspiderlibrary2.\-Spider.\-get\-Workload\-Processed(), com.\-spider.\-jspiderlibrary2.\-Spider.\-get\-Workload\-Waiting(), and com.\-spider.\-jspiderlibrary2.\-Spider.\-process\-U\-R\-L().
+
+
+
+\-Referenced by com.\-spider.\-jspiderlibrary2.\-Communicator.\-init\-Spider().
+
+\hypertarget{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_a9053f35d953c1311c1c98710561b49e4}{\index{com\-::spider\-::jspiderlibrary2\-::\-Spider@{com\-::spider\-::jspiderlibrary2\-::\-Spider}!cancel@{cancel}}
+\index{cancel@{cancel}!com::spider::jspiderlibrary2::Spider@{com\-::spider\-::jspiderlibrary2\-::\-Spider}}
+\subsubsection[{cancel}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf com.\-spider.\-jspiderlibrary2.\-Spider.\-cancel} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_a9053f35d953c1311c1c98710561b49e4}
+\-Setea la flag que genera que el metodo begin retorne al ser terminado. 
+
+\-Definition at line 113 of file \-Spider.\-java.
+
+
+
+\-Referenced by com.\-spider.\-jspiderlibrary2.\-Spider.\-begin().
+
+\hypertarget{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_ae38b2465861c53a4dac6920a32daa2a2}{\index{com\-::spider\-::jspiderlibrary2\-::\-Spider@{com\-::spider\-::jspiderlibrary2\-::\-Spider}!clear@{clear}}
+\index{clear@{clear}!com::spider::jspiderlibrary2::Spider@{com\-::spider\-::jspiderlibrary2\-::\-Spider}}
+\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf com.\-spider.\-jspiderlibrary2.\-Spider.\-clear} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_ae38b2465861c53a4dac6920a32daa2a2}
+\-Borra todas las colecciones. 
+
+\-Definition at line 102 of file \-Spider.\-java.
+
+
+
+\-References com.\-spider.\-jspiderlibrary2.\-Spider.\-clear\-Hash\-Map\-Pages(), com.\-spider.\-jspiderlibrary2.\-Spider.\-get\-Workload\-Error(), com.\-spider.\-jspiderlibrary2.\-Spider.\-get\-Workload\-Processed(), and com.\-spider.\-jspiderlibrary2.\-Spider.\-get\-Workload\-Waiting().
+
+
+
+\-Referenced by com.\-spider.\-jspiderlibrary2.\-Communicator.\-init\-Spider().
+
+\hypertarget{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_a472cd53008e1a952f2d8dcfe06f6e744}{\index{com\-::spider\-::jspiderlibrary2\-::\-Spider@{com\-::spider\-::jspiderlibrary2\-::\-Spider}!clear\-Hash\-Map\-Pages@{clear\-Hash\-Map\-Pages}}
+\index{clear\-Hash\-Map\-Pages@{clear\-Hash\-Map\-Pages}!com::spider::jspiderlibrary2::Spider@{com\-::spider\-::jspiderlibrary2\-::\-Spider}}
+\subsubsection[{clear\-Hash\-Map\-Pages}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf com.\-spider.\-jspiderlibrary2.\-Spider.\-clear\-Hash\-Map\-Pages} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_a472cd53008e1a952f2d8dcfe06f6e744}
+
+
+\-Definition at line 227 of file \-Spider.\-java.
+
+
+
+\-Referenced by com.\-spider.\-jspiderlibrary2.\-Spider.\-clear().
+
+\hypertarget{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_adbf2d01cc0ea713a8c4a8ea9c1cbaf56}{\index{com\-::spider\-::jspiderlibrary2\-::\-Spider@{com\-::spider\-::jspiderlibrary2\-::\-Spider}!get\-Hash\-Map\-Pages@{get\-Hash\-Map\-Pages}}
+\index{get\-Hash\-Map\-Pages@{get\-Hash\-Map\-Pages}!com::spider::jspiderlibrary2::Spider@{com\-::spider\-::jspiderlibrary2\-::\-Spider}}
+\subsubsection[{get\-Hash\-Map\-Pages}]{\setlength{\rightskip}{0pt plus 5cm}\-Hash\-Map {\bf com.\-spider.\-jspiderlibrary2.\-Spider.\-get\-Hash\-Map\-Pages} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_adbf2d01cc0ea713a8c4a8ea9c1cbaf56}
+
+
+\-Definition at line 222 of file \-Spider.\-java.
+
+\hypertarget{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_aa2331130fc2e5be2a54b120da24bc348}{\index{com\-::spider\-::jspiderlibrary2\-::\-Spider@{com\-::spider\-::jspiderlibrary2\-::\-Spider}!get\-Workload\-Error@{get\-Workload\-Error}}
+\index{get\-Workload\-Error@{get\-Workload\-Error}!com::spider::jspiderlibrary2::Spider@{com\-::spider\-::jspiderlibrary2\-::\-Spider}}
+\subsubsection[{get\-Workload\-Error}]{\setlength{\rightskip}{0pt plus 5cm}\-Collection {\bf com.\-spider.\-jspiderlibrary2.\-Spider.\-get\-Workload\-Error} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_aa2331130fc2e5be2a54b120da24bc348}
+\-Trae la coleccion de \-U\-R\-L con errores.
+
+\begin{DoxyReturn}{\-Returns}
+una colleccion de \-U\-R\-Ls. 
+\end{DoxyReturn}
+
+
+\-Definition at line 79 of file \-Spider.\-java.
+
+
+
+\-References com.\-spider.\-jspiderlibrary2.\-Spider.\-workload\-Error.
+
+
+
+\-Referenced by com.\-spider.\-jspiderlibrary2.\-Spider.\-add\-U\-R\-L(), com.\-spider.\-jspiderlibrary2.\-Spider.\-clear(), and com.\-spider.\-jspiderlibrary2.\-Spider.\-process\-U\-R\-L().
+
+\hypertarget{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_a6dca4a5d46dcdf9b97bc9cb799ba2c9c}{\index{com\-::spider\-::jspiderlibrary2\-::\-Spider@{com\-::spider\-::jspiderlibrary2\-::\-Spider}!get\-Workload\-Processed@{get\-Workload\-Processed}}
+\index{get\-Workload\-Processed@{get\-Workload\-Processed}!com::spider::jspiderlibrary2::Spider@{com\-::spider\-::jspiderlibrary2\-::\-Spider}}
+\subsubsection[{get\-Workload\-Processed}]{\setlength{\rightskip}{0pt plus 5cm}\-Collection {\bf com.\-spider.\-jspiderlibrary2.\-Spider.\-get\-Workload\-Processed} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_a6dca4a5d46dcdf9b97bc9cb799ba2c9c}
+\-Traen las \-U\-R\-L\-S que estan ya procesadas \begin{DoxyReturn}{\-Returns}
+una colleccion de \-U\-R\-Ls. 
+\end{DoxyReturn}
+
+
+\-Definition at line 95 of file \-Spider.\-java.
+
+
+
+\-References com.\-spider.\-jspiderlibrary2.\-Spider.\-workload\-Processed.
+
+
+
+\-Referenced by com.\-spider.\-jspiderlibrary2.\-Spider.\-add\-U\-R\-L(), com.\-spider.\-jspiderlibrary2.\-Spider.\-begin(), com.\-spider.\-jspiderlibrary2.\-Spider.\-clear(), and com.\-spider.\-jspiderlibrary2.\-Spider.\-process\-U\-R\-L().
+
+\hypertarget{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_a77c4d59ea95fc8c7661b87bbf5da4f86}{\index{com\-::spider\-::jspiderlibrary2\-::\-Spider@{com\-::spider\-::jspiderlibrary2\-::\-Spider}!get\-Workload\-Waiting@{get\-Workload\-Waiting}}
+\index{get\-Workload\-Waiting@{get\-Workload\-Waiting}!com::spider::jspiderlibrary2::Spider@{com\-::spider\-::jspiderlibrary2\-::\-Spider}}
+\subsubsection[{get\-Workload\-Waiting}]{\setlength{\rightskip}{0pt plus 5cm}\-Collection {\bf com.\-spider.\-jspiderlibrary2.\-Spider.\-get\-Workload\-Waiting} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_a77c4d59ea95fc8c7661b87bbf5da4f86}
+\-Traen las \-U\-R\-L\-S que estan esperando a ser procesadas \begin{DoxyReturn}{\-Returns}
+una colleccion de \-U\-R\-Ls. 
+\end{DoxyReturn}
+
+
+\-Definition at line 87 of file \-Spider.\-java.
+
+
+
+\-References com.\-spider.\-jspiderlibrary2.\-Spider.\-workload\-Waiting.
+
+
+
+\-Referenced by com.\-spider.\-jspiderlibrary2.\-Spider.\-add\-U\-R\-L(), com.\-spider.\-jspiderlibrary2.\-Spider.\-begin(), com.\-spider.\-jspiderlibrary2.\-Spider.\-clear(), and com.\-spider.\-jspiderlibrary2.\-Spider.\-process\-U\-R\-L().
+
+\hypertarget{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_a953b39d3048cc57e3b5a6050a52931fa}{\index{com\-::spider\-::jspiderlibrary2\-::\-Spider@{com\-::spider\-::jspiderlibrary2\-::\-Spider}!log@{log}}
+\index{log@{log}!com::spider::jspiderlibrary2::Spider@{com\-::spider\-::jspiderlibrary2\-::\-Spider}}
+\subsubsection[{log}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf com.\-spider.\-jspiderlibrary2.\-Spider.\-log} (
+\begin{DoxyParamCaption}
+\item[{\-String}]{entry}
+\end{DoxyParamCaption}
+)}}\label{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_a953b39d3048cc57e3b5a6050a52931fa}
+\-Called internally to log information \-This basic method just writes the log out to the stdout. \-Emplea un log para controlar lo que va realizando el parser 
+\begin{DoxyParams}{\-Parameters}
+{\em entry} & \-The information to be written to the log. \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 419 of file \-Spider.\-java.
+
+
+
+\-Referenced by com.\-spider.\-jspiderlibrary2.\-Spider.\-add\-U\-R\-L(), and com.\-spider.\-jspiderlibrary2.\-Spider.\-Parser.\-handle\-Link().
+
+\hypertarget{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_aff157f7c46f1ba056dac08797299e0f5}{\index{com\-::spider\-::jspiderlibrary2\-::\-Spider@{com\-::spider\-::jspiderlibrary2\-::\-Spider}!process\-U\-R\-L@{process\-U\-R\-L}}
+\index{process\-U\-R\-L@{process\-U\-R\-L}!com::spider::jspiderlibrary2::Spider@{com\-::spider\-::jspiderlibrary2\-::\-Spider}}
+\subsubsection[{process\-U\-R\-L}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf com.\-spider.\-jspiderlibrary2.\-Spider.\-process\-U\-R\-L} (
+\begin{DoxyParamCaption}
+\item[{\-U\-R\-L}]{url}
+\end{DoxyParamCaption}
+)}}\label{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_aff157f7c46f1ba056dac08797299e0f5}
+\-Procesa una \-U\-R\-L 
+\begin{DoxyParams}{\-Parameters}
+{\em url} & la url que va a ser procesada \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 178 of file \-Spider.\-java.
+
+
+
+\-References com.\-spider.\-jspiderlibrary2.\-H\-T\-M\-L\-Parse.\-get\-Parser(), com.\-spider.\-jspiderlibrary2.\-Spider.\-get\-Workload\-Error(), com.\-spider.\-jspiderlibrary2.\-Spider.\-get\-Workload\-Processed(), com.\-spider.\-jspiderlibrary2.\-Spider.\-get\-Workload\-Waiting(), com.\-spider.\-jspiderlibrary2.\-Spider.\-report, com.\-spider.\-jspiderlibrary2.\-Robots\-Parser.\-robot\-Safe(), com.\-spider.\-jspiderlibrary2.\-I\-Spider\-Reportable.\-spider\-Found\-U\-R\-L\-Error(), and com.\-spider.\-jspiderlibrary2.\-Communicator.\-total\-Links.
+
+
+
+\-Referenced by com.\-spider.\-jspiderlibrary2.\-Spider.\-begin().
+
+
+
+\subsection{\-Member \-Data \-Documentation}
+\hypertarget{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_a2dbab52498bf5a06ce0344116aed3b3b}{\index{com\-::spider\-::jspiderlibrary2\-::\-Spider@{com\-::spider\-::jspiderlibrary2\-::\-Spider}!cancel@{cancel}}
+\index{cancel@{cancel}!com::spider::jspiderlibrary2::Spider@{com\-::spider\-::jspiderlibrary2\-::\-Spider}}
+\subsubsection[{cancel}]{\setlength{\rightskip}{0pt plus 5cm}boolean {\bf com.\-spider.\-jspiderlibrary2.\-Spider.\-cancel} = false\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_a2dbab52498bf5a06ce0344116aed3b3b}
+\-Flags que indican cuando el proceso del crawler debe ser cancelado 
+
+\-Definition at line 60 of file \-Spider.\-java.
+
+\hypertarget{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_a234dbec15186b1bc7750700697ef233b}{\index{com\-::spider\-::jspiderlibrary2\-::\-Spider@{com\-::spider\-::jspiderlibrary2\-::\-Spider}!report@{report}}
+\index{report@{report}!com::spider::jspiderlibrary2::Spider@{com\-::spider\-::jspiderlibrary2\-::\-Spider}}
+\subsubsection[{report}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-I\-Spider\-Reportable} {\bf com.\-spider.\-jspiderlibrary2.\-Spider.\-report}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_a234dbec15186b1bc7750700697ef233b}
+\-Un hash map que añade \-U\-R\-L que estan ya procesadas con su texto \-La key es la url y el value es el string builder con todo el texto \-Una \-Coleccion de \-U\-R\-Ls que no seran usadas porque no emplean texto significativo 
+
+\-Definition at line 55 of file \-Spider.\-java.
+
+
+
+\-Referenced by com.\-spider.\-jspiderlibrary2.\-Spider.\-Parser.\-handle\-Link(), com.\-spider.\-jspiderlibrary2.\-Spider.\-process\-U\-R\-L(), and com.\-spider.\-jspiderlibrary2.\-Spider.\-Spider().
+
+\hypertarget{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_aa28c7efd1d89fd2b553833f289946477}{\index{com\-::spider\-::jspiderlibrary2\-::\-Spider@{com\-::spider\-::jspiderlibrary2\-::\-Spider}!workload\-Error@{workload\-Error}}
+\index{workload\-Error@{workload\-Error}!com::spider::jspiderlibrary2::Spider@{com\-::spider\-::jspiderlibrary2\-::\-Spider}}
+\subsubsection[{workload\-Error}]{\setlength{\rightskip}{0pt plus 5cm}\-Array\-List {\bf com.\-spider.\-jspiderlibrary2.\-Spider.\-workload\-Error} = new \-Array\-List(3)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_aa28c7efd1d89fd2b553833f289946477}
+\-Una \-Coleccion de \-U\-R\-Ls que resultan erroneas 
+
+\-Definition at line 29 of file \-Spider.\-java.
+
+
+
+\-Referenced by com.\-spider.\-jspiderlibrary2.\-Spider.\-get\-Workload\-Error(), and com.\-spider.\-jspiderlibrary2.\-Communicator.\-run().
+
+\hypertarget{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_ad9e3dbf06a7d4a976fadc85df5fcf81e}{\index{com\-::spider\-::jspiderlibrary2\-::\-Spider@{com\-::spider\-::jspiderlibrary2\-::\-Spider}!workload\-Processed@{workload\-Processed}}
+\index{workload\-Processed@{workload\-Processed}!com::spider::jspiderlibrary2::Spider@{com\-::spider\-::jspiderlibrary2\-::\-Spider}}
+\subsubsection[{workload\-Processed}]{\setlength{\rightskip}{0pt plus 5cm}\-Array\-List {\bf com.\-spider.\-jspiderlibrary2.\-Spider.\-workload\-Processed} = new \-Array\-List(3)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_ad9e3dbf06a7d4a976fadc85df5fcf81e}
+
+
+\-Definition at line 35 of file \-Spider.\-java.
+
+
+
+\-Referenced by com.\-spider.\-jspiderlibrary2.\-Spider.\-get\-Workload\-Processed(), and com.\-spider.\-jspiderlibrary2.\-Communicator.\-run().
+
+\hypertarget{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_a7ab086f00e291c450e31bac92b3b1f3a}{\index{com\-::spider\-::jspiderlibrary2\-::\-Spider@{com\-::spider\-::jspiderlibrary2\-::\-Spider}!workload\-Waiting@{workload\-Waiting}}
+\index{workload\-Waiting@{workload\-Waiting}!com::spider::jspiderlibrary2::Spider@{com\-::spider\-::jspiderlibrary2\-::\-Spider}}
+\subsubsection[{workload\-Waiting}]{\setlength{\rightskip}{0pt plus 5cm}\-Array\-List {\bf com.\-spider.\-jspiderlibrary2.\-Spider.\-workload\-Waiting} = new \-Array\-List(3)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{classcom_1_1spider_1_1jspiderlibrary2_1_1_spider_a7ab086f00e291c450e31bac92b3b1f3a}
+\-Una \-Coleccion de \-U\-R\-Ls que estan esperando para ser procesadas \-Cada \-U\-R\-L añadida sirve para iniciar el crawleo del sitio 
+
+\-Definition at line 34 of file \-Spider.\-java.
+
+
+
+\-Referenced by com.\-spider.\-jspiderlibrary2.\-Spider.\-get\-Workload\-Waiting().
+
+
+
+\-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/spider/jspiderlibrary2/\hyperlink{_spider_8java}{\-Spider.\-java}\end{DoxyCompactItemize}

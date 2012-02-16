@@ -1,0 +1,230 @@
+\hypertarget{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_post_list_d_a_o}{\section{dataaccess.\-postgresql.\-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O \-Class \-Reference}
+\label{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_post_list_d_a_o}\index{dataaccess.\-postgresql.\-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O@{dataaccess.\-postgresql.\-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O}}
+}
+\-Inheritance diagram for dataaccess.\-postgresql.\-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_post_list_d_a_o}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\-Array\-List$<$ \hyperlink{classcom_1_1utn_1_1searchengine_1_1_document}{\-Document} $>$ \hyperlink{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_post_list_d_a_o_a1ef85476551ad259886a7683054a8efc}{obtener\-Documento\-Candidatos} (\-Collection$<$ \-String $>$ c)
+\item 
+int \hyperlink{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_post_list_d_a_o_a9f53887bb6b093f5539ab29b747a0ea6}{get\-Nr\-Word} (\hyperlink{classcom_1_1utn_1_1searchengine_1_1_word}{\-Word} word)
+\item 
+int \hyperlink{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_post_list_d_a_o_a9cbdbd5df3be84767ad2d3cfe75ec608}{get\-T\-F} (\hyperlink{classcom_1_1utn_1_1searchengine_1_1_word}{\-Word} word, \hyperlink{classcom_1_1utn_1_1searchengine_1_1_document}{\-Document} document)
+\item 
+boolean \hyperlink{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_post_list_d_a_o_ad8afd230c04a70252ecfd9b3e146245f}{grabar\-Post\-List} (\hyperlink{classcom_1_1utn_1_1searchengine_1_1_word}{\-Word} word, \hyperlink{classcom_1_1utn_1_1searchengine_1_1_document}{\-Document} document, int fr)
+\item 
+boolean \hyperlink{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_post_list_d_a_o_ad60674df8151d0ad68a7116bba5297b9}{\-Contains} (\-String palabra)
+\item 
+\-Array\-List$<$ \hyperlink{classcom_1_1utn_1_1searchengine_1_1_word}{\-Word} $>$ \hyperlink{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_post_list_d_a_o_a08dd503b058dc03570751af250b20fe2}{get\-Words\-Document} (\hyperlink{classcom_1_1utn_1_1searchengine_1_1_document}{\-Document} document)
+\item 
+\-List$<$ \hyperlink{classcom_1_1utn_1_1searchengine_1_1_document_results}{\-Document\-Results} $>$ \hyperlink{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_post_list_d_a_o_a3dbc10958c2c69645f508637510ad10e}{get\-Filtered\-Candidates} (\-Collection$<$ \-String $>$ c)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\begin{DoxyAuthor}{\-Author}
+\-Altamirano \-Peker \-Liberal 
+\end{DoxyAuthor}
+
+
+\-Definition at line 23 of file \-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O.\-java.
+
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_post_list_d_a_o_ad60674df8151d0ad68a7116bba5297b9}{\index{dataaccess\-::postgresql\-::\-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O@{dataaccess\-::postgresql\-::\-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O}!\-Contains@{\-Contains}}
+\index{\-Contains@{\-Contains}!dataaccess::postgresql::PostgreSQLPostListDAO@{dataaccess\-::postgresql\-::\-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O}}
+\subsubsection[{\-Contains}]{\setlength{\rightskip}{0pt plus 5cm}boolean {\bf dataaccess.\-postgresql.\-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O.\-Contains} (
+\begin{DoxyParamCaption}
+\item[{\-String}]{palabra}
+\end{DoxyParamCaption}
+)}}\label{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_post_list_d_a_o_ad60674df8151d0ad68a7116bba5297b9}
+
+\begin{DoxyParams}{\-Parameters}
+{\em palabra,\-:} & \-Una cadena que representa el texto de una palabra \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-: true si esa cadena esta asociada a una lista de posteo. 
+\end{DoxyReturn}
+
+
+\-Implements \hyperlink{interfacedataaccess_1_1dao_1_1_post_list_d_a_o_a144f8a1120114f180f53f86cfa542122}{dataaccess.\-dao.\-Post\-List\-D\-A\-O}.
+
+
+
+\-Definition at line 156 of file \-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O.\-java.
+
+
+
+\-References dataaccess.\-dbmanager.\-Postgre\-D\-B\-Manager.\-get\-Connection().
+
+\hypertarget{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_post_list_d_a_o_a3dbc10958c2c69645f508637510ad10e}{\index{dataaccess\-::postgresql\-::\-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O@{dataaccess\-::postgresql\-::\-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O}!get\-Filtered\-Candidates@{get\-Filtered\-Candidates}}
+\index{get\-Filtered\-Candidates@{get\-Filtered\-Candidates}!dataaccess::postgresql::PostgreSQLPostListDAO@{dataaccess\-::postgresql\-::\-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O}}
+\subsubsection[{get\-Filtered\-Candidates}]{\setlength{\rightskip}{0pt plus 5cm}\-List$<${\bf \-Document\-Results}$>$ {\bf dataaccess.\-postgresql.\-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O.\-get\-Filtered\-Candidates} (
+\begin{DoxyParamCaption}
+\item[{\-Collection$<$ \-String $>$}]{c}
+\end{DoxyParamCaption}
+)}}\label{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_post_list_d_a_o_a3dbc10958c2c69645f508637510ad10e}
+\-Los documentos recuperados que se traian como candidatos eran demasiados y muchos no resultaban muy significativos, por lo que se creo este metodo para recuperar una cantidad mas precisa de documentos candidatos 
+\begin{DoxyParams}{\-Parameters}
+{\em c,\-:} & \-Una coleccion de terminos \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-Los documentos candidatos filtrados. 
+\end{DoxyReturn}
+
+
+\-Implements \hyperlink{interfacedataaccess_1_1dao_1_1_post_list_d_a_o_aca2d8c0b339f8160c8cfde934ba65f4c}{dataaccess.\-dao.\-Post\-List\-D\-A\-O}.
+
+
+
+\-Definition at line 202 of file \-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O.\-java.
+
+
+
+\-References dataaccess.\-dbmanager.\-Postgre\-D\-B\-Manager.\-get\-Connection(), com.\-utn.\-searchengine.\-Word.\-get\-Name(), and com.\-utn.\-searchengine.\-Document\-Results.\-set\-Number\-Of\-Query\-Words().
+
+\hypertarget{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_post_list_d_a_o_a9f53887bb6b093f5539ab29b747a0ea6}{\index{dataaccess\-::postgresql\-::\-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O@{dataaccess\-::postgresql\-::\-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O}!get\-Nr\-Word@{get\-Nr\-Word}}
+\index{get\-Nr\-Word@{get\-Nr\-Word}!dataaccess::postgresql::PostgreSQLPostListDAO@{dataaccess\-::postgresql\-::\-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O}}
+\subsubsection[{get\-Nr\-Word}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf dataaccess.\-postgresql.\-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O.\-get\-Nr\-Word} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Word}}]{word}
+\end{DoxyParamCaption}
+)}}\label{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_post_list_d_a_o_a9f53887bb6b093f5539ab29b747a0ea6}
+
+
+\-Definition at line 71 of file \-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O.\-java.
+
+
+
+\-References dataaccess.\-dbmanager.\-Postgre\-D\-B\-Manager.\-get\-Connection(), and com.\-utn.\-searchengine.\-Word.\-get\-Name().
+
+\hypertarget{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_post_list_d_a_o_a9cbdbd5df3be84767ad2d3cfe75ec608}{\index{dataaccess\-::postgresql\-::\-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O@{dataaccess\-::postgresql\-::\-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O}!get\-T\-F@{get\-T\-F}}
+\index{get\-T\-F@{get\-T\-F}!dataaccess::postgresql::PostgreSQLPostListDAO@{dataaccess\-::postgresql\-::\-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O}}
+\subsubsection[{get\-T\-F}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf dataaccess.\-postgresql.\-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O.\-get\-T\-F} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Word}}]{word, }
+\item[{{\bf \-Document}}]{document}
+\end{DoxyParamCaption}
+)}}\label{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_post_list_d_a_o_a9cbdbd5df3be84767ad2d3cfe75ec608}
+
+\begin{DoxyParams}{\-Parameters}
+{\em word,\-:} & una \-Palabra \\
+\hline
+{\em document,\-:} & un \-Documento \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-La cantidad de veces que una palabra aparece en un documento paricular 
+\end{DoxyReturn}
+
+
+\-Implements \hyperlink{interfacedataaccess_1_1dao_1_1_post_list_d_a_o_a15bf2369736444075e32a151f4a1e0e9}{dataaccess.\-dao.\-Post\-List\-D\-A\-O}.
+
+
+
+\-Definition at line 100 of file \-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O.\-java.
+
+
+
+\-References dataaccess.\-dbmanager.\-Postgre\-D\-B\-Manager.\-get\-Connection(), com.\-utn.\-searchengine.\-Document.\-get\-Location(), and com.\-utn.\-searchengine.\-Word.\-get\-Name().
+
+\hypertarget{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_post_list_d_a_o_a08dd503b058dc03570751af250b20fe2}{\index{dataaccess\-::postgresql\-::\-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O@{dataaccess\-::postgresql\-::\-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O}!get\-Words\-Document@{get\-Words\-Document}}
+\index{get\-Words\-Document@{get\-Words\-Document}!dataaccess::postgresql::PostgreSQLPostListDAO@{dataaccess\-::postgresql\-::\-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O}}
+\subsubsection[{get\-Words\-Document}]{\setlength{\rightskip}{0pt plus 5cm}\-Array\-List$<${\bf \-Word}$>$ {\bf dataaccess.\-postgresql.\-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O.\-get\-Words\-Document} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Document}}]{document}
+\end{DoxyParamCaption}
+)}}\label{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_post_list_d_a_o_a08dd503b058dc03570751af250b20fe2}
+
+\begin{DoxyParams}{\-Parameters}
+{\em document,\-:} & \-Un \-Documento \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-Una lista de palabras que pertenecen al documento seleccionado 
+\end{DoxyReturn}
+
+
+\-Implements \hyperlink{interfacedataaccess_1_1dao_1_1_post_list_d_a_o_a464d5ede23d1c7b4bf38db9c00b55fd5}{dataaccess.\-dao.\-Post\-List\-D\-A\-O}.
+
+
+
+\-Definition at line 178 of file \-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O.\-java.
+
+
+
+\-References dataaccess.\-dbmanager.\-Postgre\-D\-B\-Manager.\-get\-Connection(), and com.\-utn.\-searchengine.\-Document.\-get\-Location().
+
+\hypertarget{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_post_list_d_a_o_ad8afd230c04a70252ecfd9b3e146245f}{\index{dataaccess\-::postgresql\-::\-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O@{dataaccess\-::postgresql\-::\-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O}!grabar\-Post\-List@{grabar\-Post\-List}}
+\index{grabar\-Post\-List@{grabar\-Post\-List}!dataaccess::postgresql::PostgreSQLPostListDAO@{dataaccess\-::postgresql\-::\-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O}}
+\subsubsection[{grabar\-Post\-List}]{\setlength{\rightskip}{0pt plus 5cm}boolean {\bf dataaccess.\-postgresql.\-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O.\-grabar\-Post\-List} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Word}}]{word, }
+\item[{{\bf \-Document}}]{document, }
+\item[{int}]{fr}
+\end{DoxyParamCaption}
+)}}\label{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_post_list_d_a_o_ad8afd230c04a70252ecfd9b3e146245f}
+\-Graba los elementosde la lista de posteo 
+\begin{DoxyParams}{\-Parameters}
+{\em word,\-:} & \-Una \-Palabra \\
+\hline
+{\em document,\-:} & \-Un \-Documento \\
+\hline
+{\em fr,\-:} & \-La frecuencia de la palabra en el documento. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+true si se pudo grabar bien, false si el elemento ya existe y se actualizo. 
+\end{DoxyReturn}
+
+
+\-Implements \hyperlink{interfacedataaccess_1_1dao_1_1_post_list_d_a_o_a7a007e8ebaea6254d3c504ff623b0c1e}{dataaccess.\-dao.\-Post\-List\-D\-A\-O}.
+
+
+
+\-Definition at line 132 of file \-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O.\-java.
+
+
+
+\-References dataaccess.\-dbmanager.\-Postgre\-D\-B\-Manager.\-get\-Connection(), com.\-utn.\-searchengine.\-Document.\-get\-Location(), and com.\-utn.\-searchengine.\-Word.\-get\-Name().
+
+\hypertarget{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_post_list_d_a_o_a1ef85476551ad259886a7683054a8efc}{\index{dataaccess\-::postgresql\-::\-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O@{dataaccess\-::postgresql\-::\-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O}!obtener\-Documento\-Candidatos@{obtener\-Documento\-Candidatos}}
+\index{obtener\-Documento\-Candidatos@{obtener\-Documento\-Candidatos}!dataaccess::postgresql::PostgreSQLPostListDAO@{dataaccess\-::postgresql\-::\-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O}}
+\subsubsection[{obtener\-Documento\-Candidatos}]{\setlength{\rightskip}{0pt plus 5cm}\-Array\-List$<${\bf \-Document}$>$ {\bf dataaccess.\-postgresql.\-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O.\-obtener\-Documento\-Candidatos} (
+\begin{DoxyParamCaption}
+\item[{\-Collection$<$ \-String $>$}]{c}
+\end{DoxyParamCaption}
+)}}\label{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_post_list_d_a_o_a1ef85476551ad259886a7683054a8efc}
+
+\begin{DoxyParams}{\-Parameters}
+{\em c} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-Una lista de documentos candidatos 
+\end{DoxyReturn}
+
+
+\-Implements \hyperlink{interfacedataaccess_1_1dao_1_1_post_list_d_a_o_ae1ac46108a931391815131e6bd0794fb}{dataaccess.\-dao.\-Post\-List\-D\-A\-O}.
+
+
+
+\-Definition at line 29 of file \-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O.\-java.
+
+
+
+\-References dataaccess.\-dbmanager.\-Postgre\-D\-B\-Manager.\-get\-Connection(), and com.\-utn.\-searchengine.\-Word.\-get\-Name().
+
+
+
+\-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/main/java/\-Data\-Access/postgresql/\hyperlink{_postgre_s_q_l_post_list_d_a_o_8java}{\-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O.\-java}\end{DoxyCompactItemize}

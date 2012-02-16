@@ -1,0 +1,112 @@
+\hypertarget{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_document_d_a_o}{\section{dataaccess.\-postgresql.\-Postgre\-S\-Q\-L\-Document\-D\-A\-O \-Class \-Reference}
+\label{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_document_d_a_o}\index{dataaccess.\-postgresql.\-Postgre\-S\-Q\-L\-Document\-D\-A\-O@{dataaccess.\-postgresql.\-Postgre\-S\-Q\-L\-Document\-D\-A\-O}}
+}
+\-Inheritance diagram for dataaccess.\-postgresql.\-Postgre\-S\-Q\-L\-Document\-D\-A\-O\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_document_d_a_o}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+boolean \hyperlink{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_document_d_a_o_acaaa543e7323f3e2a575c77f5c665064}{grabar\-Web\-Site} (\hyperlink{classcom_1_1utn_1_1searchengine_1_1_document}{\-Document} document)
+\item 
+int \hyperlink{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_document_d_a_o_aff57f39a2beb558bbd14fe73c92447d5}{obtener\-Cantidad\-Document} ()
+\item 
+\hyperlink{classcom_1_1utn_1_1searchengine_1_1_document}{\-Document} \hyperlink{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_document_d_a_o_a8129984712142f8220304815ff2c2a19}{obtener\-Document} (\hyperlink{classcom_1_1utn_1_1searchengine_1_1_document}{\-Document} website)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\begin{DoxyAuthor}{\-Author}
+\-Altamirano \-Peker \-Liberal 
+\end{DoxyAuthor}
+
+
+\-Definition at line 15 of file \-Postgre\-S\-Q\-L\-Document\-D\-A\-O.\-java.
+
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_document_d_a_o_acaaa543e7323f3e2a575c77f5c665064}{\index{dataaccess\-::postgresql\-::\-Postgre\-S\-Q\-L\-Document\-D\-A\-O@{dataaccess\-::postgresql\-::\-Postgre\-S\-Q\-L\-Document\-D\-A\-O}!grabar\-Web\-Site@{grabar\-Web\-Site}}
+\index{grabar\-Web\-Site@{grabar\-Web\-Site}!dataaccess::postgresql::PostgreSQLDocumentDAO@{dataaccess\-::postgresql\-::\-Postgre\-S\-Q\-L\-Document\-D\-A\-O}}
+\subsubsection[{grabar\-Web\-Site}]{\setlength{\rightskip}{0pt plus 5cm}boolean {\bf dataaccess.\-postgresql.\-Postgre\-S\-Q\-L\-Document\-D\-A\-O.\-grabar\-Web\-Site} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Document}}]{document}
+\end{DoxyParamCaption}
+)}}\label{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_document_d_a_o_acaaa543e7323f3e2a575c77f5c665064}
+\-Graba el \-Document en la base de datos. \-Si no existia la inserta y si existia la actualiza 
+\begin{DoxyParams}{\-Parameters}
+{\em document} & \-Document a grabar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+true si se pudo grabar con éxito, false en caso contrario 
+\end{DoxyReturn}
+
+
+\-Implements \hyperlink{interfacedataaccess_1_1dao_1_1_document_d_a_o_a94556d61af10d151eec677720d5799c3}{dataaccess.\-dao.\-Document\-D\-A\-O}.
+
+
+
+\-Definition at line 23 of file \-Postgre\-S\-Q\-L\-Document\-D\-A\-O.\-java.
+
+
+
+\-References dataaccess.\-dbmanager.\-Postgre\-D\-B\-Manager.\-get\-Connection(), com.\-utn.\-searchengine.\-Document.\-get\-Location(), and com.\-utn.\-searchengine.\-Document.\-get\-Module().
+
+\hypertarget{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_document_d_a_o_aff57f39a2beb558bbd14fe73c92447d5}{\index{dataaccess\-::postgresql\-::\-Postgre\-S\-Q\-L\-Document\-D\-A\-O@{dataaccess\-::postgresql\-::\-Postgre\-S\-Q\-L\-Document\-D\-A\-O}!obtener\-Cantidad\-Document@{obtener\-Cantidad\-Document}}
+\index{obtener\-Cantidad\-Document@{obtener\-Cantidad\-Document}!dataaccess::postgresql::PostgreSQLDocumentDAO@{dataaccess\-::postgresql\-::\-Postgre\-S\-Q\-L\-Document\-D\-A\-O}}
+\subsubsection[{obtener\-Cantidad\-Document}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf dataaccess.\-postgresql.\-Postgre\-S\-Q\-L\-Document\-D\-A\-O.\-obtener\-Cantidad\-Document} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_document_d_a_o_aff57f39a2beb558bbd14fe73c92447d5}
+\-Obtiene la cantidad de documentos \begin{DoxyReturn}{\-Returns}
+la cantidad de documentos 
+\end{DoxyReturn}
+
+
+\-Implements \hyperlink{interfacedataaccess_1_1dao_1_1_document_d_a_o_affbba9edb72e5b871bbd08c9cae25655}{dataaccess.\-dao.\-Document\-D\-A\-O}.
+
+
+
+\-Definition at line 46 of file \-Postgre\-S\-Q\-L\-Document\-D\-A\-O.\-java.
+
+
+
+\-References dataaccess.\-dbmanager.\-Postgre\-D\-B\-Manager.\-get\-Connection().
+
+\hypertarget{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_document_d_a_o_a8129984712142f8220304815ff2c2a19}{\index{dataaccess\-::postgresql\-::\-Postgre\-S\-Q\-L\-Document\-D\-A\-O@{dataaccess\-::postgresql\-::\-Postgre\-S\-Q\-L\-Document\-D\-A\-O}!obtener\-Document@{obtener\-Document}}
+\index{obtener\-Document@{obtener\-Document}!dataaccess::postgresql::PostgreSQLDocumentDAO@{dataaccess\-::postgresql\-::\-Postgre\-S\-Q\-L\-Document\-D\-A\-O}}
+\subsubsection[{obtener\-Document}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Document} {\bf dataaccess.\-postgresql.\-Postgre\-S\-Q\-L\-Document\-D\-A\-O.\-obtener\-Document} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Document}}]{website}
+\end{DoxyParamCaption}
+)}}\label{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_document_d_a_o_a8129984712142f8220304815ff2c2a19}
+\-Obtiene el \-Document desde la base de datos que se corresponde a la \-Document de busqueda dada. 
+\begin{DoxyParams}{\-Parameters}
+{\em document} & \-Document que se desea buscar en la base de datos \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+el \-Document de de la base de datos, null en caso que no exista o se produzca algun error. 
+\end{DoxyReturn}
+
+
+\-Implements \hyperlink{interfacedataaccess_1_1dao_1_1_document_d_a_o_a846058ac889a57d4d26eeb9f45f9daac}{dataaccess.\-dao.\-Document\-D\-A\-O}.
+
+
+
+\-Definition at line 77 of file \-Postgre\-S\-Q\-L\-Document\-D\-A\-O.\-java.
+
+
+
+\-References dataaccess.\-dbmanager.\-Postgre\-D\-B\-Manager.\-get\-Connection(), com.\-utn.\-searchengine.\-Document.\-get\-Location(), and com.\-utn.\-searchengine.\-Document.\-set\-Module().
+
+
+
+\-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/main/java/\-Data\-Access/postgresql/\hyperlink{_postgre_s_q_l_document_d_a_o_8java}{\-Postgre\-S\-Q\-L\-Document\-D\-A\-O.\-java}\end{DoxyCompactItemize}

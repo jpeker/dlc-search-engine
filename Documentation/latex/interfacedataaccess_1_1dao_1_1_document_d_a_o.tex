@@ -1,0 +1,102 @@
+\hypertarget{interfacedataaccess_1_1dao_1_1_document_d_a_o}{\section{dataaccess.\-dao.\-Document\-D\-A\-O \-Interface \-Reference}
+\label{interfacedataaccess_1_1dao_1_1_document_d_a_o}\index{dataaccess.\-dao.\-Document\-D\-A\-O@{dataaccess.\-dao.\-Document\-D\-A\-O}}
+}
+\-Inheritance diagram for dataaccess.\-dao.\-Document\-D\-A\-O\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interfacedataaccess_1_1dao_1_1_document_d_a_o}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+boolean \hyperlink{interfacedataaccess_1_1dao_1_1_document_d_a_o_a94556d61af10d151eec677720d5799c3}{grabar\-Web\-Site} (\hyperlink{classcom_1_1utn_1_1searchengine_1_1_document}{\-Document} document)
+\item 
+int \hyperlink{interfacedataaccess_1_1dao_1_1_document_d_a_o_affbba9edb72e5b871bbd08c9cae25655}{obtener\-Cantidad\-Document} ()
+\item 
+\hyperlink{classcom_1_1utn_1_1searchengine_1_1_document}{\-Document} \hyperlink{interfacedataaccess_1_1dao_1_1_document_d_a_o_a846058ac889a57d4d26eeb9f45f9daac}{obtener\-Document} (\hyperlink{classcom_1_1utn_1_1searchengine_1_1_document}{\-Document} website)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Esta interface define las operaciones validas a realizarse en términos de persistencia sobre un objeto de tipo \-Document.
+
+\begin{DoxyAuthor}{\-Author}
+\-Altamirado \-Liberal \-Peker 
+\end{DoxyAuthor}
+
+
+\-Definition at line 11 of file \-Document\-D\-A\-O.\-java.
+
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{interfacedataaccess_1_1dao_1_1_document_d_a_o_a94556d61af10d151eec677720d5799c3}{\index{dataaccess\-::dao\-::\-Document\-D\-A\-O@{dataaccess\-::dao\-::\-Document\-D\-A\-O}!grabar\-Web\-Site@{grabar\-Web\-Site}}
+\index{grabar\-Web\-Site@{grabar\-Web\-Site}!dataaccess::dao::DocumentDAO@{dataaccess\-::dao\-::\-Document\-D\-A\-O}}
+\subsubsection[{grabar\-Web\-Site}]{\setlength{\rightskip}{0pt plus 5cm}boolean {\bf dataaccess.\-dao.\-Document\-D\-A\-O.\-grabar\-Web\-Site} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Document}}]{document}
+\end{DoxyParamCaption}
+)}}\label{interfacedataaccess_1_1dao_1_1_document_d_a_o_a94556d61af10d151eec677720d5799c3}
+\-Graba un \-Document en la base de datos. \-Si la \-Document ya existia la actualiza y si no existia la inserta en la base de datos. 
+\begin{DoxyParams}{\-Parameters}
+{\em \-Document} & la \-Document a grabar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+true si la operacion se pudo realizar exitosamente, false en caso contrario 
+\end{DoxyReturn}
+
+
+\-Implemented in \hyperlink{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_document_d_a_o_acaaa543e7323f3e2a575c77f5c665064}{dataaccess.\-postgresql.\-Postgre\-S\-Q\-L\-Document\-D\-A\-O}.
+
+
+
+\-Referenced by com.\-utn.\-searchengine.\-Document\-Manager.\-add\-Document(), and com.\-utn.\-searchengine.\-Document\-Manager.\-set\-Document\-Module().
+
+\hypertarget{interfacedataaccess_1_1dao_1_1_document_d_a_o_affbba9edb72e5b871bbd08c9cae25655}{\index{dataaccess\-::dao\-::\-Document\-D\-A\-O@{dataaccess\-::dao\-::\-Document\-D\-A\-O}!obtener\-Cantidad\-Document@{obtener\-Cantidad\-Document}}
+\index{obtener\-Cantidad\-Document@{obtener\-Cantidad\-Document}!dataaccess::dao::DocumentDAO@{dataaccess\-::dao\-::\-Document\-D\-A\-O}}
+\subsubsection[{obtener\-Cantidad\-Document}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf dataaccess.\-dao.\-Document\-D\-A\-O.\-obtener\-Cantidad\-Document} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{interfacedataaccess_1_1dao_1_1_document_d_a_o_affbba9edb72e5b871bbd08c9cae25655}
+\-Obtiene la cantidad de documentos \begin{DoxyReturn}{\-Returns}
+la cantidad de documentos 
+\end{DoxyReturn}
+
+
+\-Implemented in \hyperlink{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_document_d_a_o_aff57f39a2beb558bbd14fe73c92447d5}{dataaccess.\-postgresql.\-Postgre\-S\-Q\-L\-Document\-D\-A\-O}.
+
+
+
+\-Referenced by com.\-utn.\-searchengine.\-Document\-Manager.\-Document\-Manager().
+
+\hypertarget{interfacedataaccess_1_1dao_1_1_document_d_a_o_a846058ac889a57d4d26eeb9f45f9daac}{\index{dataaccess\-::dao\-::\-Document\-D\-A\-O@{dataaccess\-::dao\-::\-Document\-D\-A\-O}!obtener\-Document@{obtener\-Document}}
+\index{obtener\-Document@{obtener\-Document}!dataaccess::dao::DocumentDAO@{dataaccess\-::dao\-::\-Document\-D\-A\-O}}
+\subsubsection[{obtener\-Document}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Document} {\bf dataaccess.\-dao.\-Document\-D\-A\-O.\-obtener\-Document} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Document}}]{website}
+\end{DoxyParamCaption}
+)}}\label{interfacedataaccess_1_1dao_1_1_document_d_a_o_a846058ac889a57d4d26eeb9f45f9daac}
+
+\begin{DoxyParams}{\-Parameters}
+{\em website} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-El documento correspondiente 
+\end{DoxyReturn}
+
+
+\-Implemented in \hyperlink{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_document_d_a_o_a8129984712142f8220304815ff2c2a19}{dataaccess.\-postgresql.\-Postgre\-S\-Q\-L\-Document\-D\-A\-O}.
+
+
+
+\-Referenced by com.\-utn.\-searchengine.\-Document\-Manager.\-get\-Document\-Module().
+
+
+
+\-The documentation for this interface was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/main/java/\-Data\-Access/dao/\hyperlink{_document_d_a_o_8java}{\-Document\-D\-A\-O.\-java}\end{DoxyCompactItemize}
