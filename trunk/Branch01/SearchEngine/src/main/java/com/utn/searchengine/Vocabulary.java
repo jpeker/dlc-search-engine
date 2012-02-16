@@ -19,80 +19,83 @@ public class Vocabulary {
     public Map<String, Word> getVocabularyWords() {
         return vocabularyWords;
     }
+
     public void setVocabularyWords(Map<String, Word> vocabularyWords) {
         this.vocabularyWords = vocabularyWords;
     }
-     public void loadVocabularyWords() {
-       
-        this.vocabularyWords =  DAOFactory.getActiveDAOFactory().getWordDAO().getVocabulary();
-        
+
+    public void loadVocabularyWords() {
+
+        this.vocabularyWords = DAOFactory.getActiveDAOFactory().getWordDAO().getVocabulary();
+
     }
+
     public Vocabulary() {
     }
-    
     private Map<String, Word> vocabularyWords = new HashMap<String, Word>();
-   
-    public Vocabulary(Map<String, Word> vocabularyWords){
+
+    public Vocabulary(Map<String, Word> vocabularyWords) {
         this.vocabularyWords = vocabularyWords;
     }
+
     /**
      * Adds aword to the map
      * @param word
      * @return 
      */
-    public void addWord(Word entry){
+    public void addWord(Word entry) {
         this.vocabularyWords.put(entry.getName(), entry);
     }
+
     /**
      * adds all the new words of a new document to the vocabulary
      * @param words: a collection of words
      */
-    public void addDocumentWords(Map<String, Integer> words){
+    public void addDocumentWords(Map<String, Integer> words) {
         Iterator iterator = words.entrySet().iterator();
-        while(iterator.hasNext()){
-            Map.Entry entry = (Map.Entry)iterator.next();
-            if(!vocabularyWords.containsKey(entry.getKey().toString())){
+        while (iterator.hasNext()) {
+            Map.Entry entry = (Map.Entry) iterator.next();
+            if (!vocabularyWords.containsKey(entry.getKey().toString())) {
                 //if the word appears for the first time on the vocabulary, the values of max term frecuency and 
                 //the biggest frecuency and the total times that the word appears are the same.
-                int values = (Integer)entry.getValue();
+                int values = (Integer) entry.getValue();
                 Word word = new Word(entry.getKey().toString(), 1, values);
                 vocabularyWords.put(word.getName(), word);
-              DAOFactory.getActiveDAOFactory().getWordDAO().saveWord(word);
-            }
-            else{
+                DAOFactory.getActiveDAOFactory().getWordDAO().saveWord(word);
+            } else {
                 //the word already exists so it is necesarry to update their attributes.
                 Word wordToModify = vocabularyWords.get(entry.getKey().toString());
-                int timesThatWordAppearsOnNewDocument = (Integer)entry.getValue();
+                int timesThatWordAppearsOnNewDocument = (Integer) entry.getValue();
                 int biggestDocumentTermFrecuency = wordToModify.getMaxTF();
-                if(timesThatWordAppearsOnNewDocument > biggestDocumentTermFrecuency){
+                if (timesThatWordAppearsOnNewDocument > biggestDocumentTermFrecuency) {
                     wordToModify.setMaxTF(timesThatWordAppearsOnNewDocument);
                 }
-                int newTotalDocuments =wordToModify.getNr();
+                int newTotalDocuments = wordToModify.getNr();
                 newTotalDocuments++;
                 wordToModify.setNr(newTotalDocuments);
                 DAOFactory.getActiveDAOFactory().getWordDAO().saveWord(wordToModify);
             }
         }
-    
+
     }
+
     /**
      * 
      * @param word a word
      * @return true if word is containes
      */
-    public boolean containsWord(String word){
+    public boolean containsWord(String word) {
         return vocabularyWords.containsKey(word);
     }
-    
+
     @Override
-    public String toString(){
-        String aux ="";
+    public String toString() {
+        String aux = "";
         Iterator iterator = vocabularyWords.entrySet().iterator();
-        while(iterator.hasNext()){
-            Map.Entry entry = (Map.Entry)iterator.next();
-            aux+= entry.getKey().toString()+"-"+entry.getValue().toString()+"\n";
+        while (iterator.hasNext()) {
+            Map.Entry entry = (Map.Entry) iterator.next();
+            aux += entry.getKey().toString() + "-" + entry.getValue().toString() + "\n";
         }
         return aux;
     }
-   
 }
