@@ -79,15 +79,17 @@ public final class StopWordMap {
         // 0=ingles
         // 1=español
         // ir agregando en funcion de las ganas.
+
         switch (selectedIdiom) {
             case 0: {
                 stopWordFile = new File("D:\\Projects\\temp\\Branch01\\SearchEngine\\src\\main\\resources\\TestDocuments\\stopWordsENG.txt");
                 break;
             }
             case 1: {
-                stopWordFile = new File("D:\\Projects\\temp\\Branch01\\SearchEngine\\src\\main\\resources\\TestDocuments\\stopwordsSPA.txt");
+                stopWordFile = new File("G:\\Julian Peker\\DLC final\\Branch01\\SearchEngine\\src\\main\\resources\\TestDocuments\\stopwordsSPA.txt");
                 break;
             }
+
         }
         // Devuelvo en funcion del idioma elegido
         return stopWordFile;
