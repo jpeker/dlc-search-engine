@@ -124,4 +124,32 @@ public class PostgreSQLWordDAO implements WordDAO {
         }
         return ret;
     }
+       /* Recupera el nr de una palabra
+     * @param Word word
+     * return el nr  y -1 en caso de que no pudo recuperarse
+     */
+
+    public int getNrWord(Word word) {
+        int nr = 0;
+        PreparedStatement st;
+        Connection con;
+        try {
+            con = PostgreDBManager.getConnection();
+            synchronized (con) {
+                String query = "select nr from Word where name_Word = ?";
+                st = con.prepareStatement(query);
+                st.setString(1, word.getName());
+                ResultSet results = st.executeQuery();
+                while (results.next()) {
+                    nr = results.getInt("nr");
+                }
+                results.close();
+                st.close();
+            }
+        } catch (SQLException ex) {
+            nr = -1;
+        }
+        return nr;
+
+    }
 }
