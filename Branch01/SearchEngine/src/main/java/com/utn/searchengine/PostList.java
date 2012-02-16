@@ -111,11 +111,7 @@ public class PostList {
     public List<Word> getWordsDocument(Document document){
     return DAOFactory.getActiveDAOFactory().getPostListDAO().getWordsDocument(document);
     }
-    @Override
-    public String toString(){
-        String aux = "";
-        return aux;
-    }
+
     /**
      * devuelve los documentos candidatos filtrados por la frecuencia y el nr
      * @param  wordquery palabras de la query
