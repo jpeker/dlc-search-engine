@@ -67,9 +67,6 @@
           <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
               <Component id="jPanelSearcher" alignment="0" max="32767" attributes="0"/>
           </Group>
-          <Group type="103" rootIndex="3" groupAlignment="0" attributes="0">
-              <Component id="jPanelWorking" alignment="0" max="32767" attributes="0"/>
-          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -80,9 +77,6 @@
           </Group>
           <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
               <Component id="jPanelSearcher" alignment="0" max="32767" attributes="0"/>
-          </Group>
-          <Group type="103" rootIndex="3" groupAlignment="0" attributes="0">
-              <Component id="jPanelWorking" alignment="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -290,36 +284,6 @@
         <Component class="javax.swing.JLabel" name="jLabel9">
           <Properties>
             <Property name="text" type="java.lang.String" value="Links encontrados con la query buscada."/>
-          </Properties>
-        </Component>
-      </SubComponents>
-    </Container>
-    <Container class="javax.swing.JPanel" name="jPanelWorking">
-
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                  <Component id="jLabelCrawling" min="-2" pref="280" max="-2" attributes="0"/>
-                  <EmptySpace pref="74" max="32767" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="126" max="-2" attributes="0"/>
-                  <Component id="jLabelCrawling" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="144" max="32767" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-      <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabelCrawling">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Realizando Crawleo Aguarde unos Momentos"/>
           </Properties>
         </Component>
       </SubComponents>

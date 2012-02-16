@@ -10,18 +10,21 @@ import com.spider.jspiderlibrary2.Communicator;
  *
  * @author altamirano,peker,liberal
  */
-public class ReturnDataRunnable extends Thread {
+public class LabelRunnable extends Thread {
 
     private GUIManager gestor;
 
-    public ReturnDataRunnable(GUIManager gestor) {
+    public LabelRunnable(GUIManager gestor) {
         this.gestor = gestor;
     }
 
+    @Override
     public void run() {
-        while (Communicator.crawl == true) {
-            int i = Communicator.totalLinks;
-            gestor.returnDataLabel((i + ""));
+        while (Communicator.crawl == true || Communicator.search == true) {
+            gestor.actualizarLabel(true);
         }
+        gestor.actualizarLabel(false);
     }
 }
+    
+
