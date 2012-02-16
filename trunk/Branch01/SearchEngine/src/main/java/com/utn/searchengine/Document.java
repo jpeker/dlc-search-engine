@@ -16,10 +16,7 @@ public class Document implements Comparable{
     public String getLocation() {
         return location;
     }
-
-
-
-    public void setLocation(String location) {
+ public void setLocation(String location) {
         this.location = location;
     }
     
@@ -54,13 +51,6 @@ public class Document implements Comparable{
         this.module = module;
        
         
-    }
-    /**
-     * 
-     * @return -1 if no module is associated to a document. 
-     */
-    public boolean gotsModuleAssociated(){
-        return this.module!=-1;
     }
         @Override
     public String toString() {
