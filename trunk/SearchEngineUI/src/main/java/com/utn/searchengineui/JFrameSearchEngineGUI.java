@@ -299,10 +299,12 @@ public class JFrameSearchEngineGUI extends javax.swing.JFrame {
             }
             listmodel2.addElement(similitude.getDocumentA().getLocation().toString());
         }
+        
         Communicator.search = false;
-        jListLinksFounded.setModel(listmodel2);
+        jListLinksFounded.setModel(listmodel2);}
+        jTextFieldWordToSearch.setText("");
         jTextFieldWordToSearch.setEnabled(true);
-        jButtonSearch.setEnabled(true);}
+        jButtonSearch.setEnabled(true);
     }//GEN-LAST:event_jButtonSearchActionPerformed
 
     private void blockPanels() {
