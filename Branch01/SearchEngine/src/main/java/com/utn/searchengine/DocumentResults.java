@@ -6,7 +6,7 @@ package com.utn.searchengine;
 
 /**
  *
- * @author aaltamir
+ * @author Altamirano,Liberal,Peker
  */
 public class DocumentResults {
 
@@ -17,7 +17,11 @@ public class DocumentResults {
     public void setDocument(Document document) {
         this.document = document;
     }
-
+    /**
+     * numero de la palabras de la query
+     * @return 
+     */
+    
     public int getNumberOfQueryWords() {
         return numberOfQueryWords;
     }

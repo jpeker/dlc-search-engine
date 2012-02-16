@@ -5,9 +5,7 @@
 package com.utn.searchengine;
 
 import dataaccess.factories.DAOFactory;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
+
 
 /**
  * This class is an auxiliar to manage all the basic info about the documents.
@@ -15,12 +13,10 @@ import java.util.Iterator;
  */
 public class DocumentManager {
 
-    public Collection<Document> getDocuments() {
-        return documents;
-    }
-    private int size;
+    
+    private int size;//cantidad de documentos
     /**
-     * 
+     * Recupera el modulo de un documento de la base de datos
      * @param document A document
      * @return the module of the documen. If the document is not present on the 
      * documentManager or its module hasn't been set, it returns -1
@@ -30,19 +26,18 @@ public class DocumentManager {
         return  DAOFactory.getActiveDAOFactory().getDocumentDAO().obtenerDocument(document).getModule();
     }
 
-    public void setDocuments(Collection<Document> documents) {
-        this.documents = documents;
-    }
-     public boolean setDocumentModule(Document document) {
+  
+    public boolean setDocumentModule(Document document) {
         return DAOFactory.getActiveDAOFactory().getDocumentDAO().grabarWebSite(document);
     }
+     /**
+      * Agrega un documento a la base de datos
+      * @param document 
+      */
     public void addDocument(Document document){
       
-          DAOFactory.getActiveDAOFactory().getDocumentDAO().grabarWebSite(document);
+      DAOFactory.getActiveDAOFactory().getDocumentDAO().grabarWebSite(document);
 
-    }
-    public void remove(Document document){
-        documents.remove(document);
     }
     /**
      * devuelve la cantidad de documento de la base de datos
@@ -51,23 +46,16 @@ public class DocumentManager {
     public int documentsSize(){
        return size; 
     }
- 
-    
+    /**
+     * Recupera de la base de datos la cantidad de documentos 
+     */
     public DocumentManager() {
         size=DAOFactory.getActiveDAOFactory().getDocumentDAO().obtenerCantidadDocument();
     }
-    public void clearDocuments(){
-        documents.clear();
-    }
-    private Collection<Document> documents = new ArrayList<Document>();
+   
      @Override
     public String toString() {
-           String aux = "";
-        Iterator iterator = documents.iterator();
-        while(iterator.hasNext()){
-           Document document = (Document)iterator.next();
-            aux+="\n"+document.toString();
-        }
-        return aux;
+      String aux = "cantidad de documentos"+size;
+      return aux;
     }
 }

@@ -47,8 +47,8 @@ public class PostList {
      */
     public void addDocumentWords(Map<String, Integer> words, String documentLocation){
         Iterator iterator = words.entrySet().iterator();
-         Word wordToAdd;
-         Document docToAdd;
+        Word wordToAdd;
+        Document docToAdd;
         while(iterator.hasNext()){
             Map.Entry entry = (Map.Entry) iterator.next();
             int timesRepeated = (Integer)entry.getValue();
@@ -62,14 +62,12 @@ public class PostList {
                 wordToAdd = new Word (entry.getKey().toString());
                 docToAdd = new Document (documentLocation,"");
                DAOFactory.getActiveDAOFactory().getPostListDAO().grabarPostList(wordToAdd, docToAdd, timesRepeated);
-            }
-        }
-        
-      
+            } 
+        }  
     }
 
     /**
-     * 
+     * Frecuencia de una palabra en un documento
      * @param word: A Word
      * @param document: A Document
      * @return The total times that the word appears on the document.
@@ -79,7 +77,7 @@ public class PostList {
         return     DAOFactory.getActiveDAOFactory().getPostListDAO().getTF(word, document);
     }
     /**
-     * 
+     * cantidad de documento que aparece una palabra
      * @param word: A Word
      * @return The number of documents where the word has been found at least once.
      */
@@ -97,26 +95,33 @@ public class PostList {
        
         return DAOFactory.getActiveDAOFactory().getWordDAO().getVocabulary();
     }
-  public Collection<Document> getCandidateDocuments(Collection<String> c  ){
-      return DAOFactory.getActiveDAOFactory().getPostListDAO().obtenerDocumentoCandidatos(c);
-  }
-  public List<Word> getWordsDocument(Document document)
-  {
+    /**
+     * Collecion de documentos candidatos
+     * @param wordquery palabras de la query
+     * @return collecion de documentos que aparece las palabras de la query
+     */
+    public Collection<Document> getCandidateDocuments(Collection<String> wordquery  ){
+      return DAOFactory.getActiveDAOFactory().getPostListDAO().obtenerDocumentoCandidatos(wordquery);
+    }
+    /**
+     * las palabras de un documentos
+     * @param document que quiero que me traiga palabras
+     * @return la lista de palabras
+     */
+    public List<Word> getWordsDocument(Document document){
     return DAOFactory.getActiveDAOFactory().getPostListDAO().getWordsDocument(document);
-  }
+    }
     @Override
     public String toString(){
         String aux = "";
-       /* Iterator iterator = postList.entrySet().iterator();
-        while(iterator.hasNext()){
-            Map.Entry entry = (Map.Entry)iterator.next();
-            aux+="\n"+entry.getKey().toString()+" - "+entry.getValue().toString();
-        }*/
         return aux;
     }
-    public List<DocumentResults> getCandidateDocumentsFiltered(Collection <String> c){
-        return DAOFactory.getActiveDAOFactory().getPostListDAO().getFilteredCandidates(c);
-    }
-    
-    
+    /**
+     * devuelve los documentos candidatos filtrados por la frecuencia y el nr
+     * @param  wordquery palabras de la query
+     * @return una lista de documentos candidatos filtrado
+     */
+    public List<DocumentResults> getCandidateDocumentsFiltered(Collection <String> wordquery){
+        return DAOFactory.getActiveDAOFactory().getPostListDAO().getFilteredCandidates( wordquery);
+    }  
 }

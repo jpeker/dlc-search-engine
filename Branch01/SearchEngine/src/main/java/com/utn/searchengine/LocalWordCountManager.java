@@ -31,7 +31,7 @@ public class LocalWordCountManager {
          vocabulary = new Vocabulary();
          postList = new PostList();
          documentManager=new DocumentManager();
-          weigthQuery = new HashMap<String,Double>();
+         weigthQuery = new HashMap<String,Double>();
          vocabulary.loadVocabularyWords();
     }
         
@@ -40,8 +40,6 @@ public class LocalWordCountManager {
      * @param document a Document
      */
     public void addDocument(Document document){
-       // Map.Entry<String, String> entry= new Map.Entry<String, String>("antichrist", "666");
-        //entry.setValue(document.getLocation());
         Map<String, Integer> pages  = WordCount.retrieveWordCount(document);
         vocabulary.addDocumentWords(pages);
         documentManager.addDocument(document);
@@ -81,18 +79,13 @@ public class LocalWordCountManager {
         if(word ==null){
             return 0;
         }
-        //System.out.println("Determinating inverse frecuency of word \" "+word.getName()+"\"");
         double N = getTotalNumberOfDocuments();
-        //System.out.println("Total of documents: "+N);
         double nr = word.getNr();
-        //System.out.println("nr: "+nr);
         if(nr ==0){
             return 0;
         }
         double cociente = N/nr;
-        //System.out.println("Cociente: "+cociente);
         double result = Math.log10(cociente);
-        //System.out.println("result: "+result);
         return result;
     }
     /**
@@ -113,7 +106,6 @@ public class LocalWordCountManager {
             moduleResult+= potency;
         }
         moduleResult =  Math.pow(moduleResult, 0.5);
-        System.out.println("The document module is "+moduleResult);
         return moduleResult;
     }
 
@@ -138,12 +130,8 @@ public class LocalWordCountManager {
         }
             tfri = nr;
         }
-        System.out.println("Determining the weight of word "+word.getName()+" on document "+document.getLocation()); 
-        System.out.println("tfri is: "+tfri);
         double invFrec = this.inverseFrecuency(word);
-        System.out.println("Inverse Frecuency is: "+ invFrec);
         double numerator = tfri*invFrec;
-        System.out.println("Numerator is: "+numerator);
         double denominator;
         if(document.getModule()!=-1){
             denominator = document.getModule();
@@ -154,7 +142,6 @@ public class LocalWordCountManager {
             denominator =document.getModule();
         }
         return numerator/denominator;
-
     }
     /**
      * A query can have different similitudes between documents. 
@@ -168,29 +155,25 @@ public class LocalWordCountManager {
         Collection<String> c = wordsOfQuery.keySet();
         document.setModule( this.getQueryModule(wordsOfQuery));
         ArrayList<Similitude> sumilitudes = new ArrayList<Similitude>();
-        Collection<Document> documents = postList.getCandidateDocuments(c);
         Collection <DocumentResults> documentResults = postList.getCandidateDocumentsFiltered(c);
         for(DocumentResults res: documentResults){
             sumilitudes.add(this.determinateSimilitude(wordsOfQuery, res.getDocument(), document));
-            System.out.println(res.getDocument().toString()+"-times: "+res.getNumberOfQueryWords());
         }
-        /**
-        for(Document auxiliarDocument: documents){
-           
-          sumilitudes.add(this.determinateSimilitude(wordsOfQuery, auxiliarDocument, document));
-        }**/
         sortSimilitude(sumilitudes);
         return sumilitudes;
        
     }
-       //  ordeno Similitudes de documentos
-   private void sortSimilitude (  List<Similitude> sumilitu)
-    {
+    /**
+     * ordeno las similitudes en forma descendiente por el coseno
+     * @param sumilitu 
+     */
+    private void sortSimilitude (  List<Similitude> sumilitu){
         Comparator<Similitude> comparator = new Compare () ;
     Collections.sort(sumilitu,  comparator);
-   
     }
-     //class Comparator que ordena en forma decreciente
+   /**
+     * class compare implement Comparator que ordena en forma descendiente
+     */
     class Compare implements Comparator<Similitude> {
 	@Override
 		public int compare(Similitude lhs, Similitude rhs) {
@@ -208,7 +191,6 @@ public class LocalWordCountManager {
      * @return The module of the query
      */
    public double getQueryModule(Map<String, Integer> wordsOfQuery){
-        //Map<String, Integer> words = WordCount.retrieveWordCount(query);
         double moduleResult =0;
         Iterator iterator = wordsOfQuery.entrySet().iterator();
         while(iterator.hasNext()){
@@ -223,28 +205,38 @@ public class LocalWordCountManager {
         moduleResult =  Math.pow(moduleResult, 0.5);
         return moduleResult;
     }
-    public Similitude determinateSimilitude(Map <String, Integer> wordsOfQuery, Document document1, Document document2){
+   /**
+    * Determina la similitud entre dos documentos
+    * @param wordsOfQuery las palabra que aparecen en la query
+    * @param document1 documento de la base de datos
+    * @param document2 documento de la query
+    * @return el coseno(similitud entre dos documentos)
+    */
+   public Similitude determinateSimilitude(Map <String, Integer> wordsOfQuery, Document document1, Document document2){
         double coseno =0; 
         double weight2;
         Iterator iterator = wordsOfQuery.entrySet().iterator();
         while(iterator.hasNext()){
-            Map.Entry entry = (Map.Entry) iterator.next();
+           Map.Entry entry = (Map.Entry) iterator.next();
            Word word= this.vocabulary.getVocabularyWords().get(entry.getKey().toString());
            double weight1 = this.estimateWeight(word, document1);
-             if(!weigthQuery.containsKey(word.getName()))
-             { weight2 = this.estimateWeight(word, document2);
-              weigthQuery.put(word.getName(), weight2);
+           if(!weigthQuery.containsKey(word.getName())){ 
+               weight2 = this.estimateWeight(word, document2);
+               weigthQuery.put(word.getName(), weight2);
              }
              else
                  weight2 =weigthQuery.get(word.getName());
-            System.out.println("el peso de la palabra-----  >  "+word.getName());
-            System.out.println("docmanger "+document1.getLocation()+" peso "+weight1);
-            System.out.println("docquery "+document2.getLocation()+" peso "+weight2);
-            coseno+= weight1*weight2;
+            
+                 coseno+= weight1*weight2;
          
         }
-        return new Similitude(document1, document2, coseno);
+      return new Similitude(document1, document2, coseno);
     }
+   /**
+    * filtras sacas de la query las palabra que no esta en ningun documento
+    * @param wordsOfQuery Map de palabras de la query
+    * @return devuelve el Map de la query
+    */
     public Map<String, Integer> filterQuery(Map <String, Integer> wordsOfQuery){
         Map<String, Integer>  filteredQuery= new HashMap<String, Integer> ();
         Iterator iterator = wordsOfQuery.entrySet().iterator();
@@ -254,7 +246,6 @@ public class LocalWordCountManager {
                 filteredQuery.put(entry.getKey().toString(), (Integer)entry.getValue());
             }
         }
-        return filteredQuery;
-        
-    }
+       return filteredQuery;
+   }
 }
