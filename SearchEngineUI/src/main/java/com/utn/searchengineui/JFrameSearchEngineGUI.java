@@ -14,6 +14,7 @@ import com.utn.searchengine.*;
 import java.awt.Desktop;
 import java.net.URI;
 import java.util.Collection;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -281,6 +282,9 @@ public class JFrameSearchEngineGUI extends javax.swing.JFrame {
         jButtonSearch.setEnabled(false);
         LocalWordCountManager lwcm = new LocalWordCountManager();
         Collection<Similitude> i = lwcm.determinateBestSimilitude(new Document("query", jTextFieldWordToSearch.getText().toLowerCase()));
+        if(i==null){
+        JOptionPane.showMessageDialog( this,"La búsqueda de "+ jTextFieldWordToSearch.getText().toLowerCase() +"no obtuvo ningún resultado.");
+        }else{
         DefaultListModel listmodel2 = new DefaultListModel();
         for (Similitude similitude : i) {
             System.out.println("resultados " + similitude.getDocumentA().getLocation().toString());
@@ -298,7 +302,7 @@ public class JFrameSearchEngineGUI extends javax.swing.JFrame {
         Communicator.search = false;
         jListLinksFounded.setModel(listmodel2);
         jTextFieldWordToSearch.setEnabled(true);
-        jButtonSearch.setEnabled(true);
+        jButtonSearch.setEnabled(true);}
     }//GEN-LAST:event_jButtonSearchActionPerformed
 
     private void blockPanels() {
