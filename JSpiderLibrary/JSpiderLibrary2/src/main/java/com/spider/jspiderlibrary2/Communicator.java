@@ -15,6 +15,7 @@ public class Communicator implements ISpiderReportable, Runnable{
   public static String textToCrawl;// variable usadas para la urls que usa el
   //crawler
   public static boolean crawl=false;
+  public static boolean search=false;
   protected Spider spider;//objeto que usamos para crawlear las urls
   protected URL base;//La url base donde el spider empieza a crawlear
   protected int badLinksCount = 0;//cuantos links malos hay en el recorrido
