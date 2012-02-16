@@ -1,0 +1,169 @@
+\hypertarget{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_word_d_a_o}{\section{dataaccess.\-postgresql.\-Postgre\-S\-Q\-L\-Word\-D\-A\-O \-Class \-Reference}
+\label{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_word_d_a_o}\index{dataaccess.\-postgresql.\-Postgre\-S\-Q\-L\-Word\-D\-A\-O@{dataaccess.\-postgresql.\-Postgre\-S\-Q\-L\-Word\-D\-A\-O}}
+}
+\-Inheritance diagram for dataaccess.\-postgresql.\-Postgre\-S\-Q\-L\-Word\-D\-A\-O\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_word_d_a_o}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+boolean \hyperlink{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_word_d_a_o_af4dd5f009436282ecd62b19a19c2f133}{save\-Word} (\hyperlink{classcom_1_1utn_1_1searchengine_1_1_word}{\-Word} word)
+\item 
+\hyperlink{classcom_1_1utn_1_1searchengine_1_1_word}{\-Word} \hyperlink{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_word_d_a_o_aabb6679c38d52dafecc1eb9135539fa2}{get\-Word} (\hyperlink{classcom_1_1utn_1_1searchengine_1_1_word}{\-Word} palabra)
+\item 
+\-Map$<$ \-String, \hyperlink{classcom_1_1utn_1_1searchengine_1_1_word}{\-Word} $>$ \hyperlink{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_word_d_a_o_aa0a1f2db97af76ffa1067ce0769af6cb}{get\-Vocabulary} ()
+\item 
+boolean \hyperlink{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_word_d_a_o_ae77df0affee89a844b40aa250af0658f}{delete\-Word} (\hyperlink{classcom_1_1utn_1_1searchengine_1_1_word}{\-Word} palabra)
+\item 
+int \hyperlink{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_word_d_a_o_a8b9e63343f88e1ed973dd158701e66d8}{get\-Nr\-Word} (\hyperlink{classcom_1_1utn_1_1searchengine_1_1_word}{\-Word} word)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\begin{DoxyAuthor}{\-Author}
+\-Altamirano \-Peker \-Liberal 
+\end{DoxyAuthor}
+
+
+\-Definition at line 17 of file \-Postgre\-S\-Q\-L\-Word\-D\-A\-O.\-java.
+
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_word_d_a_o_ae77df0affee89a844b40aa250af0658f}{\index{dataaccess\-::postgresql\-::\-Postgre\-S\-Q\-L\-Word\-D\-A\-O@{dataaccess\-::postgresql\-::\-Postgre\-S\-Q\-L\-Word\-D\-A\-O}!delete\-Word@{delete\-Word}}
+\index{delete\-Word@{delete\-Word}!dataaccess::postgresql::PostgreSQLWordDAO@{dataaccess\-::postgresql\-::\-Postgre\-S\-Q\-L\-Word\-D\-A\-O}}
+\subsubsection[{delete\-Word}]{\setlength{\rightskip}{0pt plus 5cm}boolean {\bf dataaccess.\-postgresql.\-Postgre\-S\-Q\-L\-Word\-D\-A\-O.\-delete\-Word} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Word}}]{word}
+\end{DoxyParamCaption}
+)}}\label{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_word_d_a_o_ae77df0affee89a844b40aa250af0658f}
+\-Elimina la \-Word de la base de datos 
+\begin{DoxyParams}{\-Parameters}
+{\em word} & la palabra a eliminar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+true si el word se pudo eliminar exitosamente, false en caso contrario 
+\end{DoxyReturn}
+
+
+\-Implements \hyperlink{interfacedataaccess_1_1dao_1_1_word_d_a_o_a3f39760cffe5bbc415e4d66ed3cb4a0c}{dataaccess.\-dao.\-Word\-D\-A\-O}.
+
+
+
+\-Definition at line 99 of file \-Postgre\-S\-Q\-L\-Word\-D\-A\-O.\-java.
+
+
+
+\-References dataaccess.\-dbmanager.\-Postgre\-D\-B\-Manager.\-get\-Connection(), and com.\-utn.\-searchengine.\-Word.\-get\-Name().
+
+\hypertarget{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_word_d_a_o_a8b9e63343f88e1ed973dd158701e66d8}{\index{dataaccess\-::postgresql\-::\-Postgre\-S\-Q\-L\-Word\-D\-A\-O@{dataaccess\-::postgresql\-::\-Postgre\-S\-Q\-L\-Word\-D\-A\-O}!get\-Nr\-Word@{get\-Nr\-Word}}
+\index{get\-Nr\-Word@{get\-Nr\-Word}!dataaccess::postgresql::PostgreSQLWordDAO@{dataaccess\-::postgresql\-::\-Postgre\-S\-Q\-L\-Word\-D\-A\-O}}
+\subsubsection[{get\-Nr\-Word}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf dataaccess.\-postgresql.\-Postgre\-S\-Q\-L\-Word\-D\-A\-O.\-get\-Nr\-Word} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Word}}]{word}
+\end{DoxyParamCaption}
+)}}\label{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_word_d_a_o_a8b9e63343f88e1ed973dd158701e66d8}
+
+
+\-Implements \hyperlink{interfacedataaccess_1_1dao_1_1_word_d_a_o_a0caeb4a8ca92a11788e7a53a9791303f}{dataaccess.\-dao.\-Word\-D\-A\-O}.
+
+
+
+\-Definition at line 120 of file \-Postgre\-S\-Q\-L\-Word\-D\-A\-O.\-java.
+
+
+
+\-References dataaccess.\-dbmanager.\-Postgre\-D\-B\-Manager.\-get\-Connection(), and com.\-utn.\-searchengine.\-Word.\-get\-Name().
+
+\hypertarget{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_word_d_a_o_aa0a1f2db97af76ffa1067ce0769af6cb}{\index{dataaccess\-::postgresql\-::\-Postgre\-S\-Q\-L\-Word\-D\-A\-O@{dataaccess\-::postgresql\-::\-Postgre\-S\-Q\-L\-Word\-D\-A\-O}!get\-Vocabulary@{get\-Vocabulary}}
+\index{get\-Vocabulary@{get\-Vocabulary}!dataaccess::postgresql::PostgreSQLWordDAO@{dataaccess\-::postgresql\-::\-Postgre\-S\-Q\-L\-Word\-D\-A\-O}}
+\subsubsection[{get\-Vocabulary}]{\setlength{\rightskip}{0pt plus 5cm}\-Map$<$\-String, {\bf \-Word}$>$ {\bf dataaccess.\-postgresql.\-Postgre\-S\-Q\-L\-Word\-D\-A\-O.\-get\-Vocabulary} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_word_d_a_o_aa0a1f2db97af76ffa1067ce0769af6cb}
+\-Obtiene el identificador del word en la base de datos 
+\begin{DoxyParams}{\-Parameters}
+{\em word} & el \-Word de la cual se desea saber su \-I\-D \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+el id del word 
+\end{DoxyReturn}
+
+
+\-Implements \hyperlink{interfacedataaccess_1_1dao_1_1_word_d_a_o_a201645375a5f15c78323ee22e1ac9f69}{dataaccess.\-dao.\-Word\-D\-A\-O}.
+
+
+
+\-Definition at line 77 of file \-Postgre\-S\-Q\-L\-Word\-D\-A\-O.\-java.
+
+
+
+\-References dataaccess.\-dbmanager.\-Postgre\-D\-B\-Manager.\-get\-Connection().
+
+\hypertarget{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_word_d_a_o_aabb6679c38d52dafecc1eb9135539fa2}{\index{dataaccess\-::postgresql\-::\-Postgre\-S\-Q\-L\-Word\-D\-A\-O@{dataaccess\-::postgresql\-::\-Postgre\-S\-Q\-L\-Word\-D\-A\-O}!get\-Word@{get\-Word}}
+\index{get\-Word@{get\-Word}!dataaccess::postgresql::PostgreSQLWordDAO@{dataaccess\-::postgresql\-::\-Postgre\-S\-Q\-L\-Word\-D\-A\-O}}
+\subsubsection[{get\-Word}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Word} {\bf dataaccess.\-postgresql.\-Postgre\-S\-Q\-L\-Word\-D\-A\-O.\-get\-Word} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Word}}]{palabra}
+\end{DoxyParamCaption}
+)}}\label{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_word_d_a_o_aabb6679c38d52dafecc1eb9135539fa2}
+\-Obtiene la word de la base de datos en base al objeto de búsqueda pasado por parámetro.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em word} & \-Word a buscar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+la word almacenada en la base de datos, null si la misma no existia o existen problemas de acceso a la base. 
+\end{DoxyReturn}
+
+
+\-Implements \hyperlink{interfacedataaccess_1_1dao_1_1_word_d_a_o_a6b1f9c2c01db0a4338af7c8496d4f335}{dataaccess.\-dao.\-Word\-D\-A\-O}.
+
+
+
+\-Definition at line 55 of file \-Postgre\-S\-Q\-L\-Word\-D\-A\-O.\-java.
+
+
+
+\-References dataaccess.\-dbmanager.\-Postgre\-D\-B\-Manager.\-get\-Connection(), and com.\-utn.\-searchengine.\-Word.\-get\-Name().
+
+\hypertarget{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_word_d_a_o_af4dd5f009436282ecd62b19a19c2f133}{\index{dataaccess\-::postgresql\-::\-Postgre\-S\-Q\-L\-Word\-D\-A\-O@{dataaccess\-::postgresql\-::\-Postgre\-S\-Q\-L\-Word\-D\-A\-O}!save\-Word@{save\-Word}}
+\index{save\-Word@{save\-Word}!dataaccess::postgresql::PostgreSQLWordDAO@{dataaccess\-::postgresql\-::\-Postgre\-S\-Q\-L\-Word\-D\-A\-O}}
+\subsubsection[{save\-Word}]{\setlength{\rightskip}{0pt plus 5cm}boolean {\bf dataaccess.\-postgresql.\-Postgre\-S\-Q\-L\-Word\-D\-A\-O.\-save\-Word} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Word}}]{word}
+\end{DoxyParamCaption}
+)}}\label{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_word_d_a_o_af4dd5f009436282ecd62b19a19c2f133}
+\-Graba un \-Word en la base de datos. \-Si la misma ya existia la actualiza y sino la inserta. 
+\begin{DoxyParams}{\-Parameters}
+{\em word} & \-Word que se desea grabar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+true si se pudo realizar exitosamente la operación, false en caso contrario. 
+\end{DoxyReturn}
+
+
+\-Implements \hyperlink{interfacedataaccess_1_1dao_1_1_word_d_a_o_a58adc83c31bbd584aa54cc799cbcdcb6}{dataaccess.\-dao.\-Word\-D\-A\-O}.
+
+
+
+\-Definition at line 26 of file \-Postgre\-S\-Q\-L\-Word\-D\-A\-O.\-java.
+
+
+
+\-References dataaccess.\-dbmanager.\-Postgre\-D\-B\-Manager.\-get\-Connection(), com.\-utn.\-searchengine.\-Word.\-get\-Max\-T\-F(), com.\-utn.\-searchengine.\-Word.\-get\-Name(), and com.\-utn.\-searchengine.\-Word.\-get\-Nr().
+
+
+
+\-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/main/java/\-Data\-Access/postgresql/\hyperlink{_postgre_s_q_l_word_d_a_o_8java}{\-Postgre\-S\-Q\-L\-Word\-D\-A\-O.\-java}\end{DoxyCompactItemize}

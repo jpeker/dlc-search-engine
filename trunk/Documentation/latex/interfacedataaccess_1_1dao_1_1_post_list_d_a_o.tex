@@ -1,0 +1,191 @@
+\hypertarget{interfacedataaccess_1_1dao_1_1_post_list_d_a_o}{\section{dataaccess.\-dao.\-Post\-List\-D\-A\-O \-Interface \-Reference}
+\label{interfacedataaccess_1_1dao_1_1_post_list_d_a_o}\index{dataaccess.\-dao.\-Post\-List\-D\-A\-O@{dataaccess.\-dao.\-Post\-List\-D\-A\-O}}
+}
+\-Inheritance diagram for dataaccess.\-dao.\-Post\-List\-D\-A\-O\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interfacedataaccess_1_1dao_1_1_post_list_d_a_o}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\-List$<$ \hyperlink{classcom_1_1utn_1_1searchengine_1_1_document}{\-Document} $>$ \hyperlink{interfacedataaccess_1_1dao_1_1_post_list_d_a_o_ae1ac46108a931391815131e6bd0794fb}{obtener\-Documento\-Candidatos} (\-Collection$<$ \-String $>$ c)
+\item 
+int \hyperlink{interfacedataaccess_1_1dao_1_1_post_list_d_a_o_a15bf2369736444075e32a151f4a1e0e9}{get\-T\-F} (\hyperlink{classcom_1_1utn_1_1searchengine_1_1_word}{\-Word} word, \hyperlink{classcom_1_1utn_1_1searchengine_1_1_document}{\-Document} document)
+\item 
+boolean \hyperlink{interfacedataaccess_1_1dao_1_1_post_list_d_a_o_a7a007e8ebaea6254d3c504ff623b0c1e}{grabar\-Post\-List} (\hyperlink{classcom_1_1utn_1_1searchengine_1_1_word}{\-Word} word, \hyperlink{classcom_1_1utn_1_1searchengine_1_1_document}{\-Document} document, int fr)
+\item 
+boolean \hyperlink{interfacedataaccess_1_1dao_1_1_post_list_d_a_o_a144f8a1120114f180f53f86cfa542122}{\-Contains} (\-String palabra)
+\item 
+\-List$<$ \hyperlink{classcom_1_1utn_1_1searchengine_1_1_word}{\-Word} $>$ \hyperlink{interfacedataaccess_1_1dao_1_1_post_list_d_a_o_a464d5ede23d1c7b4bf38db9c00b55fd5}{get\-Words\-Document} (\hyperlink{classcom_1_1utn_1_1searchengine_1_1_document}{\-Document} document)
+\item 
+\-List$<$ \hyperlink{classcom_1_1utn_1_1searchengine_1_1_document_results}{\-Document\-Results} $>$ \hyperlink{interfacedataaccess_1_1dao_1_1_post_list_d_a_o_aca2d8c0b339f8160c8cfde934ba65f4c}{get\-Filtered\-Candidates} (\-Collection$<$ \-String $>$ c)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Esta interface define las operaciones validas a realizarse en términos de persistencia sobre un objeto de tipo \-Post\-List.
+
+\begin{DoxyAuthor}{\-Author}
+\-Altamirado \-Liberal \-Peker 
+\end{DoxyAuthor}
+
+
+\-Definition at line 15 of file \-Post\-List\-D\-A\-O.\-java.
+
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{interfacedataaccess_1_1dao_1_1_post_list_d_a_o_a144f8a1120114f180f53f86cfa542122}{\index{dataaccess\-::dao\-::\-Post\-List\-D\-A\-O@{dataaccess\-::dao\-::\-Post\-List\-D\-A\-O}!\-Contains@{\-Contains}}
+\index{\-Contains@{\-Contains}!dataaccess::dao::PostListDAO@{dataaccess\-::dao\-::\-Post\-List\-D\-A\-O}}
+\subsubsection[{\-Contains}]{\setlength{\rightskip}{0pt plus 5cm}boolean {\bf dataaccess.\-dao.\-Post\-List\-D\-A\-O.\-Contains} (
+\begin{DoxyParamCaption}
+\item[{\-String}]{palabra}
+\end{DoxyParamCaption}
+)}}\label{interfacedataaccess_1_1dao_1_1_post_list_d_a_o_a144f8a1120114f180f53f86cfa542122}
+
+\begin{DoxyParams}{\-Parameters}
+{\em palabra,\-:} & \-Una cadena que representa el texto de una palabra \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-: true si esa cadena esta asociada a una lista de posteo. 
+\end{DoxyReturn}
+
+
+\-Implemented in \hyperlink{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_post_list_d_a_o_ad60674df8151d0ad68a7116bba5297b9}{dataaccess.\-postgresql.\-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O}.
+
+
+
+\-Referenced by com.\-utn.\-searchengine.\-Post\-List.\-add\-Document\-Words().
+
+\hypertarget{interfacedataaccess_1_1dao_1_1_post_list_d_a_o_aca2d8c0b339f8160c8cfde934ba65f4c}{\index{dataaccess\-::dao\-::\-Post\-List\-D\-A\-O@{dataaccess\-::dao\-::\-Post\-List\-D\-A\-O}!get\-Filtered\-Candidates@{get\-Filtered\-Candidates}}
+\index{get\-Filtered\-Candidates@{get\-Filtered\-Candidates}!dataaccess::dao::PostListDAO@{dataaccess\-::dao\-::\-Post\-List\-D\-A\-O}}
+\subsubsection[{get\-Filtered\-Candidates}]{\setlength{\rightskip}{0pt plus 5cm}\-List$<${\bf \-Document\-Results}$>$ {\bf dataaccess.\-dao.\-Post\-List\-D\-A\-O.\-get\-Filtered\-Candidates} (
+\begin{DoxyParamCaption}
+\item[{\-Collection$<$ \-String $>$}]{c}
+\end{DoxyParamCaption}
+)}}\label{interfacedataaccess_1_1dao_1_1_post_list_d_a_o_aca2d8c0b339f8160c8cfde934ba65f4c}
+\-Los documentos recuperados que se traian como candidatos eran demasiados y muchos no resultaban muy significativos, por lo que se creo este metodo para recuperar una cantidad mas precisa de documentos candidatos 
+\begin{DoxyParams}{\-Parameters}
+{\em c,\-:} & \-Una coleccion de terminos \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-Los documentos candidatos filtrados. 
+\end{DoxyReturn}
+
+
+\-Implemented in \hyperlink{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_post_list_d_a_o_a3dbc10958c2c69645f508637510ad10e}{dataaccess.\-postgresql.\-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O}.
+
+
+
+\-Referenced by com.\-utn.\-searchengine.\-Post\-List.\-get\-Candidate\-Documents\-Filtered().
+
+\hypertarget{interfacedataaccess_1_1dao_1_1_post_list_d_a_o_a15bf2369736444075e32a151f4a1e0e9}{\index{dataaccess\-::dao\-::\-Post\-List\-D\-A\-O@{dataaccess\-::dao\-::\-Post\-List\-D\-A\-O}!get\-T\-F@{get\-T\-F}}
+\index{get\-T\-F@{get\-T\-F}!dataaccess::dao::PostListDAO@{dataaccess\-::dao\-::\-Post\-List\-D\-A\-O}}
+\subsubsection[{get\-T\-F}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf dataaccess.\-dao.\-Post\-List\-D\-A\-O.\-get\-T\-F} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Word}}]{word, }
+\item[{{\bf \-Document}}]{document}
+\end{DoxyParamCaption}
+)}}\label{interfacedataaccess_1_1dao_1_1_post_list_d_a_o_a15bf2369736444075e32a151f4a1e0e9}
+
+\begin{DoxyParams}{\-Parameters}
+{\em word,\-:} & una \-Palabra \\
+\hline
+{\em document,\-:} & un \-Documento \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-La cantidad de veces que una palabra aparece en un documento paricular 
+\end{DoxyReturn}
+
+
+\-Implemented in \hyperlink{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_post_list_d_a_o_a9cbdbd5df3be84767ad2d3cfe75ec608}{dataaccess.\-postgresql.\-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O}.
+
+
+
+\-Referenced by com.\-utn.\-searchengine.\-Post\-List.\-total\-Times\-That\-Word\-Repeats\-On\-Document().
+
+\hypertarget{interfacedataaccess_1_1dao_1_1_post_list_d_a_o_a464d5ede23d1c7b4bf38db9c00b55fd5}{\index{dataaccess\-::dao\-::\-Post\-List\-D\-A\-O@{dataaccess\-::dao\-::\-Post\-List\-D\-A\-O}!get\-Words\-Document@{get\-Words\-Document}}
+\index{get\-Words\-Document@{get\-Words\-Document}!dataaccess::dao::PostListDAO@{dataaccess\-::dao\-::\-Post\-List\-D\-A\-O}}
+\subsubsection[{get\-Words\-Document}]{\setlength{\rightskip}{0pt plus 5cm}\-List$<${\bf \-Word}$>$ {\bf dataaccess.\-dao.\-Post\-List\-D\-A\-O.\-get\-Words\-Document} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Document}}]{document}
+\end{DoxyParamCaption}
+)}}\label{interfacedataaccess_1_1dao_1_1_post_list_d_a_o_a464d5ede23d1c7b4bf38db9c00b55fd5}
+
+\begin{DoxyParams}{\-Parameters}
+{\em document,\-:} & \-Un \-Documento \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-Una lista de palabras que pertenecen al documento seleccionado 
+\end{DoxyReturn}
+
+
+\-Implemented in \hyperlink{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_post_list_d_a_o_a08dd503b058dc03570751af250b20fe2}{dataaccess.\-postgresql.\-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O}.
+
+
+
+\-Referenced by com.\-utn.\-searchengine.\-Post\-List.\-get\-Words\-Document().
+
+\hypertarget{interfacedataaccess_1_1dao_1_1_post_list_d_a_o_a7a007e8ebaea6254d3c504ff623b0c1e}{\index{dataaccess\-::dao\-::\-Post\-List\-D\-A\-O@{dataaccess\-::dao\-::\-Post\-List\-D\-A\-O}!grabar\-Post\-List@{grabar\-Post\-List}}
+\index{grabar\-Post\-List@{grabar\-Post\-List}!dataaccess::dao::PostListDAO@{dataaccess\-::dao\-::\-Post\-List\-D\-A\-O}}
+\subsubsection[{grabar\-Post\-List}]{\setlength{\rightskip}{0pt plus 5cm}boolean {\bf dataaccess.\-dao.\-Post\-List\-D\-A\-O.\-grabar\-Post\-List} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Word}}]{word, }
+\item[{{\bf \-Document}}]{document, }
+\item[{int}]{fr}
+\end{DoxyParamCaption}
+)}}\label{interfacedataaccess_1_1dao_1_1_post_list_d_a_o_a7a007e8ebaea6254d3c504ff623b0c1e}
+\-Graba los elementosde la lista de posteo 
+\begin{DoxyParams}{\-Parameters}
+{\em word,\-:} & \-Una \-Palabra \\
+\hline
+{\em document,\-:} & \-Un \-Documento \\
+\hline
+{\em fr,\-:} & \-La frecuencia de la palabra en el documento. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+true si se pudo grabar bien, false si el elemento ya existe y se actualizo. 
+\end{DoxyReturn}
+
+
+\-Implemented in \hyperlink{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_post_list_d_a_o_ad8afd230c04a70252ecfd9b3e146245f}{dataaccess.\-postgresql.\-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O}.
+
+
+
+\-Referenced by com.\-utn.\-searchengine.\-Post\-List.\-add\-Document\-Words().
+
+\hypertarget{interfacedataaccess_1_1dao_1_1_post_list_d_a_o_ae1ac46108a931391815131e6bd0794fb}{\index{dataaccess\-::dao\-::\-Post\-List\-D\-A\-O@{dataaccess\-::dao\-::\-Post\-List\-D\-A\-O}!obtener\-Documento\-Candidatos@{obtener\-Documento\-Candidatos}}
+\index{obtener\-Documento\-Candidatos@{obtener\-Documento\-Candidatos}!dataaccess::dao::PostListDAO@{dataaccess\-::dao\-::\-Post\-List\-D\-A\-O}}
+\subsubsection[{obtener\-Documento\-Candidatos}]{\setlength{\rightskip}{0pt plus 5cm}\-List$<${\bf \-Document}$>$ {\bf dataaccess.\-dao.\-Post\-List\-D\-A\-O.\-obtener\-Documento\-Candidatos} (
+\begin{DoxyParamCaption}
+\item[{\-Collection$<$ \-String $>$}]{c}
+\end{DoxyParamCaption}
+)}}\label{interfacedataaccess_1_1dao_1_1_post_list_d_a_o_ae1ac46108a931391815131e6bd0794fb}
+
+\begin{DoxyParams}{\-Parameters}
+{\em c} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-Una lista de documentos candidatos 
+\end{DoxyReturn}
+
+
+\-Implemented in \hyperlink{classdataaccess_1_1postgresql_1_1_postgre_s_q_l_post_list_d_a_o_a1ef85476551ad259886a7683054a8efc}{dataaccess.\-postgresql.\-Postgre\-S\-Q\-L\-Post\-List\-D\-A\-O}.
+
+
+
+\-Referenced by com.\-utn.\-searchengine.\-Post\-List.\-get\-Candidate\-Documents().
+
+
+
+\-The documentation for this interface was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/main/java/\-Data\-Access/dao/\hyperlink{_post_list_d_a_o_8java}{\-Post\-List\-D\-A\-O.\-java}\end{DoxyCompactItemize}

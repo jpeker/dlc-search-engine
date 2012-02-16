@@ -1,0 +1,273 @@
+\hypertarget{classcom_1_1utn_1_1searchengine_1_1_post_list}{\section{com.\-utn.\-searchengine.\-Post\-List \-Class \-Reference}
+\label{classcom_1_1utn_1_1searchengine_1_1_post_list}\index{com.\-utn.\-searchengine.\-Post\-List@{com.\-utn.\-searchengine.\-Post\-List}}
+}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\-Map$<$ \-String, \-Array\-List\*
+$<$ \hyperlink{classcom_1_1utn_1_1searchengine_1_1_word_tracker}{\-Word\-Tracker} $>$ $>$ \hyperlink{classcom_1_1utn_1_1searchengine_1_1_post_list_a3835cd78d9a6cbe59b2bcf078d90509c}{get\-Post\-List} ()
+\item 
+void \hyperlink{classcom_1_1utn_1_1searchengine_1_1_post_list_ac9f616ad84ee2a77cdadfbfe5730c2e8}{set\-Post\-List} (\-Map$<$ \-String, \-Array\-List$<$ \hyperlink{classcom_1_1utn_1_1searchengine_1_1_word_tracker}{\-Word\-Tracker} $>$$>$ post\-List)
+\item 
+\hyperlink{classcom_1_1utn_1_1searchengine_1_1_post_list_aa5b0c80862532321e12b5d1656b5efe8}{\-Post\-List} ()
+\item 
+\hyperlink{classcom_1_1utn_1_1searchengine_1_1_post_list_a6f4e25174e4d0523f22bfb612bdb6182}{\-Post\-List} (\-Map$<$ \-String, \-Array\-List$<$ \hyperlink{classcom_1_1utn_1_1searchengine_1_1_word_tracker}{\-Word\-Tracker} $>$$>$ post\-List)
+\item 
+void \hyperlink{classcom_1_1utn_1_1searchengine_1_1_post_list_af23ef7a6ccf86e12327af6c2b0f1e099}{add\-Document\-Words} (\-Map$<$ \-String, \-Integer $>$ words, \-String document\-Location)
+\item 
+int \hyperlink{classcom_1_1utn_1_1searchengine_1_1_post_list_a8f3297b7f1318ebb41af197f7b516cd8}{total\-Times\-That\-Word\-Repeats\-On\-Document} (\hyperlink{classcom_1_1utn_1_1searchengine_1_1_word}{\-Word} word, \hyperlink{classcom_1_1utn_1_1searchengine_1_1_document}{\-Document} document)
+\item 
+int \hyperlink{classcom_1_1utn_1_1searchengine_1_1_post_list_a1c1f62c62dd582404f6010a568a47daa}{number\-Of\-Documents\-Where\-Word\-Appears} (\hyperlink{classcom_1_1utn_1_1searchengine_1_1_word}{\-Word} word)
+\item 
+\-Map$<$ \-String, \hyperlink{classcom_1_1utn_1_1searchengine_1_1_word}{\-Word} $>$ \hyperlink{classcom_1_1utn_1_1searchengine_1_1_post_list_a3d377cfba00c9f0df426b835fddee6e1}{get\-All\-Words} ()
+\item 
+\-Collection$<$ \hyperlink{classcom_1_1utn_1_1searchengine_1_1_document}{\-Document} $>$ \hyperlink{classcom_1_1utn_1_1searchengine_1_1_post_list_aa383844fc15866fdbd19c4de02dd544c}{get\-Candidate\-Documents} (\-Collection$<$ \-String $>$ wordquery)
+\item 
+\-List$<$ \hyperlink{classcom_1_1utn_1_1searchengine_1_1_word}{\-Word} $>$ \hyperlink{classcom_1_1utn_1_1searchengine_1_1_post_list_a64dbfffa646daea156a31746bb0685e9}{get\-Words\-Document} (\hyperlink{classcom_1_1utn_1_1searchengine_1_1_document}{\-Document} document)
+\item 
+\-List$<$ \hyperlink{classcom_1_1utn_1_1searchengine_1_1_document_results}{\-Document\-Results} $>$ \hyperlink{classcom_1_1utn_1_1searchengine_1_1_post_list_a33bdf8f8460ac8622d069786707051f0}{get\-Candidate\-Documents\-Filtered} (\-Collection$<$ \-String $>$ wordquery)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-An \-In-\/memory representation of a \-Post list. \-This is recommend to be on disc so probably soon, a\-Post\-List\-Manager will difference this \-Local \-Post list form the other. \begin{DoxyAuthor}{\-Author}
+altamirano,peker,liberal 
+\end{DoxyAuthor}
+
+
+\-Definition at line 21 of file \-Post\-List.\-java.
+
+
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{classcom_1_1utn_1_1searchengine_1_1_post_list_aa5b0c80862532321e12b5d1656b5efe8}{\index{com\-::utn\-::searchengine\-::\-Post\-List@{com\-::utn\-::searchengine\-::\-Post\-List}!\-Post\-List@{\-Post\-List}}
+\index{\-Post\-List@{\-Post\-List}!com::utn::searchengine::PostList@{com\-::utn\-::searchengine\-::\-Post\-List}}
+\subsubsection[{\-Post\-List}]{\setlength{\rightskip}{0pt plus 5cm}{\bf com.\-utn.\-searchengine.\-Post\-List.\-Post\-List} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classcom_1_1utn_1_1searchengine_1_1_post_list_aa5b0c80862532321e12b5d1656b5efe8}
+
+
+\-Definition at line 33 of file \-Post\-List.\-java.
+
+\hypertarget{classcom_1_1utn_1_1searchengine_1_1_post_list_a6f4e25174e4d0523f22bfb612bdb6182}{\index{com\-::utn\-::searchengine\-::\-Post\-List@{com\-::utn\-::searchengine\-::\-Post\-List}!\-Post\-List@{\-Post\-List}}
+\index{\-Post\-List@{\-Post\-List}!com::utn::searchengine::PostList@{com\-::utn\-::searchengine\-::\-Post\-List}}
+\subsubsection[{\-Post\-List}]{\setlength{\rightskip}{0pt plus 5cm}{\bf com.\-utn.\-searchengine.\-Post\-List.\-Post\-List} (
+\begin{DoxyParamCaption}
+\item[{\-Map$<$ \-String, \-Array\-List$<$ {\bf \-Word\-Tracker} $>$$>$}]{post\-List}
+\end{DoxyParamCaption}
+)}}\label{classcom_1_1utn_1_1searchengine_1_1_post_list_a6f4e25174e4d0523f22bfb612bdb6182}
+
+
+\-Definition at line 37 of file \-Post\-List.\-java.
+
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{classcom_1_1utn_1_1searchengine_1_1_post_list_af23ef7a6ccf86e12327af6c2b0f1e099}{\index{com\-::utn\-::searchengine\-::\-Post\-List@{com\-::utn\-::searchengine\-::\-Post\-List}!add\-Document\-Words@{add\-Document\-Words}}
+\index{add\-Document\-Words@{add\-Document\-Words}!com::utn::searchengine::PostList@{com\-::utn\-::searchengine\-::\-Post\-List}}
+\subsubsection[{add\-Document\-Words}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf com.\-utn.\-searchengine.\-Post\-List.\-add\-Document\-Words} (
+\begin{DoxyParamCaption}
+\item[{\-Map$<$ \-String, \-Integer $>$}]{words, }
+\item[{\-String}]{document\-Location}
+\end{DoxyParamCaption}
+)}}\label{classcom_1_1utn_1_1searchengine_1_1_post_list_af23ef7a6ccf86e12327af6c2b0f1e099}
+\-Adds the words of a document to the post\-List. \-In case a word already exists on the post list, it adds the newlocation where the word has been found, and the amount of times that it appeared. 
+\begin{DoxyParams}{\-Parameters}
+{\em words} & \-An array of locations and times that the word that the word has been found on that document. \\
+\hline
+{\em document\-Location,\-:} & \-The document \-Location \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 50 of file \-Post\-List.\-java.
+
+
+
+\-References dataaccess.\-dao.\-Post\-List\-D\-A\-O.\-Contains(), dataaccess.\-factories.\-D\-A\-O\-Factory.\-get\-Active\-D\-A\-O\-Factory(), com.\-utn.\-searchengine.\-Word\-Tracker.\-get\-Frequency(), dataaccess.\-factories.\-D\-A\-O\-Factory.\-get\-Post\-List\-D\-A\-O(), and dataaccess.\-dao.\-Post\-List\-D\-A\-O.\-grabar\-Post\-List().
+
+
+
+\-Referenced by com.\-utn.\-searchengine.\-Local\-Word\-Count\-Manager.\-add\-Document().
+
+\hypertarget{classcom_1_1utn_1_1searchengine_1_1_post_list_a3d377cfba00c9f0df426b835fddee6e1}{\index{com\-::utn\-::searchengine\-::\-Post\-List@{com\-::utn\-::searchengine\-::\-Post\-List}!get\-All\-Words@{get\-All\-Words}}
+\index{get\-All\-Words@{get\-All\-Words}!com::utn::searchengine::PostList@{com\-::utn\-::searchengine\-::\-Post\-List}}
+\subsubsection[{get\-All\-Words}]{\setlength{\rightskip}{0pt plus 5cm}\-Map$<$\-String, {\bf \-Word}$>$ {\bf com.\-utn.\-searchengine.\-Post\-List.\-get\-All\-Words} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classcom_1_1utn_1_1searchengine_1_1_post_list_a3d377cfba00c9f0df426b835fddee6e1}
+\begin{DoxyReturn}{\-Returns}
+\-A \-Single \-Map containing all the words that exist on the post list. \-This number should be the same that the number of words that exist on the vocabulary. 
+\end{DoxyReturn}
+
+
+\-Definition at line 97 of file \-Post\-List.\-java.
+
+
+
+\-References dataaccess.\-factories.\-D\-A\-O\-Factory.\-get\-Active\-D\-A\-O\-Factory(), dataaccess.\-dao.\-Word\-D\-A\-O.\-get\-Vocabulary(), and dataaccess.\-factories.\-D\-A\-O\-Factory.\-get\-Word\-D\-A\-O().
+
+\hypertarget{classcom_1_1utn_1_1searchengine_1_1_post_list_aa383844fc15866fdbd19c4de02dd544c}{\index{com\-::utn\-::searchengine\-::\-Post\-List@{com\-::utn\-::searchengine\-::\-Post\-List}!get\-Candidate\-Documents@{get\-Candidate\-Documents}}
+\index{get\-Candidate\-Documents@{get\-Candidate\-Documents}!com::utn::searchengine::PostList@{com\-::utn\-::searchengine\-::\-Post\-List}}
+\subsubsection[{get\-Candidate\-Documents}]{\setlength{\rightskip}{0pt plus 5cm}\-Collection$<${\bf \-Document}$>$ {\bf com.\-utn.\-searchengine.\-Post\-List.\-get\-Candidate\-Documents} (
+\begin{DoxyParamCaption}
+\item[{\-Collection$<$ \-String $>$}]{wordquery}
+\end{DoxyParamCaption}
+)}}\label{classcom_1_1utn_1_1searchengine_1_1_post_list_aa383844fc15866fdbd19c4de02dd544c}
+\-Collecion de documentos candidatos 
+\begin{DoxyParams}{\-Parameters}
+{\em wordquery} & palabras de la query \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+collecion de documentos que aparece las palabras de la query 
+\end{DoxyReturn}
+
+
+\-Definition at line 107 of file \-Post\-List.\-java.
+
+
+
+\-References dataaccess.\-factories.\-D\-A\-O\-Factory.\-get\-Active\-D\-A\-O\-Factory(), dataaccess.\-factories.\-D\-A\-O\-Factory.\-get\-Post\-List\-D\-A\-O(), and dataaccess.\-dao.\-Post\-List\-D\-A\-O.\-obtener\-Documento\-Candidatos().
+
+\hypertarget{classcom_1_1utn_1_1searchengine_1_1_post_list_a33bdf8f8460ac8622d069786707051f0}{\index{com\-::utn\-::searchengine\-::\-Post\-List@{com\-::utn\-::searchengine\-::\-Post\-List}!get\-Candidate\-Documents\-Filtered@{get\-Candidate\-Documents\-Filtered}}
+\index{get\-Candidate\-Documents\-Filtered@{get\-Candidate\-Documents\-Filtered}!com::utn::searchengine::PostList@{com\-::utn\-::searchengine\-::\-Post\-List}}
+\subsubsection[{get\-Candidate\-Documents\-Filtered}]{\setlength{\rightskip}{0pt plus 5cm}\-List$<${\bf \-Document\-Results}$>$ {\bf com.\-utn.\-searchengine.\-Post\-List.\-get\-Candidate\-Documents\-Filtered} (
+\begin{DoxyParamCaption}
+\item[{\-Collection$<$ \-String $>$}]{wordquery}
+\end{DoxyParamCaption}
+)}}\label{classcom_1_1utn_1_1searchengine_1_1_post_list_a33bdf8f8460ac8622d069786707051f0}
+devuelve los documentos candidatos filtrados por la frecuencia y el nr 
+\begin{DoxyParams}{\-Parameters}
+{\em wordquery} & palabras de la query \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+una lista de documentos candidatos filtrado 
+\end{DoxyReturn}
+
+
+\-Definition at line 125 of file \-Post\-List.\-java.
+
+
+
+\-References dataaccess.\-factories.\-D\-A\-O\-Factory.\-get\-Active\-D\-A\-O\-Factory(), dataaccess.\-dao.\-Post\-List\-D\-A\-O.\-get\-Filtered\-Candidates(), and dataaccess.\-factories.\-D\-A\-O\-Factory.\-get\-Post\-List\-D\-A\-O().
+
+
+
+\-Referenced by com.\-utn.\-searchengine.\-Local\-Word\-Count\-Manager.\-determinate\-Best\-Similitude().
+
+\hypertarget{classcom_1_1utn_1_1searchengine_1_1_post_list_a3835cd78d9a6cbe59b2bcf078d90509c}{\index{com\-::utn\-::searchengine\-::\-Post\-List@{com\-::utn\-::searchengine\-::\-Post\-List}!get\-Post\-List@{get\-Post\-List}}
+\index{get\-Post\-List@{get\-Post\-List}!com::utn::searchengine::PostList@{com\-::utn\-::searchengine\-::\-Post\-List}}
+\subsubsection[{get\-Post\-List}]{\setlength{\rightskip}{0pt plus 5cm}\-Map$<$\-String, \-Array\-List$<${\bf \-Word\-Tracker}$>$ $>$ {\bf com.\-utn.\-searchengine.\-Post\-List.\-get\-Post\-List} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classcom_1_1utn_1_1searchengine_1_1_post_list_a3835cd78d9a6cbe59b2bcf078d90509c}
+
+
+\-Definition at line 25 of file \-Post\-List.\-java.
+
+\hypertarget{classcom_1_1utn_1_1searchengine_1_1_post_list_a64dbfffa646daea156a31746bb0685e9}{\index{com\-::utn\-::searchengine\-::\-Post\-List@{com\-::utn\-::searchengine\-::\-Post\-List}!get\-Words\-Document@{get\-Words\-Document}}
+\index{get\-Words\-Document@{get\-Words\-Document}!com::utn::searchengine::PostList@{com\-::utn\-::searchengine\-::\-Post\-List}}
+\subsubsection[{get\-Words\-Document}]{\setlength{\rightskip}{0pt plus 5cm}\-List$<${\bf \-Word}$>$ {\bf com.\-utn.\-searchengine.\-Post\-List.\-get\-Words\-Document} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Document}}]{document}
+\end{DoxyParamCaption}
+)}}\label{classcom_1_1utn_1_1searchengine_1_1_post_list_a64dbfffa646daea156a31746bb0685e9}
+las palabras de un documentos 
+\begin{DoxyParams}{\-Parameters}
+{\em document} & que quiero que me traiga palabras \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+la lista de palabras 
+\end{DoxyReturn}
+
+
+\-Definition at line 116 of file \-Post\-List.\-java.
+
+
+
+\-References dataaccess.\-factories.\-D\-A\-O\-Factory.\-get\-Active\-D\-A\-O\-Factory(), dataaccess.\-factories.\-D\-A\-O\-Factory.\-get\-Post\-List\-D\-A\-O(), and dataaccess.\-dao.\-Post\-List\-D\-A\-O.\-get\-Words\-Document().
+
+
+
+\-Referenced by com.\-utn.\-searchengine.\-Local\-Word\-Count\-Manager.\-get\-Document\-Module().
+
+\hypertarget{classcom_1_1utn_1_1searchengine_1_1_post_list_a1c1f62c62dd582404f6010a568a47daa}{\index{com\-::utn\-::searchengine\-::\-Post\-List@{com\-::utn\-::searchengine\-::\-Post\-List}!number\-Of\-Documents\-Where\-Word\-Appears@{number\-Of\-Documents\-Where\-Word\-Appears}}
+\index{number\-Of\-Documents\-Where\-Word\-Appears@{number\-Of\-Documents\-Where\-Word\-Appears}!com::utn::searchengine::PostList@{com\-::utn\-::searchengine\-::\-Post\-List}}
+\subsubsection[{number\-Of\-Documents\-Where\-Word\-Appears}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf com.\-utn.\-searchengine.\-Post\-List.\-number\-Of\-Documents\-Where\-Word\-Appears} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Word}}]{word}
+\end{DoxyParamCaption}
+)}}\label{classcom_1_1utn_1_1searchengine_1_1_post_list_a1c1f62c62dd582404f6010a568a47daa}
+cantidad de documento que aparece una palabra 
+\begin{DoxyParams}{\-Parameters}
+{\em word,\-:} & \-A \hyperlink{classcom_1_1utn_1_1searchengine_1_1_word}{\-Word} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-The number of documents where the word has been found at least once. 
+\end{DoxyReturn}
+
+
+\-Definition at line 86 of file \-Post\-List.\-java.
+
+
+
+\-References dataaccess.\-factories.\-D\-A\-O\-Factory.\-get\-Active\-D\-A\-O\-Factory(), dataaccess.\-dao.\-Word\-D\-A\-O.\-get\-Nr\-Word(), and dataaccess.\-factories.\-D\-A\-O\-Factory.\-get\-Word\-D\-A\-O().
+
+
+
+\-Referenced by com.\-utn.\-searchengine.\-Local\-Word\-Count\-Manager.\-number\-Of\-Documents\-Where\-Word\-Appears().
+
+\hypertarget{classcom_1_1utn_1_1searchengine_1_1_post_list_ac9f616ad84ee2a77cdadfbfe5730c2e8}{\index{com\-::utn\-::searchengine\-::\-Post\-List@{com\-::utn\-::searchengine\-::\-Post\-List}!set\-Post\-List@{set\-Post\-List}}
+\index{set\-Post\-List@{set\-Post\-List}!com::utn::searchengine::PostList@{com\-::utn\-::searchengine\-::\-Post\-List}}
+\subsubsection[{set\-Post\-List}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf com.\-utn.\-searchengine.\-Post\-List.\-set\-Post\-List} (
+\begin{DoxyParamCaption}
+\item[{\-Map$<$ \-String, \-Array\-List$<$ {\bf \-Word\-Tracker} $>$$>$}]{post\-List}
+\end{DoxyParamCaption}
+)}}\label{classcom_1_1utn_1_1searchengine_1_1_post_list_ac9f616ad84ee2a77cdadfbfe5730c2e8}
+
+
+\-Definition at line 29 of file \-Post\-List.\-java.
+
+\hypertarget{classcom_1_1utn_1_1searchengine_1_1_post_list_a8f3297b7f1318ebb41af197f7b516cd8}{\index{com\-::utn\-::searchengine\-::\-Post\-List@{com\-::utn\-::searchengine\-::\-Post\-List}!total\-Times\-That\-Word\-Repeats\-On\-Document@{total\-Times\-That\-Word\-Repeats\-On\-Document}}
+\index{total\-Times\-That\-Word\-Repeats\-On\-Document@{total\-Times\-That\-Word\-Repeats\-On\-Document}!com::utn::searchengine::PostList@{com\-::utn\-::searchengine\-::\-Post\-List}}
+\subsubsection[{total\-Times\-That\-Word\-Repeats\-On\-Document}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf com.\-utn.\-searchengine.\-Post\-List.\-total\-Times\-That\-Word\-Repeats\-On\-Document} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Word}}]{word, }
+\item[{{\bf \-Document}}]{document}
+\end{DoxyParamCaption}
+)}}\label{classcom_1_1utn_1_1searchengine_1_1_post_list_a8f3297b7f1318ebb41af197f7b516cd8}
+\-Frecuencia de una palabra en un documento 
+\begin{DoxyParams}{\-Parameters}
+{\em word,\-:} & \-A \hyperlink{classcom_1_1utn_1_1searchengine_1_1_word}{\-Word} \\
+\hline
+{\em document,\-:} & \-A \hyperlink{classcom_1_1utn_1_1searchengine_1_1_document}{\-Document} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-The total times that the word appears on the document. 
+\end{DoxyReturn}
+
+
+\-Definition at line 76 of file \-Post\-List.\-java.
+
+
+
+\-References dataaccess.\-factories.\-D\-A\-O\-Factory.\-get\-Active\-D\-A\-O\-Factory(), dataaccess.\-factories.\-D\-A\-O\-Factory.\-get\-Post\-List\-D\-A\-O(), and dataaccess.\-dao.\-Post\-List\-D\-A\-O.\-get\-T\-F().
+
+
+
+\-Referenced by com.\-utn.\-searchengine.\-Local\-Word\-Count\-Manager.\-times\-That\-A\-Word\-Repeats\-On\-Document().
+
+
+
+\-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/utn/searchengine/\hyperlink{_post_list_8java}{\-Post\-List.\-java}\end{DoxyCompactItemize}

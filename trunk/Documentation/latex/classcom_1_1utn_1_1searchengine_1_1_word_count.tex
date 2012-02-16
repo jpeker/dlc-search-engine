@@ -1,0 +1,85 @@
+\hypertarget{classcom_1_1utn_1_1searchengine_1_1_word_count}{\section{com.\-utn.\-searchengine.\-Word\-Count \-Class \-Reference}
+\label{classcom_1_1utn_1_1searchengine_1_1_word_count}\index{com.\-utn.\-searchengine.\-Word\-Count@{com.\-utn.\-searchengine.\-Word\-Count}}
+}
+\subsection*{\-Static \-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \-Map$<$ \-String, \-Integer $>$ \hyperlink{classcom_1_1utn_1_1searchengine_1_1_word_count_a6844e58166eaeaf8830e9333b6e54d3d}{retrieve\-Word\-Count} (\hyperlink{classcom_1_1utn_1_1searchengine_1_1_document}{\-Document} doc)
+\item 
+static int \hyperlink{classcom_1_1utn_1_1searchengine_1_1_word_count_a460ac30e0a831c1119ba047c91da0a15}{get\-T\-F} (\hyperlink{classcom_1_1utn_1_1searchengine_1_1_word}{\-Word} word, \hyperlink{classcom_1_1utn_1_1searchengine_1_1_document}{\-Document} document)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-This class provides the utility of detect the different words that exist on a document \begin{DoxyAuthor}{\-Author}
+altamirano,peker,liberal 
+\end{DoxyAuthor}
+
+
+\-Definition at line 17 of file \-Word\-Count.\-java.
+
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{classcom_1_1utn_1_1searchengine_1_1_word_count_a460ac30e0a831c1119ba047c91da0a15}{\index{com\-::utn\-::searchengine\-::\-Word\-Count@{com\-::utn\-::searchengine\-::\-Word\-Count}!get\-T\-F@{get\-T\-F}}
+\index{get\-T\-F@{get\-T\-F}!com::utn::searchengine::WordCount@{com\-::utn\-::searchengine\-::\-Word\-Count}}
+\subsubsection[{get\-T\-F}]{\setlength{\rightskip}{0pt plus 5cm}static int {\bf com.\-utn.\-searchengine.\-Word\-Count.\-get\-T\-F} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Word}}]{word, }
+\item[{{\bf \-Document}}]{document}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{classcom_1_1utn_1_1searchengine_1_1_word_count_a460ac30e0a831c1119ba047c91da0a15}
+\-Calcula cuantas veces aparece la palabra en un documento 
+\begin{DoxyParams}{\-Parameters}
+{\em word} & \\
+\hline
+{\em document} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+el tf de la word 
+\end{DoxyReturn}
+
+
+\-Definition at line 86 of file \-Word\-Count.\-java.
+
+
+
+\-References com.\-utn.\-searchengine.\-Word.\-get\-Name(), and com.\-utn.\-searchengine.\-Document.\-get\-Text().
+
+
+
+\-Referenced by com.\-utn.\-searchengine.\-Local\-Word\-Count\-Manager.\-estimate\-Weight().
+
+\hypertarget{classcom_1_1utn_1_1searchengine_1_1_word_count_a6844e58166eaeaf8830e9333b6e54d3d}{\index{com\-::utn\-::searchengine\-::\-Word\-Count@{com\-::utn\-::searchengine\-::\-Word\-Count}!retrieve\-Word\-Count@{retrieve\-Word\-Count}}
+\index{retrieve\-Word\-Count@{retrieve\-Word\-Count}!com::utn::searchengine::WordCount@{com\-::utn\-::searchengine\-::\-Word\-Count}}
+\subsubsection[{retrieve\-Word\-Count}]{\setlength{\rightskip}{0pt plus 5cm}static \-Map$<$\-String, \-Integer$>$ {\bf com.\-utn.\-searchengine.\-Word\-Count.\-retrieve\-Word\-Count} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Document}}]{doc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{classcom_1_1utn_1_1searchengine_1_1_word_count_a6844e58166eaeaf8830e9333b6e54d3d}
+
+\begin{DoxyParams}{\-Parameters}
+{\em file\-Path,\-:} & \-A path to a disk file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+a collection of words and the times that those words repeats on the file 
+\end{DoxyReturn}
+
+
+\-Definition at line 24 of file \-Word\-Count.\-java.
+
+
+
+\-References com.\-utn.\-searchengine.\-Document.\-get\-Text(), com.\-utn.\-searchengine.\-Stop\-Word\-Map.\-is\-Stop\-Word(), com.\-utn.\-searchengine.\-Stop\-Word\-Map.\-read\-Stop\-Word\-List(), and com.\-utn.\-searchengine.\-Stop\-Word\-Map.\-stop\-Word\-Idiom\-Document\-Finder().
+
+
+
+\-Referenced by com.\-utn.\-searchengine.\-Local\-Word\-Count\-Manager.\-add\-Document(), and com.\-utn.\-searchengine.\-Local\-Word\-Count\-Manager.\-determinate\-Best\-Similitude().
+
+
+
+\-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/utn/searchengine/\hyperlink{_word_count_8java}{\-Word\-Count.\-java}\end{DoxyCompactItemize}

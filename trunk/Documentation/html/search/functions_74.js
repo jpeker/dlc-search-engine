@@ -1,0 +1,7 @@
+var searchData=
+[
+  ['testapp',['testApp',['../classcom_1_1utn_1_1searchengine_1_1_app_test.html#aca81c79fce21224d5e34fa6632067c3e',1,'com::utn::searchengine::AppTest']]],
+  ['timesthatawordrepeatsondocument',['timesThatAWordRepeatsOnDocument',['../classcom_1_1utn_1_1searchengine_1_1_local_word_count_manager.html#acde1570f752717dfe74eb14e8ad682c7',1,'com::utn::searchengine::LocalWordCountManager']]],
+  ['tostring',['toString',['../classcom_1_1utn_1_1searchengine_1_1_document.html#a392cda204fab3af44b1799131ec59ad0',1,'com::utn::searchengine::Document.toString()'],['../classcom_1_1utn_1_1searchengine_1_1_document_manager.html#a98b4f2a2eca071ee2be5ef81c2d76098',1,'com::utn::searchengine::DocumentManager.toString()'],['../classcom_1_1utn_1_1searchengine_1_1_similitude.html#af6f5090b7b8559337d21a272f0a8bfa0',1,'com::utn::searchengine::Similitude.toString()'],['../classcom_1_1utn_1_1searchengine_1_1_vocabulary.html#a789ac5d184325b54fc14484c56dfd8c4',1,'com::utn::searchengine::Vocabulary.toString()'],['../classcom_1_1utn_1_1searchengine_1_1_word.html#a74d117f3e67ff411fa85189ea725e0bd',1,'com::utn::searchengine::Word.toString()'],['../classcom_1_1utn_1_1searchengine_1_1_word_tracker.html#a42bc3c43c6838865c19610aeebdd0b37',1,'com::utn::searchengine::WordTracker.toString()']]],
+  ['totaltimesthatwordrepeatsondocument',['totalTimesThatWordRepeatsOnDocument',['../classcom_1_1utn_1_1searchengine_1_1_post_list.html#a8f3297b7f1318ebb41af197f7b516cd8',1,'com::utn::searchengine::PostList']]]
+];

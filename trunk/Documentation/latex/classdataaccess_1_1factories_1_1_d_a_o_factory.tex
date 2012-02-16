@@ -1,0 +1,163 @@
+\hypertarget{classdataaccess_1_1factories_1_1_d_a_o_factory}{\section{dataaccess.\-factories.\-D\-A\-O\-Factory \-Class \-Reference}
+\label{classdataaccess_1_1factories_1_1_d_a_o_factory}\index{dataaccess.\-factories.\-D\-A\-O\-Factory@{dataaccess.\-factories.\-D\-A\-O\-Factory}}
+}
+\-Inheritance diagram for dataaccess.\-factories.\-D\-A\-O\-Factory\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classdataaccess_1_1factories_1_1_d_a_o_factory}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+abstract \hyperlink{interfacedataaccess_1_1dao_1_1_word_d_a_o}{\-Word\-D\-A\-O} \hyperlink{classdataaccess_1_1factories_1_1_d_a_o_factory_a221a85bee4a075cbe37fc5acce7ba339}{get\-Word\-D\-A\-O} ()
+\item 
+abstract \hyperlink{interfacedataaccess_1_1dao_1_1_document_d_a_o}{\-Document\-D\-A\-O} \hyperlink{classdataaccess_1_1factories_1_1_d_a_o_factory_abac444c4c5d3e3efed06d705dcaf5071}{get\-Document\-D\-A\-O} ()
+\item 
+abstract \hyperlink{interfacedataaccess_1_1dao_1_1_post_list_d_a_o}{\-Post\-List\-D\-A\-O} \hyperlink{classdataaccess_1_1factories_1_1_d_a_o_factory_a009cb6291e5e866156029f5c976cc2f3}{get\-Post\-List\-D\-A\-O} ()
+\end{DoxyCompactItemize}
+\subsection*{\-Static \-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classdataaccess_1_1factories_1_1_d_a_o_factory}{\-D\-A\-O\-Factory} \hyperlink{classdataaccess_1_1factories_1_1_d_a_o_factory_a864f26b4b95f2f624a36b22b56fd1110}{get\-D\-A\-O\-Factory} (int factory)
+\item 
+static \hyperlink{classdataaccess_1_1factories_1_1_d_a_o_factory}{\-D\-A\-O\-Factory} \hyperlink{classdataaccess_1_1factories_1_1_d_a_o_factory_a525efdb633c40ced45c0d2f916887ddc}{get\-Active\-D\-A\-O\-Factory} ()
+\end{DoxyCompactItemize}
+\subsection*{\-Static \-Public \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static final int \hyperlink{classdataaccess_1_1factories_1_1_d_a_o_factory_acc94ae4fe422fa5d0dd7f33f6900e8c2}{\-P\-O\-S\-T\-G\-R\-E} = 1
+\item 
+static final int \hyperlink{classdataaccess_1_1factories_1_1_d_a_o_factory_a7d2a62ea6bfc7fcae70a8ea41311c921}{active\-Factory\-Postgre} = \hyperlink{classdataaccess_1_1factories_1_1_d_a_o_factory_acc94ae4fe422fa5d0dd7f33f6900e8c2}{\-P\-O\-S\-T\-G\-R\-E}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Clase abstracta que representa una fábrica de \-D\-A\-Os.
+
+\begin{DoxyAuthor}{\-Author}
+\-Altamirano \-Liberal \-Peker 
+\end{DoxyAuthor}
+
+
+\-Definition at line 13 of file \-D\-A\-O\-Factory.\-java.
+
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{classdataaccess_1_1factories_1_1_d_a_o_factory_a525efdb633c40ced45c0d2f916887ddc}{\index{dataaccess\-::factories\-::\-D\-A\-O\-Factory@{dataaccess\-::factories\-::\-D\-A\-O\-Factory}!get\-Active\-D\-A\-O\-Factory@{get\-Active\-D\-A\-O\-Factory}}
+\index{get\-Active\-D\-A\-O\-Factory@{get\-Active\-D\-A\-O\-Factory}!dataaccess::factories::DAOFactory@{dataaccess\-::factories\-::\-D\-A\-O\-Factory}}
+\subsubsection[{get\-Active\-D\-A\-O\-Factory}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf \-D\-A\-O\-Factory} {\bf dataaccess.\-factories.\-D\-A\-O\-Factory.\-get\-Active\-D\-A\-O\-Factory} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{classdataaccess_1_1factories_1_1_d_a_o_factory_a525efdb633c40ced45c0d2f916887ddc}
+\-Devuelve la factory activa \begin{DoxyReturn}{\-Returns}
+la factory activa (según el tipo de persistencia a utilizar) 
+\end{DoxyReturn}
+
+
+\-Definition at line 40 of file \-D\-A\-O\-Factory.\-java.
+
+
+
+\-References dataaccess.\-factories.\-D\-A\-O\-Factory.\-active\-Factory\-Postgre, and dataaccess.\-factories.\-D\-A\-O\-Factory.\-get\-D\-A\-O\-Factory().
+
+
+
+\-Referenced by com.\-utn.\-searchengine.\-Document\-Manager.\-add\-Document(), com.\-utn.\-searchengine.\-Post\-List.\-add\-Document\-Words(), com.\-utn.\-searchengine.\-Vocabulary.\-add\-Document\-Words(), com.\-utn.\-searchengine.\-Document\-Manager.\-Document\-Manager(), com.\-utn.\-searchengine.\-Post\-List.\-get\-All\-Words(), com.\-utn.\-searchengine.\-Post\-List.\-get\-Candidate\-Documents(), com.\-utn.\-searchengine.\-Post\-List.\-get\-Candidate\-Documents\-Filtered(), com.\-utn.\-searchengine.\-Document\-Manager.\-get\-Document\-Module(), com.\-utn.\-searchengine.\-Post\-List.\-get\-Words\-Document(), com.\-utn.\-searchengine.\-Vocabulary.\-load\-Vocabulary\-Words(), com.\-utn.\-searchengine.\-Post\-List.\-number\-Of\-Documents\-Where\-Word\-Appears(), com.\-utn.\-searchengine.\-Document\-Manager.\-set\-Document\-Module(), and com.\-utn.\-searchengine.\-Post\-List.\-total\-Times\-That\-Word\-Repeats\-On\-Document().
+
+\hypertarget{classdataaccess_1_1factories_1_1_d_a_o_factory_a864f26b4b95f2f624a36b22b56fd1110}{\index{dataaccess\-::factories\-::\-D\-A\-O\-Factory@{dataaccess\-::factories\-::\-D\-A\-O\-Factory}!get\-D\-A\-O\-Factory@{get\-D\-A\-O\-Factory}}
+\index{get\-D\-A\-O\-Factory@{get\-D\-A\-O\-Factory}!dataaccess::factories::DAOFactory@{dataaccess\-::factories\-::\-D\-A\-O\-Factory}}
+\subsubsection[{get\-D\-A\-O\-Factory}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf \-D\-A\-O\-Factory} {\bf dataaccess.\-factories.\-D\-A\-O\-Factory.\-get\-D\-A\-O\-Factory} (
+\begin{DoxyParamCaption}
+\item[{int}]{factory}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{classdataaccess_1_1factories_1_1_d_a_o_factory_a864f26b4b95f2f624a36b22b56fd1110}
+
+
+\-Definition at line 26 of file \-D\-A\-O\-Factory.\-java.
+
+
+
+\-References dataaccess.\-factories.\-D\-A\-O\-Factory.\-P\-O\-S\-T\-G\-R\-E.
+
+
+
+\-Referenced by dataaccess.\-factories.\-D\-A\-O\-Factory.\-get\-Active\-D\-A\-O\-Factory().
+
+\hypertarget{classdataaccess_1_1factories_1_1_d_a_o_factory_abac444c4c5d3e3efed06d705dcaf5071}{\index{dataaccess\-::factories\-::\-D\-A\-O\-Factory@{dataaccess\-::factories\-::\-D\-A\-O\-Factory}!get\-Document\-D\-A\-O@{get\-Document\-D\-A\-O}}
+\index{get\-Document\-D\-A\-O@{get\-Document\-D\-A\-O}!dataaccess::factories::DAOFactory@{dataaccess\-::factories\-::\-D\-A\-O\-Factory}}
+\subsubsection[{get\-Document\-D\-A\-O}]{\setlength{\rightskip}{0pt plus 5cm}abstract {\bf \-Document\-D\-A\-O} {\bf dataaccess.\-factories.\-D\-A\-O\-Factory.\-get\-Document\-D\-A\-O} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}pure virtual\mbox{]}}}}\label{classdataaccess_1_1factories_1_1_d_a_o_factory_abac444c4c5d3e3efed06d705dcaf5071}
+
+
+\-Implemented in \hyperlink{classdataaccess_1_1factories_1_1_postgre_s_q_l_d_a_o_factory_abde12332733aac41a711b4e332531c74}{dataaccess.\-factories.\-Postgre\-S\-Q\-L\-D\-A\-O\-Factory}.
+
+
+
+\-Referenced by com.\-utn.\-searchengine.\-Document\-Manager.\-add\-Document(), com.\-utn.\-searchengine.\-Document\-Manager.\-Document\-Manager(), com.\-utn.\-searchengine.\-Document\-Manager.\-get\-Document\-Module(), and com.\-utn.\-searchengine.\-Document\-Manager.\-set\-Document\-Module().
+
+\hypertarget{classdataaccess_1_1factories_1_1_d_a_o_factory_a009cb6291e5e866156029f5c976cc2f3}{\index{dataaccess\-::factories\-::\-D\-A\-O\-Factory@{dataaccess\-::factories\-::\-D\-A\-O\-Factory}!get\-Post\-List\-D\-A\-O@{get\-Post\-List\-D\-A\-O}}
+\index{get\-Post\-List\-D\-A\-O@{get\-Post\-List\-D\-A\-O}!dataaccess::factories::DAOFactory@{dataaccess\-::factories\-::\-D\-A\-O\-Factory}}
+\subsubsection[{get\-Post\-List\-D\-A\-O}]{\setlength{\rightskip}{0pt plus 5cm}abstract {\bf \-Post\-List\-D\-A\-O} {\bf dataaccess.\-factories.\-D\-A\-O\-Factory.\-get\-Post\-List\-D\-A\-O} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}pure virtual\mbox{]}}}}\label{classdataaccess_1_1factories_1_1_d_a_o_factory_a009cb6291e5e866156029f5c976cc2f3}
+
+
+\-Implemented in \hyperlink{classdataaccess_1_1factories_1_1_postgre_s_q_l_d_a_o_factory_a97708897273c6ac76c64b4b38816c1e6}{dataaccess.\-factories.\-Postgre\-S\-Q\-L\-D\-A\-O\-Factory}.
+
+
+
+\-Referenced by com.\-utn.\-searchengine.\-Post\-List.\-add\-Document\-Words(), com.\-utn.\-searchengine.\-Post\-List.\-get\-Candidate\-Documents(), com.\-utn.\-searchengine.\-Post\-List.\-get\-Candidate\-Documents\-Filtered(), com.\-utn.\-searchengine.\-Post\-List.\-get\-Words\-Document(), and com.\-utn.\-searchengine.\-Post\-List.\-total\-Times\-That\-Word\-Repeats\-On\-Document().
+
+\hypertarget{classdataaccess_1_1factories_1_1_d_a_o_factory_a221a85bee4a075cbe37fc5acce7ba339}{\index{dataaccess\-::factories\-::\-D\-A\-O\-Factory@{dataaccess\-::factories\-::\-D\-A\-O\-Factory}!get\-Word\-D\-A\-O@{get\-Word\-D\-A\-O}}
+\index{get\-Word\-D\-A\-O@{get\-Word\-D\-A\-O}!dataaccess::factories::DAOFactory@{dataaccess\-::factories\-::\-D\-A\-O\-Factory}}
+\subsubsection[{get\-Word\-D\-A\-O}]{\setlength{\rightskip}{0pt plus 5cm}abstract {\bf \-Word\-D\-A\-O} {\bf dataaccess.\-factories.\-D\-A\-O\-Factory.\-get\-Word\-D\-A\-O} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}pure virtual\mbox{]}}}}\label{classdataaccess_1_1factories_1_1_d_a_o_factory_a221a85bee4a075cbe37fc5acce7ba339}
+
+
+\-Implemented in \hyperlink{classdataaccess_1_1factories_1_1_postgre_s_q_l_d_a_o_factory_a36c86115a9cd15e15b793e97f982a37d}{dataaccess.\-factories.\-Postgre\-S\-Q\-L\-D\-A\-O\-Factory}.
+
+
+
+\-Referenced by com.\-utn.\-searchengine.\-Vocabulary.\-add\-Document\-Words(), com.\-utn.\-searchengine.\-Post\-List.\-get\-All\-Words(), com.\-utn.\-searchengine.\-Vocabulary.\-load\-Vocabulary\-Words(), and com.\-utn.\-searchengine.\-Post\-List.\-number\-Of\-Documents\-Where\-Word\-Appears().
+
+
+
+\subsection{\-Member \-Data \-Documentation}
+\hypertarget{classdataaccess_1_1factories_1_1_d_a_o_factory_a7d2a62ea6bfc7fcae70a8ea41311c921}{\index{dataaccess\-::factories\-::\-D\-A\-O\-Factory@{dataaccess\-::factories\-::\-D\-A\-O\-Factory}!active\-Factory\-Postgre@{active\-Factory\-Postgre}}
+\index{active\-Factory\-Postgre@{active\-Factory\-Postgre}!dataaccess::factories::DAOFactory@{dataaccess\-::factories\-::\-D\-A\-O\-Factory}}
+\subsubsection[{active\-Factory\-Postgre}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf dataaccess.\-factories.\-D\-A\-O\-Factory.\-active\-Factory\-Postgre} = {\bf \-P\-O\-S\-T\-G\-R\-E}\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{classdataaccess_1_1factories_1_1_d_a_o_factory_a7d2a62ea6bfc7fcae70a8ea41311c921}
+
+
+\-Definition at line 18 of file \-D\-A\-O\-Factory.\-java.
+
+
+
+\-Referenced by dataaccess.\-factories.\-D\-A\-O\-Factory.\-get\-Active\-D\-A\-O\-Factory().
+
+\hypertarget{classdataaccess_1_1factories_1_1_d_a_o_factory_acc94ae4fe422fa5d0dd7f33f6900e8c2}{\index{dataaccess\-::factories\-::\-D\-A\-O\-Factory@{dataaccess\-::factories\-::\-D\-A\-O\-Factory}!\-P\-O\-S\-T\-G\-R\-E@{\-P\-O\-S\-T\-G\-R\-E}}
+\index{\-P\-O\-S\-T\-G\-R\-E@{\-P\-O\-S\-T\-G\-R\-E}!dataaccess::factories::DAOFactory@{dataaccess\-::factories\-::\-D\-A\-O\-Factory}}
+\subsubsection[{\-P\-O\-S\-T\-G\-R\-E}]{\setlength{\rightskip}{0pt plus 5cm}final int {\bf dataaccess.\-factories.\-D\-A\-O\-Factory.\-P\-O\-S\-T\-G\-R\-E} = 1\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{classdataaccess_1_1factories_1_1_d_a_o_factory_acc94ae4fe422fa5d0dd7f33f6900e8c2}
+
+
+\-Definition at line 16 of file \-D\-A\-O\-Factory.\-java.
+
+
+
+\-Referenced by dataaccess.\-factories.\-D\-A\-O\-Factory.\-get\-D\-A\-O\-Factory().
+
+
+
+\-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+src/main/java/\-Data\-Access/factories/\hyperlink{_d_a_o_factory_8java}{\-D\-A\-O\-Factory.\-java}\end{DoxyCompactItemize}
