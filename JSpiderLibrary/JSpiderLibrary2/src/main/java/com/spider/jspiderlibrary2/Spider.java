@@ -6,7 +6,10 @@ import java.io.*;
 import javax.swing.text.*;
 import javax.swing.text.html.*;
 import java.util.regex.Pattern;
-
+/**
+ *
+ * @author altamirano,peker,liberal
+ */
 /**
  *
  * Clase spider empleada para crawlear todo el sitio web, a travez de una url

@@ -6,7 +6,10 @@ import java.net.URL;
  * spider.
  * Encuentra una url o una url con errores
  */
-
+/**
+ *
+ * @author altamirano,peker,liberal
+ */
 public interface ISpiderReportable {
     //Metodo empleado cuando se encuentra una url a partir de una
     //URL base que define el dominio del sitio web a crawlear
