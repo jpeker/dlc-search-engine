@@ -280,7 +280,7 @@ public class JFrameSearchEngineGUI extends javax.swing.JFrame {
         jTextFieldWordToSearch.setEnabled(false);
         jButtonSearch.setEnabled(false);
         LocalWordCountManager lwcm = new LocalWordCountManager();
-        Collection<Similitude> i = lwcm.determinateBestSimilitude(new Document("query", jTextFieldWordToSearch.getText()));
+        Collection<Similitude> i = lwcm.determinateBestSimilitude(new Document("query", jTextFieldWordToSearch.getText().toLowerCase()));
         DefaultListModel listmodel2 = new DefaultListModel();
         for (Similitude similitude : i) {
             System.out.println("resultados " + similitude.getDocumentA().getLocation().toString());
