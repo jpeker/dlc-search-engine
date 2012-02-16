@@ -26,7 +26,7 @@ public class ProgressBarRunnable extends Thread{
     public void run()
     {
 
-        while ( Communicator.crawl==true )
+        while ( Communicator.crawl==true || Communicator.search==true )
           {
            gestor.actualizarLabel(true);
           }
