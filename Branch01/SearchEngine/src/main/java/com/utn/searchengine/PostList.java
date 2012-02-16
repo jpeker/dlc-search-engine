@@ -85,7 +85,7 @@ public class PostList {
      */
     public int numberOfDocumentsWhereWordAppears(Word word) {
 
-        return DAOFactory.getActiveDAOFactory().getPostListDAO().getNrWord(word);
+        return DAOFactory.getActiveDAOFactory().getWordDAO().getNrWord(word);
     }
 
     /**
