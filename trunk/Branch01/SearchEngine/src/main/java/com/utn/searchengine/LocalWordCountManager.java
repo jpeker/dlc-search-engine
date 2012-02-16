@@ -188,7 +188,7 @@ public class LocalWordCountManager {
      */
     private void sortSimilitude (  List<Similitude> sumilitu){
         Comparator<Similitude> comparator = new Compare () ;
-    Collections.sort(sumilitu,  comparator);
+        Collections.sort(sumilitu,  comparator);
     }
    /**
      * class compare implement Comparator que ordena en forma descendiente
