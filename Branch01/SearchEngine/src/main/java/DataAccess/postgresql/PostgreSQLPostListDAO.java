@@ -234,7 +234,7 @@ public class PostgreSQLPostListDAO implements PostListDAO{
             {
                 Map<String, Integer> documentsCount = new HashMap<String, Integer>();
                 Map <String, Integer>wordsCount= new HashMap<String, Integer>();
-                StringBuilder query=new StringBuilder("select   w.name_Word,p.frequency, d.url_Name,d.Modulo");
+                StringBuilder query=new StringBuilder("select   w.name_Word,p.frequency, d.url_Name,d.Modulo ");
                 query.append("from postlist p inner join page d on p.id_Url = d.id_Url inner join word w on p.id_Word = w.id_Word ");
                 query.append("where w.name_Word in (").append(cad.toString()).append(") ");
                 query.append("group by  w.name_Word,p.frequency, d.url_Name,d.Modulo ");
