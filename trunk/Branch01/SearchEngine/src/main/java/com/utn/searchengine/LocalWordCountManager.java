@@ -177,7 +177,7 @@ public class LocalWordCountManager {
         ArrayList<Similitude> sumilitudes = new ArrayList<Similitude>();
 
         Collection <DocumentResults> documentResults = postList.getCandidateDocumentsFiltered(c);
-        if(documentResults.isEmpty()){
+        if(documentResults==null){
            return null;
         }
         for(DocumentResults res: documentResults){
