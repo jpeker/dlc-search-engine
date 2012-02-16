@@ -54,7 +54,7 @@ public class PostList {
         while (iterator.hasNext()) {
             Map.Entry entry = (Map.Entry) iterator.next();
             int timesRepeated = (Integer) entry.getValue();
-            if (!DAOFactory.getActiveDAOFactory().getPostListDAO().isContains(entry.getKey().toString())) {
+            if (!DAOFactory.getActiveDAOFactory().getPostListDAO().Contains(entry.getKey().toString())) {
                 WordTracker wordTracker = new WordTracker(timesRepeated, documentLocation);
                 wordToAdd = new Word(entry.getKey().toString(), 1, wordTracker.getFrequency());
                 docToAdd = new Document(documentLocation, "");

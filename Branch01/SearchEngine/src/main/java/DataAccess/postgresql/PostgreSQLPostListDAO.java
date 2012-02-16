@@ -153,7 +153,7 @@ public class PostgreSQLPostListDAO implements PostListDAO {
 
     }
 
-    public boolean isContains(String palabra) {
+    public boolean Contains(String palabra) {
         boolean ret = false;
         PreparedStatement st;
         Connection con;
