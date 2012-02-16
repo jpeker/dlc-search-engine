@@ -165,7 +165,7 @@ public class LocalWordCountManager {
      * @return An Array of Similitude.
      */
 
-    public Collection<Similitude> determinateBestSimilitude(Document document) throws NullPointerException
+    public Collection<Similitude> determinateBestSimilitude(Document document) 
     {
         if(document ==null){
            return null;
@@ -178,7 +178,7 @@ public class LocalWordCountManager {
 
         Collection <DocumentResults> documentResults = postList.getCandidateDocumentsFiltered(c);
         if(documentResults.isEmpty()){
-            throw new NullPointerException("No  hay documentos candidatos");
+           return null;
         }
         for(DocumentResults res: documentResults){
             sumilitudes.add(this.determinateSimilitude(wordsOfQuery, res.getDocument(), document));
