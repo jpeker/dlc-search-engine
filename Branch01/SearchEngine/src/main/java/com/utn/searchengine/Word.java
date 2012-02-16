@@ -20,7 +20,9 @@ public class Word {
     public int getMaxTF() {
         return maxTF;
     }
-
+  public int getFrecuency() {
+        return maxTF;
+    }
     public void setMaxTF(int maxTF) {
         this.maxTF = maxTF;
     }
