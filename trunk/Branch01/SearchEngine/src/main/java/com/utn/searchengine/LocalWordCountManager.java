@@ -84,7 +84,7 @@ public class LocalWordCountManager implements WordCountManager{
         //System.out.println("Determinating inverse frecuency of word \" "+word.getName()+"\"");
         double N = getTotalNumberOfDocuments();
         //System.out.println("Total of documents: "+N);
-        double nr = word.getNr();
+        double nr = word.getFrecuency();
         //System.out.println("nr: "+nr);
         if(nr ==0){
             return 0;
