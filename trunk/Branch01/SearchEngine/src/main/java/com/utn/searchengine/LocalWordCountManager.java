@@ -21,7 +21,7 @@ import java.util.Map;
  * is migrated to database, but the interface probably will be the same.
  * @author altamirano,peker,liberal
  */
-public class LocalWordCountManager implements WordCountManager{
+public class LocalWordCountManager {
 
     private Vocabulary vocabulary; 
     private PostList postList ;
