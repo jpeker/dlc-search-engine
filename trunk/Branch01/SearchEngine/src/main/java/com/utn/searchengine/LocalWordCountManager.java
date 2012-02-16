@@ -97,7 +97,13 @@ public class LocalWordCountManager {
      * @return The module that represents de vector of the document.
      */
     public double getDocumentModule(Document document, double invFrecuency){
-       List<Word> words = postList.getWordsDocument(document);
+       if(document ==null){
+           return 0;
+       }
+       if(invFrecuency ==0){
+           return 0;
+       }   
+        List<Word> words = postList.getWordsDocument(document);
        double moduleResult =0;
         for(Word word: words){
             double termFrecuencyOnDocument = word.getFrecuency();
@@ -119,6 +125,12 @@ public class LocalWordCountManager {
      * @return The weight of the word on the Document.
      */
     public double estimateWeight(Word word, Document document){
+       if(document ==null){
+           return 0;
+       }
+       if(word ==null){
+           return 0;
+       }
         double tfri;
         if(document.getLocation().equalsIgnoreCase("query")){
             tfri = WordCount.getTF(word, document);
@@ -149,13 +161,20 @@ public class LocalWordCountManager {
      * @param document the query
      * @return An Array of Similitude.
      */
-    public Collection<Similitude> determinateBestSimilitude(Document document){
+    public Collection<Similitude> determinateBestSimilitude(Document document) throws NullPointerException
+    {
+        if(document ==null){
+           return null;
+       }
         Map <String, Integer> wordsOfQuery = WordCount.retrieveWordCount(document);
         wordsOfQuery = this.filterQuery(wordsOfQuery);
         Collection<String> c = wordsOfQuery.keySet();
         document.setModule( this.getQueryModule(wordsOfQuery));
         ArrayList<Similitude> sumilitudes = new ArrayList<Similitude>();
         Collection <DocumentResults> documentResults = postList.getCandidateDocumentsFiltered(c);
+        if(documentResults.size()==0){
+            throw new NullPointerException("No  hay documentos candidatos");
+        }
         for(DocumentResults res: documentResults){
             sumilitudes.add(this.determinateSimilitude(wordsOfQuery, res.getDocument(), document));
         }
