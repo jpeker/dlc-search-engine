@@ -23,12 +23,14 @@ import javax.swing.JOptionPane;
 public class JFrameSearchEngineGUI extends javax.swing.JFrame {
 
     DefaultListModel listmodel = new DefaultListModel();
+    DefaultListModel listmodel2 = new DefaultListModel();
 
     /**
      * Creates new form JFrameSearchEngineGUI
      */
     public JFrameSearchEngineGUI() {
         initComponents();
+        this.setTitle("MOTOR DE BUSQUEDA");
         blockPanels();
         jLabelCrawl.setVisible(false);
         jLabelSearching.setText("Buscando...");
@@ -77,6 +79,16 @@ public class JFrameSearchEngineGUI extends javax.swing.JFrame {
             }
         });
 
+        jListWorkloads.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jListWorkloadsMouseClicked(evt);
+            }
+        });
+        jListWorkloads.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                jListWorkloadsValueChanged(evt);
+            }
+        });
         jScrollPane1.setViewportView(jListWorkloads);
 
         jLabel1.setText("WebSite Base a Crawlear");
@@ -145,6 +157,11 @@ public class JFrameSearchEngineGUI extends javax.swing.JFrame {
             }
         });
 
+        jListLinksFounded.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jListLinksFoundedMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jListLinksFounded);
 
         jLabel9.setText("Links encontrados con la query buscada.");
@@ -278,6 +295,7 @@ public class JFrameSearchEngineGUI extends javax.swing.JFrame {
 
     private void jButtonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchActionPerformed
         Communicator.search = true;
+        listmodel2.clear();
         jTextFieldWordToSearch.setEnabled(false);
         jButtonSearch.setEnabled(false);
         LocalWordCountManager lwcm = new LocalWordCountManager();
@@ -285,18 +303,9 @@ public class JFrameSearchEngineGUI extends javax.swing.JFrame {
         if(i==null){
         JOptionPane.showMessageDialog( this,"La busqueda de "+ jTextFieldWordToSearch.getText().toLowerCase() +" no obtuvo ningun resultado.");
         }else{
-        DefaultListModel listmodel2 = new DefaultListModel();
+        
         for (Similitude similitude : i) {
             System.out.println("resultados " + similitude.getDocumentA().getLocation().toString());
-            try {
-                try {
-                    Desktop.getDesktop().browse(new URI(similitude.getDocumentA().getLocation().toString()));
-                } catch (URISyntaxException ex) {
-                    Logger.getLogger(JFrameSearchEngineGUI.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            } catch (IOException ex) {
-                Logger.getLogger(JFrameSearchEngineGUI.class.getName()).log(Level.SEVERE, null, ex);
-            }
             listmodel2.addElement(similitude.getDocumentA().getLocation().toString());
         }
         
@@ -306,6 +315,26 @@ public class JFrameSearchEngineGUI extends javax.swing.JFrame {
         jTextFieldWordToSearch.setEnabled(true);
         jButtonSearch.setEnabled(true);
     }//GEN-LAST:event_jButtonSearchActionPerformed
+
+private void jListWorkloadsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListWorkloadsMouseClicked
+//no usado
+}//GEN-LAST:event_jListWorkloadsMouseClicked
+
+private void jListWorkloadsValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListWorkloadsValueChanged
+//no usado
+}//GEN-LAST:event_jListWorkloadsValueChanged
+
+private void jListLinksFoundedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListLinksFoundedMouseClicked
+try {
+                try {
+                    Desktop.getDesktop().browse(new URI(jListLinksFounded.getSelectedValue().toString()));
+                } catch (URISyntaxException ex) {
+                    Logger.getLogger(JFrameSearchEngineGUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(JFrameSearchEngineGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+}//GEN-LAST:event_jListLinksFoundedMouseClicked
 
     private void blockPanels() {
         jPanelCrawler.setVisible(false);
