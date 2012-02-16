@@ -7,6 +7,7 @@ package com.utn.searchengineui;
 import com.spider.jspiderlibrary2.Communicator;
 import javax.swing.DefaultListModel;
 import com.utn.searchengine.*;
+import java.util.Collection;
 
 
 /**
@@ -304,7 +305,11 @@ public class JFrameSearchEngineGUI extends javax.swing.JFrame {
 
     private void jButtonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchActionPerformed
     LocalWordCountManager lwcm = new LocalWordCountManager();
-    lwcm.determinateBestSimilitude(new Document("query",jTextFieldWordToSearch.getText()));
+    Collection<Similitude> i = lwcm.determinateBestSimilitude(new Document("query",jTextFieldWordToSearch.getText()));
+    for(Similitude similitude: i){
+           System.out.println("results are "+similitude.getDocumentA().getLocation().toString());
+
+        }
     }//GEN-LAST:event_jButtonSearchActionPerformed
 
     private void blockPanels(){
