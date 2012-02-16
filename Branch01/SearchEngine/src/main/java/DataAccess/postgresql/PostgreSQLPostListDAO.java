@@ -266,7 +266,6 @@ public class PostgreSQLPostListDAO implements PostListDAO {
                 System.out.println("Exception retrieving filtered candidate documents" + ex.getMessage());
                 ret = null;
             }
-            System.out.println("---Cantidad de documentos encontrados: " + ret.size());
             return ret;
         }
     }
