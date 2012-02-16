@@ -24,6 +24,8 @@ public class JFrameSearchEngineGUI extends javax.swing.JFrame {
         initComponents(); 
         blockPanels();
         jLabelCrawl.setVisible(false);
+        jLabelSearching.setText("Buscando...");
+        jLabelSearching.setVisible(false);
     }
 
     /**
@@ -48,8 +50,6 @@ public class JFrameSearchEngineGUI extends javax.swing.JFrame {
         jPanelSearcher = new javax.swing.JPanel();
         jTextFieldWordToSearch = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jProgressSearch = new javax.swing.JProgressBar();
-        jLabel7 = new javax.swing.JLabel();
         jLabelSearching = new javax.swing.JLabel();
         jButtonSearch = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -129,9 +129,7 @@ public class JFrameSearchEngineGUI extends javax.swing.JFrame {
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
-        jLabel6.setText("Inserte aqui la palabra que desea Searchear");
-
-        jLabel7.setText("Progreso de la busqueda");
+        jLabel6.setText("Inserte aqui la query que desea Searchear");
 
         jLabelSearching.setText("Buscando...");
 
@@ -144,7 +142,7 @@ public class JFrameSearchEngineGUI extends javax.swing.JFrame {
 
         jScrollPane2.setViewportView(jListLinksFounded);
 
-        jLabel9.setText("Links encontrados con la palabra buscada.");
+        jLabel9.setText("Links encontrados con la query buscada.");
 
         javax.swing.GroupLayout jPanelSearcherLayout = new javax.swing.GroupLayout(jPanelSearcher);
         jPanelSearcher.setLayout(jPanelSearcherLayout);
@@ -156,16 +154,16 @@ public class JFrameSearchEngineGUI extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanelSearcherLayout.createSequentialGroup()
                         .addGroup(jPanelSearcherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jTextFieldWordToSearch, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jProgressSearch, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanelSearcherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelSearching, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonSearch))))
+                        .addComponent(jButtonSearch))
+                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE))
                 .addContainerGap(34, Short.MAX_VALUE))
+            .addGroup(jPanelSearcherLayout.createSequentialGroup()
+                .addGap(138, 138, 138)
+                .addComponent(jLabelSearching, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(180, Short.MAX_VALUE))
         );
         jPanelSearcherLayout.setVerticalGroup(
             jPanelSearcherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,16 +175,11 @@ public class JFrameSearchEngineGUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextFieldWordToSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButtonSearch))
-                .addGap(7, 7, 7)
-                .addGroup(jPanelSearcherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelSearcherLayout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jProgressSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabelSearching, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addComponent(jLabelSearching)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19))
         );
@@ -271,6 +264,8 @@ public class JFrameSearchEngineGUI extends javax.swing.JFrame {
         blockPanels();
         jPanelCrawler.setVisible(true);
         jListWorkloads.setModel(listmodel);
+       
+
         
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
@@ -304,13 +299,33 @@ public class JFrameSearchEngineGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_JButtonCrawlActionPerformed
 
     private void jButtonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchActionPerformed
+    Communicator.search=true;
+    //execute();
+    //jTextFieldWordToSearch.setEnabled(false);
+    //jButtonSearch.setEnabled(false);
     LocalWordCountManager lwcm = new LocalWordCountManager();
     Collection<Similitude> i = lwcm.determinateBestSimilitude(new Document("query",jTextFieldWordToSearch.getText()));
+    DefaultListModel listmodel2= new DefaultListModel();
     for(Similitude similitude: i){
            System.out.println("results are "+similitude.getDocumentA().getLocation().toString());
-
+           listmodel2.addElement(similitude.getDocumentA().getLocation().toString());
         }
+    Communicator.search=false;
+    jListLinksFounded.setModel(listmodel2);
+     jTextFieldWordToSearch.setEnabled(true);
+   jButtonSearch.setEnabled(true);
     }//GEN-LAST:event_jButtonSearchActionPerformed
+
+    private void execute(){
+    
+     GUIManager g1= new GUIManager(jLabelSearching);
+     ProgressBarRunnable pb1= new ProgressBarRunnable(g1);
+     pb1.start();
+    JButtonWorker jb = new JButtonWorker(jButtonSearch);
+     JTextBoxWorker jt = new JTextBoxWorker(jTextFieldWordToSearch);
+     jb.execute();
+     jt.execute();
+    }
 
     private void blockPanels(){
     jPanelCrawler.setVisible(false);
@@ -366,7 +381,6 @@ public class JFrameSearchEngineGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelCrawl;
     private javax.swing.JLabel jLabelCrawling;
@@ -382,7 +396,6 @@ public class JFrameSearchEngineGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelCrawler;
     private javax.swing.JPanel jPanelSearcher;
     private javax.swing.JPanel jPanelWorking;
-    private javax.swing.JProgressBar jProgressSearch;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextFieldTextToCrawl;

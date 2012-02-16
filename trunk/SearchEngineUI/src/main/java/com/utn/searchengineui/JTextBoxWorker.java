@@ -23,7 +23,7 @@ public class JTextBoxWorker extends SwingWorker<String,Object> {
 
     @Override
     protected String doInBackground() throws Exception {
-    while(Communicator.crawl==true){
+    while(Communicator.crawl==true || Communicator.search==true){
     jtext.setEnabled(false);
     }
     jtext.setEnabled(true);

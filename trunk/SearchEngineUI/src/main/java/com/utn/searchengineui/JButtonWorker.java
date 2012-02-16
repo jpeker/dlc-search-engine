@@ -24,7 +24,7 @@ public class JButtonWorker  extends SwingWorker<String,Object> {
 
     @Override
     protected String doInBackground() throws Exception {
-    while(Communicator.crawl==true){
+    while(Communicator.crawl==true || Communicator.crawl==true){
     jbutton.setEnabled(false);}
     jbutton.setEnabled(true);
     return "listok";
