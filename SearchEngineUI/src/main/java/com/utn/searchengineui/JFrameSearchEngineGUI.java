@@ -283,7 +283,7 @@ public class JFrameSearchEngineGUI extends javax.swing.JFrame {
         LocalWordCountManager lwcm = new LocalWordCountManager();
         Collection<Similitude> i = lwcm.determinateBestSimilitude(new Document("query", jTextFieldWordToSearch.getText().toLowerCase()));
         if(i==null){
-        JOptionPane.showMessageDialog( this,"La búsqueda de "+ jTextFieldWordToSearch.getText().toLowerCase() +"no obtuvo ningún resultado.");
+        JOptionPane.showMessageDialog( this,"La busqueda de "+ jTextFieldWordToSearch.getText().toLowerCase() +" no obtuvo ningun resultado.");
         }else{
         DefaultListModel listmodel2 = new DefaultListModel();
         for (Similitude similitude : i) {
