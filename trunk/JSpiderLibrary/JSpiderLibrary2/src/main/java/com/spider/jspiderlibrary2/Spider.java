@@ -48,10 +48,7 @@ public class Spider {
      * Una Coleccion de URLs que no seran usadas porque
      * no emplean texto significativo
      */
-    //private Collection workloadUnused = new ArrayList(3);
-    /**
-     * The class that the spider should report its URLs to
-     */
+
     protected ISpiderReportable report;
     /**
      * Flags que indican cuando el proceso del crawler debe
@@ -129,7 +126,7 @@ public class Spider {
             } //A partir de esa string creo otra url nueva sin la barra para evitar
             //ambiguedades
             catch (MalformedURLException e) {
-                //log("Found malformed URL: " + splitslash );
+                log("malformed URL: " + splitslash );
             }
         }
         //Si ya esta presente la url en alguna de las 3 listas no la empleo mas
@@ -145,7 +142,6 @@ public class Spider {
         if (!isTextPage(url)) {
             return;
         }
-        //  log("Adding to workload: " + url );
         //Sino la añado al cola de espera
         getWorkloadWaiting().add(url);
     }
@@ -167,7 +163,7 @@ public class Spider {
             URLConnection connection = url.openConnection();
             return isTextPage(connection);
         } catch (IOException e) {
-            System.out.println("Error processing url, " + e.getMessage());
+            log("Errorurl, " + e.getMessage());
         }
         return false;
     }
@@ -192,7 +188,6 @@ public class Spider {
             if (!isTextPage(connection)) {
                 getWorkloadWaiting().remove(url);
                 getWorkloadProcessed().add(url);
-                //log("Not processing because content type is: " + connection.getContentType() );
                 return;
             }
             //Creo los flujos y reader para leer y parsear la url
@@ -206,7 +201,6 @@ public class Spider {
             //E informo error en la URL
             getWorkloadWaiting().remove(url);
             getWorkloadError().add(url);
-            // log("Error: " + url );
             report.spiderFoundURLError(url);
             return;
         }
@@ -217,7 +211,6 @@ public class Spider {
         getWorkloadProcessed().add(url);
         //Vacio el StringBuilder
         SBConcatText.delete(0, SBConcatText.length());
-        // log("Complete: " + url );
         System.out.println("EL tamao de waiting" + getWorkloadWaiting().size() + "EL tamaño de processesed" + getWorkloadProcessed().size());
         Communicator.totalLinks++;
     }
@@ -408,7 +401,7 @@ public class Spider {
                     addURL(url);
                 }
             } catch (MalformedURLException e) {
-                //log("Found malformed URL: " + str );
+                log("malformed URL: " + str );
             }
         }
     }

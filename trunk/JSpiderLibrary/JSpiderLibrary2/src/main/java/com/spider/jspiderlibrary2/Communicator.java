@@ -104,7 +104,6 @@ public class Communicator implements ISpiderReportable, Runnable {
     @Override
     public void spiderFoundURLError(URL url) {
         badLinksCount++;
-        //System.out.println(url + " gots errors");
     }
 
     public static ArrayList SearchEngineContentToUi(ArrayList<String> listOfLinks) {
