@@ -5,23 +5,29 @@
 package com.utn.searchengineui;
 
 import com.spider.jspiderlibrary2.Communicator;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import com.utn.searchengine.*;
+import java.awt.Desktop;
+import java.net.URI;
 import java.util.Collection;
-
 
 /**
  *
- * @author PC ACER
+ * @author altamirano,peker,liberal
  */
 public class JFrameSearchEngineGUI extends javax.swing.JFrame {
 
-    DefaultListModel listmodel= new DefaultListModel();
+    DefaultListModel listmodel = new DefaultListModel();
+
     /**
      * Creates new form JFrameSearchEngineGUI
      */
     public JFrameSearchEngineGUI() {
-        initComponents(); 
+        initComponents();
         blockPanels();
         jLabelCrawl.setVisible(false);
         jLabelSearching.setText("Buscando...");
@@ -55,8 +61,6 @@ public class JFrameSearchEngineGUI extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jListLinksFounded = new javax.swing.JList();
         jLabel9 = new javax.swing.JLabel();
-        jPanelWorking = new javax.swing.JPanel();
-        jLabelCrawling = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -184,25 +188,6 @@ public class JFrameSearchEngineGUI extends javax.swing.JFrame {
                 .addGap(19, 19, 19))
         );
 
-        jLabelCrawling.setText("Realizando Crawleo Aguarde unos Momentos");
-
-        javax.swing.GroupLayout jPanelWorkingLayout = new javax.swing.GroupLayout(jPanelWorking);
-        jPanelWorking.setLayout(jPanelWorkingLayout);
-        jPanelWorkingLayout.setHorizontalGroup(
-            jPanelWorkingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelWorkingLayout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(jLabelCrawling, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(74, Short.MAX_VALUE))
-        );
-        jPanelWorkingLayout.setVerticalGroup(
-            jPanelWorkingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelWorkingLayout.createSequentialGroup()
-                .addGap(126, 126, 126)
-                .addComponent(jLabelCrawling)
-                .addContainerGap(144, Short.MAX_VALUE))
-        );
-
         jMenu1.setText("Opciones");
 
         jMenuItem1.setText("Crawlear");
@@ -242,8 +227,6 @@ public class JFrameSearchEngineGUI extends javax.swing.JFrame {
                 .addComponent(jPanelCrawler, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanelSearcher, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanelWorking, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -252,21 +235,15 @@ public class JFrameSearchEngineGUI extends javax.swing.JFrame {
                 .addComponent(jPanelCrawler, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanelSearcher, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanelWorking, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-
         blockPanels();
         jPanelCrawler.setVisible(true);
         jListWorkloads.setModel(listmodel);
-       
-
-        
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -279,58 +256,54 @@ public class JFrameSearchEngineGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void JButtonCrawlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonCrawlActionPerformed
-     Thread com = new Thread(new Communicator());
-     listmodel.clear();
-     Communicator.textToCrawl=jTextFieldTextToCrawl.getText();
-     Communicator.crawl=true;
-     GUIManager g1= new GUIManager(jLabelCrawl);
-     GUIManager g2= new GUIManager(jLabelTotalLinks);
-     JListWorker jlw = new JListWorker(jListWorkloads,listmodel);
-     ProgressBarRunnable pb1= new ProgressBarRunnable(g1);
-     ReturnDataRunnable pb2= new ReturnDataRunnable(g2);
-     JButtonWorker jb = new JButtonWorker(JButtonCrawl);
-     JTextBoxWorker jt = new JTextBoxWorker(jTextFieldTextToCrawl);
-     com.start();
-     jb.execute();
-     jt.execute();
-     pb1.start();
-     pb2.start();
-     jlw.execute();
+        Thread com = new Thread(new Communicator());
+        listmodel.clear();
+        Communicator.textToCrawl = jTextFieldTextToCrawl.getText();
+        Communicator.crawl = true;
+        GUIManager g1 = new GUIManager(jLabelCrawl);
+        GUIManager g2 = new GUIManager(jLabelTotalLinks);
+        JListWorker jlw = new JListWorker(jListWorkloads, listmodel);
+        LabelRunnable pb1 = new LabelRunnable(g1);
+        ReturnDataRunnable pb2 = new ReturnDataRunnable(g2);
+        JButtonWorker jb = new JButtonWorker(JButtonCrawl);
+        JTextBoxWorker jt = new JTextBoxWorker(jTextFieldTextToCrawl);
+        com.start();
+        jb.execute();
+        jt.execute();
+        pb1.start();
+        pb2.start();
+        jlw.execute();
     }//GEN-LAST:event_JButtonCrawlActionPerformed
 
     private void jButtonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchActionPerformed
-    Communicator.search=true;
-    //execute();
-    //jTextFieldWordToSearch.setEnabled(false);
-    //jButtonSearch.setEnabled(false);
-    LocalWordCountManager lwcm = new LocalWordCountManager();
-    Collection<Similitude> i = lwcm.determinateBestSimilitude(new Document("query",jTextFieldWordToSearch.getText()));
-    DefaultListModel listmodel2= new DefaultListModel();
-    for(Similitude similitude: i){
-           System.out.println("results are "+similitude.getDocumentA().getLocation().toString());
-           listmodel2.addElement(similitude.getDocumentA().getLocation().toString());
+        Communicator.search = true;
+        jTextFieldWordToSearch.setEnabled(false);
+        jButtonSearch.setEnabled(false);
+        LocalWordCountManager lwcm = new LocalWordCountManager();
+        Collection<Similitude> i = lwcm.determinateBestSimilitude(new Document("query", jTextFieldWordToSearch.getText()));
+        DefaultListModel listmodel2 = new DefaultListModel();
+        for (Similitude similitude : i) {
+            System.out.println("resultados " + similitude.getDocumentA().getLocation().toString());
+            try {
+                try {
+                    Desktop.getDesktop().browse(new URI(similitude.getDocumentA().getLocation().toString()));
+                } catch (URISyntaxException ex) {
+                    Logger.getLogger(JFrameSearchEngineGUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(JFrameSearchEngineGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            listmodel2.addElement(similitude.getDocumentA().getLocation().toString());
         }
-    Communicator.search=false;
-    jListLinksFounded.setModel(listmodel2);
-     jTextFieldWordToSearch.setEnabled(true);
-   jButtonSearch.setEnabled(true);
+        Communicator.search = false;
+        jListLinksFounded.setModel(listmodel2);
+        jTextFieldWordToSearch.setEnabled(true);
+        jButtonSearch.setEnabled(true);
     }//GEN-LAST:event_jButtonSearchActionPerformed
 
-    private void execute(){
-    
-     GUIManager g1= new GUIManager(jLabelSearching);
-     ProgressBarRunnable pb1= new ProgressBarRunnable(g1);
-     pb1.start();
-    JButtonWorker jb = new JButtonWorker(jButtonSearch);
-     JTextBoxWorker jt = new JTextBoxWorker(jTextFieldWordToSearch);
-     jb.execute();
-     jt.execute();
-    }
-
-    private void blockPanels(){
-    jPanelCrawler.setVisible(false);
-    jPanelSearcher.setVisible(false);
-    jPanelWorking.setVisible(false);
+    private void blockPanels() {
+        jPanelCrawler.setVisible(false);
+        jPanelSearcher.setVisible(false);
     }
     /*
      * @param args the command line arguments
@@ -383,7 +356,6 @@ public class JFrameSearchEngineGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelCrawl;
-    private javax.swing.JLabel jLabelCrawling;
     private javax.swing.JLabel jLabelSearching;
     private javax.swing.JLabel jLabelTotalLinks;
     private javax.swing.JList jListLinksFounded;
@@ -395,12 +367,9 @@ public class JFrameSearchEngineGUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanelCrawler;
     private javax.swing.JPanel jPanelSearcher;
-    private javax.swing.JPanel jPanelWorking;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextFieldTextToCrawl;
     private javax.swing.JTextField jTextFieldWordToSearch;
     // End of variables declaration//GEN-END:variables
- 
-
 }
