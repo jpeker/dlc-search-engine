@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+    <siteMapNode url="~/Default.aspx" title="Inicio"  description="Inicio">
+        <siteMapNode url="~/Login.aspx" title="Login"  description="Login" />
+        <siteMapNode url="~/Incidentes/Incidentes.aspx" title="Incidentes"  description="Incidentes" />
+      <siteMapNode url="~/Reportes/ListadoIncidentes.aspx" title=" Listado de Incidentes"  description="Listado de Incidentes" />
+      <siteMapNode url="~/Reportes/Estadisticas.aspx" title="Estadisticas"  description="Estadisticas" />
+      <siteMapNode url="~/admin/CambiaPassword.aspx" title="Cambio de Password" description="Cambio de Password" />
+      <siteMapNode url="~/admin/NuevoUsuario.aspx" title="Nuevo Usuario" description="Nuevo Usuario" />
+      <siteMapNode url="~/admin/Administracion.aspx" title="Administración" description="Administración"/>
+    </siteMapNode>
+</siteMap>
