@@ -4,6 +4,7 @@
         <siteMapNode url="~/Login.aspx" title="Login"  description="Login" />
         <siteMapNode url="~/Incidentes/Incidentes.aspx" title="Incidentes"  description="Incidentes" />
       <siteMapNode url="~/Reportes/ListadoIncidentes.aspx" title=" Listado de Incidentes"  description="Listado de Incidentes" />
+      <siteMapNode url="~/Incidentes/NuevoIncidente.aspx" title="Nuevo Incidente" description="Nuevo Incidente"/>
       <siteMapNode url="~/Reportes/Estadisticas.aspx" title="Estadisticas"  description="Estadisticas" />
       <siteMapNode url="~/admin/CambiaPassword.aspx" title="Cambio de Password" description="Cambio de Password" />
       <siteMapNode url="~/admin/NuevoUsuario.aspx" title="Nuevo Usuario" description="Nuevo Usuario" />
