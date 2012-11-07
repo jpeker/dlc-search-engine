@@ -13,7 +13,11 @@ public partial class Incidentes_Incidentes : System.Web.UI.Page
     {
         helpdesk hdMaster = (helpdesk)this.Master;
         ((Label)hdMaster.FindControl("lblTitulo")).Text = "Incidentes";
-        EnlazarGrilla("Fecha asc");
+        if (!Page.IsPostBack)
+        {
+            EnlazarGrilla("Fecha asc");
+            CargarListaEstados();
+        }
     }
     private void EnlazarGrilla(String criterio)
     {
@@ -32,5 +36,38 @@ public partial class Incidentes_Incidentes : System.Web.UI.Page
     {
         EnlazarGrilla(string.Format("{0} {1}", e.SortExpression,
 (e.SortDirection == SortDirection.Ascending) ? "ASC" : "DESC"));
+    }
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        SqlCommand cmd = new SqlCommand("L50221_sp_BuscarIncidentes",Datos.ObtenerConexion());
+        //Le indicamos que es de tipo Stored Procedure
+        cmd.CommandType = CommandType.StoredProcedure;
+        //Le agregamos los parámetros
+        cmd.Parameters.Add(new SqlParameter("@Titulo", txtTitulo.Text));
+        cmd.Parameters.Add(new SqlParameter("@IdEstado",int.Parse( ddlEstado.SelectedItem.Value)));
+        //Cargamos un Dataset mediante un SqlDataAdapter
+        DataSet incidentes = new DataSet();
+        SqlDataAdapter da = new SqlDataAdapter(cmd);
+        da.Fill(incidentes, "Incidentes");
+        //Le aplicamos el orden a su DefaultView
+        DataView dv = incidentes.Tables["Incidentes"].DefaultView;
+        dv.Sort = " Fecha asc";
+        //Enlazamos a la GridView
+        gvIncidentes.DataSource = dv;
+        gvIncidentes.DataBind();
+    }
+    protected void CargarListaEstados()
+    {
+
+        SqlConnection con = Datos.ObtenerConexion();
+        String SqlS = "L50221_sp_ObtenerEstados";
+      
+        this.ddlEstado.DataSource = Datos.getDataReader(SqlS, con);
+        this.ddlEstado.DataValueField = "IdEstado";
+        this.ddlEstado.DataTextField = "Estado";
+      
+        ddlEstado.DataBind();
+        ddlEstado.Items.Insert(0, new ListItem("Todos", "0"));
+      
     }
 }
