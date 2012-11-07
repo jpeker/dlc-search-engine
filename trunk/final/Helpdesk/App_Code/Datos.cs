@@ -31,4 +31,9 @@ public static class Datos
         da.Fill(ds, dataTable);
         return ds;
     }
+    public static SqlDataReader getDataReader(string strSQL, SqlConnection con)
+    {
+        SqlCommand cmd = new SqlCommand(strSQL, con);
+        return cmd.ExecuteReader();
+    }
 }
