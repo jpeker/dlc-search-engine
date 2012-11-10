@@ -1,24 +1,24 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Helpdesk", "D:\FinalPav2\final\Helpdesk", "{5EADA391-5D91-485A-AEE0-E0E773F2A11A}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Helpdesk", ".", "{32E06D5F-D3AC-4B95-84B1-7063B10F2466}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		Debug.AspNetCompiler.VirtualPath = "/Helpdesk(1)"
-		Debug.AspNetCompiler.PhysicalPath = "D:\FinalPav2\final\Helpdesk\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Helpdesk(1)\"
+		Debug.AspNetCompiler.VirtualPath = "/Helpdesk"
+		Debug.AspNetCompiler.PhysicalPath = "..\Helpdesk\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Helpdesk\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/Helpdesk(1)"
-		Release.AspNetCompiler.PhysicalPath = "D:\FinalPav2\final\Helpdesk\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\Helpdesk(1)\"
+		Release.AspNetCompiler.VirtualPath = "/Helpdesk"
+		Release.AspNetCompiler.PhysicalPath = "..\Helpdesk\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\Helpdesk\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "4420"
+		VWDPort = "54090"
 	EndProjectSection
 EndProject
 Global
@@ -26,8 +26,8 @@ Global
 		Debug|Any CPU = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5EADA391-5D91-485A-AEE0-E0E773F2A11A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5EADA391-5D91-485A-AEE0-E0E773F2A11A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32E06D5F-D3AC-4B95-84B1-7063B10F2466}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32E06D5F-D3AC-4B95-84B1-7063B10F2466}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
