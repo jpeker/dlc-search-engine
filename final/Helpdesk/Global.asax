@@ -1,5 +1,6 @@
 ﻿<%@ Application Language="C#" %>
-
+<%@ Import Namespace="System.Web.Security" %>
+<%@ Import Namespace="System.Security.Principal" %>
 <script runat="server">
 
     void Application_Start(object sender, EventArgs e) 
@@ -33,6 +34,37 @@
         // se establece como InProc en el archivo Web.config. Si el modo de sesión se establece como StateServer 
         // o SQLServer, el evento no se genera.
 
+    }
+    protected void Application_AuthenticateRequest(object sender,
+EventArgs e)
+    {
+        // Recupera la cookie
+        HttpCookie authCookie = Context.Request.Cookies["testseguridad"];
+        if (null == authCookie)
+        {
+            // Si no existe termina
+            return;
+        }
+        FormsAuthenticationTicket autTicket = null;
+        try
+        {
+            autTicket = FormsAuthentication.Decrypt(authCookie.Value);
+        }
+        catch (Exception ex)
+        {
+            return;
+        }
+        if (null == autTicket)
+        {
+            // No se pudo desencriptar
+            return;
+        }
+        // Separo los roles
+        String[] roles = autTicket.UserData.Split(new char[] { '|' });
+        // Creo un objeto Identity y lo vinculo al Context
+        GenericIdentity id = new GenericIdentity(autTicket.Name, "testSeguridad");
+        GenericPrincipal principal = new GenericPrincipal(id, roles);
+        Context.User = principal;
     }
        
 </script>
