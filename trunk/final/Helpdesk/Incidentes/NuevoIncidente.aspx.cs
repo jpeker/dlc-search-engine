@@ -14,11 +14,18 @@ public partial class Incidentes_NuevoIncidente : System.Web.UI.Page
         ((Label)hdMaster.FindControl("lblTitulo")).Text = "Nuevo Incidentes";
         if (!Page.IsPostBack)
         {
+            if(Session["Titulo"]!=  null)
+            {
+                txtTitulo.Text = Session["Titulo"].ToString();
+               // DateTime pa = DateTime.Parse(Session["Fecha"].ToString());
+                txtFecha.Text = Session["Fecha"].ToString();
+            }
             txtFecha.Text = DateTime.Now.ToString("yyyy/MM/dd");
             CargarTipo();
             cargarAsginado();
             CargarEstado();
             CargarProducto();
+            ddlAsignadoa.SelectedIndex = 1;
           
         }
     }

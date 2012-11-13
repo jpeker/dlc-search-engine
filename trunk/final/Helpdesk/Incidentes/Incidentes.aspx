@@ -11,7 +11,8 @@
     <asp:GridView ID="gvIncidentes" runat="server" AllowPaging="True" 
         AllowSorting="True" AutoGenerateColumns="False" 
         onpageindexchanging="gvIncidentes_PageIndexChanging" 
-        onsorting="gvIncidentes_Sorting">
+        onsorting="gvIncidentes_Sorting" 
+        onselectedindexchanged="gvIncidentes_SelectedIndexChanged">
         <Columns>
             <asp:BoundField DataField="Titulo" HeaderText="Titulo" />
             <asp:BoundField DataField="Fecha" DataFormatString="{0:d}" HeaderText="Fecha" 
@@ -19,6 +20,7 @@
             <asp:BoundField DataField="Usuario" HeaderText="Usuario" />
             <asp:BoundField DataField="Producto" HeaderText="Producto" />
             <asp:BoundField DataField="Estado" HeaderText="Estado" />
+            <asp:CommandField ShowSelectButton="True" />
         </Columns>
     </asp:GridView>
 </asp:Content>
