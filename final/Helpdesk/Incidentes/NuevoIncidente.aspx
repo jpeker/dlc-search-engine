@@ -1,42 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/helpdesk.master" AutoEventWireup="true" CodeFile="NuevoIncidente.aspx.cs" Inherits="Incidentes_NuevoIncidente" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-<script language="javascript" type="text/javascript">
-<!--
-    function tiposelecionado(source, arguments) {
-        if (arguments.Value < 1) {
-            arguments.IsValid = false;
-        }
-        else {
-            arguments.IsValid = true;
-        }
-    }
-    function productoselecionado(source, arguments) {
-        if (arguments.Value < 1) {
-            arguments.IsValid = false;
-        }
-        else {
-            arguments.IsValid = true;
-        }
-    }
-    function asignadoselecionado(source, arguments) {
-        if (arguments.Value < 1) {
-            arguments.IsValid = false;
-        }
-        else {
-            arguments.IsValid = true;
-        }
-    }
-    function estadoselecionado(source, arguments) {
-        if (arguments.Value < 1) {
-            arguments.IsValid = false;
-        }
-        else {
-            arguments.IsValid = true;
-        }
-    }
-//-->
-</script>
+
     <style type="text/css">
         .style4
         {
@@ -99,10 +64,9 @@
             <td>
                 <asp:DropDownList ID="ddlEstado" runat="server">
                 </asp:DropDownList>
-                <asp:CustomValidator ID="cusEstado" runat="server" 
-                    ClientValidationFunction="estadoselecionado" Display="Dynamic" 
+                <asp:CustomValidator ID="cusEstado" runat="server" Display="Dynamic" 
                     ErrorMessage="Debe selecionar un estado valido" 
-                    ControlToValidate="ddlEstado" onservervalidate="cusEstado_ServerValidate" >*</asp:CustomValidator>
+                    ControlToValidate="ddlEstado" >*</asp:CustomValidator>
                 </td>
         </tr>
         <tr>
@@ -115,9 +79,8 @@
             <td class="style8">
                 <asp:CustomValidator ID="cusProducto" runat="server" 
                     ControlToValidate="ddlProducto" 
-                    ErrorMessage="Debe Selecionar un producto valido" 
-                    ClientValidationFunction="productoselecionado" Display="Dynamic" 
-                    onservervalidate="cusProducto_ServerValidate">*</asp:CustomValidator>
+                    ErrorMessage="Debe Selecionar un producto valido" Display="Dynamic" 
+                   >*</asp:CustomValidator>
             </td>
             <td class="style7">
                 Asignado</td>
@@ -126,9 +89,8 @@
                 </asp:DropDownList>
                 <asp:CustomValidator ID="cusAsignado" runat="server" 
                     ControlToValidate="ddlAsignadoa" 
-                    ErrorMessage="Debe Selecionar un asignado valido" 
-                    ClientValidationFunction="asignadoselecionado" Display="Dynamic" 
-                    onservervalidate="cusAsignado_ServerValidate" >*</asp:CustomValidator>
+                    ErrorMessage="Debe Selecionar un asignado valido" Display="Dynamic" 
+                 >*</asp:CustomValidator>
             </td>
         </tr>
         <tr>
@@ -184,7 +146,7 @@
             </td>
             <td>
                 <asp:Button ID="Button2" runat="server" onclick="Button2_Click" 
-                    Text="Cancelar" />
+                    Text="Cancelar" CausesValidation="False" />
             </td>
         </tr>
     </table>
