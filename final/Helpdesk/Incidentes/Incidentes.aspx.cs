@@ -70,4 +70,10 @@ public partial class Incidentes_Incidentes : System.Web.UI.Page
         ddlEstado.Items.Insert(0, new ListItem("Todos", "0"));
       
     }
+    protected void gvIncidentes_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        Session["Titulo"] = gvIncidentes.SelectedRow.Cells[0].Text;
+        Session["Fecha"] = gvIncidentes.SelectedRow.Cells[1].Text;
+        Response.Redirect("NuevoIncidente.aspx");
+    }
 }
