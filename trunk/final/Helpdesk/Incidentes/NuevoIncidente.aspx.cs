@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.SqlClient;
 
 public partial class Incidentes_NuevoIncidente : System.Web.UI.Page
 {
@@ -13,24 +14,12 @@ public partial class Incidentes_NuevoIncidente : System.Web.UI.Page
         ((Label)hdMaster.FindControl("lblTitulo")).Text = "Nuevo Incidentes";
         if (!Page.IsPostBack)
         {
-            txtFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
-            ddlTipo.Items.Add(new ListItem("---Seleccione una opción---", "0"));
-            ddlTipo.Items.Add(new ListItem("Tecnología", "1"));
-            ddlTipo.Items.Add(new ListItem("Software", "2"));
-            ddlTipo.Items.Add(new ListItem("Mantenimiento", "3"));
-            ddlProducto.Items.Add(new ListItem("---Seleccione unaopción---", "0"));
-            ddlProducto.Items.Add(new ListItem("Producto1", "1"));
-            ddlProducto.Items.Add(new ListItem("Producto2", "2"));
-            ddlProducto.Items.Add(new ListItem("Producto3", "3"));
-            ddlEstado.Items.Add(new ListItem("---Seleccione una opción---", "0"));
-            ddlEstado.Items.Add(new ListItem("Registrado", "1"));
-            ddlEstado.Items.Add(new ListItem("Asignado", "2"));
-            ddlEstado.Items.Add(new ListItem("Suspendido", "3"));
-            ddlEstado.Items.Add(new ListItem("Cancelado", "4"));
-            ddlEstado.Items.Add(new ListItem("Resuelto", "5"));
-            ddlAsignadoa.Items.Add(new ListItem("---Seleccione una opción---", "0"));
-            ddlAsignadoa.Items.Add(new ListItem("Resolutor 1", "1"));
-            ddlAsignadoa.Items.Add(new ListItem("Resolutor 2", "2"));
+            txtFecha.Text = DateTime.Now.ToString("yyyy/MM/dd");
+            CargarTipo();
+            cargarAsginado();
+            CargarEstado();
+            CargarProducto();
+          
         }
     }
 
@@ -66,7 +55,32 @@ public partial class Incidentes_NuevoIncidente : System.Web.UI.Page
     protected void Button1_Click(object sender, EventArgs e)
     {
         if (Page.IsValid)
-            lblMensaje.Text = "Incidente registrado con éxito";
+        {
+            
+            using (SqlConnection con = Datos.ObtenerConexion())
+            {
+                //con.Open();
+                SqlTransaction tran = con.BeginTransaction();
+                String cadena="Insert into Incidentes(Titulo,Fecha,IdTipo,IdProducto,Usuario,IdUsuarioAsignado,FechaResolucion,Email,Descripcion,IdEstado)" ;
+                cadena += " values ( '" + txtTitulo.Text + "','" + txtFecha.Text + "'," + ddlTipo.SelectedItem.Value + "," + ddlProducto.SelectedItem.Value + ",'" + txtUsuario.Text +"',"+ddlAsignadoa.SelectedItem.Value+ ",'";
+                cadena += txtFechaEstimadaResolucion.Text + "','" + txtEmail.Text + "','" + txtDescripcion.Text + "'," + ddlEstado.SelectedItem.Value + ")";
+                SqlCommand cmd = new SqlCommand(cadena, con);
+                cmd.Transaction = tran;
+                try 
+                {
+                    cmd.ExecuteNonQuery();
+                    tran.Commit();
+                    lblMensaje.Text = "Incidente registrado con éxito";
+                
+                }
+                catch(Exception ex)
+                {
+                    tran.Rollback();
+                    lblMensaje.Text = "Mensaje " + ex.Message;
+                }
+                con.Close();
+            }
+        }
         else
             lblMensaje.Text = "No se pudo registrar el incidente";
     }
@@ -74,4 +88,51 @@ public partial class Incidentes_NuevoIncidente : System.Web.UI.Page
     {
         Response.Redirect("Incidentes.aspx");
     }
+    private void CargarTipo()
+    {
+        SqlConnection con = Datos.ObtenerConexion();
+            String  sqls="Select * from Tipos";
+        ddlTipo.DataSource=Datos.getDataReader(sqls,con);
+        ddlTipo.DataTextField="Tipo";
+        ddlTipo.DataValueField="IdTipo";
+        ddlTipo.DataBind();
+        ddlTipo.Items.Insert(0, new ListItem("Seleccione", "0"));
+        con.Close();
+    }
+    private void CargarProducto()
+    {
+        SqlConnection con = Datos.ObtenerConexion();
+        String sqls = "Select * from Productos";
+        ddlProducto.DataSource = Datos.getDataReader(sqls, con);
+        ddlProducto.DataTextField = "Producto";
+        ddlProducto.DataValueField = "IdProducto";
+        ddlProducto.DataBind();
+        ddlProducto.Items.Insert(0, new ListItem("Seleccione", "0"));
+        con.Close();
+    }
+    private void CargarEstado() 
+    {
+        SqlConnection con = Datos.ObtenerConexion();
+        String sqls = "Select * from Estados";
+        ddlEstado.DataSource = Datos.getDataReader(sqls,con);
+        ddlEstado.DataTextField = "Estado";
+        ddlEstado.DataValueField = "IdEstado";
+        ddlEstado.DataBind();
+        ddlEstado.Items.Insert(0, new ListItem("Seleccione", "0"));
+        con.Close();
+        
+    }
+    private void cargarAsginado()
+    {
+        SqlConnection con = Datos.ObtenerConexion();
+        String sqls = "Select * from Usuarios";
+        ddlAsignadoa.DataSource = Datos.getDataReader(sqls, con);
+        ddlAsignadoa.DataTextField = "Usuario";
+        ddlAsignadoa.DataValueField = "IdUsuario";
+        ddlAsignadoa.DataBind();
+
+        ddlAsignadoa.Items.Insert(0, new ListItem("Seleccione", "0"));
+        con.Close();
+    }
+
 }
