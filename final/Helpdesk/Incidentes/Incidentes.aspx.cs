@@ -15,6 +15,7 @@ public partial class Incidentes_Incidentes : System.Web.UI.Page
         ((Label)hdMaster.FindControl("lblTitulo")).Text = "Incidentes";
         if (!Page.IsPostBack)
         {
+       
             EnlazarGrilla("Fecha asc");
             CargarListaEstados();
         }

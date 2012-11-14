@@ -11,5 +11,10 @@ public partial class _Default : System.Web.UI.Page
     {
         helpdesk hdMaster = (helpdesk)this.Master;
         ((Label)hdMaster.FindControl("lblTitulo")).Text = "Inicio";
+        if (!Page.IsPostBack)
+        {
+            if (Request.Cookies["micookie"] != null)
+                lblLogeo.Text = Request.Cookies["micookie"].Value;
+        }
     }
 }
