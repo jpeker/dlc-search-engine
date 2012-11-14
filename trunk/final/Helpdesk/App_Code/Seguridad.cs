@@ -24,8 +24,9 @@ public static class Seguridad
        
         while (da.Read())
         {
-            
-            roles += da["nombre"].ToString() + " | ";
+          
+            roles += da["nombre"].ToString() ;
+          
         }
         return roles;
         }

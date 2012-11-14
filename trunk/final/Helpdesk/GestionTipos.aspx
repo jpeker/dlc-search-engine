@@ -42,6 +42,9 @@
                 Descripcion</td>
             <td>
                 <asp:TextBox ID="txtDescripcion" runat="server"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="validator" runat="server" 
+                    ControlToValidate="txtDescripcion" Display="Dynamic" 
+                    ErrorMessage="ingrese el la descripcion"></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
@@ -49,13 +52,18 @@
                 tiempo promedio de ejecucion</td>
             <td>
                 <asp:TextBox ID="txtTiempo" runat="server"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+                    ControlToValidate="txtTiempo" Display="Dynamic" 
+                    ErrorMessage="ingrese el promedio"></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
             <td class="style5" colspan="2">
-                <asp:Button ID="Button1" runat="server" Text="Nuevo" />
-                --<asp:Button ID="Button2" runat="server" Text="Guardar" />
-                --<asp:Button ID="Button3" runat="server" Text="Eliminar" />
+                <asp:Button ID="Button1" runat="server" Text="Nuevo" onclick="Button1_Click" />
+                --<asp:Button ID="Button2" runat="server" Text="Guardar" 
+                    onclick="Button2_Click" />
+                --<asp:Button ID="Button3" runat="server" Text="Eliminar" 
+                    onclick="Button3_Click" />
             </td>
         </tr>
         <tr>

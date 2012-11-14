@@ -29,6 +29,10 @@ public partial class Login : System.Web.UI.Page
             // Agrega la cookie a la Response
             Response.Cookies.Add(autCookie);
             // Redirecciona al usuario a la página que solicitó
+            HttpCookie aCookie = new HttpCookie("micookie");
+            aCookie.Value ="se logeo";
+            aCookie.Expires = DateTime.Now.AddDays(1);
+            Response.Cookies.Add(aCookie);
 
             Response.Redirect(FormsAuthentication.GetRedirectUrl(txtLogin.UserName, false));
         }

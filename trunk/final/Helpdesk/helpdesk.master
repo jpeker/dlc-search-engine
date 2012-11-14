@@ -28,6 +28,7 @@
     <div>
         <asp:Label ID="Label1" runat="server" Text="HelpDesk:"></asp:Label>
         <asp:Label ID="lblTitulo" runat="server"></asp:Label>
+        <asp:LoginName ID="txtLogName" runat="server" />
     </div>
     <table class="style1">
         <tr>

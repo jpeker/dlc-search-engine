@@ -16,6 +16,7 @@ public partial class GestionTipos : System.Web.UI.Page
         if (!Page.IsPostBack)
         {
             CargarListaTipos();
+            ddlIncidentes.Items.Insert(0, new ListItem("Buscar", "0"));
         }
 
     }
@@ -55,13 +56,15 @@ public partial class GestionTipos : System.Web.UI.Page
     {
         string cnStr =
         ConfigurationManager.ConnectionStrings["helpdeskcn"].ConnectionString;
-        string cmdStr = "SELECT * FROM tipos WHERE IdTipo = " +
-        ddlIncidentes.SelectedItem.Value;
+      
         SqlConnection cn = new SqlConnection(cnStr);
         try
         {
             cn.Open();
+            string cmdStr = "SELECT * FROM tipos WHERE IdTipo = @id";
+      
             SqlCommand cmd = new SqlCommand(cmdStr, cn);
+            cmd.Parameters.AddWithValue("@id",ddlIncidentes.SelectedItem.Value);
             SqlDataReader dr = cmd.ExecuteReader();
             if (dr.Read())
                 lblIdTipo.Text = dr["IdTipo"].ToString();
@@ -79,6 +82,103 @@ public partial class GestionTipos : System.Web.UI.Page
         finally
         {
             cn.Close();
+        }
+    }
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        if (Page.IsValid)
+        {
+            using (SqlConnection con = Datos.ObtenerConexion())
+            {
+                SqlTransaction tran = con.BeginTransaction();
+                String cadena = "insert into Tipos (Tipo,TiempoPromedioResolucion) values (@tipo,@resolu)";
+                SqlCommand cmd = new SqlCommand(cadena, con);
+                cmd.Parameters.AddWithValue("@tipo",txtDescripcion.Text);
+                cmd.Parameters.AddWithValue("@resolu", txtTiempo.Text);
+                cmd.Transaction = tran;
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                    tran.Commit();
+                    lblStatus.Text = "se guardo con exito";
+                 
+
+
+                }
+                catch (Exception ex)
+                {
+                    tran.Rollback();
+                    lblStatus.Text = ex.Message;
+                }
+                con.Close();
+            }
+        
+     
+        
+        }
+    }
+    protected void Button2_Click(object sender, EventArgs e)
+    {
+        if (Page.IsValid)
+        { 
+        using(SqlConnection con =Datos.ObtenerConexion())
+        {
+            SqlTransaction tran = con.BeginTransaction();
+            String cadena = "Update Tipos set Tipo= @tipo , TiempoPromedioResolucion = @tiempo where IdTipo = @id";
+            SqlCommand cmd = new SqlCommand(cadena, con);
+            cmd.Parameters.AddWithValue("@tipo", txtDescripcion.Text);
+            cmd.Parameters.AddWithValue("@tiempo", txtTiempo.Text);
+            cmd.Parameters.AddWithValue("@id", lblIdTipo.Text);
+            cmd.Transaction = tran;
+            try
+            {
+                cmd.ExecuteNonQuery();
+                tran.Commit();
+            
+
+                lblStatus.Text = "se guardo con exito";
+
+
+            }
+            catch (Exception ex)
+            {
+                tran.Rollback();
+                lblStatus.Text = ex.Message;
+            }
+            con.Close();
+        }
+        
+        }
+    }
+    protected void Button3_Click(object sender, EventArgs e)
+    {
+        if (Page.IsValid)
+        {
+            using (SqlConnection con = Datos.ObtenerConexion())
+            {
+                SqlTransaction tran = con.BeginTransaction();
+                String cadena = "Delete from Tipos  where IdTipo = @id";
+                SqlCommand cmd = new SqlCommand(cadena, con);
+             
+                cmd.Parameters.AddWithValue("@id", lblIdTipo.Text);
+                cmd.Transaction = tran;
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                    tran.Commit();
+    
+                    lblStatus.Text = "se elimino con exito";
+
+
+                }
+                catch (Exception ex)
+                {
+                    tran.Rollback();
+                    lblStatus.Text = ex.Message;
+                }
+                con.Close();
+            }
+
         }
     }
 }
