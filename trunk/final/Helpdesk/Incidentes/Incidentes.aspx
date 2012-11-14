@@ -14,6 +14,7 @@
         onsorting="gvIncidentes_Sorting" 
         onselectedindexchanged="gvIncidentes_SelectedIndexChanged">
         <Columns>
+            <asp:BoundField DataField="IdIncidente" HeaderText="ID" />
             <asp:BoundField DataField="Titulo" HeaderText="Titulo" />
             <asp:BoundField DataField="Fecha" DataFormatString="{0:d}" HeaderText="Fecha" 
                 HtmlEncode="False" SortExpression="Fecha" />

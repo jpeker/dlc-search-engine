@@ -26,7 +26,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" Runat="Server">
-<asp:Label ID="lblMensaje" runat="server"></asp:Label>
+    <asp:Label ID="lblMensaje" runat="server"></asp:Label>
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
     <table class="style4">
         <tr>
@@ -147,6 +147,9 @@
             <td>
                 <asp:Button ID="Button2" runat="server" onclick="Button2_Click" 
                     Text="Cancelar" CausesValidation="False" />
+
+                -<asp:Button ID="btnEliminar" runat="server" Text="Eliminar" 
+                    CausesValidation="False" onclick="Button3_Click" Visible="False" />
             </td>
         </tr>
     </table>
