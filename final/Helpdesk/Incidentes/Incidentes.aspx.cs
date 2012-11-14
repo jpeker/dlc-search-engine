@@ -21,7 +21,7 @@ public partial class Incidentes_Incidentes : System.Web.UI.Page
     }
     private void EnlazarGrilla(String criterio)
     {
-        String SQL = "select i.Titulo,i.Fecha, u.Usuario,p.Producto,e.Estado from Incidentes i inner join Usuarios u on i.IdUsuarioAsignado = u.IdUsuario inner join Productos p on p.IdProducto =i.IdProducto inner join Estados e on e.IdEstado = i.IdEstado order by "+criterio;
+        String SQL = "select i.IdIncidente,i.Titulo,i.Fecha, u.Usuario,p.Producto,e.Estado from Incidentes i inner join Usuarios u on i.IdUsuarioAsignado = u.IdUsuario inner join Productos p on p.IdProducto =i.IdProducto inner join Estados e on e.IdEstado = i.IdEstado order by "+criterio;
         SqlConnection sqlCon = Datos.ObtenerConexion();
         DataSet incidentes = Datos.ObtenerDataset(SQL, sqlCon, "incidentes");
         gvIncidentes.DataSource = incidentes.Tables["incidentes"];
@@ -72,8 +72,7 @@ public partial class Incidentes_Incidentes : System.Web.UI.Page
     }
     protected void gvIncidentes_SelectedIndexChanged(object sender, EventArgs e)
     {
-        Session["Titulo"] = gvIncidentes.SelectedRow.Cells[0].Text;
-        Session["Fecha"] = gvIncidentes.SelectedRow.Cells[1].Text;
+        Session["ID"] = gvIncidentes.SelectedRow.Cells[0].Text;
         Response.Redirect("NuevoIncidente.aspx");
     }
 }
