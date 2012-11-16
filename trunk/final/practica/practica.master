@@ -1,0 +1,50 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="practica.master.cs" Inherits="practica" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .style1
+        {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+    </div>
+    <table class="style1">
+        <tr>
+            <td>
+                <asp:Label ID="lblTitulo" runat="server"></asp:Label>
+            </td>
+            <td>
+                &nbsp;</td>
+        </tr>
+        <tr>
+            <td>
+                <asp:TreeView ID="TreeView1" runat="server" DataSourceID="SiteMapDataSource1">
+                </asp:TreeView>
+                <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />
+            </td>
+            <td>
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &nbsp;</td>
+            <td>
+                &nbsp;</td>
+        </tr>
+    </table>
+    </form>
+</body>
+</html>
