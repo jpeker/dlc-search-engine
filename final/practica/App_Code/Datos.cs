@@ -32,6 +32,15 @@ public static class Datos
      
         return ds;
     }
+    public static DataTable ObtenerDataTable(string strSQL, SqlConnection con)
+    {
+        SqlCommand cmd = new SqlCommand(strSQL, con);
+        SqlDataAdapter da = new SqlDataAdapter(cmd);
+        DataTable ds = new DataTable();
+        da.Fill(ds );
+
+        return ds;
+    }
     public static SqlDataReader getDataReader(string strSQL, SqlConnection con)
     {
         SqlCommand cmd = new SqlCommand(strSQL, con);
