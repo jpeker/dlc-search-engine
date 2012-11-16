@@ -54,10 +54,12 @@
         <td class="style5" colspan="3">
             <asp:GridView ID="gvProductos" runat="server" AllowPaging="True" 
                 AutoGenerateColumns="False" onpageindexchanging="gvProductos_PageIndexChanging" 
-                onselectedindexchanged="gvProductos_SelectedIndexChanged" PageSize="4">
+                onselectedindexchanged="gvProductos_SelectedIndexChanged" PageSize="4" 
+                AllowSorting="True" onsorting="gvProductos_Sorting">
                 <Columns>
                     <asp:CommandField ShowSelectButton="True" />
-                    <asp:BoundField DataField="IdProducto" HeaderText="ID" />
+                    <asp:BoundField DataField="IdProducto" HeaderText="ID" 
+                        SortExpression="IdProducto" />
                     <asp:BoundField DataField="CodigoProducto" HeaderText="Codigo" />
                     <asp:BoundField DataField="Producto" HeaderText="Nombre" />
                 </Columns>

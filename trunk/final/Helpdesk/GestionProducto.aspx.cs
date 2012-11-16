@@ -13,9 +13,10 @@ public partial class GestionProducto : System.Web.UI.Page
     {
         helpdesk hdmaster = (helpdesk)this.Master;
         ((Label)hdmaster.FindControl("lblTitulo")).Text = "Gestion Producto";
+    
         if (!Page.IsPostBack)
         {
-            cargarGrilla();
+            cargarGrilla("IdProducto DESC");
         }
 
     }
@@ -58,10 +59,15 @@ public partial class GestionProducto : System.Web.UI.Page
     }
     private void cargarGrilla()
     {
+        cargarGrilla(ViewState["criterio"].ToString());
+    }
+    private void cargarGrilla(String criterio)
+    {
+        ViewState.Add("criterio", criterio);
         SqlConnection con = Datos.ObtenerConexion();
         try
         {
-            String cadena="Select * from Productos";
+            String cadena="Select * from Productos order by "+criterio;
             DataSet productos = Datos.ObtenerDataset(cadena, con, "Productos");
            gvProductos.DataSource = productos.Tables["Productos"];
            // gvProductos.DataSource = Datos.getDataReader(cadena,con);
@@ -100,5 +106,10 @@ public partial class GestionProducto : System.Web.UI.Page
     {
         gvProductos.PageIndex = e.NewPageIndex;
         cargarGrilla();
+    }
+    protected void gvProductos_Sorting(object sender, GridViewSortEventArgs e)
+    {
+   
+        cargarGrilla(string.Format("{0} {1}", e.SortExpression, (e.SortDirection == SortDirection.Ascending) ? "ASC" : "DESC"));
     }
 }
