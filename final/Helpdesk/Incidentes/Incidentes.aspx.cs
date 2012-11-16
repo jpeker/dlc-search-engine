@@ -16,12 +16,17 @@ public partial class Incidentes_Incidentes : System.Web.UI.Page
         if (!Page.IsPostBack)
         {
        
-            EnlazarGrilla("Fecha asc");
+            EnlazarGrilla("Fecha desc");
             CargarListaEstados();
         }
     }
+    private void EnlazarGrilla()
+    {
+        EnlazarGrilla(ViewState["CriterioOrdenacion"].ToString());
+    }
     private void EnlazarGrilla(String criterio)
     {
+        ViewState.Add("CriterioOrdenacion", criterio);
         String SQL = "select i.IdIncidente,i.Titulo,i.Fecha, u.Usuario,p.Producto,e.Estado from Incidentes i inner join Usuarios u on i.IdUsuarioAsignado = u.IdUsuario inner join Productos p on p.IdProducto =i.IdProducto inner join Estados e on e.IdEstado = i.IdEstado order by "+criterio;
         SqlConnection sqlCon = Datos.ObtenerConexion();
         DataSet incidentes = Datos.ObtenerDataset(SQL, sqlCon, "incidentes");
@@ -31,7 +36,7 @@ public partial class Incidentes_Incidentes : System.Web.UI.Page
     protected void gvIncidentes_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
         gvIncidentes.PageIndex = e.NewPageIndex;
-        EnlazarGrilla("Fecha asc");
+        EnlazarGrilla();
     }
     protected void gvIncidentes_Sorting(object sender, GridViewSortEventArgs e)
     {

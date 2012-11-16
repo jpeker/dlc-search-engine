@@ -12,7 +12,7 @@
         AllowSorting="True" AutoGenerateColumns="False" 
         onpageindexchanging="gvIncidentes_PageIndexChanging" 
         onsorting="gvIncidentes_Sorting" 
-        onselectedindexchanged="gvIncidentes_SelectedIndexChanged">
+        onselectedindexchanged="gvIncidentes_SelectedIndexChanged" PageSize="4">
         <Columns>
             <asp:BoundField DataField="IdIncidente" HeaderText="ID" />
             <asp:BoundField DataField="Titulo" HeaderText="Titulo" />
