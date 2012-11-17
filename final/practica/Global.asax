@@ -1,6 +1,6 @@
 ﻿<%@ Application Language="C#" %>
 <%@ Import Namespace="System.Web.Security" %>
-<%@ Import Namespace="System.Security.Principal" %>
+<%@ Import Namespace="System.Security.Principal"%>
 
 <script runat="server">
 
@@ -36,35 +36,33 @@
         // o SQLServer, el evento no se genera.
 
     }
-    protected void Application_AuthenticateRequest(object sender,
-EventArgs e)
+    protected void Application_AuthenticateRequest(object sender, EventArgs e)
     {
-        // Recupera la cookie
-        HttpCookie authCookie = Context.Request.Cookies["test"];
-        if (null == authCookie)
+        HttpCookie cookie = Context.Request.Cookies["test"];
+        if (cookie == null)
         {
-            // Si no existe termina
             return;
+            
         }
-        FormsAuthenticationTicket autTicket = null;
+    FormsAuthenticationTicket aut = null;
         try
         {
-            autTicket = FormsAuthentication.Decrypt(authCookie.Value);
+
+            aut = FormsAuthentication.Decrypt(cookie.Value);
         }
         catch (Exception ex)
         {
-            return;
+            return; 
         }
-        if (null == autTicket)
+        if (aut == null) 
         {
-            // No se pudo desencriptar
-            return;
+            return; 
         }
-        // Separo los roles
-        String[] roles = autTicket.UserData.Split(new char[] { '|' });
-        // Creo un objeto Identity y lo vinculo al Context
-        GenericIdentity id = new GenericIdentity(autTicket.Name, "test");
+        String[] roles = aut.UserData.Split(new char[] { '|' });
+        GenericIdentity id = new GenericIdentity(aut.Name, "test");
         GenericPrincipal principal = new GenericPrincipal(id, roles);
         Context.User = principal;
+        
     }
+  
 </script>

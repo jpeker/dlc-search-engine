@@ -19,17 +19,11 @@ public partial class Login : System.Web.UI.Page
         {
             e.Authenticated = true;
             String roles = Seguridad.ObtenerRoles(txtLogin.UserName);
-            FormsAuthenticationTicket autTicket = new FormsAuthenticationTicket(1, txtLogin.UserName, DateTime.Now, DateTime.Now.AddMinutes(60), false, roles);
-            //Encriptar el ticket
-            string encrTicket = FormsAuthentication.Encrypt(autTicket);
-            // Crea una cookie con el ticket encriptado
-            HttpCookie autCookie = new HttpCookie("test", encrTicket);
-            // Agrega la cookie a la Response
-            Response.Cookies.Add(autCookie);
-            // Redirecciona al usuario a la página que solicitó
-          
-
-            Response.Redirect(FormsAuthentication.GetRedirectUrl(txtLogin.UserName, false));
+            FormsAuthenticationTicket tick = new FormsAuthenticationTicket(1, txtLogin.UserName, DateTime.Now, DateTime.Now.AddMinutes(60), false, roles);
+            String ticked= FormsAuthentication.Encrypt(tick);
+            HttpCookie co = new HttpCookie("test", ticked);
+            Response.Cookies.Add(co);
+            Response.Redirect(FormsAuthentication.GetRedirectUrl(txtLogin.UserName,false));
         }
         else e.Authenticated = false;
     }
