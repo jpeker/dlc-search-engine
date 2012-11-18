@@ -18,16 +18,20 @@ public static class Seguridad
 }
     public static string ObtenerRoles(string usuario)
     {
-        string roles="";
+        String roles="";
         String sql = "Select r.nombre from Usuarios u inner join Roles r on u.IdUsuario = r.IdUsuario where u.Nombre ='" + usuario + "'";
         SqlDataReader da = Datos.getDataReader(sql, Datos.ObtenerConexion());
        
         while (da.Read())
         {
           
-            roles += da["nombre"].ToString() +" | ";
+            roles += da["nombre"].ToString() +"|";
         
               }
+        if (roles.LastIndexOf('|') == roles.Length - 1)
+        {
+            roles = roles.Substring(0, roles.Length - 1);
+        }
         return roles;
         }
 }
