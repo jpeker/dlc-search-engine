@@ -11,11 +11,12 @@ public partial class Informacion : System.Web.UI.Page
     {
         practica hdMaster = (practica)this.Master;
         ((Label)hdMaster.FindControl("lblTitulo")).Text = "Informacion";
+       
     }
     protected void Button1_Click(object sender, EventArgs e)
     {
         HttpCookie p = new HttpCookie("micookie");
-        p.Value = txtNombre.Text;
+        p.Value = User.Identity.Name;
         p.Expires = DateTime.Now.AddMinutes(60);
         Response.Cookies.Add(p);
         Session["apellido"] = txtApellido.Text;

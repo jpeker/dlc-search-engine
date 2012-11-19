@@ -15,7 +15,7 @@ public partial class Incidentes_Incidentes : System.Web.UI.Page
         ((Label)hdMaster.FindControl("lblTitulo")).Text = "Incidentes";
         if (!Page.IsPostBack)
         {
-       
+      
             EnlazarGrilla("Fecha desc");
             CargarListaEstados();
         }
@@ -79,6 +79,7 @@ public partial class Incidentes_Incidentes : System.Web.UI.Page
     protected void gvIncidentes_SelectedIndexChanged(object sender, EventArgs e)
     {
         Session["ID"] = gvIncidentes.SelectedRow.Cells[0].Text;
+        
         Response.Redirect("NuevoIncidente.aspx");
     }
 }

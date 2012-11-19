@@ -45,6 +45,10 @@
                 Fecha</td>
             <td>
                 <asp:TextBox ID="txtFecha" runat="server"></asp:TextBox>
+                <asp:CompareValidator ID="CompareValidator1" runat="server" 
+                    ControlToValidate="txtFechaEstimadaResolucion" Display="Dynamic" 
+                    ErrorMessage="CompareValidator" Operator="DataTypeCheck" Type="Date" 
+                    ValueToCompare="Date">*</asp:CompareValidator>
             </td>
         </tr>
         <tr>
@@ -105,6 +109,10 @@
                 Fecha Esti</td>
             <td>
                 <asp:TextBox ID="txtFechaEstimadaResolucion" runat="server"></asp:TextBox>
+                <asp:RangeValidator ID="RangeValidator2" runat="server" 
+                    ControlToValidate="txtFechaEstimadaResolucion" Display="Dynamic" 
+                    ErrorMessage="RangeValidator" MaximumValue="2013/02/02" 
+                    MinimumValue="2010/02/02" Type="Date"></asp:RangeValidator>
             </td>
         </tr>
         <tr>

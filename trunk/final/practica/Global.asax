@@ -1,6 +1,6 @@
 ﻿<%@ Application Language="C#" %>
 <%@ Import Namespace="System.Web.Security" %>
-<%@ Import Namespace="System.Security.Principal"%>
+<%@ Import Namespace="System.Security.Principal" %>
 
 <script runat="server">
 
@@ -39,30 +39,22 @@
     protected void Application_AuthenticateRequest(object sender, EventArgs e)
     {
         HttpCookie cookie = Context.Request.Cookies["test"];
-        if (cookie == null)
+        if (cookie == null) return;
+        FormsAuthenticationTicket aut = null;
+        try 
         {
-            return;
+            aut = FormsAuthentication.Decrypt(cookie.Value);
             
         }
-    FormsAuthenticationTicket aut = null;
-        try
+        catch(Exception ex)
         {
-
-            aut = FormsAuthentication.Decrypt(cookie.Value);
+            return;
         }
-        catch (Exception ex)
-        {
-            return; 
-        }
-        if (aut == null) 
-        {
-            return; 
-        }
-        String[] roles = aut.UserData.Split(new char[] { '|' });
+        if (aut == null) return;
+        String[] roles = aut.UserData.Split(new Char[] { '|' });
         GenericIdentity id = new GenericIdentity(aut.Name, "test");
         GenericPrincipal principal = new GenericPrincipal(id, roles);
         Context.User = principal;
-        
     }
   
 </script>

@@ -26,7 +26,7 @@ public partial class buscarProducto : System.Web.UI.Page
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataSet ds = new DataSet();
             da.Fill(ds, "Producto");
-            gvProductos.DataSource = ds;
+            gvProductos.DataSource = ds.Tables["Producto"];
             gvProductos.DataBind();
             con.Close() ;
         
