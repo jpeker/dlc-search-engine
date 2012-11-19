@@ -17,6 +17,8 @@
 <body>
     <form id="form1" runat="server">
     <div>
+        <asp:Button ID="btnCerrar" runat="server" onclick="btnCerrar_Click" 
+            Text="Cerrar Session" />
     </div>
     <table class="style1">
         <tr>

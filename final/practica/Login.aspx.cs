@@ -12,6 +12,7 @@ public partial class Login : System.Web.UI.Page
     {
         practica hdMaster = (practica)this.Master;
         ((Label)hdMaster.FindControl("lblTitulo")).Text = "Login";
+        ((Button)hdMaster.FindControl("btnCerrar")).Visible = false;
     }
     protected void txtLogin_Authenticate(object sender, AuthenticateEventArgs e)
     {
@@ -19,11 +20,11 @@ public partial class Login : System.Web.UI.Page
         {
             e.Authenticated = true;
             String roles = Seguridad.ObtenerRoles(txtLogin.UserName);
-            FormsAuthenticationTicket tick = new FormsAuthenticationTicket(1, txtLogin.UserName, DateTime.Now, DateTime.Now.AddMinutes(60), false, roles);
-            String ticked= FormsAuthentication.Encrypt(tick);
-            HttpCookie co = new HttpCookie("test", ticked);
-            Response.Cookies.Add(co);
-            Response.Redirect(FormsAuthentication.GetRedirectUrl(txtLogin.UserName,false));
+            FormsAuthenticationTicket ticket= new FormsAuthenticationTicket(1, txtLogin.UserName, DateTime.Now, DateTime.Now.AddMinutes(60), false, roles);
+            String sticket = FormsAuthentication.Encrypt(ticket);
+            HttpCookie cookie = new HttpCookie("test", sticket);
+            Response.Cookies.Add(cookie);
+            Response.Redirect(FormsAuthentication.GetRedirectUrl(txtLogin.UserName, false));
         }
         else e.Authenticated = false;
     }
